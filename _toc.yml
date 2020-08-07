@@ -1,0 +1,25 @@
+- file: index
+
+- part: Linear Systems
+  chapters:
+  - file: notebooks/01_linear_systems.ipynb
+  - file: notebooks/02_LU_decomposition.ipynb
+  - file: notebooks/03_polynomial_interpolation.ipynb
+  - file: notebooks/04_spline_interpolation.ipynb
+  - file: notebooks/05_finite_difference_method.ipynb
+
+- part: Least Squares
+  chapters:
+  - file: notebooks/06_least_squares_regression.ipynb
+  - file: notebooks/07_computed_tomography.ipynb
+
+- part: Eigenvalue Problems
+  chapters:
+  - file: notebooks/08_computing_eigenvalues.ipynb
+  - file: notebooks/09_pca.ipynb
+  - file: notebooks/10_deblurring_images.ipynb
+  - file: notebooks/11_pagerank.ipynb
+
+- part: Discrete Fourier Transform
+  chapters:
+  - file: notebooks/12_fft.ipynb
