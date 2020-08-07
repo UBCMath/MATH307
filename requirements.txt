@@ -2,3 +2,5 @@ jupyter-book
 numpy
 matplotlib
 scipy
+sklearn
+networkx
