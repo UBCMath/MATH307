@@ -1,6 +1,6 @@
 # MATH 307 Applied Linear Algebra
 
-## LEARNING GOALS
+### Learning Goals
 
 * Summarize properties and constructions of matrix decompositions LU, QR and SVD
 * Perform matrix computations using mathematical software Python, SciPy and Jupyter

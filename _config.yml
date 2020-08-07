@@ -1,5 +1,6 @@
 title: Applied Linear Algebra
 author: UBC Math
+exclude_patterns: ["README.md"]
 
 html:
   home_page_in_navbar: false
