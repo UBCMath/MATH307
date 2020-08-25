@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -243,7 +243,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/05_finite_difference_method.ipynb"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/05_finite_difference_method.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -259,7 +259,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -292,7 +292,7 @@
 <h1>Finite Difference Method<a class="headerlink" href="#finite-difference-method" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
@@ -310,9 +310,9 @@ y'' + p(t)y' + q(t)y = r(t) \ \ , \ \ y(t_0) = \alpha \ \ , \ \ y(t_f) = \beta
 <li><p>Let <span class="math notranslate nohighlight">\(y_k \approx y(t_k)\)</span> denote the approximation of the solution at <span class="math notranslate nohighlight">\(t_k\)</span>.</p></li>
 <li><p>Substitute finite difference formulas into the equation to define an equation at each <span class="math notranslate nohighlight">\(t_k\)</span>.</p></li>
 <li><p>Rearrange the system of equations into a linear system <span class="math notranslate nohighlight">\(A \mathbf{y} = \mathbf{b}\)</span> and solve for
-<span class="math notranslate nohighlight">\($
+$<span class="math notranslate nohighlight">\(
 \mathbf{y} = \begin{bmatrix} y_1 &amp; y_2 &amp; \cdots &amp; y_N \end{bmatrix}^T
-$\)</span></p></li>
+\)</span>$</p></li>
 </ol>
 <p>For example, consider an equation of the form</p>
 <div class="math notranslate nohighlight">
@@ -350,7 +350,7 @@ y(t) = t - t^2
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -390,7 +390,7 @@ y(t) = 1 - \cos(t) + \frac{t}{2 \pi}
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -456,7 +456,7 @@ y'' + t^2y' + y = \cos(t) \ \ , \ \ y(0) = 0 \ , \ \ y(3) = 0
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 
