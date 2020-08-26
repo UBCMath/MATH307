@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PageRank" href="11_pagerank.html" />
-    <link rel="prev" title="Principal Component Analysis" href="09_pca.html" />
+    <link rel="next" title="Computed Tomography" href="08_computed_tomography.html" />
+    <link rel="prev" title="Principal Component Analysis" href="06_pca.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,11 +97,6 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_finite_difference_method.html">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -110,18 +105,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_computed_tomography.html">
-   Computed Tomography
+  <a class="reference internal" href="05_least_squares_regression.html">
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -132,12 +117,7 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
@@ -147,7 +127,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
+  <a class="reference internal" href="08_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_pagerank.html">
    PageRank
   </a>
  </li>
@@ -159,7 +149,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -205,7 +195,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/10_deblurring_images.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/07_deblurring_images.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -243,7 +233,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/10_deblurring_images.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/07_deblurring_images.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -292,7 +282,7 @@
 <h1>Deblurring Images<a class="headerlink" href="#deblurring-images" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
@@ -302,12 +292,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
@@ -318,14 +308,14 @@
 <p>Let us create a <span class="math notranslate nohighlight">\(N \times N\)</span> matrix of zeros and ones such that represents the image of square.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">256</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">256</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">],[</span><span class="n">Z</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">Z</span><span class="p">],[</span><span class="n">Z</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">Z</span><span class="p">],[</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">]])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -334,13 +324,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_5_0.png" src="../_images/10_deblurring_images_5_0.png" />
+<img alt="../_images/07_deblurring_images_5_0.png" src="../_images/07_deblurring_images_5_0.png" />
 </div>
 </div>
 <p>Create a Toeplitz matrix where the values decrease linearly from the diagonal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">c</span><span class="p">[:</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 <span class="n">Ac</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">toeplitz</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -350,25 +340,25 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span><span class="p">[:</span><span class="mi">15</span><span class="p">,:</span><span class="mi">15</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span><span class="p">[:</span><span class="mi">15</span><span class="p">,:</span><span class="mi">15</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_8_0.png" src="../_images/10_deblurring_images_8_0.png" />
+<img alt="../_images/07_deblurring_images_8_0.png" src="../_images/07_deblurring_images_8_0.png" />
 </div>
 </div>
 <p>Check the condition number of <span class="math notranslate nohighlight">\(A_c\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">Ac</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">Ac</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24782.331042560716
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>24782.331042560716
 </pre></div>
 </div>
 </div>
@@ -376,19 +366,19 @@
 <p>Blur the image <span class="math notranslate nohighlight">\(X\)</span> vertically.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_12_0.png" src="../_images/10_deblurring_images_12_0.png" />
+<img alt="../_images/07_deblurring_images_12_0.png" src="../_images/07_deblurring_images_12_0.png" />
 </div>
 </div>
 <p>Do the same but in the horizontal direction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">r</span><span class="p">[:</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 <span class="n">Ar</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">toeplitz</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
@@ -398,25 +388,25 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">Ar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">Ar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_15_0.png" src="../_images/10_deblurring_images_15_0.png" />
+<img alt="../_images/07_deblurring_images_15_0.png" src="../_images/07_deblurring_images_15_0.png" />
 </div>
 </div>
 <p>Combine both vertical and horizontal blurring.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span> <span class="o">@</span> <span class="n">X</span> <span class="o">@</span> <span class="n">Ar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ac</span> <span class="o">@</span> <span class="n">X</span> <span class="o">@</span> <span class="n">Ar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_17_0.png" src="../_images/10_deblurring_images_17_0.png" />
+<img alt="../_images/07_deblurring_images_17_0.png" src="../_images/07_deblurring_images_17_0.png" />
 </div>
 </div>
 </div>
@@ -430,55 +420,55 @@ A_c X A_r^T = B + E
 <p>How do we find <span class="math notranslate nohighlight">\(X\)</span>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;data/kitten.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;data/kitten.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(256, 256)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(256, 256)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kitten</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kitten</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_21_0.png" src="../_images/10_deblurring_images_21_0.png" />
+<img alt="../_images/07_deblurring_images_21_0.png" src="../_images/07_deblurring_images_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">Ac</span><span class="nd">@kitten@Ar</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">Ac</span><span class="nd">@kitten@Ar</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_23_0.png" src="../_images/10_deblurring_images_23_0.png" />
+<img alt="../_images/07_deblurring_images_23_0.png" src="../_images/07_deblurring_images_23_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Ar</span><span class="p">,</span><span class="n">X1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
@@ -487,13 +477,13 @@ A_c X A_r^T = B + E
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_25_0.png" src="../_images/10_deblurring_images_25_0.png" />
+<img alt="../_images/07_deblurring_images_25_0.png" src="../_images/07_deblurring_images_25_0.png" />
 </div>
 </div>
 </div>
@@ -506,21 +496,21 @@ X = (A_c)_k^+ B (A_r^T)_k^+
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pc</span><span class="p">,</span><span class="n">Sc</span><span class="p">,</span><span class="n">QTc</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">Ac</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pc</span><span class="p">,</span><span class="n">Sc</span><span class="p">,</span><span class="n">QTc</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">Ac</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pr</span><span class="p">,</span><span class="n">Sr</span><span class="p">,</span><span class="n">QTr</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">Ar</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pr</span><span class="p">,</span><span class="n">Sr</span><span class="p">,</span><span class="n">QTr</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">Ar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">200</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">Dc_k_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="n">Sc</span><span class="p">[:</span><span class="n">k</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="n">k</span><span class="p">)])</span>
 <span class="n">Dr_k_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="n">Sr</span><span class="p">[:</span><span class="n">k</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="n">k</span><span class="p">)])</span>
 <span class="n">Ac_k_plus</span> <span class="o">=</span> <span class="n">QTc</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Dc_k_plus</span><span class="p">)</span> <span class="o">@</span> <span class="n">Pc</span><span class="o">.</span><span class="n">T</span>
@@ -532,7 +522,7 @@ X = (A_c)_k^+ B (A_r^T)_k^+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_deblurring_images_29_0.png" src="../_images/10_deblurring_images_29_0.png" />
+<img alt="../_images/07_deblurring_images_29_0.png" src="../_images/07_deblurring_images_29_0.png" />
 </div>
 </div>
 </div>
@@ -566,8 +556,8 @@ X = (A_c)_k^+ B (A_r^T)_k^+
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="09_pca.html" title="previous page">Principal Component Analysis</a>
-    <a class='right-next' id="next-link" href="11_pagerank.html" title="next page">PageRank</a>
+    <a class='left-prev' id="prev-link" href="06_pca.html" title="previous page">Principal Component Analysis</a>
+    <a class='right-next' id="next-link" href="08_computed_tomography.html" title="next page">Computed Tomography</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

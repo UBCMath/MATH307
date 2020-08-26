@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Computing Eigenvalues" href="08_computing_eigenvalues.html" />
-    <link rel="prev" title="Least Squares Linear Regression" href="06_least_squares_regression.html" />
+    <link rel="next" title="Computing Eigenvalues" href="09_computing_eigenvalues.html" />
+    <link rel="prev" title="Deblurring Images" href="07_deblurring_images.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,31 +97,16 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_finite_difference_method.html">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
   Least Squares
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Computed Tomography
+  <a class="reference internal" href="05_least_squares_regression.html">
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -130,24 +115,29 @@
   Eigenvalue Problems
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_deblurring_images.html">
+  <a class="reference internal" href="07_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Computed Tomography
+  </a>
+ </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_pagerank.html">
    PageRank
   </a>
  </li>
@@ -159,7 +149,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -205,7 +195,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/07_computed_tomography.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/08_computed_tomography.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -243,7 +233,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/07_computed_tomography.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/08_computed_tomography.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -277,8 +267,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compute-least-squares-solution">
-   Compute Least Squares Solution
+  <a class="reference internal nav-link" href="#compute-truncated-svd-solution">
+   Compute Truncated SVD Solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -300,181 +290,221 @@
 <h1>Computed Tomography<a class="headerlink" href="#computed-tomography" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">as</span> <span class="nn">sla</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The following example is a tomographic X-ray data of a walnut. The dataset was prepared by the <a class="reference external" href="http://www.fips.fi/dataset.php">Finnish Inverse Problems Society</a>.</p>
+<p>The following example is tomographic X-ray data of a walnut. The dataset was prepared by the <a class="reference external" href="http://www.fips.fi/dataset.php">Finnish Inverse Problems Society</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;./data/ct.mat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data file contains a measurement matrix <span class="math notranslate nohighlight">\(A\)</span> and the projections vector <span class="math notranslate nohighlight">\(m\)</span>. These are large matrices and so we need sparse matrices.</p>
 <div class="section" id="measurement-matrix-a">
 <h2>Measurement Matrix <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#measurement-matrix-a" title="Permalink to this headline">¶</a></h2>
+<p>Each row of the measurement matrix represents a projection of an X-ray through the sample as a particular angle. The measurement matrix is huge! And so we need to use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">sparse matrices</a> to save memory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;./data/Data82.mat&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
+<span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7762752
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>7762752
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9840, 6724)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(9840, 6724)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>scipy.sparse.csc.csc_matrix
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>scipy.sparse.csc.csc_matrix
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can visualize each row by reshaping into a matrix. Let’s look at the x-ray projection matrix corresponding to random rows of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1">#np.random.randint(0,A.shape[0])</span>
-<span class="n">proj</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">82</span><span class="p">,</span><span class="mi">82</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">**</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">82</span><span class="p">,</span><span class="mi">82</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Row: &#39;</span><span class="p">,</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/07_computed_tomography_9_0.png" src="../_images/07_computed_tomography_9_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row:  300
-</pre></div>
-</div>
+<img alt="../_images/08_computed_tomography_10_0.png" src="../_images/08_computed_tomography_10_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="sinogram-measured-projections">
 <h2>Sinogram: Measured Projections<a class="headerlink" href="#sinogram-measured-projections" title="Permalink to this headline">¶</a></h2>
+<p>The vector <span class="math notranslate nohighlight">\(m\)</span> is the collection of 82 projection measurements from 120 different angles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span><span class="o">.</span><span class="n">nbytes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span><span class="o">.</span><span class="n">nbytes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78720
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>78720
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(82, 120)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(82, 120)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/07_computed_tomography_15_0.png" src="../_images/07_computed_tomography_15_0.png" />
+<img alt="../_images/08_computed_tomography_16_0.png" src="../_images/08_computed_tomography_16_0.png" />
 </div>
 </div>
 </div>
-<div class="section" id="compute-least-squares-solution">
-<h2>Compute Least Squares Solution<a class="headerlink" href="#compute-least-squares-solution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="compute-truncated-svd-solution">
+<h2>Compute Truncated SVD Solution<a class="headerlink" href="#compute-truncated-svd-solution" title="Permalink to this headline">¶</a></h2>
+<p>We need to solve <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> (where <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is the vector of projections) however there are errors in the projections vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> and so we actually have</p>
+<div class="math notranslate nohighlight">
+\[
+A \hat{\mathbf{x}} = \mathbf{b} + \mathbf{e}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{e}\)</span> is noise. We need to compute the truncated pseudoinverse to avoid inverting the noise</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mathbf{x}} = A_k^+ ( \mathbf{b} + \mathbf{e} )
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">82</span><span class="o">*</span><span class="mi">120</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b_e</span> <span class="o">=</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">82</span><span class="o">*</span><span class="mi">120</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Truncate the measurement matrix after the largest <span class="math notranslate nohighlight">\(k\)</span> singular values and compute the pseudoinverse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">P</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">QT</span> <span class="o">=</span> <span class="n">sla</span><span class="o">.</span><span class="n">svds</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">lsmr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span><span class="n">btol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(9840, 200)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QT</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(200, 6724)
 </pre></div>
 </div>
 </div>
 </div>
+<p>Compute the rank <span class="math notranslate nohighlight">\(k\)</span> truncated pseudoinverse <span class="math notranslate nohighlight">\(A_k^+\)</span> and <span class="math notranslate nohighlight">\(\hat{\mathbf{x}} = A_k^+ ( \mathbf{b} + \mathbf{e} )\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">82</span><span class="p">,</span><span class="mi">82</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A_k_plus</span> <span class="o">=</span> <span class="n">QT</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">P</span><span class="o">.</span><span class="n">T</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">A_k_plus</span> <span class="o">@</span> <span class="n">b_e</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualize the result by reshaping <span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span> in a square matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">82</span><span class="p">,</span><span class="mi">82</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/07_computed_tomography_20_0.png" src="../_images/07_computed_tomography_20_0.png" />
+<img alt="../_images/08_computed_tomography_26_0.png" src="../_images/08_computed_tomography_26_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="true-solution">
 <h2>True Solution<a class="headerlink" href="#true-solution" title="Permalink to this headline">¶</a></h2>
+<p>Compare to the true solution provided by <a class="reference external" href="http://www.fips.fi/dataset.php">FIPS</a>.</p>
 <p><img alt="Solution of Computed Tomorgraphy Example" src="../_images/ct_solution.png" /></p>
 </div>
 </div>
@@ -507,8 +537,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="06_least_squares_regression.html" title="previous page">Least Squares Linear Regression</a>
-    <a class='right-next' id="next-link" href="08_computing_eigenvalues.html" title="next page">Computing Eigenvalues</a>
+    <a class='left-prev' id="prev-link" href="07_deblurring_images.html" title="previous page">Deblurring Images</a>
+    <a class='right-next' id="next-link" href="09_computing_eigenvalues.html" title="next page">Computing Eigenvalues</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

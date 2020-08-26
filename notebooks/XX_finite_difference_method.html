@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,8 +39,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Least Squares Linear Regression" href="06_least_squares_regression.html" />
-    <link rel="prev" title="Natural Cubic Spline Interpolation" href="04_spline_interpolation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -76,7 +74,7 @@
   Linear Systems
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_linear_systems.html">
    Linear Systems of Equations
@@ -97,11 +95,6 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -110,18 +103,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_computed_tomography.html">
-   Computed Tomography
+  <a class="reference internal" href="05_least_squares_regression.html">
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -132,22 +115,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_deblurring_images.html">
+  <a class="reference internal" href="07_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
+  <a class="reference internal" href="08_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_pagerank.html">
    PageRank
   </a>
  </li>
@@ -159,7 +147,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -205,7 +193,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/05_finite_difference_method.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/XX_finite_difference_method.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -243,7 +231,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/05_finite_difference_method.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/XX_finite_difference_method.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -292,7 +280,7 @@
 <h1>Finite Difference Method<a class="headerlink" href="#finite-difference-method" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
@@ -310,9 +298,9 @@ y'' + p(t)y' + q(t)y = r(t) \ \ , \ \ y(t_0) = \alpha \ \ , \ \ y(t_f) = \beta
 <li><p>Let <span class="math notranslate nohighlight">\(y_k \approx y(t_k)\)</span> denote the approximation of the solution at <span class="math notranslate nohighlight">\(t_k\)</span>.</p></li>
 <li><p>Substitute finite difference formulas into the equation to define an equation at each <span class="math notranslate nohighlight">\(t_k\)</span>.</p></li>
 <li><p>Rearrange the system of equations into a linear system <span class="math notranslate nohighlight">\(A \mathbf{y} = \mathbf{b}\)</span> and solve for
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\($
 \mathbf{y} = \begin{bmatrix} y_1 &amp; y_2 &amp; \cdots &amp; y_N \end{bmatrix}^T
-\)</span>$</p></li>
+$\)</span></p></li>
 </ol>
 <p>For example, consider an equation of the form</p>
 <div class="math notranslate nohighlight">
@@ -350,7 +338,7 @@ y(t) = t - t^2
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -372,7 +360,7 @@ y(t) = t - t^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_finite_difference_method_5_0.png" src="../_images/05_finite_difference_method_5_0.png" />
+<img alt="../_images/XX_finite_difference_method_5_0.png" src="../_images/XX_finite_difference_method_5_0.png" />
 </div>
 </div>
 </div>
@@ -390,7 +378,7 @@ y(t) = 1 - \cos(t) + \frac{t}{2 \pi}
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -412,7 +400,7 @@ y(t) = 1 - \cos(t) + \frac{t}{2 \pi}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_finite_difference_method_7_0.png" src="../_images/05_finite_difference_method_7_0.png" />
+<img alt="../_images/XX_finite_difference_method_7_0.png" src="../_images/XX_finite_difference_method_7_0.png" />
 </div>
 </div>
 </div>
@@ -456,7 +444,7 @@ y'' + t^2y' + y = \cos(t) \ \ , \ \ y(0) = 0 \ , \ \ y(3) = 0
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tf</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tf</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 
@@ -480,7 +468,7 @@ y'' + t^2y' + y = \cos(t) \ \ , \ \ y(0) = 0 \ , \ \ y(3) = 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_finite_difference_method_9_0.png" src="../_images/05_finite_difference_method_9_0.png" />
+<img alt="../_images/XX_finite_difference_method_9_0.png" src="../_images/XX_finite_difference_method_9_0.png" />
 </div>
 </div>
 </div>
@@ -514,8 +502,6 @@ y'' + t^2y' + y = \cos(t) \ \ , \ \ y(0) = 0 \ , \ \ y(3) = 0
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04_spline_interpolation.html" title="previous page">Natural Cubic Spline Interpolation</a>
-    <a class='right-next' id="next-link" href="06_least_squares_regression.html" title="next page">Least Squares Linear Regression</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

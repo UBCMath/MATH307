@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,7 +39,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Finite Difference Method" href="05_finite_difference_method.html" />
+    <link rel="next" title="Fitting Models to Data" href="05_least_squares_regression.html" />
     <link rel="prev" title="Polynomial Interpolation" href="03_polynomial_interpolation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,11 +97,6 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_finite_difference_method.html">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -110,18 +105,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_computed_tomography.html">
-   Computed Tomography
+  <a class="reference internal" href="05_least_squares_regression.html">
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -132,22 +117,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_deblurring_images.html">
+  <a class="reference internal" href="07_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
+  <a class="reference internal" href="08_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_pagerank.html">
    PageRank
   </a>
  </li>
@@ -159,7 +149,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -292,7 +282,7 @@
 <h1>Natural Cubic Spline Interpolation<a class="headerlink" href="#natural-cubic-spline-interpolation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">CubicSpline</span>
@@ -313,7 +303,7 @@
 <p>Consider <span class="math notranslate nohighlight">\((0,0),(1,1),(2,0)\)</span>. Let’s use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicSpline.html"><code class="docutils literal notranslate"><span class="pre">scipy.interpolate.CubicSpline</span></code></a> to compute the natural cubic spline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
@@ -325,12 +315,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  1,  1,  0,  0,  0],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 1,  1,  1,  0,  0,  0],
        [ 3,  2,  1,  0,  0, -1],
        [ 6,  2,  0,  0, -2,  0],
        [ 0,  0,  0,  1,  1,  1],
@@ -342,19 +332,19 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 1],
        [ 0],
        [ 0],
        [-1],
@@ -366,19 +356,19 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-0.5],
        [ 0. ],
        [ 1.5],
        [ 0.5],
@@ -390,19 +380,19 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.530258040767446
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>14.530258040767446
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cs1</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">bc_type</span><span class="o">=</span><span class="s1">&#39;natural&#39;</span><span class="p">)</span>
 <span class="n">T1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
@@ -419,12 +409,12 @@
 <p>Verify the coefficient matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cs1</span><span class="o">.</span><span class="n">c</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cs1</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5,  0.5],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-0.5,  0.5],
        [ 0. , -1.5],
        [ 1.5,  0. ],
        [ 0. ,  1. ]])
@@ -437,7 +427,7 @@
 <h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">cs2</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">bc_type</span><span class="o">=</span><span class="s1">&#39;natural&#39;</span><span class="p">)</span>
@@ -458,7 +448,7 @@
 <p>Let’s interpolate the points <span class="math notranslate nohighlight">\(\sin(\pi t_k)\)</span> for <span class="math notranslate nohighlight">\(t_k = k/N\)</span> for <span class="math notranslate nohighlight">\(N=15\)</span> with added noise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">15</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">t3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="mf">0.005</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">t3</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 <span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t3</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>
@@ -508,7 +498,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="03_polynomial_interpolation.html" title="previous page">Polynomial Interpolation</a>
-    <a class='right-next' id="next-link" href="05_finite_difference_method.html" title="next page">Finite Difference Method</a>
+    <a class='right-next' id="next-link" href="05_least_squares_regression.html" title="next page">Fitting Models to Data</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

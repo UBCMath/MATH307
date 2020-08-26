@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Least Squares Linear Regression &#8212; Applied Linear Algebra</title>
+    <title>Fitting Models to Data &#8212; Applied Linear Algebra</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Computed Tomography" href="07_computed_tomography.html" />
-    <link rel="prev" title="Finite Difference Method" href="05_finite_difference_method.html" />
+    <link rel="next" title="Principal Component Analysis" href="06_pca.html" />
+    <link rel="prev" title="Natural Cubic Spline Interpolation" href="04_spline_interpolation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,11 +97,6 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_finite_difference_method.html">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -111,17 +106,7 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_computed_tomography.html">
-   Computed Tomography
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -132,22 +117,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_deblurring_images.html">
+  <a class="reference internal" href="07_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
+  <a class="reference internal" href="08_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_pagerank.html">
    PageRank
   </a>
  </li>
@@ -159,7 +149,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -205,7 +195,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/06_least_squares_regression.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/05_least_squares_regression.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -243,7 +233,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/06_least_squares_regression.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/05_least_squares_regression.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -264,19 +254,38 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normal-equations">
-   Normal Equations
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normal-equations">
+     Normal Equations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qr-decomposition">
+     QR Decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-fake-noisy-linear-data">
+     Example: Fake Noisy Linear Data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qr-decomposition">
-   QR Decomposition
+  <a class="reference internal nav-link" href="#polynomial-regression">
+   Polynomial Regression
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-fake-noisy-linear-data">
-   Example: Fake Noisy Linear Data
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-fake-noisy-quadratic-data">
+     Example: Fake Noisy Quadratic Data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -288,17 +297,19 @@
         
               <div>
                 
-  <div class="section" id="least-squares-linear-regression">
-<h1>Least Squares Linear Regression<a class="headerlink" href="#least-squares-linear-regression" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="fitting-models-to-data">
+<h1>Fitting Models to Data<a class="headerlink" href="#fitting-models-to-data" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <p>Suppose we have <span class="math notranslate nohighlight">\(n+1\)</span> points</p>
 <div class="math notranslate nohighlight">
 \[
@@ -345,7 +356,7 @@ SSE = \Vert \mathbf{y} - A \mathbf{c} \Vert^2
 \]</div>
 <p>We solve for the coefficients <span class="math notranslate nohighlight">\(\mathbf{c} = [c_0,c_1]^T\)</span> which minimize <span class="math notranslate nohighlight">\(\Vert \mathbf{y} - A \mathbf{c} \Vert^2\)</span> in 2 two ways:</p>
 <div class="section" id="normal-equations">
-<h2>Normal Equations<a class="headerlink" href="#normal-equations" title="Permalink to this headline">¶</a></h2>
+<h3>Normal Equations<a class="headerlink" href="#normal-equations" title="Permalink to this headline">¶</a></h3>
 <p>The coefficient vector <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is the unique solution of the system</p>
 <div class="math notranslate nohighlight">
 \[
@@ -353,7 +364,7 @@ SSE = \Vert \mathbf{y} - A \mathbf{c} \Vert^2
 \]</div>
 </div>
 <div class="section" id="qr-decomposition">
-<h2>QR Decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">¶</a></h2>
+<h3>QR Decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(A = Q_1R_1\)</span> be the <a class="reference external" href="https://en.wikipedia.org/wiki/QR_decomposition">(thin) QR decomposition</a> of <span class="math notranslate nohighlight">\(A\)</span> (where <span class="math notranslate nohighlight">\(R_1\)</span> is square upper triangular). The coefficient vector <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is the unique solution of the system</p>
 <div class="math notranslate nohighlight">
 \[
@@ -361,7 +372,7 @@ R_1 \mathbf{c} = Q_1^T \mathbf{y}
 \]</div>
 </div>
 <div class="section" id="example-fake-noisy-linear-data">
-<h2>Example: Fake Noisy Linear Data<a class="headerlink" href="#example-fake-noisy-linear-data" title="Permalink to this headline">¶</a></h2>
+<h3>Example: Fake Noisy Linear Data<a class="headerlink" href="#example-fake-noisy-linear-data" title="Permalink to this headline">¶</a></h3>
 <p>Let’s do an example with some fake data. Let’s build a set of random points based on the model</p>
 <div class="math notranslate nohighlight">
 \[
@@ -371,7 +382,7 @@ y = c_0 + c_1 t + \epsilon
 <p>The goal is to demonstrate that we can use linear regression to retrieve the coefficeints <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> from the linear regression calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c0</span> <span class="o">=</span> <span class="mi">7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c0</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -383,19 +394,19 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_least_squares_regression_6_0.png" src="../_images/06_least_squares_regression_6_0.png" />
+<img alt="../_images/05_least_squares_regression_6_0.png" src="../_images/05_least_squares_regression_6_0.png" />
 </div>
 </div>
 <p>Let’s use linear regression to retrieve the coefficients <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span>. Construct the matrix <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">t</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">t</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(500, 2)
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>(500, 2)
 </pre></div>
 </div>
 </div>
@@ -403,16 +414,16 @@ y = c_0 + c_1 t + \epsilon
 <p>Let’s look at the first 5 rows of <span class="math notranslate nohighlight">\(A\)</span> to see that it is in the correct form:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.62766649],
-       [1.        , 0.56178616],
-       [1.        , 0.97596503],
-       [1.        , 0.37132386],
-       [1.        , 0.97828747]])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.51621701],
+       [1.        , 0.04031132],
+       [1.        , 0.78124192],
+       [1.        , 0.39614697],
+       [1.        , 0.19893652]])
 </pre></div>
 </div>
 </div>
@@ -420,13 +431,13 @@ y = c_0 + c_1 t + \epsilon
 <p>Use <code class="docutils literal notranslate"><span class="pre">scipy.linalg.solve</span></code> to solve <span class="math notranslate nohighlight">\(\left(A^T A\right)\mathbf{c} = \left(A^T\right)\mathbf{y}\)</span> for <span class="math notranslate nohighlight">\(\mathbf{c}\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7.03977612 -4.0363334 ]
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[ 7.02344972 -4.02646509]
 </pre></div>
 </div>
 </div>
@@ -434,7 +445,7 @@ y = c_0 + c_1 t + \epsilon
 <p>We have retrieved the coefficients of the model almost exactly! Let’s plot the random data points with the linear regression we just computed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">ts</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
@@ -443,13 +454,13 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_least_squares_regression_14_0.png" src="../_images/06_least_squares_regression_14_0.png" />
+<img alt="../_images/05_least_squares_regression_14_0.png" src="../_images/05_least_squares_regression_14_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="polynomial-regression">
-<h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this headline">¶</a></h1>
+<h2>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this headline">¶</a></h2>
 <p>The same idea works for fitting a degree <span class="math notranslate nohighlight">\(d\)</span> polynomial model</p>
 <div class="math notranslate nohighlight">
 \[
@@ -494,11 +505,11 @@ cd_d
 \left( A^T A \right) \mathbf{c} = \left( A^T \right) \mathbf{y}
 \]</div>
 <div class="section" id="example-fake-noisy-quadratic-data">
-<h2>Example: Fake Noisy Quadratic Data<a class="headerlink" href="#example-fake-noisy-quadratic-data" title="Permalink to this headline">¶</a></h2>
+<h3>Example: Fake Noisy Quadratic Data<a class="headerlink" href="#example-fake-noisy-quadratic-data" title="Permalink to this headline">¶</a></h3>
 <p>Let’s build some fake data using a quadratic model <span class="math notranslate nohighlight">\(y = c_0 + c_1x + c_2x^2 + \epsilon\)</span> and use linear regression to retrieve the coefficients <span class="math notranslate nohighlight">\(c_0\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c0</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c0</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -511,13 +522,13 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_least_squares_regression_17_0.png" src="../_images/06_least_squares_regression_17_0.png" />
+<img alt="../_images/05_least_squares_regression_17_0.png" src="../_images/05_least_squares_regression_17_0.png" />
 </div>
 </div>
 <p>Construct the matrix <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -525,7 +536,7 @@ cd_d
 <p>Use <code class="docutils literal notranslate"><span class="pre">scipy.linalg.solve</span></code> to solve <span class="math notranslate nohighlight">\(\left( A^T A \right) \mathbf{c} = \left( A^T \right) \mathbf{y}\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -533,7 +544,7 @@ cd_d
 <p>Plot the result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">ts</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">ts</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -542,13 +553,13 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_least_squares_regression_23_0.png" src="../_images/06_least_squares_regression_23_0.png" />
+<img alt="../_images/05_least_squares_regression_23_0.png" src="../_images/05_least_squares_regression_23_0.png" />
 </div>
 </div>
 <p>Let’s solve again but this time we use the QR decomposition:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q1</span><span class="p">,</span><span class="n">R1</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;economic&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Q1</span><span class="p">,</span><span class="n">R1</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;economic&#39;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">Q1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">R1</span><span class="p">,</span><span class="n">b</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
@@ -558,7 +569,7 @@ cd_d
 <p>Plot the result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">c1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">ts</span> <span class="o">+</span> <span class="n">c1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">ts</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -567,42 +578,7 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_least_squares_regression_27_0.png" src="../_images/06_least_squares_regression_27_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">nbytes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8000
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">328</span><span class="o">**</span><span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107584
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">120</span><span class="o">*</span><span class="mi">328</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39360
-</pre></div>
+<img alt="../_images/05_least_squares_regression_27_0.png" src="../_images/05_least_squares_regression_27_0.png" />
 </div>
 </div>
 </div>
@@ -637,8 +613,8 @@ cd_d
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="05_finite_difference_method.html" title="previous page">Finite Difference Method</a>
-    <a class='right-next' id="next-link" href="07_computed_tomography.html" title="next page">Computed Tomography</a>
+    <a class='left-prev' id="prev-link" href="04_spline_interpolation.html" title="previous page">Natural Cubic Spline Interpolation</a>
+    <a class='right-next' id="next-link" href="06_pca.html" title="next page">Principal Component Analysis</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

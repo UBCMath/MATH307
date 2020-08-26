@@ -24,12 +24,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Fourier Transform" href="12_fft.html" />
-    <link rel="prev" title="Deblurring Images" href="10_deblurring_images.html" />
+    <link rel="next" title="Discrete Fourier Transform" href="11_fft.html" />
+    <link rel="prev" title="Computing Eigenvalues" href="09_computing_eigenvalues.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,11 +97,6 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_finite_difference_method.html">
-   Finite Difference Method
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -110,18 +105,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html">
-   Least Squares Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_least_squares_regression.html#polynomial-regression">
-   Polynomial Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_computed_tomography.html">
-   Computed Tomography
+  <a class="reference internal" href="05_least_squares_regression.html">
+   Fitting Models to Data
   </a>
  </li>
 </ul>
@@ -132,18 +117,23 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computing_eigenvalues.html">
-   Computing Eigenvalues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_pca.html">
+  <a class="reference internal" href="06_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_deblurring_images.html">
+  <a class="reference internal" href="07_deblurring_images.html">
    Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_computing_eigenvalues.html">
+   Computing Eigenvalues
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -159,7 +149,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="12_fft.html">
+  <a class="reference internal" href="11_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -205,7 +195,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/11_pagerank.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/10_pagerank.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -243,7 +233,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/11_pagerank.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/10_pagerank.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -287,7 +277,7 @@
 <h1>PageRank<a class="headerlink" href="#pagerank" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -300,31 +290,31 @@
 <p>Create a directed graph with 4 vertices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11_pagerank_4_0.png" src="../_images/11_pagerank_4_0.png" />
+<img alt="../_images/10_pagerank_4_0.png" src="../_images/10_pagerank_4_0.png" />
 </div>
 </div>
 <p>Create the adjacency matrix for <span class="math notranslate nohighlight">\(G\)</span> and note that our definition of adjacency matrix is the transpose of the definition used by <code class="docutils literal notranslate"><span class="pre">networkx</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 <span class="n">A1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 1, 0],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 1, 0],
        [1, 0, 1, 1],
        [0, 0, 0, 0],
        [0, 1, 1, 0]])
@@ -335,13 +325,13 @@
 <p>Create the stochastic matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="n">A1</span> <span class="o">/</span> <span class="n">A1</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="n">A1</span> <span class="o">/</span> <span class="n">A1</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">P1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.5       , 0.33333333, 0.        ],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.5       , 0.33333333, 0.        ],
        [1.        , 0.        , 0.33333333, 1.        ],
        [0.        , 0.        , 0.        , 0.        ],
        [0.        , 0.5       , 0.33333333, 0.        ]])
@@ -352,14 +342,14 @@
 <p>Create the Google matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span>
 <span class="n">M1</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">M1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.0375    , 0.4625    , 0.32083333, 0.0375    ],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[0.0375    , 0.4625    , 0.32083333, 0.0375    ],
        [0.8875    , 0.0375    , 0.32083333, 0.8875    ],
        [0.0375    , 0.0375    , 0.0375    , 0.0375    ],
        [0.0375    , 0.4625    , 0.32083333, 0.0375    ]])
@@ -370,7 +360,7 @@
 <p>Perform 50 iterations of the power method to find the PageRank vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">x1</span> <span class="o">=</span> <span class="n">M1</span><span class="nd">@x1</span>
 </pre></div>
@@ -379,12 +369,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.24720132, 0.46809736, 0.0375    , 0.24720132])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.24720132, 0.46809736, 0.0375    , 0.24720132])
 </pre></div>
 </div>
 </div>
@@ -392,12 +382,12 @@
 <p>Compare to the networkx functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">google_matrix</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">google_matrix</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matrix([[0.0375    , 0.4625    , 0.32083333, 0.0375    ],
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>matrix([[0.0375    , 0.4625    , 0.32083333, 0.0375    ],
         [0.8875    , 0.0375    , 0.32083333, 0.8875    ],
         [0.0375    , 0.0375    , 0.0375    , 0.0375    ],
         [0.0375    , 0.4625    , 0.32083333, 0.0375    ]])
@@ -407,12 +397,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.24712881730381647,
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{1: 0.24712881730381647,
  2: 0.46824236539236713,
  3: 0.037500000000000006,
  4: 0.24712881730381647}
@@ -422,12 +412,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11_pagerank_17_0.png" src="../_images/11_pagerank_17_0.png" />
+<img alt="../_images/10_pagerank_17_0.png" src="../_images/10_pagerank_17_0.png" />
 </div>
 </div>
 </div>
@@ -435,7 +425,7 @@
 <h2>Example: Random graph<a class="headerlink" href="#example-random-graph" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_pages</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n_pages</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">n_links</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">n_pages</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">n_pages</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_links</span><span class="p">)]</span>
 <span class="n">G2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
@@ -445,17 +435,17 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G2</span><span class="p">),</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G2</span><span class="p">),</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11_pagerank_20_0.png" src="../_images/11_pagerank_20_0.png" />
+<img alt="../_images/10_pagerank_20_0.png" src="../_images/10_pagerank_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 <span class="n">P2</span> <span class="o">=</span> <span class="n">A2</span> <span class="o">/</span> <span class="n">A2</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span>
 <span class="n">M2</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n_pages</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n_pages</span><span class="p">,</span><span class="n">n_pages</span><span class="p">))</span>
@@ -469,56 +459,56 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11_pagerank_22_0.png" src="../_images/11_pagerank_22_0.png" />
+<img alt="../_images/10_pagerank_22_0.png" src="../_images/10_pagerank_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.0656152 , 0.09933354, 0.0457122 , 0.03699497, 0.04721054,
-       0.02123221, 0.06965033, 0.08901828, 0.05586496, 0.06003972,
-       0.0150135 , 0.03826345, 0.06816849, 0.03601233, 0.05303644,
-       0.01802674, 0.04181413, 0.04788774, 0.03047031, 0.06063494])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.04745771, 0.09425035, 0.04350151, 0.04701335, 0.02064974,
+       0.05470549, 0.03224073, 0.11570305, 0.03333665, 0.01522164,
+       0.02782003, 0.06672913, 0.08112972, 0.03288011, 0.06020745,
+       0.11175401, 0.03052374, 0.02888317, 0.02980302, 0.02618939])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{7: 0.06561520940739436,
- 1: 0.0993337630860453,
- 12: 0.04571213557954979,
- 5: 0.03699512305850881,
- 3: 0.04721016969278566,
- 6: 0.021231993008705367,
- 18: 0.06964988264029467,
- 17: 0.08901861715726765,
- 19: 0.055864980152794,
- 15: 0.06003987524490082,
- 8: 0.01501334758870329,
- 2: 0.03826307216653834,
- 11: 0.06816936506568916,
- 9: 0.036012475670248414,
- 13: 0.05303617381056718,
- 4: 0.01802666449821721,
- 0: 0.041813873583572025,
- 10: 0.047887955313667345,
- 16: 0.030469920453521773,
- 14: 0.06063540282102874}
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{16: 0.04745687172381371,
+ 2: 0.09425032654461642,
+ 8: 0.043501606310266096,
+ 13: 0.0470137653875407,
+ 9: 0.020649985181237892,
+ 12: 0.05470587758646331,
+ 18: 0.032240804477898406,
+ 10: 0.11570203015617536,
+ 6: 0.0333367045304819,
+ 4: 0.015221574372237024,
+ 15: 0.02782007854184146,
+ 1: 0.06672928723565234,
+ 3: 0.08112908258309998,
+ 0: 0.032880316931646114,
+ 7: 0.06020753298892584,
+ 19: 0.11175413844931294,
+ 17: 0.030524079856358653,
+ 11: 0.028883375354534713,
+ 5: 0.029803140282314157,
+ 14: 0.026189421505582906}
 </pre></div>
 </div>
 </div>
@@ -554,8 +544,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="10_deblurring_images.html" title="previous page">Deblurring Images</a>
-    <a class='right-next' id="next-link" href="12_fft.html" title="next page">Discrete Fourier Transform</a>
+    <a class='left-prev' id="prev-link" href="09_computing_eigenvalues.html" title="previous page">Computing Eigenvalues</a>
+    <a class='right-next' id="next-link" href="11_fft.html" title="next page">Discrete Fourier Transform</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
