@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Principal Component Analysis" href="06_pca.html" />
-    <link rel="prev" title="Natural Cubic Spline Interpolation" href="04_spline_interpolation.html" />
+    <link rel="next" title="Principal Component Analysis" href="07_pca.html" />
+    <link rel="prev" title="Finite Difference Method" href="05_finite_difference_method.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,6 +97,11 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -117,27 +122,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_pca.html">
+  <a class="reference internal" href="07_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="07_deblurring_images.html">
+  <a class="reference internal" href="08_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computed_tomography.html">
+  <a class="reference internal" href="09_computed_tomography.html">
    Computed Tomography
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="09_computing_eigenvalues.html">
+  <a class="reference internal" href="10_computing_eigenvalues.html">
    Computing Eigenvalues
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10_pagerank.html">
+  <a class="reference internal" href="11_pagerank.html">
    PageRank
   </a>
  </li>
@@ -149,7 +154,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="11_fft.html">
+  <a class="reference internal" href="12_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -195,7 +200,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/05_least_squares_regression.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/06_least_squares_regression.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -233,7 +238,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/05_least_squares_regression.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/06_least_squares_regression.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -394,7 +399,7 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_least_squares_regression_6_0.png" src="../_images/05_least_squares_regression_6_0.png" />
+<img alt="../_images/06_least_squares_regression_6_0.png" src="../_images/06_least_squares_regression_6_0.png" />
 </div>
 </div>
 <p>Let’s use linear regression to retrieve the coefficients <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span>. Construct the matrix <span class="math notranslate nohighlight">\(A\)</span>:</p>
@@ -419,11 +424,11 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.51621701],
-       [1.        , 0.04031132],
-       [1.        , 0.78124192],
-       [1.        , 0.39614697],
-       [1.        , 0.19893652]])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.27384671],
+       [1.        , 0.68706991],
+       [1.        , 0.01973121],
+       [1.        , 0.74579805],
+       [1.        , 0.07907337]])
 </pre></div>
 </div>
 </div>
@@ -437,7 +442,7 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[ 7.02344972 -4.02646509]
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[ 7.03211549 -4.06170897]
 </pre></div>
 </div>
 </div>
@@ -454,7 +459,7 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_least_squares_regression_14_0.png" src="../_images/05_least_squares_regression_14_0.png" />
+<img alt="../_images/06_least_squares_regression_14_0.png" src="../_images/06_least_squares_regression_14_0.png" />
 </div>
 </div>
 </div>
@@ -522,7 +527,7 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_least_squares_regression_17_0.png" src="../_images/05_least_squares_regression_17_0.png" />
+<img alt="../_images/06_least_squares_regression_17_0.png" src="../_images/06_least_squares_regression_17_0.png" />
 </div>
 </div>
 <p>Construct the matrix <span class="math notranslate nohighlight">\(A\)</span>:</p>
@@ -553,7 +558,7 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_least_squares_regression_23_0.png" src="../_images/05_least_squares_regression_23_0.png" />
+<img alt="../_images/06_least_squares_regression_23_0.png" src="../_images/06_least_squares_regression_23_0.png" />
 </div>
 </div>
 <p>Let’s solve again but this time we use the QR decomposition:</p>
@@ -578,7 +583,7 @@ cd_d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05_least_squares_regression_27_0.png" src="../_images/05_least_squares_regression_27_0.png" />
+<img alt="../_images/06_least_squares_regression_27_0.png" src="../_images/06_least_squares_regression_27_0.png" />
 </div>
 </div>
 </div>
@@ -613,8 +618,8 @@ cd_d
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04_spline_interpolation.html" title="previous page">Natural Cubic Spline Interpolation</a>
-    <a class='right-next' id="next-link" href="06_pca.html" title="next page">Principal Component Analysis</a>
+    <a class='left-prev' id="prev-link" href="05_finite_difference_method.html" title="previous page">Finite Difference Method</a>
+    <a class='right-next' id="next-link" href="07_pca.html" title="next page">Principal Component Analysis</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

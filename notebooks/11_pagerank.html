@@ -39,8 +39,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Fourier Transform" href="11_fft.html" />
-    <link rel="prev" title="Computing Eigenvalues" href="09_computing_eigenvalues.html" />
+    <link rel="next" title="Discrete Fourier Transform" href="12_fft.html" />
+    <link rel="prev" title="Computing Eigenvalues" href="10_computing_eigenvalues.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -97,6 +97,11 @@
    Natural Cubic Spline Interpolation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -105,7 +110,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="05_least_squares_regression.html">
+  <a class="reference internal" href="06_least_squares_regression.html">
    Fitting Models to Data
   </a>
  </li>
@@ -117,22 +122,22 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_pca.html">
+  <a class="reference internal" href="07_pca.html">
    Principal Component Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="07_deblurring_images.html">
+  <a class="reference internal" href="08_deblurring_images.html">
    Deblurring Images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="08_computed_tomography.html">
+  <a class="reference internal" href="09_computed_tomography.html">
    Computed Tomography
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="09_computing_eigenvalues.html">
+  <a class="reference internal" href="10_computing_eigenvalues.html">
    Computing Eigenvalues
   </a>
  </li>
@@ -149,7 +154,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="11_fft.html">
+  <a class="reference internal" href="12_fft.html">
    Discrete Fourier Transform
   </a>
  </li>
@@ -195,7 +200,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/10_pagerank.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/11_pagerank.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -233,7 +238,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/10_pagerank.ipynb&branch=master"><button type="button"
+        <a class="jupyterhub-button" href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/11_pagerank.ipynb&branch=master"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -302,7 +307,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_pagerank_4_0.png" src="../_images/10_pagerank_4_0.png" />
+<img alt="../_images/11_pagerank_4_0.png" src="../_images/11_pagerank_4_0.png" />
 </div>
 </div>
 <p>Create the adjacency matrix for <span class="math notranslate nohighlight">\(G\)</span> and note that our definition of adjacency matrix is the transpose of the definition used by <code class="docutils literal notranslate"><span class="pre">networkx</span></code>.</p>
@@ -417,7 +422,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_pagerank_17_0.png" src="../_images/10_pagerank_17_0.png" />
+<img alt="../_images/11_pagerank_17_0.png" src="../_images/11_pagerank_17_0.png" />
 </div>
 </div>
 </div>
@@ -440,7 +445,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_pagerank_20_0.png" src="../_images/10_pagerank_20_0.png" />
+<img alt="../_images/11_pagerank_20_0.png" src="../_images/11_pagerank_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -464,7 +469,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/10_pagerank_22_0.png" src="../_images/10_pagerank_22_0.png" />
+<img alt="../_images/11_pagerank_22_0.png" src="../_images/11_pagerank_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -474,10 +479,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.04745771, 0.09425035, 0.04350151, 0.04701335, 0.02064974,
-       0.05470549, 0.03224073, 0.11570305, 0.03333665, 0.01522164,
-       0.02782003, 0.06672913, 0.08112972, 0.03288011, 0.06020745,
-       0.11175401, 0.03052374, 0.02888317, 0.02980302, 0.02618939])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.02849178, 0.06156537, 0.0991661 , 0.04006396, 0.03596709,
+       0.02656885, 0.06623134, 0.0605615 , 0.09857312, 0.04964817,
+       0.06613888, 0.03983032, 0.03269272, 0.03071731, 0.06884216,
+       0.03484319, 0.0531466 , 0.04142657, 0.03942899, 0.02609599])
 </pre></div>
 </div>
 </div>
@@ -489,26 +494,26 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{16: 0.04745687172381371,
- 2: 0.09425032654461642,
- 8: 0.043501606310266096,
- 13: 0.0470137653875407,
- 9: 0.020649985181237892,
- 12: 0.05470587758646331,
- 18: 0.032240804477898406,
- 10: 0.11570203015617536,
- 6: 0.0333367045304819,
- 4: 0.015221574372237024,
- 15: 0.02782007854184146,
- 1: 0.06672928723565234,
- 3: 0.08112908258309998,
- 0: 0.032880316931646114,
- 7: 0.06020753298892584,
- 19: 0.11175413844931294,
- 17: 0.030524079856358653,
- 11: 0.028883375354534713,
- 5: 0.029803140282314157,
- 14: 0.026189421505582906}
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{13: 0.028491784712757085,
+ 8: 0.06156558410831671,
+ 9: 0.09916617502258761,
+ 4: 0.04006354696810426,
+ 1: 0.03596717923405481,
+ 17: 0.026569181818781918,
+ 5: 0.06623113070843366,
+ 12: 0.06056161003001084,
+ 16: 0.0985734921384883,
+ 0: 0.04964818648934683,
+ 18: 0.0661376096577104,
+ 19: 0.039830315347399295,
+ 15: 0.032692723327003084,
+ 2: 0.030717385960585996,
+ 10: 0.06884229259725679,
+ 3: 0.03484363127551632,
+ 6: 0.053146566987965355,
+ 14: 0.041426585820181584,
+ 11: 0.03942905635777445,
+ 7: 0.026095961437724587}
 </pre></div>
 </div>
 </div>
@@ -544,8 +549,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="09_computing_eigenvalues.html" title="previous page">Computing Eigenvalues</a>
-    <a class='right-next' id="next-link" href="11_fft.html" title="next page">Discrete Fourier Transform</a>
+    <a class='left-prev' id="prev-link" href="10_computing_eigenvalues.html" title="previous page">Computing Eigenvalues</a>
+    <a class='right-next' id="next-link" href="12_fft.html" title="next page">Discrete Fourier Transform</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
