@@ -305,7 +305,7 @@
 </ul>
 <div class="section" id="example-1">
 <h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
-<p>Consider <span class="math notranslate nohighlight">\((0,0),(1,1),(2,0)\)</span>. Let’s use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicSpline.html"><code class="docutils literal notranslate"><span class="pre">scipy.interpolate.CubicSpline</span></code></a> to compute the natural cubic spline.</p>
+<p>Consider <span class="math notranslate nohighlight">\((0,0),(1,1),(2,0)\)</span>. Construct the linear system for the cubic spline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
@@ -390,11 +390,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>14.530258040767446
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>14.530258040767464
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now let’s use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicSpline.html"><code class="docutils literal notranslate"><span class="pre">scipy.interpolate.CubicSpline</span></code></a> to compute the natural cubic spline and compare our results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
@@ -408,7 +409,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_spline_interpolation_11_0.png" src="../_images/04_spline_interpolation_11_0.png" />
+<img alt="../_images/04_spline_interpolation_12_0.png" src="../_images/04_spline_interpolation_12_0.png" />
 </div>
 </div>
 <p>Verify the coefficient matrix:</p>
@@ -444,7 +445,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_spline_interpolation_15_0.png" src="../_images/04_spline_interpolation_15_0.png" />
+<img alt="../_images/04_spline_interpolation_16_0.png" src="../_images/04_spline_interpolation_16_0.png" />
 </div>
 </div>
 </div>
@@ -467,7 +468,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_spline_interpolation_17_0.png" src="../_images/04_spline_interpolation_17_0.png" />
+<img alt="../_images/04_spline_interpolation_18_0.png" src="../_images/04_spline_interpolation_18_0.png" />
 </div>
 </div>
 <p>The cubic spline is not sensitive to small changes in the <span class="math notranslate nohighlight">\(y\)</span> values.</p>
