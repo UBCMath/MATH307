@@ -23,4 +23,3 @@
 - part: Discrete Fourier Transform
   chapters:
   - file: notebooks/12_fft.ipynb
-  - file: notebooks/13_convolution.ipynb
