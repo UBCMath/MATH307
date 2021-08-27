@@ -1,26 +1,46 @@
-- file: index
-
-- part: Linear Systems
-  chapters:
-  - file: notebooks/01_linear_systems.ipynb
-  - file: notebooks/02_LU_decomposition.ipynb
-  - file: notebooks/03_polynomial_interpolation.ipynb
-  - file: notebooks/04_spline_interpolation.ipynb
-  - file: notebooks/05_finite_difference_method.ipynb
-
-- part: Least Squares
-  chapters:
-  - file: notebooks/06_least_squares_regression.ipynb
-
-- part: Eigenvalue Problems
-  chapters:
-  - file: notebooks/07_pca.ipynb
-  - file: notebooks/08_deblurring_images.ipynb
-  - file: notebooks/09_computed_tomography.ipynb
-  - file: notebooks/10_computing_eigenvalues.ipynb
-  - file: notebooks/11_pagerank.ipynb
-
-- part: Discrete Fourier Transform
-  chapters:
-  - file: notebooks/12_fft.ipynb
-  - file: notebooks/13_convolution.ipynb
+format: jb-book
+root: index
+parts:
+  - caption: Linear Equations
+    chapters:
+    - file: linear_equations/lu.md
+    - file: linear_equations/error_analysis.md
+    - file: linear_equations/interpolation.md
+    - file: linear_equations/differential_equations.md
+  - caption: Orthogonality
+    chapters:
+    - file: orthogonality/subspaces.md
+    - file: orthogonality/projection.md
+    - file: orthogonality/qr.md
+    - file: orthogonality/least_squares.md
+  - caption: Eigenvalues
+    chapters:
+    - file: eigenvalues/diagonalization.md
+    - file: eigenvalues/svd.md
+    - file: eigenvalues/computing_eigenvalues.md
+  - caption: Dicrete Fourier Transform
+    chapters:
+    - file: dft/dft.md
+    - file: dft/frequency.md
+    - file: dft/fft.md
+    - file: dft/convolution.md
+  - caption: Jupyter Notebooks
+    chapters:
+    - file: notebooks/01_linear_systems.ipynb
+    - file: notebooks/02_LU_decomposition.ipynb
+    - file: notebooks/03_polynomial_interpolation.ipynb
+    - file: notebooks/04_spline_interpolation.ipynb
+    - file: notebooks/05_finite_difference_method.ipynb
+    - file: notebooks/06_least_squares_regression.ipynb
+    - file: notebooks/07_pca.ipynb
+    - file: notebooks/08_deblurring_images.ipynb
+    - file: notebooks/09_computed_tomography.ipynb
+    - file: notebooks/10_computing_eigenvalues.ipynb
+    - file: notebooks/11_pagerank.ipynb
+    - file: notebooks/12_fft.ipynb
+  - caption: Appendix
+    chapters:
+    - file: appendix/complex_numbers.md
+    - file: appendix/matrix_multiplication.md
+    - file: appendix/norms.md
+    - file: appendix/inner_product.md

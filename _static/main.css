@@ -1,0 +1,10 @@
+div.bigidea , div.definition , div.example , div.note , div.theorem , div.proposition {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 15px 20px 3px 20px;
+  margin-bottom: 20px;
+}
+
+div.bigidea:hover , div.definition:hover , div.example:hover , div.theorem:hover , div.note:hover , div.proposition:hover {
+  border-color: rgba(0,123,255,0.9);
+}

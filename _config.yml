@@ -1,14 +1,14 @@
 title: Applied Linear Algebra
 author: UBC Math
 exclude_patterns: ["README.md"]
-
+logo: img/nn.png
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 html:
   home_page_in_navbar: false
   use_repository_button: true
-  extra_navbar: 'Powered by <a href="https://jupyterbook.org">Jupyter Book</a>'
-
 launch_buttons:
-  jupyterhub_url            : "https://ubc.syzygy.ca/jupyter"
-
+  jupyterhub_url: https://ubc.syzygy.ca/jupyter
 repository:
-  url                       : "https://github.com/UBCMath/math307"
+  url: https://github.com/UBCMath/math307
