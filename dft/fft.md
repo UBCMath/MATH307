@@ -178,6 +178,6 @@ $$
 
 ## Exercises
 
-1. Let $\bs{x} = \begin{bmatrix} 1 & -1 & 2 & 1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\bs{x})$ using the fast Fourier transform. Compute $\mathrm{DFT}(\bs{x})$ also by $F_4$ and verify it is the same result.
+1. Let $\boldsymbol{x} = \begin{bmatrix} 1 & -1 & 2 & 1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform. Compute $\mathrm{DFT}(\boldsymbol{x})$ also by $F_4$ and verify it is the same result.
 
-2. Let $\bs{x} = \begin{bmatrix} 1 & 1 & 0 & 2 & 1 & 2 & 0 & -1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\bs{x})$ using the fast Fourier transform.
+2. Let $\boldsymbol{x} = \begin{bmatrix} 1 & 1 & 0 & 2 & 1 & 2 & 0 & -1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform.

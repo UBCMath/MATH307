@@ -9,6 +9,8 @@ The DFT is used to study sound, images and any kind of information that can be r
 
 $$
 \boldsymbol{x} = \begin{bmatrix} \ x_0 \\ x_1 \\ x_2 \\ \vdots \\ x_{N-1} \ \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{x}[n] = x_n
 $$
 ```
 
@@ -264,13 +266,13 @@ $$
 
 ## Exercises
 
-1. Find a formula for $\bs{x}$ as a sum of sinusoids given
+1. Find a formula for $\boldsymbol{x}$ as a sum of sinusoids given
 
    $$
-   \mathrm{DFT}(\bs{x}) = \begin{bmatrix} 1 & 3-3i & 2\sqrt{3}+2i& -4i& 4i &2\sqrt{3}-2i & 3+3i \end{bmatrix}^T
+   \mathrm{DFT}(\boldsymbol{x}) = \begin{bmatrix} 1 & 3-3i & 2\sqrt{3}+2i& -4i& 4i &2\sqrt{3}-2i & 3+3i \end{bmatrix}^T
    $$
 
-2. Sketch the signal $\bs{x}$ such that the magnitude and phase plots of $\bs{y} = \mathrm{DFT}(\bs{x})$ are
+2. Sketch the signal $\boldsymbol{x}$ such that the magnitude and phase plots of $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$ are
 
    ```{image} /img/04_ex02.png
    :width: 500px
