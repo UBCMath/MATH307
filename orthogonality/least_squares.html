@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Least Squares Approximation &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Diagonalization" href="../eigenvalues/diagonalization.html" />
+    <link rel="prev" title="QR Decomposition" href="qr.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/orthogonality/least_squares.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-equations">
+   Normal Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qr-equations">
+   QR Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-models-to-data">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="least-squares-approximation">
+<h1>Least Squares Approximation<a class="headerlink" href="#least-squares-approximation" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>Find the best approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> by minimizing the distance <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b}\|\)</span>. There are several methods to find the approximation including the normal equations and the QR decomposition.</p>
+</div>
+<div class="section" id="normal-equations">
+<h2>Normal Equations<a class="headerlink" href="#normal-equations" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The best approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> which minimizes the distance <span class="math notranslate nohighlight">\(\| A\boldsymbol{x} - \boldsymbol{b} \|\)</span>. Since <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> is the 2-norm, the best approximation is called the <strong>least squares approximation</strong>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the solution of the <strong>normal equations</strong></p>
+<div class="math notranslate nohighlight">
+\[
+A^TA\boldsymbol{x} = A^T\boldsymbol{b}
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. If <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A \boldsymbol{x} \in R(A)\)</span>. The projection theorem states that the point in <span class="math notranslate nohighlight">\(R(A)\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span> is the orthogonal projection of <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span>. If <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is the vector such that <span class="math notranslate nohighlight">\(A\boldsymbol{x} = \mathrm{proj}_{R(A)}(\boldsymbol{b})\)</span>, then <span class="math notranslate nohighlight">\(A\boldsymbol{x} - \boldsymbol{b}\)</span> is in <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and therefore</p>
+<div class="math notranslate nohighlight">
+\[
+A^T(A\boldsymbol{x} - \boldsymbol{b}) = 0 \ \ \Rightarrow \ \ A^TA\boldsymbol{x} = A^T\boldsymbol{b}
+\]</div>
+<p>We assume <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, therefore <span class="math notranslate nohighlight">\(A^TA\)</span> is nonsingular and the solution exists and is unique.</p>
+</div>
+</div>
+<div class="section" id="qr-equations">
+<h2>QR Equations<a class="headerlink" href="#qr-equations" title="Permalink to this headline">¶</a></h2>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the solution of the system of equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_1\boldsymbol{x} = \boldsymbol{c}_1 \hspace{5mm} \text{where} \hspace{2mm} A = QR = [ Q_1 \ \ Q_2 ] \begin{bmatrix} R_1 \\ 0 \end{bmatrix} \ \ \text{and} \ \ Q^T\boldsymbol{b} = \begin{bmatrix} \boldsymbol{c}_1 \\ \boldsymbol{c}_2 \end{bmatrix}
+\end{split}\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. The matrix <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\| A \boldsymbol{x} - \boldsymbol{b} \|^2 = \| Q(R \boldsymbol{x} - Q^T\boldsymbol{b}) \|^2 = \| R \boldsymbol{x} - Q^T\boldsymbol{b} \|^2
+= \left\| \begin{bmatrix} R_1\boldsymbol{x} \\ 0 \end{bmatrix} - \begin{bmatrix} \boldsymbol{c}_1 \\ \boldsymbol{c}_2 \end{bmatrix} \right\|^2
+= \| R_1 \boldsymbol{x} - \boldsymbol{c}_1 \|^2 + \| \boldsymbol{c}_2 \|^2
+\end{split}\]</div>
+<p>where we use the Pythagoras theorem in the last equality. The vector <span class="math notranslate nohighlight">\(\boldsymbol{c}_2\)</span> does not depend on <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> therefore the minimum value of <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \|\)</span> occurs when <span class="math notranslate nohighlight">\(R_1 \boldsymbol{x} = \boldsymbol{c}_1\)</span>.</p>
+</div>
+</div>
+<div class="section" id="fitting-models-to-data">
+<h2>Fitting Models to Data<a class="headerlink" href="#fitting-models-to-data" title="Permalink to this headline">¶</a></h2>
+<div class="bigidea docutils">
+<p>Least squares data fitting computes coefficients <span class="math notranslate nohighlight">\(c_1,\dots,c_n\)</span> such that the model function</p>
+<div class="math notranslate nohighlight">
+\[
+f(t,\boldsymbol{c}) = c_1 f_1(t) + \cdots + c_n f_n(t)
+\]</div>
+<p>best fits the data <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_m,y_m)\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>Suppose we have <span class="math notranslate nohighlight">\(m\)</span> points</p>
+<div class="math notranslate nohighlight">
+\[
+(t_1,y_1) , \dots , (t_m,y_m)
+\]</div>
+<p>and we want to find a line</p>
+<div class="math notranslate nohighlight">
+\[
+y=c_1 + c_2t
+\]</div>
+<p>that “best fits” the data. There are different ways to quantify what “best fit” means but the most common method is called <strong>least squares linear regression</strong>. In least squares linear regression, we want to minimize the sum of squared errors</p>
+<div class="math notranslate nohighlight">
+\[
+SSE = \sum_i (y_i - (c_1 + c_2 t_i))^2
+\]</div>
+<p>In matrix notation, the sum of squared errors is</p>
+<div class="math notranslate nohighlight">
+\[
+SSE = \Vert \boldsymbol{y} - A \boldsymbol{c} \Vert^2
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
+\ \ \
+A = \begin{bmatrix} 1 &amp; t_1 \\ 1 &amp; t_2 \\ \vdots &amp; \vdots \\ 1 &amp; t_m \end{bmatrix}
+\ \ \
+\boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
+\end{split}\]</div>
+<p>We assume that <span class="math notranslate nohighlight">\(m \geq 2\)</span> and <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span> (which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = 2\)</span>). Therefore the vector of coefficients</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
+\end{split}\]</div>
+<p>is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \cong \boldsymbol{y}\)</span>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression">Wikipedia:Simple linear regression</a>.</p>
+</div>
+<div class="definition docutils">
+<p>More generally, given <span class="math notranslate nohighlight">\(m\)</span> data points</p>
+<div class="math notranslate nohighlight">
+\[
+(t_1,y_1) , \dots , (t_m,y_m)
+\]</div>
+<p>and a <strong>model function</strong> <span class="math notranslate nohighlight">\(f(t,\boldsymbol{c})\)</span> which depends on parameters <span class="math notranslate nohighlight">\(c_1,\dots,c_n\)</span>, the <strong>least squares data fitting problem</strong> consists of computing parameters <span class="math notranslate nohighlight">\(c_1,\dots,c_n\)</span> which minimize the sum of squared errors</p>
+<div class="math notranslate nohighlight">
+\[
+SSE = \sum_i (y_i - f(t_i,\boldsymbol{c}))^2
+\]</div>
+<p>If the model function is of the form</p>
+<div class="math notranslate nohighlight">
+\[
+f(t,\boldsymbol{c}) = c_1 f_1(t) + \cdots + c_n f_n(t)
+\]</div>
+<p>for some functions <span class="math notranslate nohighlight">\(f_1(t),\dots,f_n(t)\)</span> then we say the data fitting problem is <strong>linear</strong> (but note the function <span class="math notranslate nohighlight">\(f_1,\dots,f_n\)</span> are not necessarily linear). In the linear case, use matrix notation to write the sum of squared errors as</p>
+<div class="math notranslate nohighlight">
+\[
+SSE = \Vert \boldsymbol{y} - A \boldsymbol{c} \Vert^2
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
+\hspace{10mm}
+A = \begin{bmatrix}
+f_1(t_1) &amp; f_2(t_1) &amp; \cdots &amp; f_n(t_1) \\
+f_1(t_2) &amp; f_2(t_2) &amp; \cdots &amp; f_n(t_2) \\
+\vdots &amp; &amp; &amp; \vdots \\
+f_1(t_m) &amp; f_2(t_m) &amp; \cdots &amp; f_n(t_m)
+\end{bmatrix}
+\hspace{10mm}
+\boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix}
+\end{split}\]</div>
+<p>We assume that <span class="math notranslate nohighlight">\(m \geq n\)</span> and <span class="math notranslate nohighlight">\(f_1,\dots,f_n\)</span> are linearly independenty (which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>). Therefore the vector of coefficients <span class="math notranslate nohighlight">\(\boldsymbol{c}\)</span> is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \cong \boldsymbol{y}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p><strong>True</strong> or <strong>False</strong>. Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m \geq n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span>. There is a unique vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> which minimizes the norm of the residual <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \|\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A = QR\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   Q = \left[ \begin{array}{rrrrr} 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]
+   \ \
+   R = \left[ \begin{array}{rrrr} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right]
+   \end{split}\]</div>
+<p>Find the least squares approximation of the system <span class="math notranslate nohighlight">\(A\boldsymbol{x} = \boldsymbol{b}\)</span> for:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{b} = \begin{bmatrix} -2 &amp; -1 &amp; 0 &amp; 1 &amp; 2 \end{bmatrix}^T\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{b} = \begin{bmatrix} 1 &amp; -2 &amp; 2 &amp; 0 &amp; 1 \end{bmatrix}^T\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Setup (but do not solve) a linear system <span class="math notranslate nohighlight">\(B \boldsymbol{c} = \boldsymbol{y}\)</span> where the solution is the coefficient vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{c} = \begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
+   \end{split}\]</div>
+<p>such that the function</p>
+<div class="math notranslate nohighlight">
+\[
+   f(t) = c_0  + c_1\cos(2 \pi t) + c_2 \sin(2 \pi t)
+   \]</div>
+<p>bests fits the data <span class="math notranslate nohighlight">\((0,1),(1/4,3),(1/2,2),(3/4,-1),(1,0)\)</span>.</p>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./orthogonality"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="qr.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">QR Decomposition</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../eigenvalues/diagonalization.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Diagonalization</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

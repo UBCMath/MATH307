@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagonalization &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Singular Value Decomposition" href="svd.html" />
+    <link rel="prev" title="Least Squares Approximation" href="../orthogonality/least_squares.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/eigenvalues/diagonalization.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">
+   Eigenvalues and Eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectral-theorem">
+   Spectral Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="diagonalization">
+<h1>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>
+<ul class="simple">
+<li><p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable if and only if <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> linearly independent eigenvectors.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable with <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> then the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span> are eigenvalues and the columns of <span class="math notranslate nohighlight">\(P\)</span> are corresponding eigenvectors of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A\)</span> is a real symmetric matrix then the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are real numbers, the eigenvectors (for distinct eigenvalues) are orthogonal, and <span class="math notranslate nohighlight">\(A\)</span> is orthogonally diagonalizable, <span class="math notranslate nohighlight">\(A = PDP^T\)</span>.</p></li>
+</ul>
+</p>
+</div>
+<div class="note docutils">
+<p>All matrices in this chapter are <em>real</em> unless explicitly stated otherwise.</p>
+</div>
+<div class="section" id="eigenvalues-and-eigenvectors">
+<h2>Eigenvalues and Eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>An <strong>eigenvalue</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span> is a number <span class="math notranslate nohighlight">\(\lambda\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A \boldsymbol{v} = \lambda \boldsymbol{v}
+\]</div>
+<p>for some nonzero vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. The vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> is called an <strong>eigenvector</strong> for the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</div>
+<div class="note docutils">
+<p>Eigenvalues of a real matrix may be real <em>or</em> complex numbers.</p>
+</div>
+<div class="note docutils">
+<p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> then <span class="math notranslate nohighlight">\((A - \lambda I)\boldsymbol{v} = \boldsymbol{0}\)</span> which implies that <span class="math notranslate nohighlight">\(A - \lambda I\)</span> is not invertible and therefore <span class="math notranslate nohighlight">\(\det(A - \lambda I) = 0\)</span>. This suggests that to find eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(A\)</span> we should:</p>
+<ol class="simple">
+<li><p>Find <span class="math notranslate nohighlight">\(\lambda\)</span> such that <span class="math notranslate nohighlight">\(\det(A - \lambda I) = 0\)</span>.</p></li>
+<li><p>Find solutions of the linear system <span class="math notranslate nohighlight">\((A - \lambda I)\boldsymbol{v} = \boldsymbol{0}\)</span>.</p></li>
+</ol>
+<p>This works when <span class="math notranslate nohighlight">\(A\)</span> is a small matrix and we have done this in previous linear algebra courses. However, this is impractical when <span class="math notranslate nohighlight">\(A\)</span> is a large matrix. For example, if <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(5 \times 5\)</span>, then <span class="math notranslate nohighlight">\(\det(A - \lambda I) = 0\)</span> is a polynomial equation of degree 5 and there is no formula for the roots. We’ll see better algorithms for computing eigenvalues in later sections.</p>
+</div>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix. The <strong>characteristic polynomial</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+c_A(x) = \det(A - xI)
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(c_A(x)\)</span> has degree <span class="math notranslate nohighlight">\(n\)</span> and the roots of <span class="math notranslate nohighlight">\(c_A(x)\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Diagonalization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>A matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>diagonalizable</strong> if there exists an invertible matrix <span class="math notranslate nohighlight">\(P\)</span> and a diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that <span class="math notranslate nohighlight">\(A = PD P^{-1}\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable with <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> then the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span> are eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> and the columns of <span class="math notranslate nohighlight">\(P\)</span> are corresponding eigenvectors.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_1,\dots, \boldsymbol{v}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(P\)</span> and let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+\hspace{5mm}
+D = \begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}
+\end{split}\]</div>
+<p>Matrix multiplication <span class="math notranslate nohighlight">\(AP = PD\)</span> yields the equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+A \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+&amp;=
+\begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+\begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix} \\
+\begin{bmatrix} &amp; &amp; \\ A \boldsymbol{v}_1 &amp; \cdots &amp; A \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+&amp;=
+\begin{bmatrix} &amp; &amp; \\ \lambda_1 \boldsymbol{v}_1 &amp; \cdots &amp; \lambda_n \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+\end{align*}
+\end{split}\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(A \boldsymbol{v}_i = \lambda_i \boldsymbol{v}_i\)</span> for each <span class="math notranslate nohighlight">\(i=1,\dots,n\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> has distinct eigenvalues, then <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the distinct eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. That is, <span class="math notranslate nohighlight">\(\lambda_i \not= \lambda_j\)</span> for <span class="math notranslate nohighlight">\(i \not= j\)</span>. Each <span class="math notranslate nohighlight">\(\lambda_i\)</span> has a corresponding eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}_i\)</span>. Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_i\)</span> be the <span class="math notranslate nohighlight">\(i\)</span>th column of <span class="math notranslate nohighlight">\(P\)</span> and let <span class="math notranslate nohighlight">\(\lambda_i\)</span> be the <span class="math notranslate nohighlight">\(i\)</span>th diagonal entry of <span class="math notranslate nohighlight">\(D\)</span>. Then <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>By the <a class="reference external" href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra">Fundamental Theorem of Algebra</a>, the characteristic polynomial of a matrix <span class="math notranslate nohighlight">\(A\)</span> factors as a product</p>
+<div class="math notranslate nohighlight">
+\[
+c_A(x) = C \prod_{i=1}^k (x - \lambda_i)^{m_i}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_1, \dots, \lambda_k\)</span> are the <em>distinct</em> eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> (and <span class="math notranslate nohighlight">\(C\)</span> is a constant). The <strong>algebraic multiplicity</strong> of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the power <span class="math notranslate nohighlight">\(m_i\)</span> in the factored charactersitic polynomial. In other words, the algebraic multiplicity of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the number of times <span class="math notranslate nohighlight">\(\lambda_i\)</span> occurs as a root of the characteristic polynomial <span class="math notranslate nohighlight">\(c_A(x)\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>. The <strong>geometric multiplicity</strong> of <span class="math notranslate nohighlight">\(\lambda\)</span> is the number of linearly independent eigenvectors corresponding to <span class="math notranslate nohighlight">\(\lambda\)</span>. In other words, the geometric multiplicity is the dimension of the <strong>eigenspace</strong> for <span class="math notranslate nohighlight">\(\lambda\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+E_{\lambda} = \{ \boldsymbol{v} \in \mathbb{R}^n : (A - \lambda I) \boldsymbol{v} = \boldsymbol{0} \}
+\]</div>
+</div>
+<div class="note docutils">
+<p>Not every matrix is diagonalizable. For example, consider the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(c_A(x) = (x - 3)^2\)</span> and there is only one eigenvalue <span class="math notranslate nohighlight">\(\lambda = 3\)</span> and it has algebraic multiplicity 2. Solving the equation <span class="math notranslate nohighlight">\((A - 3I)\boldsymbol{v} = \boldsymbol{0}\)</span> yields only one independent solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{v} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+\end{split}\]</div>
+<p>and so <span class="math notranslate nohighlight">\(\lambda = 3\)</span> has geometric multiplicity 1. Therefore <span class="math notranslate nohighlight">\(A\)</span> does not have enough eigenvectors to be diagonalizable.</p>
+</div>
+<div class="theorem docutils">
+<p>A matrix <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable if and only if, for all eiganvalues <span class="math notranslate nohighlight">\(\lambda\)</span>, the algebraic multiplicity of <span class="math notranslate nohighlight">\(\lambda\)</span> equals the geometric multiplicity of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</div>
+</div>
+<div class="section" id="spectral-theorem">
+<h2>Spectral Theorem<a class="headerlink" href="#spectral-theorem" title="Permalink to this headline">¶</a></h2>
+<div class="theorem docutils">
+<p>All eigenvalues of a symmetric matrix are real numbers.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. Compute the <a class="reference internal" href="../appendix/complex_numbers.html#standard-inner-product"><span class="std std-ref">complex inner product</span></a> <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , A \boldsymbol{v} \rangle = \boldsymbol{v}^T \overline{A \boldsymbol{v}}\)</span> in two different ways. First, compute</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \boldsymbol{v} , A \boldsymbol{v} \rangle
+= \langle \boldsymbol{v} , \lambda \boldsymbol{v} \rangle
+= \overline{\lambda} \langle \boldsymbol{v} , \boldsymbol{v} \rangle
+= \overline{\lambda} \, \| \boldsymbol{v} \|^2
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(A\)</span> is real and symmetric, we have <span class="math notranslate nohighlight">\(\overline{A}^T = A\)</span> and we compute</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \boldsymbol{v} , A \boldsymbol{v} \rangle
+= \langle \overline{A}^T \boldsymbol{v} , \boldsymbol{v} \rangle
+= \langle A \boldsymbol{v} , \boldsymbol{v} \rangle
+= \lambda \langle \boldsymbol{v} , \boldsymbol{v} \rangle
+= \lambda \| \boldsymbol{v} \|^2
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\| \boldsymbol{v} \| \not= 0\)</span> we have <span class="math notranslate nohighlight">\(\lambda = \overline{\lambda}\)</span> and therefore <span class="math notranslate nohighlight">\(\lambda\)</span> is a real number.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a symmetric matrix and let <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> be distinct real eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> with eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> respectively. Then <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> are orthogonal.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Since <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> are real eigenvalues we may assume <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> are real vectors. Compute <span class="math notranslate nohighlight">\(\langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle\)</span> in two different ways. First, compute</p>
+<div class="math notranslate nohighlight">
+\[
+\langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+= \langle \lambda_1 \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+= \lambda_1 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+\]</div>
+<p>Now compute</p>
+<div class="math notranslate nohighlight">
+\[
+\langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+= \langle \boldsymbol{v}_1 , A^T \boldsymbol{v}_2 \rangle
+= \langle \boldsymbol{v}_1 , A \boldsymbol{v}_2 \rangle
+= \lambda_2 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+\]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle = \lambda_2 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
+\ \ \Rightarrow \ \
+(\lambda_1 - \lambda_2) \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle = 0
+\ \ \Rightarrow \ \
+\langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle = 0
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(\lambda_1 - \lambda_2 \not = 0\)</span> because the eigenvalues are distinct.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a symmetric matrix. Then there exists an orthogonal matrix <span class="math notranslate nohighlight">\(P\)</span> and diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that <span class="math notranslate nohighlight">\(A = PDP^T\)</span>. In other words, <span class="math notranslate nohighlight">\(A\)</span> is orthogonally diagonalizable.</p>
+</div>
+<div class="note docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is symmetric with <span class="math notranslate nohighlight">\(A = PDP^T\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+\hspace{5mm}
+D = \begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> with corresponding orthonormal eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{v}_1,\dots,\boldsymbol{v}_n\)</span>.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2 \in \mathbb{R}^2 \)</span> be linearly independent vectors. Let <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 \)</span> be real numbers. Then there exists a unique 2 by 2 matrix <span class="math notranslate nohighlight">\( A \)</span> with eigenvalues <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 \)</span> and corresponding eigenvectors <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{u} \in \mathbb{R}^n \)</span> be a nonzero vector and let <span class="math notranslate nohighlight">\( H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T \)</span> be the corresponding elementary reflector. Then <span class="math notranslate nohighlight">\(\lambda = -1\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(H\)</span> with multiplicity 1.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( U \subset \mathbb{R}^n \)</span> be a subspace with <span class="math notranslate nohighlight">\( \mathrm{dim}(U) = m \)</span> such that <span class="math notranslate nohighlight">\( 0 &lt; m &lt; n\)</span>, and let <span class="math notranslate nohighlight">\( P \)</span> be the orthogonal projection matrix onto <span class="math notranslate nohighlight">\( U \)</span>. Then <span class="math notranslate nohighlight">\( \lambda = 0 \)</span> is an eigenvalue for <span class="math notranslate nohighlight">\( P \)</span> with multiplicity <span class="math notranslate nohighlight">\( m \)</span>.</p></li>
+<li><p>Suppose <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are symmetric <span class="math notranslate nohighlight">\(n \times n\)</span> matrices. Then the eigenvectors of <span class="math notranslate nohighlight">\(AB\)</span> corresponding to distinct eigenvalues are orthogonal.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( A \)</span> be any <span class="math notranslate nohighlight">\( m \times n \)</span> matrix. If <span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span> then <span class="math notranslate nohighlight">\( \lambda \)</span> is a real number and <span class="math notranslate nohighlight">\( \lambda \geq 0 \)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( A \)</span> be any <span class="math notranslate nohighlight">\( m \times n \)</span> matrix. If <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2 \)</span> are eigenvectors of <span class="math notranslate nohighlight">\( AA^T \)</span> for distinct eigenvalues then <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 \cdot \boldsymbol{v}_1 = 0 \)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{u} \in \mathbb{R}^n \)</span> and let <span class="math notranslate nohighlight">\( H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T \)</span> be the corresponding elementary reflector. The characteristic polynomial of <span class="math notranslate nohighlight">\( H \)</span> is <span class="math notranslate nohighlight">\( (x-1)^{n-1}(x+1)\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\( P \)</span> be an orthogonal projection matrix. All the eigenvalues of <span class="math notranslate nohighlight">\( P \)</span> are either 1 or 0.</p></li>
+</ul>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\( \lambda \)</span> be a (nonzero) eigenvalue of an invertible matrix <span class="math notranslate nohighlight">\(A\)</span>. Select all <strong>True</strong> statements.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda^{-1}\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^{-1} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^T \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda^2\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( PAP^{-1} \)</span> for any invertible matrix <span class="math notranslate nohighlight">\( P \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda \not= 0\)</span></p></li>
+</ul>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\( \lambda \)</span> be an eigenvalue of an invertible matrix <span class="math notranslate nohighlight">\( A \)</span>. Select all <strong>True</strong> statements.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \lambda^{-1} \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^{-1} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^T \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda^2 \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( PAP^{-1} \)</span> for any invertible matrix <span class="math notranslate nohighlight">\( P \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda \not= 0 \)</span></p></li>
+</ul>
+</li>
+<li><p>Suppose <span class="math notranslate nohighlight">\( A \)</span> is a symmetric <span class="math notranslate nohighlight">\( 3 \times 3 \)</span> matrix with distinct eigenvalues <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 , \lambda_3 \)</span> and eigenvectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
+   \end{split}\]</div>
+<p>Determine eigenvector <span class="math notranslate nohighlight">\( \boldsymbol{v}_3 \)</span> for eigenvalue <span class="math notranslate nohighlight">\( \lambda_3 \)</span>.</p>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./eigenvalues"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../orthogonality/least_squares.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Least Squares Approximation</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="svd.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Singular Value Decomposition</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

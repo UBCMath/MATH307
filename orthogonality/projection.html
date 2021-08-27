@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orthogonal Projection &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QR Decomposition" href="qr.html" />
+    <link rel="prev" title="Subspaces" href="subspaces.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/orthogonality/projection.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projection-onto-a-vector">
+   Projection onto a Vector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-bases">
+   Orthogonal Bases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projection-onto-a-subpsace">
+   Projection onto a Subpsace
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="orthogonal-projection">
+<h1>Orthogonal Projection<a class="headerlink" href="#orthogonal-projection" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>The point in a subspace <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is the orthogonal projection <span class="math notranslate nohighlight">\(\mathrm{proj}_U (\boldsymbol{x})\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</div>
+<div class="section" id="projection-onto-a-vector">
+<h2>Projection onto a Vector<a class="headerlink" href="#projection-onto-a-vector" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>projection</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto a vector <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_{\boldsymbol{u}}(\boldsymbol{x}) = \frac{\langle \boldsymbol{x} , \boldsymbol{u} \rangle}{\langle \boldsymbol{u} , \boldsymbol{u} \rangle} \boldsymbol{u}
+\]</div>
+</div>
+<div class="note docutils">
+<p>Projection onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> is given by matrix multiplication</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_{\boldsymbol{u}}(\boldsymbol{x}) = P \boldsymbol{x}
+\ \ \text{where} \ \
+P = \frac{1}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(P^2 = P\)</span>, <span class="math notranslate nohighlight">\(P^T = P\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(P) = 1\)</span>.</p>
+</div>
+</div>
+<div class="section" id="orthogonal-bases">
+<h2>Orthogonal Bases<a class="headerlink" href="#orthogonal-bases" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. A set of vectors <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1,\dots,\boldsymbol{w}_m \}\)</span> is an <strong>orthogonal basis</strong> for <span class="math notranslate nohighlight">\(U\)</span> if it is a basis for <span class="math notranslate nohighlight">\(U\)</span> and the vectors are orthogonal, <span class="math notranslate nohighlight">\(\langle \boldsymbol{w}_i , \boldsymbol{w}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span>. Furthermore, if each <span class="math notranslate nohighlight">\(\boldsymbol{w}_j\)</span> is a unit vector, <span class="math notranslate nohighlight">\(\|\boldsymbol{w}_j\| = 1\)</span>, then <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1,\dots,\boldsymbol{w}_m \}\)</span> is an <strong>orthonormal basis</strong> for <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \}\)</span> be a basis of a subspace <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span>. The <strong>Gram-Schmidt orthogonalization algorithm</strong> constructs an orthogonal basis of <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\boldsymbol{v}_1 &amp;= \boldsymbol{u}_1 \\
+\boldsymbol{v}_2 &amp;= \boldsymbol{u}_2 - \mathrm{proj}_{\boldsymbol{v}_1}(\boldsymbol{u}_2) \\
+\boldsymbol{v}_3 &amp;= \boldsymbol{u}_3 - \mathrm{proj}_{\boldsymbol{v}_1}(\boldsymbol{u}_3) - \mathrm{proj}_{\boldsymbol{v}_2}(\boldsymbol{u}_3) \\
+&amp; \ \ \vdots \\
+\boldsymbol{v}_m &amp;= \boldsymbol{u}_m - \mathrm{proj}_{\boldsymbol{v}_1}(\boldsymbol{u}_m) - \mathrm{proj}_{\boldsymbol{v}_2}(\boldsymbol{u}_m) - \cdots - \mathrm{proj}_{\boldsymbol{v}_{m-1}}(\boldsymbol{u}_m)
+\end{align*}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\{ \boldsymbol{v}_1 , \dots , \boldsymbol{v}_m \}\)</span> is an orthogonal basis of <span class="math notranslate nohighlight">\(U\)</span>. Furthermore, let</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{w}_k = \frac{\boldsymbol{v}_k}{\| \boldsymbol{v}_k \|} \ \ , \ k=1,\dots,m
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_m \}\)</span> is an orthonormal basis of <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Construct an orthonormal basis of the subspace <span class="math notranslate nohighlight">\(U\)</span> spanned by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{u}_2 = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{u}_3 = \begin{bmatrix} 1 \\ 1 \\ 0 \\ 0 \end{bmatrix}
+\end{split}\]</div>
+<p>Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\boldsymbol{v}_1 &amp;= \boldsymbol{u}_1 \\
+\boldsymbol{v}_2 &amp;= \boldsymbol{u}_2 - \mathrm{proj}_{\boldsymbol{v}_1}(\boldsymbol{u}_2) \\
+\boldsymbol{v}_3 &amp;= \boldsymbol{u}_3 - \mathrm{proj}_{\boldsymbol{v}_1}(\boldsymbol{u}_3) - \mathrm{proj}_{\boldsymbol{v}_2}(\boldsymbol{u}_3)
+\end{align*}
+\end{split}\]</div>
+<p>and we find an orthogonal basis</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{v}_3 = \frac{1}{2} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \end{array} \right]
+\end{split}\]</div>
+<p>and an orthonormal basis</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_1 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{w}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{w}_3 = \frac{1}{\sqrt{2}} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \end{array} \right]
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="projection-onto-a-subpsace">
+<h2>Projection onto a Subpsace<a class="headerlink" href="#projection-onto-a-subpsace" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1, \dots, \boldsymbol{u}_m \}\)</span> be an orthogonal basis of <span class="math notranslate nohighlight">\(U\)</span>. The <strong>orthogonal projection</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_U(\boldsymbol{x}) = \frac{\langle \boldsymbol{x} , \boldsymbol{u}_1 \rangle}{ \langle \boldsymbol{u}_1 , \boldsymbol{u}_1 \rangle } \boldsymbol{u}_1 + \cdots + \frac{\langle \boldsymbol{x} , \boldsymbol{u}_m \rangle}{ \langle \boldsymbol{u}_m , \boldsymbol{u}_m \rangle } \boldsymbol{u}_m
+\]</div>
+</div>
+<div class="note docutils">
+<p>Projection onto <span class="math notranslate nohighlight">\(U\)</span> is given by matrix multiplication</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_{\boldsymbol{U}}(\boldsymbol{x}) = P \boldsymbol{x}
+\ \ \text{where} \ \
+P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T + \cdots + \frac{1}{\| \boldsymbol{u}_m \|^2} \boldsymbol{u}_m \boldsymbol{u}_m^T
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(P^2 = P\)</span>, <span class="math notranslate nohighlight">\(P^T = P\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(P) = m\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>A matrix <span class="math notranslate nohighlight">\(P\)</span> is an <strong>orthogonal projector</strong> (or <strong>orthogonal projection matrix</strong>) if <span class="math notranslate nohighlight">\(P^2 = P\)</span> and <span class="math notranslate nohighlight">\(P^T = P\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(P\)</span> be the orthogonal projection onto <span class="math notranslate nohighlight">\(U\)</span>. Then <span class="math notranslate nohighlight">\(I - P\)</span> is the orthogonal projection matrix onto <span class="math notranslate nohighlight">\(U^{\perp}\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Find the orthogonal projection matrix <span class="math notranslate nohighlight">\(P\)</span> which projects onto the subspace spanned by the vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
+\hspace{5mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\end{split}\]</div>
+<p>Compute <span class="math notranslate nohighlight">\(\langle \boldsymbol{u}_1 , \boldsymbol{u}_2 \rangle = 0\)</span> therefore the vectors are orthogonal. Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \frac{1}{\| \boldsymbol{u}_2 \|^2} \boldsymbol{u}_2 \boldsymbol{u}_2^T
+&amp;= \frac{1}{2} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
+\left[ \begin{array}{rrr} 1 &amp; 0 &amp; -1 \end{array} \right]
++ \frac{1}{3} \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \end{array} \right] \\
+&amp;= \frac{1}{2} \left[ \begin{array}{rrr} 1 &amp; \phantom{+}0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{array} \right]
++ \frac{1}{3} \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 \end{array} \right]
+=
+\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; 2 &amp; 11 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right]
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="example docutils">
+<p>Find the orthogonal projection matrix <span class="math notranslate nohighlight">\(P_{\perp}\)</span> which projects onto <span class="math notranslate nohighlight">\(U^{\perp}\)</span> where <span class="math notranslate nohighlight">\(U\)</span> the subspace spanned by the vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
+\hspace{5mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\end{split}\]</div>
+<p>as in the previous example. Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_{\perp} = I - P =
+\left[ \begin{array}{rrr} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{array} \right] -
+\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; 2 &amp; 1 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right]
+=
+\frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\end{split}\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_3 = \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
+\end{split}\]</div>
+<p>is orthogonal to both <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span> and is a basis of the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>. Therefore we could also compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T =
+\frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
+\left[ \begin{array}{ccc} 1 &amp; -2 &amp; 1 \end{array} \right]
+= \frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\end{split}\]</div>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{x} - \mathrm{proj}_U(\boldsymbol{x}) \in U^{\perp}
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(\mathrm{proj}_U(\boldsymbol{x})\)</span> is the closest vector in <span class="math notranslate nohighlight">\(U\)</span> to <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> in the sense that</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} - \mathrm{proj}_U(\boldsymbol{x}) \| &lt; \| \boldsymbol{x} - \boldsymbol{y} \| \hspace{5mm} \text{ for all } \boldsymbol{y} \in U \ , \ \boldsymbol{y} \not= \mathrm{proj}_U(\boldsymbol{x})
+\]</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> be nonzero column vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{u} \cdot \boldsymbol{v} = 0\)</span> and let</p>
+<div class="math notranslate nohighlight">
+\[
+   P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
+   \]</div>
+<p>Determine whether the statement is {\bf True} or {\bf False}.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathrm{rank}(P) = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P^2\)</span> is the identity matrix</p></li>
+<li><p><span class="math notranslate nohighlight">\(P^2\)</span> is the zero matrix</p></li>
+<li><p><span class="math notranslate nohighlight">\(P \boldsymbol{x}\)</span> is the projection <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P \boldsymbol{x}\)</span> is the projection <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P \boldsymbol{u} = c \boldsymbol{v}\)</span> for some nonzero number <span class="math notranslate nohighlight">\(c\)</span></p></li>
+</ul>
+</li>
+<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(U,V \subset \mathbb{R}^n\)</span> be subspaces such that <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal. If <span class="math notranslate nohighlight">\(\mathrm{dim}(U) = m\)</span> then <span class="math notranslate nohighlight">\(\mathrm{dim}(V) = n - m\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A^TA\)</span> is a diagonal matrix, then the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(AA^T\)</span> is a diagonal matrix, then the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A^TA\)</span> is a diagonal matrix, then the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(AA^T\)</span> is a diagonal matrix, then the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(P_1\)</span> is the orthogonal projector onto <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> is the orthogonal projector onto the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>, then <span class="math notranslate nohighlight">\(I = P_1 + P_2\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(P_1\)</span> is the orthogonal projector onto <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> is the orthogonal projector onto the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>, then <span class="math notranslate nohighlight">\(P_1P_2 = P_2P_1 = 0\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3\)</span> be nonzero vectors. If <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_3\)</span> then <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_3\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+   \hspace{10mm}
+   \boldsymbol{u}_2 = \left[ \begin{array}{r} -1 \\ 1 \\ 1 \end{array} \right]
+   \end{split}\]</div>
+<p>Find the vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U\)</span> which is closest to the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+   \end{split}\]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+   \hspace{10mm}
+   \boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+   \end{split}\]</div>
+<p>Find the vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U\)</span> which is closest to the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
+   \end{split}\]</div>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./orthogonality"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="subspaces.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Subspaces</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="qr.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">QR Decomposition</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

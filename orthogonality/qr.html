@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Decomposition &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Least Squares Approximation" href="least_squares.html" />
+    <link rel="prev" title="Orthogonal Projection" href="projection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/orthogonality/qr.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-matrices">
+   Orthogonal Matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qr-by-gram-schmidt">
+   QR by Gram-Schmidt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qr-by-reflectors">
+   QR by Reflectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-projection-by-qr">
+   Orthogonal Projection by QR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="qr-decomposition">
+<h1>QR Decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>The QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(A = QR\)</span> where <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix. There are several ways to compute the QR decomposition including Gram-Schmidt orthogonalization and elementary reflectors.</p>
+</div>
+<div class="section" id="orthogonal-matrices">
+<h2>Orthogonal Matrices<a class="headerlink" href="#orthogonal-matrices" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>A matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(A^TA = AA^T = I\)</span>.</p>
+</div>
+<div class="note docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix, then:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = \| \boldsymbol{x} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> since <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \|^2 = (A \boldsymbol{x})^T A \boldsymbol{x} = \boldsymbol{x}^T A^T A \boldsymbol{x} = \boldsymbol{x}^T \boldsymbol{x} = \| \boldsymbol{x} \|^2\)</span></p></li>
+<li><p>the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal</p></li>
+<li><p>the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal</p></li>
+</ul>
+</div>
+<div class="example docutils">
+<p>Rotations and reflections are examples of orthogonal matrices.</p>
+</div>
+<div class="note docutils">
+<p>An orthogonal matrix and an orthogonal projector are <em>not</em> the same thing but they are related. If <span class="math notranslate nohighlight">\(P\)</span> is an orthogonal projector then <span class="math notranslate nohighlight">\(Q = I - 2P\)</span> is an orthogonal (and symmetric) matrix. In fact, if <span class="math notranslate nohighlight">\(P\)</span> projects onto a subspace <span class="math notranslate nohighlight">\(U\)</span> then <span class="math notranslate nohighlight">\(Q\)</span> is the reflection through <span class="math notranslate nohighlight">\(U^{\perp}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="qr-by-gram-schmidt">
+<h2>QR by Gram-Schmidt<a class="headerlink" href="#qr-by-gram-schmidt" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = m\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{a}_1,\dots,\boldsymbol{a}_m\)</span> be the columns of <span class="math notranslate nohighlight">\(A\)</span>. Apply the Gram-Schmidt algorithm to the columns and construct an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1,\dots,\boldsymbol{w}_m \}\)</span> of the column space <span class="math notranslate nohighlight">\(R(A)\)</span>. Project the columns onto the basis</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\boldsymbol{a}_1 &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle \boldsymbol{w}_1 \\
+\boldsymbol{a}_2 &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle \boldsymbol{w}_1 + \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle \boldsymbol{w}_2 \\
+&amp; \ \ \vdots \\
+\boldsymbol{a}_m &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_m \rangle \boldsymbol{w}_1 + \langle \boldsymbol{w}_2 , \boldsymbol{a}_m \rangle \boldsymbol{w}_2 + \cdots + \langle \boldsymbol{w}_m , \boldsymbol{a}_m \rangle \boldsymbol{w}_m
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{a}_k \in \mathrm{span} \{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_k \}\)</span> by construction. Write as matrix multiplication</p>
+<div class="math notranslate nohighlight">
+\[
+A = Q_1R_1
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q_1 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_1 &amp; \cdots &amp; \boldsymbol{w}_m \\ &amp; &amp; \end{bmatrix}
+\hspace{5mm}
+R_1 = \begin{bmatrix}
+\langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_m \rangle \\
+&amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_m \rangle \\
+&amp; &amp; \ddots &amp; \vdots \\
+&amp; &amp; &amp; \langle \boldsymbol{w}_m , \boldsymbol{a}_m \rangle
+\end{bmatrix}
+\end{split}\]</div>
+<p>Extend the basis to an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_m , \boldsymbol{w}_{m+1} , \dots , \boldsymbol{w}_n \}\)</span> of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> where <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_{m+1} , \dots , \boldsymbol{w}_n \}\)</span> is <em>any</em> orthonormal basis of the orthogonal complement <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q_2 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_{m+1} &amp; \cdots &amp; \boldsymbol{w}_n \\ &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p>Finally, the <strong>QR decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = QR =
+\begin{bmatrix} Q_1 &amp; Q_2 \end{bmatrix}
+\begin{bmatrix} R_1 \\ 0 \end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q\)</span> is a <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\(n \times m\)</span> upper triangular matrix. The decomposition <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> is called the <strong>thin QR decomposition</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/QR_decomposition">Wikipedia:QR decomposition</a>.</p>
+</div>
+<div class="example docutils">
+<p>Compute the QR decomposition for the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\  1 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 0 \\ \end{bmatrix}
+\end{split}\]</div>
+<p>In a previous example, we found an orthonormal basis of the column space</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_1 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{w}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{w}_3 = \frac{1}{\sqrt{2}} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \end{array} \right]
+\end{split}\]</div>
+<p>Extend to an orthonormal basis of <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_4 = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Therefore we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q =
+\begin{bmatrix}
+1/\sqrt{2} &amp; 0 &amp; 1/\sqrt{2} &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+1/\sqrt{2} &amp; 0 &amp; -1/\sqrt{2} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R =
+\begin{bmatrix}
+\langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_3 \rangle \\
+0 &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_3 \rangle \\
+0 &amp; 0 &amp; \langle \boldsymbol{w}_3 , \boldsymbol{a}_3 \rangle \\
+0 &amp; 0 &amp; 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sqrt{2} &amp; \sqrt{2} &amp; 1/\sqrt{2} \\
+0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1/\sqrt{2} \\
+0 &amp; 0 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="note docutils">
+<p>The Gram-Schmidt algorithm shows that the QR decomposition exists but it is not the most efficient way to compute the QR decomposition. Software such as the MATLAB function <code class="docutils literal notranslate"><span class="pre">qr</span></code> (see <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/qr.html">documentation</a>) and the SciPy function <code class="docutils literal notranslate"><span class="pre">scipy.linalg.qr</span></code> (see <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.qr.html">documentation</a>), and LAPACK (see <a class="reference external" href="https://www.netlib.org/lapack/lug/node128.html#secorthog">documentation</a>) use elementary reflectors to construct the matrices <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p>
+</div>
+</div>
+<div class="section" id="qr-by-reflectors">
+<h2>QR by Reflectors<a class="headerlink" href="#qr-by-reflectors" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>An <strong>elementary reflector</strong> (or <strong>Householder transformation</strong>) is matrix of the form</p>
+<div class="math notranslate nohighlight">
+\[
+H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T
+\]</div>
+<p>for some nonzero vector <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span>. Note that a reflector is an orthogonal matrix since <span class="math notranslate nohighlight">\(H^T = H\)</span> and <span class="math notranslate nohighlight">\(H^2 = I\)</span>. Note also that if <span class="math notranslate nohighlight">\(P\)</span> is the orthogonal projection onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> then <span class="math notranslate nohighlight">\(H = I - 2P\)</span> and <span class="math notranslate nohighlight">\(H\)</span> is the reflection through the hyperplane orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\{ \boldsymbol{e}_1, \dots, \boldsymbol{e}_n \}\)</span> be the standard orthonormal basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\hspace{5mm}
+\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+\hspace{5mm}
+\cdots
+\hspace{5mm}
+\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{a} \in \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(\alpha = -\mathrm{sign}(a_1) \| \boldsymbol{a} \|\)</span>. Let  <span class="math notranslate nohighlight">\(\boldsymbol{u} = \boldsymbol{a} - \alpha \boldsymbol{e}_1\)</span>, let <span class="math notranslate nohighlight">\(P\)</span> be the orthogonal projector onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and let <span class="math notranslate nohighlight">\(H = I - 2P\)</span> be the corresponding elementary reflector. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H \boldsymbol{a} = \alpha \boldsymbol{e}_1 = \begin{bmatrix} \alpha \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\end{split}\]</div>
+<p>More generally, let <span class="math notranslate nohighlight">\(\boldsymbol{a} \in \mathbb{R}^n\)</span> and partition the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{a} = \begin{bmatrix} \boldsymbol{a}_1 \\ \boldsymbol{a}_2 \end{bmatrix}
+\ \ \text{where} \ \
+\boldsymbol{a}_1 = \begin{bmatrix} a_1 \\ \vdots \\ a_{k-1} \end{bmatrix} \in \mathbb{R}^{k-1}
+ \ \ \text{and} \ \ \boldsymbol{a}_2 = \begin{bmatrix} a_k \\ \vdots \\ a_n \end{bmatrix} \in \mathbb{R}^{n-k+1}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\alpha = -\mathrm{sign}(a_k) \| \boldsymbol{a}_2 \|\)</span> and let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u} = \begin{bmatrix} \boldsymbol{0} \\ \boldsymbol{a}_2 \end{bmatrix} - \alpha \boldsymbol{e}_k = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ a_k - \alpha \\ a_{k+1} \\ \vdots \\ a_n \end{bmatrix}
+\end{split}\]</div>
+<p>and let <span class="math notranslate nohighlight">\(H\)</span> be the corresponding elementary reflector. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H \boldsymbol{a} = \begin{bmatrix} a_1 \\ \vdots \\ a_{k-1} \\ \alpha \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix with <span class="math notranslate nohighlight">\(n &gt; m\)</span>. There exists a sequence of elementary reflectors <span class="math notranslate nohighlight">\(H_1,\dots,H_m\)</span> such that <span class="math notranslate nohighlight">\(H_m\cdots H_1A = R\)</span> is upper triangular and therefore</p>
+<div class="math notranslate nohighlight">
+\[
+A = QR
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q = H_1 \cdots H_m\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. For each column, construct an elementary reflector to annihilate the entries below the diagonal. For example, if <span class="math notranslate nohighlight">\(A\)</span> has 3 columns and 4 rows then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} * &amp; * &amp; * \\ * &amp; * &amp; * \\ * &amp; * &amp; * \\ * &amp; * &amp; * \end{bmatrix}
+\ \
+H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \end{bmatrix}
+\ \
+H_2H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; * \\ 0 &amp; 0 &amp; * \end{bmatrix}
+\ \
+H_3H_2H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
+\end{split}\]</div>
+<p>Since each <span class="math notranslate nohighlight">\(H\)</span> is an elementary reflector, we have <span class="math notranslate nohighlight">\(A=H_1^{-1}H_2^{-1}H_3^{-1}R=H_1H_2H_3R\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Find the QR decomposition of <span class="math notranslate nohighlight">\(A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix}\)</span> by elementary reflectors.</p>
+<p>Construct the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 =  \boldsymbol{a}_1 - \alpha \boldsymbol{e}_1
+= \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix} + \sqrt{2} \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+= \begin{bmatrix} 1 + \sqrt{2} \\ 0 \\ 1 \end{bmatrix} \\
+\end{split}\]</div>
+<p>Compute the norm squared</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{u}_1 \|^2 = (1 + \sqrt{2})^2 + 1 = 4 + 2\sqrt{2}
+\]</div>
+<p>and construct the elementary reflector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+H_1 &amp;= I - \frac{2}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T
+= I - \frac{2}{4 + 2\sqrt{2}} \begin{bmatrix} 1 + \sqrt{2} \\ 0 \\ 1 \end{bmatrix} \begin{bmatrix} 1 + \sqrt{2} &amp; 0 &amp; 1 \end{bmatrix} \\
+&amp;= I - \frac{1}{2 + \sqrt{2}} \begin{bmatrix} 3 + 2\sqrt{2} &amp; 0 &amp; 1 + \sqrt{2} \\ 0 &amp; 0 &amp; 0 \\ 1 + \sqrt{2} &amp; 0 &amp; 1 \end{bmatrix}
+= \frac{1}{2 + \sqrt{2}} \begin{bmatrix} - 1 - \sqrt{2} &amp; 0 &amp; - 1 - \sqrt{2} \\ 0 &amp; 2 + \sqrt{2} &amp; 0 \\ - 1 - \sqrt{2} &amp; 0 &amp; 1 + \sqrt{2} \end{bmatrix} \\
+&amp;= \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
+\end{align*}
+\end{split}\]</div>
+<p>Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H_1A
+=
+\frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
+\begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix} \\
+= \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 2 &amp; -2 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; \sqrt{2} \\ 0 &amp; 0 &amp; -1 \end{array} \right]
+\end{split}\]</div>
+<p>Since the result is already upper triangular we have <span class="math notranslate nohighlight">\(A = QR\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q = \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
+\hspace{10mm}
+R = \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 2 &amp; -2 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; \sqrt{2} \\ 0 &amp; 0 &amp; -1 \end{array} \right]
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="orthogonal-projection-by-qr">
+<h2>Orthogonal Projection by QR<a class="headerlink" href="#orthogonal-projection-by-qr" title="Permalink to this headline">¶</a></h2>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> be the thin QR decomposition of <span class="math notranslate nohighlight">\(A\)</span>. The orthogonal projection of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_{R(A)}(\boldsymbol{x}) = Q_1 Q_1^T \boldsymbol{x}
+\]</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> be a nonzero vector and let <span class="math notranslate nohighlight">\(\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T\)</span> be the corresponding elementary reflector. There is a unique unit vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> such that <span class="math notranslate nohighlight">\(H \boldsymbol{v} = \boldsymbol{v}\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> be a nonzero vector and let <span class="math notranslate nohighlight">\(\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T\)</span> be the corresponding elementary reflector. Then  <span class="math notranslate nohighlight">\(H \boldsymbol{v} = \boldsymbol{v}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A=QR\)</span> where <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is upper triangular. Then <span class="math notranslate nohighlight">\(\| A \|_p = \| R \|_p\)</span> for any <span class="math notranslate nohighlight">\(p \geq 1\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Find the elementary reflector <span class="math notranslate nohighlight">\(H\)</span> corresponding to the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \boldsymbol{u} = \begin{bmatrix} 2 \\ 1 \\ 0 \\ 1 \end{bmatrix}
+   \end{split}\]</div>
+</li>
+<li><p>Find an elementary reflector <span class="math notranslate nohighlight">\(H\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   HA = \displaystyle \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \end{bmatrix}
+   \end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   A = \begin{bmatrix} 1 &amp; 2 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 2 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix}
+   \end{split}\]</div>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./orthogonality"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="projection.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Orthogonal Projection</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="least_squares.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Least Squares Approximation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

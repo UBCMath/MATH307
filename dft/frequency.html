@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequency, Amplitude and Phase &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fast Fourier Transform" href="fft.html" />
+    <link rel="prev" title="Discrete Fourier Transform" href="dft.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dft/frequency.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sinusoids">
+   Sinusoids
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dft-of-sinusoids">
+   DFT of Sinusoids
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stemplots">
+   Stemplots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="frequency-amplitude-and-phase">
+<h1>Frequency, Amplitude and Phase<a class="headerlink" href="#frequency-amplitude-and-phase" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>The DFT of a signal computes the amplitude and phase of each frequency in the signal.</p>
+</div>
+<div class="definition docutils">
+<p>The DFT is used to study sound, images and any kind of information that can be represented by a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbf{C}^N\)</span>. Therefore, in the context of the DFT, we use the term <strong>signal</strong> to refer to a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbf{C}^N\)</span> and we use the notation <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = x_n\)</span> to refer to the entries</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \begin{bmatrix} \ x_0 \\ x_1 \\ x_2 \\ \vdots \\ x_{N-1} \ \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{x}[n] = x_n
+\end{split}\]</div>
+</div>
+<div class="section" id="sinusoids">
+<h2>Sinusoids<a class="headerlink" href="#sinusoids" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(N\)</span> be a positive integer and let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{n} = \begin{bmatrix} 0 \\ 1 \\ 2 \\ \vdots \\ N-1 \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{t} = (1/N) \boldsymbol{n} = \begin{bmatrix} 0 \\ 1/N \\ 2/N \\ \vdots \\ (N-1)/N \end{bmatrix}
+\end{split}\]</div>
+<p>A <strong>sinusoid</strong> is a signal of the form</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{x} = A \cos(2\pi k \boldsymbol{t} + \phi)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the <strong>frequency</strong> (in periods per <span class="math notranslate nohighlight">\(N\)</span> samples), <span class="math notranslate nohighlight">\(A\)</span> is the <strong>amplitude</strong> and <span class="math notranslate nohighlight">\(\phi\)</span> is the <strong>phase</strong>. Here we use vector notation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A \cos(2\pi k \boldsymbol{t} + \phi) = \begin{bmatrix} A \cos(\phi) \\ A \cos(2\pi k (1/N) + \phi) \\ A \cos(2\pi k (2/N) + \phi) \\ \vdots \\ A \cos(2\pi k (N-1)/N + \phi) \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(N = 8\)</span> and so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{n} = \begin{bmatrix} 0 \\ 1 \\ 2 \\ 3 \\ 4 \\ 5 \\ 6 \\ 7 \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{t} = \begin{bmatrix} 0 \\ 1/8 \\ 1/4 \\ 3/8 \\ 1/2 \\ 5/8 \\ 3/4 \\ 7/8 \end{bmatrix}
+\end{split}\]</div>
+<p>Consider the signal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \cos(2 \pi \boldsymbol{t} ) = \begin{bmatrix} 1 \\ 1/\sqrt{2} \\ 0 \\ -1/\sqrt{2} \\ -1 \\ -1/\sqrt{2} \\ 0 \\ 1/\sqrt{2} \end{bmatrix}
+\end{split}\]</div>
+<p>and sketch the signal as a stemplot</p>
+<a class="reference internal image-reference" href="../_images/stem01.png"><img alt="../_images/stem01.png" class="align-center" src="../_images/stem01.png" style="width: 500px;" /></a>
+<p>Now consider the signal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \cos(4 \pi \boldsymbol{t} ) = \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \\ 1 \\ 0 \\ -1 \end{array} \right]
+\end{split}\]</div>
+<p>and sketch the signal as a stemplot</p>
+<a class="reference internal image-reference" href="../_images/stem02.png"><img alt="../_images/stem02.png" class="align-center" src="../_images/stem02.png" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="dft-of-sinusoids">
+<h2>DFT of Sinusoids<a class="headerlink" href="#dft-of-sinusoids" title="Permalink to this headline">¶</a></h2>
+<div class="proposition docutils">
+<p>The Fourier basis vectors satisfy the following properties:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\boldsymbol{f}_k &amp; = \cos(2 \pi k \boldsymbol{t}) + i \sin(2 \pi k \boldsymbol{t}) \\
+\frac{1}{2} \left( \boldsymbol{f}_k + \overline{\boldsymbol{f}}_k \right) &amp;= \cos(2 \pi k \boldsymbol{t}) \\
+\frac{1}{2i} \left( \boldsymbol{f}_k - \overline{\boldsymbol{f}}_k \right) &amp;= \sin(2 \pi k \boldsymbol{t})
+\end{align*}
+\end{split}\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. We showed in a previous proposition that</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_N^k = \cos\left( \frac{2 \pi k}{N} \right) + i \sin \left( \frac{2 \pi k}{N} \right)
+\]</div>
+<p>therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{f}_k =
+\renewcommand{\arraystretch}{1.5}
+\begin{bmatrix} 1 \\ \omega^k_N \\ \omega^{2k}_N \\ \vdots \\ \omega^{(N-1)k}_N \end{bmatrix}
+=
+\begin{bmatrix} 1 \\ \cos(2\pi k (1/N)) + i \sin(2\pi k (1/N)) \\ \cos(2\pi k (2/N)) + i \sin(2\pi k (2/N)) \\ \vdots \\ \cos(2\pi k (N-1)/N) + i \sin(2\pi k (N-1)/N) \end{bmatrix}
+= \cos(2 \pi k \boldsymbol{t}) + i \sin(2 \pi k \boldsymbol{t})
+\end{split}\]</div>
+<p>Further,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\omega_N^{nk} + \omega_N^{-nk} &amp;= \cos\left( \frac{2 \pi n k}{N} \right) + i \sin \left( \frac{2 \pi n k}{N} \right) + \cos\left( \frac{2 \pi n k}{N} \right) - i \sin \left( \frac{2 \pi n k}{N} \right) \\
+&amp;= 2\cos\left( \frac{2 \pi n k}{N} \right)
+\end{align*}
+\end{split}\]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{f}_k + \overline{\boldsymbol{f}}_k =
+\begin{bmatrix} 1 \\ \omega^k_N \\ \omega^{2k}_N \\ \vdots \\ \omega^{(N-1)k}_N \end{bmatrix} +
+\begin{bmatrix} 1 \\ \omega^{-k}_N \\ \omega^{-2k}_N \\ \vdots \\ \omega^{-(N-1)k}_N \end{bmatrix}
+= \begin{bmatrix} 2 \\ 2\cos( 2 \pi k/N ) \\ 2\cos( 2 \pi n (2k)/N ) \\ \vdots \\ 2\cos( 2 \pi (N-1) k/N ) \end{bmatrix}
+= 2 \cos(2 \pi k \boldsymbol{t})
+\renewcommand{\arraystretch}{1}
+\end{split}\]</div>
+<p>The last equality is proved similarly.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} = A \cos(2 \pi k \boldsymbol{t} + \phi)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}(\boldsymbol{x}) = \frac{AN}{2} e^{i \phi} \, \boldsymbol{e}_k + \frac{AN}{2} e^{-i \phi} \, \boldsymbol{e}_{N-k}
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. We proved in a previous proposition</p>
+<div class="math notranslate nohighlight">
+\[
+\cos(2 \pi k \boldsymbol{t} ) = \frac{1}{2} \left( \boldsymbol{f}_k + \overline{\boldsymbol{f}}_k \right) = \frac{1}{2} \left( \boldsymbol{f}_k + \boldsymbol{f}_{N-k} \right)
+\]</div>
+<p>and we also showed that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}( \boldsymbol{f}_k ) = N \boldsymbol{e}_k
+\]</div>
+<p>Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}(\cos(2 \pi k \boldsymbol{t} )) = \frac{1}{2} \mathrm{DFT}(\left( \boldsymbol{f}_k + \boldsymbol{f}_{N-k} \right)) = \frac{1}{2} \left( N\boldsymbol{e}_k + N \boldsymbol{e}_{N-k} \right)
+\]</div>
+<p>Similarly, compute</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}(\sin(2 \pi k \boldsymbol{t} )) = \frac{1}{2i} \mathrm{DFT}(\left( \boldsymbol{f}_k - \boldsymbol{f}_{N-k} \right)) = \frac{1}{2i} \left( N\boldsymbol{e}_k - N \boldsymbol{e}_{N-k} \right)
+\]</div>
+<p>Use the trigonometric identity</p>
+<div class="math notranslate nohighlight">
+\[
+\cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta
+\]</div>
+<p>to find</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathrm{DFT}(\boldsymbol{x}) &amp;= \mathrm{DFT}(A \cos(2 \pi k \boldsymbol{t} + \phi)) \\
+&amp;= A \cos(\phi) \, \mathrm{DFT}(\cos(2 \pi k \boldsymbol{t}))  - A  \sin(\phi) \, \mathrm{DFT}(\sin(2 \pi k \boldsymbol{t})) \\
+&amp;= \frac{A \cos(\phi)}{2} \left( N\boldsymbol{e}_k + N \boldsymbol{e}_{N-k} \right) - \frac{A \sin(\phi)}{2i} \left( N\boldsymbol{e}_k - N \boldsymbol{e}_{N-k} \right) \\
+&amp;= \frac{AN ( \cos(\phi) + i \sin(\phi) )}{2} \, \boldsymbol{e}_k + \frac{AN (\cos(\phi) - i\sin(\phi))}{2} \, \boldsymbol{e}_{N-k} \\
+&amp;= \frac{AN}{2} e^{i \phi} \, \boldsymbol{e}_k + \frac{AN}{2} e^{-i \phi} \, \boldsymbol{e}_{N-k}
+\end{align*}
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="stemplots">
+<h2>Stemplots<a class="headerlink" href="#stemplots" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>magnitude stemplot</strong> of a complex vector <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{C}^N\)</span> is the plot of the magnitude <span class="math notranslate nohighlight">\(| \boldsymbol{y}[n] |\)</span> versus the index <span class="math notranslate nohighlight">\(n\)</span>. The <strong>angle stemplot</strong> of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is the plot of the argument <span class="math notranslate nohighlight">\(\angle \boldsymbol{y}[n]\)</span> versus the index <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(N=8\)</span> and compute the DFT of the sinusoid <span class="math notranslate nohighlight">\(\boldsymbol{x} = \sin(2 \pi \boldsymbol{t})\)</span>. Since <span class="math notranslate nohighlight">\(\boldsymbol{x} = \cos(2 \pi \boldsymbol{t} - \pi/2)\)</span> we have <span class="math notranslate nohighlight">\(A=1\)</span>, <span class="math notranslate nohighlight">\(k=1\)</span> and <span class="math notranslate nohighlight">\(\phi = -\pi/2\)</span>, and so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x}) = -4i \boldsymbol{e}_1 + 4i \boldsymbol{e}_7
+= \begin{bmatrix} 0 \\ -4i \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 4i \end{bmatrix}
+\end{split}\]</div>
+<p>The magnitude stemplot of <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span> is given by</p>
+<a class="reference internal image-reference" href="../_images/stem03.png"><img alt="../_images/stem03.png" class="align-center" src="../_images/stem03.png" style="width: 500px;" /></a>
+<p>The angle stemplot of <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span> is given by</p>
+<a class="reference internal image-reference" href="../_images/stem04.png"><img alt="../_images/stem04.png" class="align-center" src="../_images/stem04.png" style="width: 500px;" /></a>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(N=8\)</span> and let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \\ 1 \\ -1 \\ -1 \\ -1 \\ -1 \end{array} \right]
+\end{split}\]</div>
+<p>Sketch the signal</p>
+<a class="reference internal image-reference" href="../_images/stem05.png"><img alt="../_images/stem05.png" class="align-center" src="../_images/stem05.png" style="width: 500px;" /></a>
+<p>What frequencies occur in this signal? Compute the DFT</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})
+= \begin{bmatrix} 0 \\ 2 - 2(\sqrt{2} + 1)i \\ 0 \\ 2 - 2(\sqrt{2} - 1)i \\ 0 \\ 2 + 2(\sqrt{2} - 1)i \\ 2 + 2(\sqrt{2} + 1)i  \end{bmatrix}
+\end{split}\]</div>
+<p>The magnitude stemplot of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is given by</p>
+<a class="reference internal image-reference" href="../_images/stem06.png"><img alt="../_images/stem06.png" class="align-center" src="../_images/stem06.png" style="width: 500px;" /></a>
+<p>The angle stemplot of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is given by</p>
+<a class="reference internal image-reference" href="../_images/stem07.png"><img alt="../_images/stem07.png" class="align-center" src="../_images/stem07.png" style="width: 500px;" /></a>
+<p>Therefore we may rewrite the signal <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> as a sum of sinusoids</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{x} = A_1 \cos(2 \pi \boldsymbol{t} + \phi_1) + A_3 \cos(6 \pi \boldsymbol{t} + \phi_3)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+A_1 = 2 \sqrt{4 + 2\sqrt{2}}
+\hspace{5mm}
+\phi_1 = -\frac{3 \pi}{8}
+\hspace{5mm}
+A_3 = 2 \sqrt{4 - 2\sqrt{2}}
+\hspace{5mm}
+\phi_3 = -\frac{\pi}{8}
+\]</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Find a formula for <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> as a sum of sinusoids given</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathrm{DFT}(\boldsymbol{x}) = \begin{bmatrix} 1 &amp; 3-3i &amp; 2\sqrt{3}+2i&amp; -4i&amp; 4i &amp;2\sqrt{3}-2i &amp; 3+3i \end{bmatrix}^T
+   \]</div>
+</li>
+<li><p>Sketch the signal <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> such that the magnitude and phase plots of <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span> are</p>
+<a class="reference internal image-reference" href="../_images/04_ex02.png"><img alt="../_images/04_ex02.png" class="align-center" src="../_images/04_ex02.png" style="width: 500px;" /></a>
+</li>
+<li><p>Run the following Python code for different values <span class="math notranslate nohighlight">\(N\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Describe the magnitude plot and explain why it has the same general shape for each random sample. (Recall <code class="docutils literal notranslate"><span class="pre">np.random.rand</span></code> samples from the uniform distribution on <span class="math notranslate nohighlight">\([0,1]\)</span>.)</p>
+</li>
+<li><p>Match the signal with the magnitude plot of its discrete Fourier transform.</p>
+<a class="reference internal image-reference" href="../_images/04_ex01a.png"><img alt="../_images/04_ex01a.png" class="align-center" src="../_images/04_ex01a.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/04_ex01b.png"><img alt="../_images/04_ex01b.png" class="align-center" src="../_images/04_ex01b.png" style="width: 600px;" /></a>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dft"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="dft.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Discrete Fourier Transform</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="fft.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Fast Fourier Transform</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

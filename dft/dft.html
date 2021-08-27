@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discrete Fourier Transform &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequency, Amplitude and Phase" href="frequency.html" />
+    <link rel="prev" title="Computing Eigenvalues" href="../eigenvalues/computing_eigenvalues.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dft/dft.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roots-of-unity">
+   Roots of Unity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-basis">
+   Fourier Basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discrete-fourier-transform">
+<h1>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>The discrete Fourier transform (DFT) is the orthogonal projection onto the Fourier basis vectors <span class="math notranslate nohighlight">\(\boldsymbol{f}_0 , \dots, \boldsymbol{f}_{N-1}\)</span>.</p>
+</div>
+<div class="section" id="roots-of-unity">
+<h2>Roots of Unity<a class="headerlink" href="#roots-of-unity" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>An <strong><span class="math notranslate nohighlight">\(N\)</span>th root of unity</strong> is a complex number <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(\omega^N = 1\)</span>.</p>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\omega_N = e^{2 \pi i / N}\)</span>. Then <span class="math notranslate nohighlight">\(\omega_N\)</span> is an <span class="math notranslate nohighlight">\(N\)</span>th root of unity and <span class="math notranslate nohighlight">\(1,\omega_N,\omega_N^2,\dots,\omega_N^{N-1}\)</span> are all the <span class="math notranslate nohighlight">\(N\)</span>th roots of unity.</p>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\omega_N = e^{2 \pi i / N}\)</span>.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overline{\omega}_N = \omega_N^{-1} = \omega_N^{N-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \omega_N^k = \cos\left( \frac{2 \pi k}{N} \right) + i \sin \left( \frac{2 \pi k}{N} \right)\)</span></p></li>
+</ol>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\omega_N = e^{2 \pi i / N}\)</span> and let <span class="math notranslate nohighlight">\(k\)</span> be an integer such that <span class="math notranslate nohighlight">\(0&lt;k&lt;N\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{n=0}^{N-1} \omega_N^{nk} = 0
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. The sum is a geometric series</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{n=0}^{N-1} r^n = \frac{1 - r^N}{1 - r}
+\]</div>
+<p>and so with <span class="math notranslate nohighlight">\(r = \omega_N^k\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{n=0}^{N-1} \omega_N^{nk} =  \frac{1 - \omega_N^{kN}}{1 - \omega_N^k} = 0
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(\omega_N^{kN} = 1\)</span> and <span class="math notranslate nohighlight">\(\omega_N^k \not= 1\)</span>.</p>
+</div>
+</div>
+<div class="section" id="fourier-basis">
+<h2>Fourier Basis<a class="headerlink" href="#fourier-basis" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>standard basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol{e}_0 , \dots, \boldsymbol{e}_{N-1}\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with all 0s except 1 in index <span class="math notranslate nohighlight">\(k\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{e}_k = \begin{bmatrix} \boldsymbol{0} \\ 1 \\ \boldsymbol{0} \end{bmatrix} \leftarrow \text{index } k
+\end{split}\]</div>
+<p>Use 0-indexing (as in Python) such that the first entry is at index 0. For example, for <span class="math notranslate nohighlight">\(N=3\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{e}_0 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \hspace{10mm}
+\boldsymbol{e}_1 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \hspace{10mm}
+\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(N\)</span> be a positive integer and let <span class="math notranslate nohighlight">\(\omega_N = e^{2 \pi i / N}\)</span>. The <strong>Fourier basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol{f}_0 , \dots, \boldsymbol{f}_{N-1}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\renewcommand{\arraystretch}{1.5}
+\boldsymbol{f}_k = \begin{bmatrix} 1 \\ \omega^k_N \\ \omega^{2k}_N \\ \vdots \\ \omega^{(N-1)k}_N \end{bmatrix}
+\renewcommand{\arraystretch}{1}
+\end{split}\]</div>
+</div>
+<div class="example docutils">
+<p>For <span class="math notranslate nohighlight">\(N=2\)</span>, <span class="math notranslate nohighlight">\(\omega_2 = -1\)</span> and the Fourier basis of <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{f}_0 = \left[ \begin{array}{r} 1 \\ 1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_1 = \left[ \begin{array}{r} 1 \\ -1 \end{array} \right]
+\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(N=3\)</span>, <span class="math notranslate nohighlight">\(\omega_3 = e^{2 \pi i/3} = (-1 + \sqrt{3}i)/2\)</span> and the Fourier basis of <span class="math notranslate nohighlight">\(\mathbb{C}^3\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{f}_0 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_1 = \left[ \begin{array}{c} 1 \\ (-1 + \sqrt{3}i)/2 \\ (-1 - \sqrt{3}i)/2 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_2 = \left[ \begin{array}{c} 1 \\ (-1 - \sqrt{3}i)/2 \\ (-1 + \sqrt{3}i)/2 \end{array} \right]
+\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(N=4\)</span>, <span class="math notranslate nohighlight">\(\omega_4 = i\)</span> and the Fourier basis of <span class="math notranslate nohighlight">\(\mathbb{C}^4\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{f}_0 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \\ 1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_1 = \left[ \begin{array}{r} 1 \\ i \\ -1 \\ -i \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_2 = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \\ -1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{f}_3 = \left[ \begin{array}{r} 1 \\ -i \\ -1 \\ i \end{array} \right]
+\end{split}\]</div>
+</div>
+<div class="proposition docutils">
+<p>The Fourier basis <span class="math notranslate nohighlight">\(\boldsymbol{f}_0 , \dots, \boldsymbol{f}_{N-1}\)</span> satisfies</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\langle \boldsymbol{f}_k , \boldsymbol{f}_{\ell} \rangle = \left\{ \begin{array}{cl} N &amp; \text{if } k = \ell \\ 0 &amp; \text{otherwise} \end{array} \right.
+\end{split}\]</div>
+<p>Therefore the Fourier basis is an orthogonal basis of <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \boldsymbol{f}_k , \boldsymbol{f}_{\ell} \rangle
+= \sum_{n=0}^{N-1} \omega_N^{nk} \omega_N^{-n\ell}
+= \sum_{n=0}^{N-1} \omega_N^{n(k -\ell)}
+\]</div>
+<p>We showed in a previous proposition that the sum is equal to 0 if <span class="math notranslate nohighlight">\(k \not= \ell\)</span>. If <span class="math notranslate nohighlight">\(k = \ell\)</span> then clearly the sum is equal to <span class="math notranslate nohighlight">\(N\)</span>.</p>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(0&lt;k&lt;N\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\boldsymbol{f}}_k = \boldsymbol{f}_{N-k}
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. By definition and using <span class="math notranslate nohighlight">\(\omega_N^N = 1\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\renewcommand{\arraystretch}{1.5}
+\overline{\boldsymbol{f}}_k = \begin{bmatrix} 1 \\ \overline{\omega}^k_N \\ \overline{\omega}^{2k}_N \\ \vdots \\ \overline{\omega}^{(N-1)k}_N \end{bmatrix}
+= \begin{bmatrix} 1 \\ \omega^{-k}_N \\ \omega^{-2k}_N \\ \vdots \\ \omega^{-(N-1)k}_N \end{bmatrix}
+= \begin{bmatrix} 1 \\ \omega^{N-k}_N \\ \omega^{2(N-k)}_N \\ \vdots \\ \omega^{(N-1)(N-k)}_N \end{bmatrix}
+= \boldsymbol{f}_{N-k}
+\renewcommand{\arraystretch}{1}
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Discrete Fourier Transform<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{C}^N\)</span>. The <strong>discrete Fourier transform</strong> of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}(\boldsymbol{x}) = F_N \boldsymbol{x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F_N\)</span> is the <strong>Fourier matrix</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\renewcommand{\arraystretch}{1.5}
+F_N =
+\begin{bmatrix} &amp; &amp; \overline{\boldsymbol{f}}^T_0 &amp; &amp; \\ &amp; &amp; \overline{\boldsymbol{f}}^T_1 &amp; &amp; \\ &amp; &amp; \vdots &amp; &amp; \\ &amp; &amp; \overline{\boldsymbol{f}}^T_{N-1} &amp; &amp; \end{bmatrix}
+=
+\renewcommand{\arraystretch}{1.25}
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 \\
+1 &amp; \overline{\omega}_N &amp; \overline{\omega}_N^2 &amp; \cdots &amp; \overline{\omega}_N^{N-1} \\
+1 &amp; \overline{\omega}_N^2 &amp; \overline{\omega}_N^4 &amp; \cdots &amp; \overline{\omega}_N^{2(N-1)} \\
+1 &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; \overline{\omega}_N^{N-1} &amp; \overline{\omega}_N^{2(N-1)} &amp; \cdots &amp; \overline{\omega}_N^{(N-1)^2}
+\end{bmatrix}
+\renewcommand{\arraystretch}{1}
+\end{split}\]</div>
+</div>
+<div class="note docutils">
+<p>Expand <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> in terms of the Fourier basis</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{x} = \frac{\langle \boldsymbol{x} , \boldsymbol{f}_0 \rangle}{\langle \boldsymbol{f}_0 , \boldsymbol{f}_0 \rangle} \boldsymbol{f}_0 + \cdots + \frac{\langle \boldsymbol{x} , \boldsymbol{f}_{N-1} \rangle}{\langle \boldsymbol{f}_{N-1} , \boldsymbol{f}_{N-1} \rangle} \boldsymbol{f}_{N-1}
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\langle \boldsymbol{f}_k , \boldsymbol{f}_k \rangle = N\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,N-1\)</span> and write as matrix multiplication</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \frac{1}{N}
+\begin{bmatrix} &amp; &amp; \\ \boldsymbol{f}_0 &amp; \cdots &amp; \boldsymbol{f}_{N-1} \\ &amp; &amp; \end{bmatrix}
+\begin{bmatrix} \langle \boldsymbol{x} , \boldsymbol{f}_0 \rangle \\ \langle \boldsymbol{x} , \boldsymbol{f}_1 \rangle \\ \vdots \\ \langle \boldsymbol{x} , \boldsymbol{f}_{N-1} \rangle \end{bmatrix}
+= \frac{1}{N}
+\begin{bmatrix} &amp; &amp; \\ \boldsymbol{f}_0 &amp; \cdots &amp; \boldsymbol{f}_{N-1} \\ &amp; &amp; \end{bmatrix}
+\renewcommand{\arraystretch}{1.5}
+\begin{bmatrix} &amp; &amp; \overline{\boldsymbol{f}}^T_0 &amp; &amp; \\ &amp; &amp; \overline{\boldsymbol{f}}^T_1 &amp; &amp; \\ &amp; &amp; \vdots &amp; &amp; \\ &amp; &amp; \overline{\boldsymbol{f}}^T_{N-1} &amp; &amp; \end{bmatrix}
+\renewcommand{\arraystretch}{1}
+\boldsymbol{x}
+\end{split}\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(DFT(\boldsymbol{x})\)</span> is the vector of coefficients of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with respect to the Fourier basis (up to multiplication by <span class="math notranslate nohighlight">\(N\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+DFT(\boldsymbol{x})
+=
+\begin{bmatrix} \langle \boldsymbol{x} , \boldsymbol{f}_0 \rangle \\ \langle \boldsymbol{x} , \boldsymbol{f}_1 \rangle \\ \vdots \\ \langle \boldsymbol{x} , \boldsymbol{f}_{N-1} \rangle \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="definition docutils">
+<p>The DFT is used to study sound, images and any kind of information that can be represented by a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{C}^N\)</span>. Therefore, in the context of the DFT, we use the term <strong>signal</strong> to refer to a (column) vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{C}^N\)</span> and we use the notation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \begin{bmatrix} x_0 \\ x_1 \\ x_2 \\ \vdots \\ x_{N-1} \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{x}[n] = x_n
+\end{split}\]</div>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> be a real signal (that is, <span class="math notranslate nohighlight">\(\boldsymbol{x}[k] \in \mathbb{R}\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,N-1\)</span>) and let <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\boldsymbol{y}[k]} = \boldsymbol{y}[N-k]
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. Compute from the definition</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\overline{\boldsymbol{y}[k]} &amp;= \overline{\langle \boldsymbol{x} , \boldsymbol{f}_k \rangle} =  \langle \boldsymbol{f}_k , \boldsymbol{x} \rangle = \sum_{n=0}^{N-1} \omega_N^{nk} \overline{x}_n \\
+&amp;= \sum_{n=0}^{N-1} \omega_N^{nk-nN} x_n \\
+&amp;= \sum_{n=0}^{N-1} \omega_N^{-(N-k)n} x_n = \boldsymbol{y}[N-k]
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="proposition docutils">
+<p>For each <span class="math notranslate nohighlight">\(k=0,\dots,N-1\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{DFT}(\boldsymbol{f}_k) = N \boldsymbol{e}_k
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>th standard basis vector.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. By definition of DFT and the fact <span class="math notranslate nohighlight">\(\langle \boldsymbol{f}_k , \boldsymbol{f}_{\ell} \rangle = 0\)</span> when <span class="math notranslate nohighlight">\(k \not= \ell\)</span> and <span class="math notranslate nohighlight">\(\langle \boldsymbol{f}_k , \boldsymbol{f}_k \rangle = N\)</span>, compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{DFT}(\boldsymbol{f}_k) =
+\renewcommand{\arraystretch}{1.5}
+\begin{bmatrix} &amp; &amp; \overline{\boldsymbol{f}}^T_0 &amp; &amp; \\ &amp; &amp; \vdots &amp; &amp; \\ &amp; &amp; \overline{\boldsymbol{f}}^T_{N-1} &amp; &amp; \end{bmatrix} \boldsymbol{f}_k
+=
+\begin{bmatrix} \langle \boldsymbol{f}_k , \boldsymbol{f}_0 \rangle \\ \vdots \\ \langle \boldsymbol{f}_k , \boldsymbol{f}_{N-1} \rangle \end{bmatrix}
+=
+\begin{bmatrix} \boldsymbol{0} \\ N \\ \boldsymbol{0} \end{bmatrix} \leftarrow \text{index } k
+\renewcommand{\arraystretch}{1}
+\end{split}\]</div>
+<p>and so <span class="math notranslate nohighlight">\(\mathrm{DFT}(\boldsymbol{f}_k) = N \boldsymbol{e}_k\)</span>.</p>
+</div>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{C}^N\)</span>. The <strong>inverse discrete Fourier transform</strong> of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{IDFT}(\boldsymbol{y}) = \frac{1}{N} \overline{F}^T_N \boldsymbol{y}
+\]</div>
+</div>
+<div class="note docutils">
+<p>The Fourier matrix <span class="math notranslate nohighlight">\(F_N\)</span> is <em>not</em> unitary however the matrix <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{N}} F_N\)</span> is unitary.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(N\)</span> is an even integer then the vector <span class="math notranslate nohighlight">\(\boldsymbol{f}_{N/2}\)</span> in the Fourier basis of <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span> has real entries.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^N\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span>. Then <span class="math notranslate nohighlight">\(\overline{\boldsymbol{x}[k]} = \boldsymbol{x}[N-k]\)</span> for all <span class="math notranslate nohighlight">\(0&lt;k&lt;N\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Suppose a signal <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^9\)</span> of length 9 has real values and let <span class="math notranslate nohighlight">\(\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})\)</span>. Determine all the values of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> given the values at even indices</p>
+<div class="math notranslate nohighlight">
+\[
+   \boldsymbol{y}[0] = 1 \hspace{5mm}
+   \boldsymbol{y}[2] = 2+i \hspace{5mm}
+   \boldsymbol{y}[4] = 1+2i \hspace{5mm}
+   \boldsymbol{y}[6] = 1-3i \hspace{5mm}
+   \boldsymbol{y}[8] = 1-i
+   \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> be an even integer and let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^N\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = 1\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is even and <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = 0\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is odd. Find <span class="math notranslate nohighlight">\(\mathrm{DFT}(\boldsymbol{x})\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> be an even integer and let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^N\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = 1\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is even and <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = -1\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is odd. Find <span class="math notranslate nohighlight">\(\mathrm{DFT}(\boldsymbol{x})\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> be an integer and let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^N\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{x}[0] = 0\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}[n] = 1\)</span> for <span class="math notranslate nohighlight">\(0&lt;n&lt;N\)</span>. Find <span class="math notranslate nohighlight">\(\mathrm{DFT}(\boldsymbol{x})\)</span>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dft"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../eigenvalues/computing_eigenvalues.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Computing Eigenvalues</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="frequency.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Frequency, Amplitude and Phase</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

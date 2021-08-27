@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Analysis &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interpolation" href="interpolation.html" />
+    <link rel="prev" title="LU Decomposition" href="lu.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orthogonality/least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/linear_equations/error_analysis.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-norm">
+   Matrix Norm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#condition-number">
+   Condition Number
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relative-errors">
+   Relative Errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="error-analysis">
+<h1>Error Analysis<a class="headerlink" href="#error-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="bigidea docutils">
+<p>The condition number of a nonsingular matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = \| A \| \| A^{-1} \|\)</span>. Given a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>, the condition number of <span class="math notranslate nohighlight">\(A\)</span> quantifies how sensitive the solution <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is relative to changes in <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p>
+</div>
+<div class="section" id="matrix-norm">
+<h2>Matrix Norm<a class="headerlink" href="#matrix-norm" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>norm</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \| = \sqrt{ | x_1|^2 + \cdots + | x_n |^2 } = \sqrt{ \sum_{k=1}^n | x_k |^2 }
+\]</div>
+</div>
+<div class="definition docutils">
+<p>The vector norm <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> satisfies the following properties.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| \boldsymbol{x} \| \geq 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| \boldsymbol{x} \| = 0\)</span> if and only if <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| c \boldsymbol{x} \| = |c| \| \boldsymbol{x} \|\)</span> for any <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| \boldsymbol{x} + \boldsymbol{y} \| \leq \| \boldsymbol{x} \| + \| \boldsymbol{y} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} , \boldsymbol{y} \in \mathbb{R}^n\)</span></p></li>
+</ol>
+<p>Condition 4 is called the <strong>triangle inequality</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">Wikipedia:Norm</a>.</p>
+</div>
+<div class="definition docutils">
+<p>The <strong>norm</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \| = \max_{\boldsymbol{x} \not= \boldsymbol{0} } \frac{ \| A \boldsymbol{x} \| }{ \| \boldsymbol{x}  \|}
+\]</div>
+<p>The matrix norm is also called the <strong>operator norm</strong>.</p>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(D\)</span> be a diagonal matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{d}\)</span> be the vector of diagonal entries of <span class="math notranslate nohighlight">\(D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; d_n \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\| D \| = \max \{ |d_1| , \dots, |d_n| \}\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a nonsingular matrix. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \| = \max_{ \| \boldsymbol{x} \| = 1 } \| A \boldsymbol{x} \|
+\hspace{10mm} \text{and} \hspace{10mm}
+\| A^{-1} \| = \frac{1}{ \displaystyle \min_{ \| \boldsymbol{x} \| = 1 } \| A \boldsymbol{x} \|}
+\]</div>
+<p>In other words, <span class="math notranslate nohighlight">\(\| A \|\)</span> is the <em>maximum stretch of a unit vector</em> by the linear transformation <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> is the <em>reciprocal</em> of the <em>minimum stretch of a unit vector</em> by the linear transformation <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Note that <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| / \| \boldsymbol{x} \|= \| A ( \boldsymbol{x} / \| \boldsymbol{x} \| ) \|\)</span> therefore</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \| = \max_{ \| \boldsymbol{x} \| = 1 } \| A \boldsymbol{x} \|
+\]</div>
+<p>Similarly, we can rearrange the definition of <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> to find:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\| A^{-1} \| &amp;= \max_{ \boldsymbol{x} \not= 0} \frac{\| A^{-1} \boldsymbol{x} \|}{\| \boldsymbol{x} \|} \\
+&amp;= \max_{ \boldsymbol{x} \not= 0} \frac{\| A^{-1} A \boldsymbol{x} \|}{\| A \boldsymbol{x} \|} \\
+&amp;= \max_{ \boldsymbol{x} \not= 0} \frac{\| \boldsymbol{x} \|}{\| A \boldsymbol{x} \|} \\
+&amp;= \max_{ \| \boldsymbol{x} \| = 1} \frac{1}{\| A \boldsymbol{x} \|} \\
+&amp;= \frac{1}{\displaystyle \min_{ \| \boldsymbol{x} \| = 1} \| A \boldsymbol{x} \|}
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="note docutils">
+<p>How do we compute the matrix norm <span class="math notranslate nohighlight">\(\| A \|\)</span> for a general matrix? This is a nontrivial problem and we will see later how to use the singular values of <span class="math notranslate nohighlight">\(A\)</span> to determine the matrix norm.</p>
+</div>
+<div class="theorem docutils">
+<p>The matrix norm satisfies the properties:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| A \| &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(A \not= 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A \| = 0\)</span> if and only <span class="math notranslate nohighlight">\(A = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| c A \| = |c| \| A \|\)</span> for any <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A + B \| \leq \| A \| + \| B \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A B \| \leq \| A \| \| B \|\)</span> (if <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are square matrices)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| \leq \| A \| \| \boldsymbol{x} \|\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span></p></li>
+</ol>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_norm">Wikipedia: Matrix norm</a>.</p>
+</div>
+</div>
+<div class="section" id="condition-number">
+<h2>Condition Number<a class="headerlink" href="#condition-number" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>condition number</strong> of a nonsingular square matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{cond}(A) = \| A \| \| A^{-1} \|
+\]</div>
+<p>By convention, we define <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = \infty\)</span> if <span class="math notranslate nohighlight">\(\det(A) = 0\)</span>.</p>
+</div>
+<div class="note docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is nonsingular, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{cond}(A) = \| A \| \| A^{-1} \| = \frac{\text{maximum stretch of a unit vector}}{\text{minimum stretch of a unit vector}}
+\]</div>
+</div>
+<div class="example docutils">
+<p>The image below shows the unit circle and its image under the linear transformation defined by a <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>. Determine <span class="math notranslate nohighlight">\(\| A \|\)</span>, <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> and <span class="math notranslate nohighlight">\(\mathrm{cond}(A)\)</span>.</p>
+<p><img alt="img/img01.png" src="../_images/img01.png" /></p>
+<p>Observe the maximum stretch of a unit vector is <span class="math notranslate nohighlight">\(\| A \| =  3 / \sqrt{2}\)</span>, the minimum stretch is <span class="math notranslate nohighlight">\(1/\sqrt{2}\)</span> therefore <span class="math notranslate nohighlight">\(\| A^{-1} \| = \sqrt{2}\)</span> and the condition number is <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = 3\)</span>.</p>
+</div>
+</div>
+<div class="section" id="relative-errors">
+<h2>Relative Errors<a class="headerlink" href="#relative-errors" title="Permalink to this headline">¶</a></h2>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a nonsingular matrix and consider the linear system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>. If a small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> corresponds to a change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{x}\)</span> in the sense that <span class="math notranslate nohighlight">\(A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{b}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\| \Delta \boldsymbol{x} \|}{\| \boldsymbol{x} \|} \leq \mathrm{cond}(A) \frac{\| \Delta \boldsymbol{b} \|}{\| \boldsymbol{b} \|}
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>, we have <span class="math notranslate nohighlight">\(\Delta x = A^{-1} \Delta \boldsymbol{b}\)</span>. Computing norms we find</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\| \boldsymbol{b} \| &amp;= \| A \boldsymbol{x} \| \\ &amp; \\
+\| \Delta \boldsymbol{x} \| \| \boldsymbol{b} \| &amp;= \| A^{-1} \Delta \boldsymbol{b} \| \| A \boldsymbol{x} \| \\ &amp; \\
+\| \Delta \boldsymbol{x} \| \| \boldsymbol{b} \| &amp;\leq \| A^{-1} \| \| \Delta\boldsymbol{b} \| \| A \| \| \boldsymbol{x} \| \\ &amp; \\
+\frac{\| \Delta \boldsymbol{x} \|}{ \| \boldsymbol{x} \|}  &amp;\leq  \| A \| \| A^{-1} \| \frac{\| \Delta \boldsymbol{b} \|}{\| \boldsymbol{b} \|}
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="definition docutils">
+<p>Given a vector <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> and small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span>, the <strong>relative change</strong> (or <strong>relative error</strong>) is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\| \Delta \boldsymbol{b} \|}{\| \boldsymbol{b} \|}
+\]</div>
+</div>
+<div class="note docutils">
+<p>The error bound</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\| \Delta \boldsymbol{x} \|}{\| \boldsymbol{x} \|} \leq \mathrm{cond}(A) \frac{\| \Delta \boldsymbol{b} \|}{\| \boldsymbol{b} \|}
+\]</div>
+<p>implies that if <span class="math notranslate nohighlight">\(A\)</span> has a large condition number then small changes in <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> may result in <em>very</em> large changes in the solution <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>. In other words, the solution <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is sensitive to errors in <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>: If <span class="math notranslate nohighlight">\(\| A \| = 1\)</span> then <span class="math notranslate nohighlight">\(A = I\)</span>.</p></li>
+<li><p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is a 2 by 2 matrix such that the image of the unit circle under the linear transformation <span class="math notranslate nohighlight">\(A\)</span> is:</p>
+<p><img alt="/img/img01b.png" src="../_images/img01b.png" /></p>
+<p>Determine <span class="math notranslate nohighlight">\(\mathrm{cond}(A)\)</span>.</p>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./linear_equations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="lu.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">LU Decomposition</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="interpolation.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Interpolation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
