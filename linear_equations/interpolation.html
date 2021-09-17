@@ -508,9 +508,44 @@ A = \begin{bmatrix}
 <a class="reference internal image-reference" href="../_images/01_05_img01.png"><img alt="../_images/01_05_img01.png" class="align-center" src="../_images/01_05_img01.png" style="width: 500px;" /></a>
 </div>
 <div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be the Vandermonde matrix for points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{det}(A) = \prod_{0 \leq i &lt; j \leq d} (t_j - t_i)
+\]</div>
+</div>
+<div class="example docutils">
+<p>Let’s compute the formula for the determinant of the Vandermonde matrix for the cases <span class="math notranslate nohighlight">\(d = 1\)</span> and <span class="math notranslate nohighlight">\(d = 2\)</span>. Compute for <span class="math notranslate nohighlight">\(d = 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{det} \left( \begin{bmatrix} 1 &amp; t_0 \\ 1 &amp; t_1 \end{bmatrix} \right) = t_1 - t_0
+\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(d=2\)</span>, use <span class="math notranslate nohighlight">\(\mathrm{det}(A) = \mathrm{det}(U)\)</span> from the LU decomposition. Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix} 1 &amp; t_0 &amp; t_0^2 \\ 1 &amp; t_1 &amp; t_1^2 \\ \\ 1 &amp; t_2 &amp; t_2^2 \end{bmatrix}
+\longrightarrow
+\begin{bmatrix} 1 &amp; t_0 &amp; t_0^2 \\ 0 &amp; t_1 - t_0 &amp; t_1^2 - t_0^2 \\ 0 &amp; t_2 - t_0 &amp; t_2^2 - t_0^2 \end{bmatrix}
+\longrightarrow
+\begin{bmatrix} 1 &amp; t_0 &amp; t_0^2 \\ 0 &amp; t_1 - t_0 &amp; t_1^2 - t_0^2 \\ 0 &amp; 0 &amp; * \end{bmatrix}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+* = t_2^2 - t_0^2 - \frac{t_2 - t_0}{t_1 - t_0} (t_1^2 - t_0^2) = (t_2 - t_0)(t_2 - t_1)
+\]</div>
+<p>The determinant is the product of the diagonal entries of <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{det} \left( \begin{bmatrix} 1 &amp; t_0 &amp; t_0^2 \\ 1 &amp; t_1 &amp; t_1^2 \\ 1 &amp; t_2 &amp; t_2^2 \end{bmatrix}
+ \right)
+= (t_1 - t_0)(t_2 - t_0)(t_2 - t_1)
+\end{split}\]</div>
+</div>
+<div class="theorem docutils">
 <p>Consider <span class="math notranslate nohighlight">\(d+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for <span class="math notranslate nohighlight">\(i \not= j\)</span>). There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
 <hr class="docutils" />
-<p><em>Proof</em>. The Vandermonde matrix is invertible when the values <span class="math notranslate nohighlight">\(t_k\)</span> are distinct therefore there is a unique solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span>.</p>
+<p><em>Proof</em>. The determinant of the Vandermonde matrix is nonzero when the values <span class="math notranslate nohighlight">\(t_k\)</span> are distinct therefore it is invertible and so there is a unique solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span>.</p>
 </div>
 </div>
 <div class="section" id="lagrange-basis">

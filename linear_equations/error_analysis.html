@@ -429,16 +429,6 @@
 \]</div>
 <p>The matrix norm is also called the <strong>operator norm</strong>.</p>
 </div>
-<div class="example docutils">
-<p>Let <span class="math notranslate nohighlight">\(D\)</span> be a diagonal matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{d}\)</span> be the vector of diagonal entries of <span class="math notranslate nohighlight">\(D\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; d_n \end{bmatrix}
-\hspace{10mm}
-\boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
-\end{split}\]</div>
-<p>Then <span class="math notranslate nohighlight">\(\| D \| = \max \{ |d_1| , \dots, |d_n| \}\)</span>.</p>
-</div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a nonsingular matrix. Then</p>
 <div class="math notranslate nohighlight">
@@ -463,6 +453,27 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 &amp;= \max_{ \boldsymbol{x} \not= 0} \frac{\| \boldsymbol{x} \|}{\| A \boldsymbol{x} \|} \\
 &amp;= \max_{ \| \boldsymbol{x} \| = 1} \frac{1}{\| A \boldsymbol{x} \|} \\
 &amp;= \frac{1}{\displaystyle \min_{ \| \boldsymbol{x} \| = 1} \| A \boldsymbol{x} \|}
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="proposition docutils">
+<p>Let <span class="math notranslate nohighlight">\(D\)</span> be a diagonal matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{d}\)</span> be the vector of diagonal entries of <span class="math notranslate nohighlight">\(D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; d_n \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\| D \| = \max \{ |d_1| , \dots, |d_n| \}\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\| D \| &amp;= \max_{\| \boldsymbol{x} \| = 1} \| D \boldsymbol{x} \| \\
+&amp;= \max_{\| \boldsymbol{x} \| = 1} \sqrt{d_1^2 x_1^2 + \cdots + d_n^2 x_n^2} \\
+&amp;\leq \max_{\| \boldsymbol{x} \| = 1} \left( \max_i \{ | d_i | \} \right) \sqrt{ x_1^2 + \cdots + x_n^2} \\
+&amp;= \max_i \{ | d_i | \}
 \end{align*}
 \end{split}\]</div>
 </div>

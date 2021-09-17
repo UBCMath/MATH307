@@ -372,6 +372,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rayleigh-quotient">
+   Rayleigh Quotient
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inverse-iteration">
    Inverse Iteration
   </a>
@@ -513,6 +518,35 @@ A \boldsymbol{x}_3 &amp;=
 (1 + \sqrt{2}) \begin{bmatrix} \frac{1}{\sqrt{2}} \\ 1 \\ \frac{1}{\sqrt{2}} \end{bmatrix}
 \end{split}\]</div>
 <p>therefore <span class="math notranslate nohighlight">\(\lambda_1 \approx 2.4142\)</span>.</p>
+</div>
+</div>
+<div class="section" id="rayleigh-quotient">
+<h2>Rayleigh Quotient<a class="headerlink" href="#rayleigh-quotient" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Note that if <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is an eigenvector of a matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+A \boldsymbol{x} = \lambda \boldsymbol{x}
+\hspace{5mm}
+\Rightarrow
+\hspace{5mm}
+\boldsymbol{x}^T A \boldsymbol{x} = \boldsymbol{x}^T (\lambda \boldsymbol{x})
+\hspace{5mm}
+\Rightarrow
+\hspace{5mm}
+\lambda = \frac{\boldsymbol{x}^T A \boldsymbol{x}}{ \boldsymbol{x}^T \boldsymbol{x} }
+\]</div>
+<p>Therefore if <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is an approximate eigenvector of <span class="math notranslate nohighlight">\(A\)</span> then an approximation of the corresponding eigenvalue is given by the <strong>Rayleigh quotient</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\boldsymbol{x}^T A \boldsymbol{x}}{ \boldsymbol{x}^T \boldsymbol{x} }
+\]</div>
+<p>In particular, in the power method, the sequence of Rayleigh quotients</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_k = \frac{\boldsymbol{x}_k^T A \boldsymbol{x}_k}{ \boldsymbol{x}_k^T \boldsymbol{x}_k }
+\]</div>
+<p>converges to the dominant eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </div>
 </div>
 <div class="section" id="inverse-iteration">
