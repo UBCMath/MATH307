@@ -111,11 +111,51 @@ The condition number of a Vandermonde matrix gets *very* large as the size of th
 ```
 
 ```{div} theorem
+Let $A$ be the Vandermonde matrix for points $(t_0,y_0), \dots,(t_d,y_d)$. Then
+
+$$
+\mathrm{det}(A) = \prod_{0 \leq i < j \leq d} (t_j - t_i)
+$$
+```
+
+```{div} example
+Let's compute the formula for the determinant of the Vandermonde matrix for the cases $d = 1$ and $d = 2$. Compute for $d = 1$
+
+$$
+\mathrm{det} \left( \begin{bmatrix} 1 & t_0 \\ 1 & t_1 \end{bmatrix} \right) = t_1 - t_0
+$$
+
+For $d=2$, use $\mathrm{det}(A) = \mathrm{det}(U)$ from the LU decomposition. Compute
+
+$$
+\begin{bmatrix} 1 & t_0 & t_0^2 \\ 1 & t_1 & t_1^2 \\ \\ 1 & t_2 & t_2^2 \end{bmatrix}
+\longrightarrow
+\begin{bmatrix} 1 & t_0 & t_0^2 \\ 0 & t_1 - t_0 & t_1^2 - t_0^2 \\ 0 & t_2 - t_0 & t_2^2 - t_0^2 \end{bmatrix}
+\longrightarrow
+\begin{bmatrix} 1 & t_0 & t_0^2 \\ 0 & t_1 - t_0 & t_1^2 - t_0^2 \\ 0 & 0 & * \end{bmatrix}
+$$
+
+where
+
+$$
+* = t_2^2 - t_0^2 - \frac{t_2 - t_0}{t_1 - t_0} (t_1^2 - t_0^2) = (t_2 - t_0)(t_2 - t_1)
+$$
+
+The determinant is the product of the diagonal entries of $U$
+
+$$
+\mathrm{det} \left( \begin{bmatrix} 1 & t_0 & t_0^2 \\ 1 & t_1 & t_1^2 \\ 1 & t_2 & t_2^2 \end{bmatrix}
+ \right)
+= (t_1 - t_0)(t_2 - t_0)(t_2 - t_1)
+$$
+```
+
+```{div} theorem
 Consider $d+1$ data points $(t_0,y_0), \dots , (t_d,y_d)$ (such that $t_i \not= t_j$ for $i \not= j$). There exists a unique polynomial $p(t)$ of degree (at most) $d$ such that $p(t_k) = y_k$ for each $k=0,\dots,d$.
 
 ---
 
-*Proof*. The Vandermonde matrix is invertible when the values $t_k$ are distinct therefore there is a unique solution of the system $A \boldsymbol{c} = \boldsymbol{y}$.
+*Proof*. The determinant of the Vandermonde matrix is nonzero when the values $t_k$ are distinct therefore it is invertible and so there is a unique solution of the system $A \boldsymbol{c} = \boldsymbol{y}$.
 ```
 
 ### Lagrange Basis

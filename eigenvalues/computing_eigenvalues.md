@@ -129,6 +129,38 @@ $$
 therefore $\lambda_1 \approx 2.4142$.
 ```
 
+## Rayleigh Quotient
+
+```{div} definition
+Note that if $\boldsymbol{x}$ is an eigenvector of a matrix $A$ with eigenvalue $\lambda$ then
+
+$$
+A \boldsymbol{x} = \lambda \boldsymbol{x}
+\hspace{5mm}
+\Rightarrow
+\hspace{5mm}
+\boldsymbol{x}^T A \boldsymbol{x} = \boldsymbol{x}^T (\lambda \boldsymbol{x})
+\hspace{5mm}
+\Rightarrow
+\hspace{5mm}
+\lambda = \frac{\boldsymbol{x}^T A \boldsymbol{x}}{ \boldsymbol{x}^T \boldsymbol{x} }
+$$
+
+Therefore if $\boldsymbol{x}$ is an approximate eigenvector of $A$ then an approximation of the corresponding eigenvalue is given by the **Rayleigh quotient**
+
+$$
+\frac{\boldsymbol{x}^T A \boldsymbol{x}}{ \boldsymbol{x}^T \boldsymbol{x} }
+$$
+
+In particular, in the power method, the sequence of Rayleigh quotients
+
+$$
+\lambda_k = \frac{\boldsymbol{x}_k^T A \boldsymbol{x}_k}{ \boldsymbol{x}_k^T \boldsymbol{x}_k }
+$$
+
+converges to the dominant eigenvalue $\lambda$.
+```
+
 ## Inverse Iteration
 
 ```{div} definition

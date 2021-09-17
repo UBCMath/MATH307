@@ -35,18 +35,6 @@ $$
 The matrix norm is also called the **operator norm**.
 ```
 
-```{div} example
-Let $D$ be a diagonal matrix and let $\boldsymbol{d}$ be the vector of diagonal entries of $D$:
-
-$$
-D = \begin{bmatrix} d_1 & & & \\ & d_2 & & \\ & & \ddots & \\ & & & d_n \end{bmatrix}
-\hspace{10mm}
-\boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
-$$
-
-Then $\| D \| = \max \{ |d_1| , \dots, |d_n| \}$.
-```
-
 ```{div} theorem
 Let $A$ be a nonsingular matrix. Then
 
@@ -75,6 +63,31 @@ $$
 &= \max_{ \boldsymbol{x} \not= 0} \frac{\| \boldsymbol{x} \|}{\| A \boldsymbol{x} \|} \\
 &= \max_{ \| \boldsymbol{x} \| = 1} \frac{1}{\| A \boldsymbol{x} \|} \\
 &= \frac{1}{\displaystyle \min_{ \| \boldsymbol{x} \| = 1} \| A \boldsymbol{x} \|}
+\end{align*}
+$$
+```
+
+```{div} proposition
+Let $D$ be a diagonal matrix and let $\boldsymbol{d}$ be the vector of diagonal entries of $D$:
+
+$$
+D = \begin{bmatrix} d_1 & & & \\ & d_2 & & \\ & & \ddots & \\ & & & d_n \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
+$$
+
+Then $\| D \| = \max \{ |d_1| , \dots, |d_n| \}$.
+
+---
+
+*Proof*. Compute
+
+$$
+\begin{align*}
+\| D \| &= \max_{\| \boldsymbol{x} \| = 1} \| D \boldsymbol{x} \| \\
+&= \max_{\| \boldsymbol{x} \| = 1} \sqrt{d_1^2 x_1^2 + \cdots + d_n^2 x_n^2} \\
+&\leq \max_{\| \boldsymbol{x} \| = 1} \left( \max_i \{ | d_i | \} \right) \sqrt{ x_1^2 + \cdots + x_n^2} \\
+&= \max_i \{ | d_i | \}
 \end{align*}
 $$
 ```
