@@ -128,7 +128,7 @@ $$
 For $d=2$, use $\mathrm{det}(A) = \mathrm{det}(U)$ from the LU decomposition. Compute
 
 $$
-\begin{bmatrix} 1 & t_0 & t_0^2 \\ 1 & t_1 & t_1^2 \\ \\ 1 & t_2 & t_2^2 \end{bmatrix}
+\begin{bmatrix} 1 & t_0 & t_0^2 \\ 1 & t_1 & t_1^2 \\ 1 & t_2 & t_2^2 \end{bmatrix}
 \longrightarrow
 \begin{bmatrix} 1 & t_0 & t_0^2 \\ 0 & t_1 - t_0 & t_1^2 - t_0^2 \\ 0 & t_2 - t_0 & t_2^2 - t_0^2 \end{bmatrix}
 \longrightarrow
