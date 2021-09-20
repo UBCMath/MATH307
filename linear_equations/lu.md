@@ -516,7 +516,7 @@ Solve the system $A \boldsymbol{x} = \boldsymbol{b}$ where
 
 $$
 A = LU =
-\begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 1 & 1 & 0 \end{bmatrix}
+\begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 1 & 1 & 1 \end{bmatrix}
 \begin{bmatrix} 2 & 4 & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}
 \hspace{10mm}
 \boldsymbol{b} = \left[ \begin{array}{r} -1 \\ 1 \\ 2 \end{array} \right]
