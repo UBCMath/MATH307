@@ -427,7 +427,7 @@ $$
 5. Explain why it is not possible to derive a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the equation
 
    $$
-   y' = \cos(y) \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = \frac{\pi}{4}
+   y'' = \cos(y) \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = \frac{\pi}{4}
    $$
 
    by applying finite difference formulas.

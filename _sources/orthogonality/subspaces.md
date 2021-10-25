@@ -214,7 +214,7 @@ for all $\boldsymbol{y} \in S$ therefore $\boldsymbol{x}_1 + \boldsymbol{x}_2 \i
 Let $c \in \mathbb{R}$ and $\boldsymbol{x} \in S^{\perp}$. Then
 
 $$
-\langle c\boldsymbol{x} , \boldsymbol{y} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} rangle = c(0) = 0
+\langle c\boldsymbol{x} , \boldsymbol{y} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle = c(0) = 0
 $$
 
 for all $\boldsymbol{y} \in S$ therefore $c \boldsymbol{x} \in S^{\perp}$.
