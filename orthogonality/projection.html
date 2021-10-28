@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="QR Decomposition" href="qr.html" />
-    <link rel="prev" title="Subspaces" href="subspaces.html" />
+    <link rel="prev" title="Orthogonal Subspaces" href="orthogonal_subspaces.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -126,6 +126,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="subspaces.html">
    Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orthogonal_subspaces.html">
+   Orthogonal Subspaces
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -386,6 +391,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projection-theorem">
+   Projection Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
   </a>
@@ -569,6 +579,9 @@ P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3
 = \frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
 \end{split}\]</div>
 </div>
+</div>
+<div class="section" id="projection-theorem">
+<h2>Projection Theorem<a class="headerlink" href="#projection-theorem" title="Permalink to this headline">¶</a></h2>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>. Then</p>
 <div class="math notranslate nohighlight">
@@ -585,12 +598,12 @@ P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <ol>
-<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> be nonzero column vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{u} \cdot \boldsymbol{v} = 0\)</span> and let</p>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> be nonzero column vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0\)</span> and let</p>
 <div class="math notranslate nohighlight">
 \[
    P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
    \]</div>
-<p>Determine whether the statement is {\bf True} or {\bf False}.</p>
+<p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathrm{rank}(P) = 1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P^2\)</span> is the identity matrix</p></li>
@@ -672,11 +685,11 @@ P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="subspaces.html" title="previous page">
+        <a class="left-prev" href="orthogonal_subspaces.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Subspaces</p>
+                <p class="prevnext-title">Orthogonal Subspaces</p>
             </div>
         </a>
     </div>

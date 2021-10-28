@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orthogonal Subspaces &#8212; Applied Linear Algebra</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Orthogonal Projection" href="projection.html" />
+    <link rel="prev" title="Subspaces" href="subspaces.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/nn.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Linear Algebra</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Linear Equations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/lu.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/error_analysis.html">
+   Error Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linear_equations/differential_equations.html">
+   Differential Equations
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Orthogonality
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="subspaces.html">
+   Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Orthogonal Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="projection.html">
+   Orthogonal Projection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="qr.html">
+   QR Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="least_squares.html">
+   Least Squares Approximation
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Eigenvalues
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/diagonalization.html">
+   Diagonalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eigenvalues/computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Dicrete Fourier Transform
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/dft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/frequency.html">
+   Frequency, Amplitude and Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/fft.html">
+   Fast Fourier Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/convolution.html">
+   Convolution and Filtering
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/01_linear_systems.html">
+   Linear Systems of Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/02_LU_decomposition.html">
+   LU Decomposition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/03_polynomial_interpolation.html">
+   Polynomial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/04_spline_interpolation.html">
+   Natural Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/05_finite_difference_method.html">
+   Finite Difference Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/06_least_squares_regression.html">
+   Fitting Models to Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/07_pca.html">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/08_deblurring_images.html">
+   Deblurring Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09_computed_tomography.html">
+   Computed Tomography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/10_computing_eigenvalues.html">
+   Computing Eigenvalues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/11_pagerank.html">
+   PageRank
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/12_fft.html">
+   Discrete Fourier Transform
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/complex_numbers.html">
+   Complex Numbers, Vectors and Matrices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/matrix_multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/norms.html">
+   Vector and Matrix Norms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/inner_product.html">
+   Inner Product
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/orthogonality/orthogonal_subspaces.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-vectors">
+   Orthogonal Vectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Orthogonal Subspaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-complement">
+   Orthogonal Complement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamental-subspaces">
+   Fundamental Subspaces
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="orthogonal-subspaces">
+<h1>Orthogonal Subspaces<a class="headerlink" href="#orthogonal-subspaces" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="orthogonal-vectors">
+<h2>Orthogonal Vectors<a class="headerlink" href="#orthogonal-vectors" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>inner product</strong> of vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \sum_{k=1}^n x_k y_k = x_1y_1 + \cdots + x_ny_n
+\]</div>
+</div>
+<div class="note docutils">
+<p>
+<ul>
+<li><p>The inner product is symmetric: <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \langle \boldsymbol{y} , \boldsymbol{x} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span></p></li>
+<li><p>The inner product of column vectors is the same as matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \boldsymbol{x}^T \boldsymbol{y} =
+  \begin{bmatrix} x_1 &amp; \cdots &amp; x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}
+  \end{split}\]</div>
+</li>
+<li><p>The inner product satisfies the usual distributive rules of multiplication:</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle \boldsymbol{x} ,  c \boldsymbol{y} + d \boldsymbol{z} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle + d \langle \boldsymbol{x} , \boldsymbol{z} \rangle
+  \]</div>
+<p>for all <span class="math notranslate nohighlight">\(c,d \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} , \boldsymbol{y} , \boldsymbol{z} \in \mathbb{R}^n\)</span>.</p>
+</li>
+<li><p>The square root of the inner product of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with itself is equal to the 2-norm</p>
+<div class="math notranslate nohighlight">
+\[
+  \sqrt{ \langle \boldsymbol{x} , \boldsymbol{x} \rangle } = \| \boldsymbol{x} \|
+  \]</div>
+</li>
+<li><p>We can also write the inner product in terms of the angle between vectors</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \| \boldsymbol{x} \| \| \boldsymbol{y} \| \cos \theta \hspace{10mm} 0 \leq \theta \leq \pi
+  \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^m\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A^T \boldsymbol{v} \rangle
+  \]</div>
+</li>
+</ul>
+</p>
+</div>
+<div class="definition docutils">
+<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span>. More generally, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span>. In other words, each <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> is orthogonal to every other vector <span class="math notranslate nohighlight">\(\boldsymbol{x}_j\)</span> in the set. Furthermore, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthonormal</strong> if they are orthogonal and each is a unit vector, <span class="math notranslate nohighlight">\(\| \boldsymbol{x}_k \| = 1\)</span>, <span class="math notranslate nohighlight">\(k=1,\dots,m\)</span>.</p>
+</div>
+<div class="note docutils">
+<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> are orthogonal if and only if the acute angle between <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is <span class="math notranslate nohighlight">\(\pi/2\)</span> radians (or 90 degrees).</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> be orthogonal. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \|^2 = \| \boldsymbol{x}_1 \|^2 + \cdots + \| \boldsymbol{x}_m \|^2
+\]</div>
+<p>This is called the <strong>Pythagorean theorem</strong>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Compute the left side of the equation using orthogonality <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_i \rangle = 0\)</span> if <span class="math notranslate nohighlight">\(i \not= j\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\| \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \|^2 &amp;= \langle \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m ,\boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \rangle \\
+&amp;= \sum_{i=1}^m \sum_{j=1}^m \langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle \\
+&amp;= \sum_{i=1}^m \langle \boldsymbol{x}_i , \boldsymbol{x}_i \rangle \\
+&amp;= \| \boldsymbol{x}_1 \|^2 + \cdots + \| \boldsymbol{x}_m \|^2
+\end{align*}
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Orthogonal Subspaces<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(U_1 \subseteq \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(U_2 \subseteq \mathbb{R}^n\)</span> be subspaces. Then <span class="math notranslate nohighlight">\(U_1\)</span> and <span class="math notranslate nohighlight">\(U_2\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_1 , \boldsymbol{x}_2 \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 \in U_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}_2 \in U_2\)</span>. If <span class="math notranslate nohighlight">\(U_1\)</span> and <span class="math notranslate nohighlight">\(U_2\)</span> are orthogonal subspaces, then we write <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}\)</span> be a basis of a subspace <span class="math notranslate nohighlight">\(U_1 \subseteq \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{v}_1,\dots,\boldsymbol{v}_{\ell} \}\)</span> be a basis of a subspace <span class="math notranslate nohighlight">\(U_2 \subseteq \mathbb{R}^n\)</span>. Then <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span> if and only if <span class="math notranslate nohighlight">\(\langle \boldsymbol{u}_i , \boldsymbol{v}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i,j\)</span>. In other words, every <span class="math notranslate nohighlight">\(\boldsymbol{u}_i\)</span> in the basis of <span class="math notranslate nohighlight">\(U_1\)</span> is orthogonal to each <span class="math notranslate nohighlight">\(\boldsymbol{v}_j\)</span> in the basis of <span class="math notranslate nohighlight">\(U_2\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(U_1 \subset \mathbb{R}^3\)</span> and <span class="math notranslate nohighlight">\(U_2 \subset \mathbb{R}^3\)</span> be 2-dimensional subspaces (planes). Is it possible that <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>? No!</p>
+</div>
+</div>
+<div class="section" id="orthogonal-complement">
+<h2>Orthogonal Complement<a class="headerlink" href="#orthogonal-complement" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. The <strong>orthogonal complement of <span class="math notranslate nohighlight">\(U\)</span></strong> is</p>
+<div class="math notranslate nohighlight">
+\[
+U^{\perp} = \{ \boldsymbol{x} \in \mathbb{R}^n : \langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0 \text{ for all } \boldsymbol{y} \in U \}
+\]</div>
+</div>
+<div class="note docutils">
+<p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> is any subspace then <span class="math notranslate nohighlight">\(U = (U^{\perp})^{\perp}\)</span> and also <span class="math notranslate nohighlight">\(U \cap U^{\perp} = \{ \boldsymbol{0} \}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ \boldsymbol{0} \}^{\perp} = \mathbb{R}^n\)</span>.</p></li>
+</ul>
+</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. Then <span class="math notranslate nohighlight">\(U^{\perp} \subseteq \mathbb{R}^n\)</span> is a subspace.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. Let us verify that <span class="math notranslate nohighlight">\(U^{\perp}\)</span> satisfies the properties of a subspace.</p>
+<p>Clearly <span class="math notranslate nohighlight">\(\langle \boldsymbol{0} , \boldsymbol{x} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{0} \in U^{\perp}\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}_1,\boldsymbol{x}_2 \in U^{\perp}\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \boldsymbol{x}_1 + \boldsymbol{x}_2) , \boldsymbol{y} \rangle = \langle \boldsymbol{x}_1 , \boldsymbol{y} \rangle + \langle \boldsymbol{x}_2 , \boldsymbol{y} \rangle = 0 + 0 = 0
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in U\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 + \boldsymbol{x}_2 \in U^{\perp}\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U^{\perp}\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\langle c\boldsymbol{x} , \boldsymbol{y} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle = c(0) = 0
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in U\)</span> therefore <span class="math notranslate nohighlight">\(c \boldsymbol{x} \in U^{\perp}\)</span>.</p>
+<p>Therefore <span class="math notranslate nohighlight">\(U^{\perp}\)</span> is a subspace.</p>
+</div>
+</div>
+<div class="section" id="fundamental-subspaces">
+<h2>Fundamental Subspaces<a class="headerlink" href="#fundamental-subspaces" title="Permalink to this headline">¶</a></h2>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Then <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A) = N(A^T)^{\perp}\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>. The second equality follows from the first by replacing <span class="math notranslate nohighlight">\(A\)</span> with <span class="math notranslate nohighlight">\(A^T\)</span> therefore it is sufficient to prove <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span>. A general strategy to prove equality of sets is to show that each set contains the other therefore let us prove  <span class="math notranslate nohighlight">\(N(A) \subseteq R(A^T)^{\perp}\)</span> and then prove the reverse <span class="math notranslate nohighlight">\(R(A^T)^{\perp} \subseteq N(A)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>. Then <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> therefore <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Using properties of the inner product we see that <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>.</p>
+<p>Now let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>. Then <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> and so <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Choose <span class="math notranslate nohighlight">\(\boldsymbol{y} = A\boldsymbol{x} \in \mathbb{R}^m\)</span> and then <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , A \boldsymbol{x} \rangle = 0\)</span>. Therefore <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = 0\)</span> and so <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> and finally <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(N(A) \subseteq R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A^T)^{\perp} \subseteq N(A)\)</span> we have <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span>.</p>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = LU =
+\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 \\ * &amp; * &amp; 1 \end{bmatrix}
+\begin{bmatrix} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(*\)</span> denotes a nonzero number. Find the dimension of each subspace <span class="math notranslate nohighlight">\(N(A)\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span>, <span class="math notranslate nohighlight">\(R(A^T)\)</span> and <span class="math notranslate nohighlight">\(N(A^T)\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\dim(U) + \dim(U^{\perp}) = n
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\dim(U) = m\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{u}_1 , \dots, \boldsymbol{u}_m\)</span> be a basis of <span class="math notranslate nohighlight">\(U\)</span> and define</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} &amp; \boldsymbol{u}_1^T &amp; \\ &amp; \vdots &amp; \\ &amp; \boldsymbol{u}_m^T &amp; \end{bmatrix}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(U = R(A^T)\)</span> and <span class="math notranslate nohighlight">\(U^{\perp} = R(A^T)^{\perp} = N(A)\)</span> and we know <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = m = \dim(U)\)</span> therefore</p>
+<div class="math notranslate nohighlight">
+\[
+\dim(U) + \dim(U^{\perp}) = \mathrm{rank}(A) + \dim(N(A)) = n
+\]</div>
+<p>by the Rank-Nullity Theorem.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./orthogonality"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="subspaces.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Subspaces</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="projection.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Orthogonal Projection</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By UBC Math<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

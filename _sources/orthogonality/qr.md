@@ -280,7 +280,6 @@ $$
 
    * Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let $\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T$ be the corresponding elementary reflector. There is a unique unit vector $\boldsymbol{v}$ such that $H \boldsymbol{v} = \boldsymbol{v}$.
    * Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let $\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T$ be the corresponding elementary reflector. Then  $H \boldsymbol{v} = \boldsymbol{v}$ for all $\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}$.
-   * Let $A=QR$ where $Q$ is an orthogonal matrix and $R$ is upper triangular. Then $\| A \|_p = \| R \|_p$ for any $p \geq 1$.
 
 2. Find the elementary reflector $H$ corresponding to the vector
 

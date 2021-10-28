@@ -55,7 +55,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Orthogonal Projection" href="projection.html" />
+    <link rel="next" title="Orthogonal Subspaces" href="orthogonal_subspaces.html" />
     <link rel="prev" title="Differential Equations" href="../linear_equations/differential_equations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -126,6 +126,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Subspaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orthogonal_subspaces.html">
+   Orthogonal Subspaces
   </a>
  </li>
  <li class="toctree-l1">
@@ -371,23 +376,33 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#subspaces-and-bases">
-   Subspaces and Bases
+  <a class="reference internal nav-link" href="#id1">
+   Subspaces
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#orthogonal-vectors">
-   Orthogonal Vectors
+  <a class="reference internal nav-link" href="#linear-independence-and-span">
+   Linear Independence and Span
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#orthogonal-subspaces">
-   Orthogonal Subspaces
+  <a class="reference internal nav-link" href="#basis-and-dimension">
+   Basis and Dimension
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fundamental-subspaces-of-a-matrix">
-   Fundamental Subspaces of a Matrix
+  <a class="reference internal nav-link" href="#nullspace">
+   Nullspace
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#range">
+   Range
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rank-nullity-theorem">
+   Rank-Nullity Theorem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -408,11 +423,11 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="subspaces">
 <h1>Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subspaces-and-bases">
-<h2>Subspaces and Bases<a class="headerlink" href="#subspaces-and-bases" title="Permalink to this headline">¶</a></h2>
 <div class="bigidea docutils">
 <p>Subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> include lines, planes and hyperplanes through the origin. A basis of a subspace is a linearly independent set of spanning vectors.</p>
 </div>
+<div class="section" id="id1">
+<h2>Subspaces<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="definition docutils">
 <p>A subset <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> is a <strong>subspace</strong> if:</p>
 <ol class="simple">
@@ -420,6 +435,7 @@
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{u}_1 + \boldsymbol{u}_2 \in U\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{u}_1,\boldsymbol{u}_2 \in U\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(c \boldsymbol{u} \in U\)</span> for all <span class="math notranslate nohighlight">\(c \in \mathbb{R},\boldsymbol{u} \in U\)</span></p></li>
 </ol>
+<p>Condition 2 is called <strong>closed under addition</strong> and condition 3 is called <strong>closed under scalar multiplication.</strong></p>
 </div>
 <div class="example docutils">
 <p>
@@ -431,6 +447,32 @@
 </ol>
 </p>
 </div>
+<div class="example docutils">
+<p>Consider the set</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U = \left\{ \begin{bmatrix} x \\ y \end{bmatrix} : y \geq 0 \right\}
+\end{split}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(U\)</span> contains the zero vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{0} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} \in U
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(U\)</span> is closed under addition since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 + \boldsymbol{u}_2 = \begin{bmatrix} x_1 \\ y_1 \end{bmatrix} + \begin{bmatrix} x_2 \\ y_2 \end{bmatrix} = \begin{bmatrix} x_1 + x_2 \\ y_1 + y_2 \end{bmatrix} \in U
+\end{split}\]</div>
+<p>because <span class="math notranslate nohighlight">\(y_1 + y_2 \geq 0\)</span> since <span class="math notranslate nohighlight">\(y_1 \geq 0\)</span> and <span class="math notranslate nohighlight">\(y_2 \geq 0\)</span>. However <span class="math notranslate nohighlight">\(U\)</span> is not closed under scalar multiplication because</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(-1) \begin{bmatrix} 1 \\ 1 \end{bmatrix} = \begin{bmatrix} -1 \\ -1 \end{bmatrix} \not\in U
+\end{split}\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(U\)</span> is not a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+</div>
+</div>
+<div class="section" id="linear-independence-and-span">
+<h2>Linear Independence and Span<a class="headerlink" href="#linear-independence-and-span" title="Permalink to this headline">¶</a></h2>
 <div class="definition docutils">
 <p>A <strong>linear combination</strong> of vectors <span class="math notranslate nohighlight">\(\boldsymbol{u}_1,\dots,\boldsymbol{u}_m \in \mathbb{R}^n\)</span> is a vector</p>
 <div class="math notranslate nohighlight">
@@ -457,14 +499,6 @@ c_1 \boldsymbol{u}_1 + \cdots + c_m \boldsymbol{u}_m = \boldsymbol{0} \hspace{5m
 \]</div>
 <p>In other words, <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}\)</span> is a linearly independent set if no vector <span class="math notranslate nohighlight">\(\boldsymbol{u}_i\)</span> in the set can be expressed as a linear combination of the others.</p>
 </div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. A set of vectors <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \}\)</span> forms a <strong>basis</strong> of <span class="math notranslate nohighlight">\(U\)</span> if:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \}\)</span> is a linearly independent set</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{span} \{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \} = U\)</span></p></li>
-</ol>
-<p>The <strong>dimension</strong> of <span class="math notranslate nohighlight">\(U\)</span> is the number <span class="math notranslate nohighlight">\(m\)</span> of vectors in a basis.</p>
-</div>
 <div class="note docutils">
 <p>How do we know if a set of vectors <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}\)</span> is linearly independent? Create a matrix where the columns are the given vectors</p>
 <div class="math notranslate nohighlight">
@@ -474,175 +508,93 @@ A = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{u_1} &amp; \cdots &amp; \boldsymb
 <p>Then <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}\)</span> is a linearly independent set if and only if the linear system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> has only the trivial solution <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span>.</p>
 </div>
 </div>
-<div class="section" id="orthogonal-vectors">
-<h2>Orthogonal Vectors<a class="headerlink" href="#orthogonal-vectors" title="Permalink to this headline">¶</a></h2>
-<div class="bigidea docutils">
-<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x},\boldsymbol{y} \in \mathbb{R}^n\)</span> are orthogonal if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span>. Subspaces <span class="math notranslate nohighlight">\(S_1 \subseteq \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(S_2 \subseteq \mathbb{R}^n\)</span> are orthogonal if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_1 , \boldsymbol{x}_2 \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 \in S_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}_2 \in S_2\)</span>.</p>
-</div>
+<div class="section" id="basis-and-dimension">
+<h2>Basis and Dimension<a class="headerlink" href="#basis-and-dimension" title="Permalink to this headline">¶</a></h2>
 <div class="definition docutils">
-<p>The <strong>inner product</strong> of vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> is</p>
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. A set of vectors <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \}\)</span> forms a <strong>basis</strong> of <span class="math notranslate nohighlight">\(U\)</span> if:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \}\)</span> is a linearly independent set</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{span} \{ \boldsymbol{u}_1 , \dots , \boldsymbol{u}_m \} = U\)</span></p></li>
+</ol>
+<p>The <strong>dimension</strong> of <span class="math notranslate nohighlight">\(U\)</span> is the number <span class="math notranslate nohighlight">\(m\)</span> of vectors in a basis.</p>
+</div>
+</div>
+<div class="section" id="nullspace">
+<h2>Nullspace<a class="headerlink" href="#nullspace" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>nullspace</strong> of a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \sum_{k=1}^n x_k y_k = x_1y_1 + \cdots + x_ny_n
+N(A) = \{ \boldsymbol{x} \in \mathbb{R}^n : A\boldsymbol{x} = \boldsymbol{0} \}
 \]</div>
-</div>
-<div class="note docutils">
-<p>
-<ul>
-<li><p>The inner product is symmetric: <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \langle \boldsymbol{y} , \boldsymbol{x} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span></p></li>
-<li><p>The inner product of column vectors is the same as matrix multiplication:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \boldsymbol{x}^T \boldsymbol{y} =
-  \begin{bmatrix} x_1 &amp; \cdots &amp; x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}
-  \end{split}\]</div>
-</li>
-<li><p>The inner product satisfies the usual distributive rules of multiplication:</p>
-<div class="math notranslate nohighlight">
-\[
-  \langle \boldsymbol{x} ,  c \boldsymbol{y} + d \boldsymbol{z} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle + d \langle \boldsymbol{x} , \boldsymbol{z} \rangle
-  \]</div>
-<p>for all <span class="math notranslate nohighlight">\(c,d \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} , \boldsymbol{y} , \boldsymbol{z} \in \mathbb{R}^n\)</span>.</p>
-</li>
-<li><p>The square root of the inner product of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with itself is equal to the 2-norm</p>
-<div class="math notranslate nohighlight">
-\[
-  \sqrt{ \langle \boldsymbol{x} , \boldsymbol{x} \rangle } = \| \boldsymbol{x} \|
-  \]</div>
-</li>
-<li><p>We can also write the inner product in terms of the angle between vectors</p>
-<div class="math notranslate nohighlight">
-\[
-  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \| \boldsymbol{x} \| \| \boldsymbol{y} \| \cos \theta \hspace{10mm} 0 \leq \theta \leq \pi
-  \]</div>
-</li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^m\)</span>. Then</p>
-<div class="math notranslate nohighlight">
-\[
-  \langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A^T \boldsymbol{v} \rangle
-  \]</div>
-</li>
-</ul>
-</p>
-</div>
-<div class="definition docutils">
-<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span>. More generally, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span>. In other words, each <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> is orthogonal to every other vector <span class="math notranslate nohighlight">\(\boldsymbol{x}_j\)</span> in the set. Furthermore, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthonormal</strong> if they are orthogonal and each is a unit vector, <span class="math notranslate nohighlight">\(\| \boldsymbol{x}_k \| = 1\)</span>, <span class="math notranslate nohighlight">\(k=1,\dots,m\)</span>.</p>
-</div>
-<div class="note docutils">
-<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> are orthogonal if and only if the acute angle between <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is <span class="math notranslate nohighlight">\(\pi/2\)</span> radians (or 90 degrees).</p>
 </div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> be orthogonal. Then</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. The nullspace <span class="math notranslate nohighlight">\(N(A)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition (if it exists). Then <span class="math notranslate nohighlight">\(N(A) = N(U)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="range">
+<h2>Range<a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h2>
+<div class="definition docutils">
+<p>The <strong>range</strong> of a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
-\| \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \|^2 = \| \boldsymbol{x}_1 \|^2 + \cdots + \| \boldsymbol{x}_m \|^2
+R(A) = \{ A \boldsymbol{x} : \boldsymbol{x} \in \mathbb{R}^n \}
 \]</div>
-<p>This is called the <strong>Pythagorean theorem</strong>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Compute the left side of the equation using orthogonality <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_i \rangle = 0\)</span> if <span class="math notranslate nohighlight">\(i \not= j\)</span></p>
+<p>The range of <span class="math notranslate nohighlight">\(A\)</span> is also called <strong>image</strong> or <strong>column space</strong> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<div class="note docutils">
+<p>Matrix multiplication can be written as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
-\| \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \|^2 &amp;= \langle \boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m ,\boldsymbol{x}_1 + \cdots + \boldsymbol{x}_m \rangle \\
-&amp;= \sum_{i=1}^m \sum_{j=1}^m \langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle \\
-&amp;= \sum_{i=1}^m \langle \boldsymbol{x}_i , \boldsymbol{x}_i \rangle \\
-&amp;= \| \boldsymbol{x}_1 \|^2 + \cdots + \| \boldsymbol{x}_m \|^2
-\end{align*}
+A \boldsymbol{x} = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{a}_1 &amp; \cdots &amp; \boldsymbol{a}_n \\ &amp; &amp; \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} = x_1 \boldsymbol{a}_1 + \cdots + x_n \boldsymbol{a}_n
+\end{split}\]</div>
+<p>Therefore the range of <span class="math notranslate nohighlight">\(A\)</span> is the equal to the span of the columns</p>
+<div class="math notranslate nohighlight">
+\[
+R(A) = \mathrm{span} \{ \boldsymbol{a}_1 , \dots, \boldsymbol{a}_n \}
+\]</div>
+<p>and that’s why <span class="math notranslate nohighlight">\(R(A)\)</span> is sometimes called the column space.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. The range <span class="math notranslate nohighlight">\(R(A)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\dim (R(A)) = \mathrm{rank}(A)
+\]</div>
+<hr class="docutils" />
+<p><em>Proof</em>. The rank of <span class="math notranslate nohighlight">\(A\)</span> is the number of nonzero rows in the row echelon form of <span class="math notranslate nohighlight">\(A\)</span>. The dimension of <span class="math notranslate nohighlight">\(A\)</span> is the number of linearly independent columns in <span class="math notranslate nohighlight">\(A\)</span> which is also equal to the number of nonzero rows in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span> (if it exists) and let <span class="math notranslate nohighlight">\(r = \mathrm{rank}(A)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+R(A) = \mathrm{span} \{ \boldsymbol{\ell}_1 , \dots , \boldsymbol{\ell}_r \}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\ell}_1 , \dots , \boldsymbol{\ell}_r\)</span> are the first <span class="math notranslate nohighlight">\(r\)</span> columns of <span class="math notranslate nohighlight">\(L\)</span>. In particular, <span class="math notranslate nohighlight">\(\boldsymbol{\ell}_1 , \dots , \boldsymbol{\ell}_r\)</span> is a basis of <span class="math notranslate nohighlight">\(R(A)\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof</em>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A \boldsymbol{x} = LU \boldsymbol{x} = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{\ell}_1 &amp; \cdots &amp; \boldsymbol{\ell}_n \\ &amp; &amp; \end{bmatrix} \begin{bmatrix} * &amp; * &amp; \cdots &amp; * \\ 0 &amp; \ddots &amp; \ddots &amp; \vdots \\ \vdots &amp; \ddots &amp; * &amp; * \\ 0 &amp; \cdots &amp; 0 &amp; 0 \end{bmatrix} \boldsymbol{x} = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{\ell}_1 &amp; \cdots &amp; \boldsymbol{\ell}_n \\ &amp; &amp; \end{bmatrix} \begin{bmatrix} * \\ \vdots \\ * \\ 0 \end{bmatrix} = (*) \boldsymbol{\ell}_1 + \cdots + (*) \boldsymbol{\ell}_r
 \end{split}\]</div>
 </div>
 </div>
-<div class="section" id="orthogonal-subspaces">
-<h2>Orthogonal Subspaces<a class="headerlink" href="#orthogonal-subspaces" title="Permalink to this headline">¶</a></h2>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(S_1 \subseteq \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(S_2 \subseteq \mathbb{R}^n\)</span> be subspaces. Then <span class="math notranslate nohighlight">\(S_1\)</span> and <span class="math notranslate nohighlight">\(S_2\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_1 , \boldsymbol{x}_2 \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 \in S_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}_2 \in S_2\)</span>. If <span class="math notranslate nohighlight">\(S_1\)</span> and <span class="math notranslate nohighlight">\(S_2\)</span> are orthogonal subspaces, then we write <span class="math notranslate nohighlight">\(S_1 \perp S_2\)</span>.</p>
-</div>
+<div class="section" id="rank-nullity-theorem">
+<h2>Rank-Nullity Theorem<a class="headerlink" href="#rank-nullity-theorem" title="Permalink to this headline">¶</a></h2>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}\)</span> be a basis of a subspace <span class="math notranslate nohighlight">\(S_1 \subseteq \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{v}_1,\dots,\boldsymbol{v}_{\ell} \}\)</span> be a basis of a subspace <span class="math notranslate nohighlight">\(S_2 \subseteq \mathbb{R}^n\)</span>. Then <span class="math notranslate nohighlight">\(S_1 \perp S_2\)</span> if and only if <span class="math notranslate nohighlight">\(\langle \boldsymbol{u}_i , \boldsymbol{v}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i,j\)</span>. In other words, every <span class="math notranslate nohighlight">\(\boldsymbol{u}_i\)</span> in the basis of <span class="math notranslate nohighlight">\(S_1\)</span> is orthogonal to each <span class="math notranslate nohighlight">\(\boldsymbol{v}_j\)</span> in the basis of <span class="math notranslate nohighlight">\(S_2\)</span>.</p>
-</div>
-<div class="example docutils">
-<p>Let <span class="math notranslate nohighlight">\(S_1 \subset \mathbb{R}^3\)</span> and <span class="math notranslate nohighlight">\(S_2 \subset \mathbb{R}^3\)</span> be 2-dimensional subspaces (planes). Is it possible that <span class="math notranslate nohighlight">\(S_1 \perp S_2\)</span>? No!</p>
-</div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(S \subseteq \mathbb{R}^n\)</span> be a subspace. The <strong>orthogonal complement of <span class="math notranslate nohighlight">\(S\)</span></strong> is</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Then</p>
 <div class="math notranslate nohighlight">
 \[
-S^{\perp} = \{ \boldsymbol{x} \in \mathbb{R}^n : \langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0 \text{ for all } \boldsymbol{y} \in S \}
+\mathrm{rank}(A) + \dim(N(A)) = n
 \]</div>
-</div>
-<div class="note docutils">
-<p>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(S \subseteq \mathbb{R}^n\)</span> is any subspace then <span class="math notranslate nohighlight">\(S = (S^{\perp})^{\perp}\)</span> and also <span class="math notranslate nohighlight">\(S \cap S^{\perp} = \{ \boldsymbol{0} \}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\{ \boldsymbol{0} \}^{\perp} = \mathbb{R}^n\)</span>.</p></li>
-</ul>
-</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(S \subseteq \mathbb{R}^n\)</span> be a subspace. Then <span class="math notranslate nohighlight">\(S^{\perp} \subseteq \mathbb{R}^n\)</span> is a subspace.</p>
 <hr class="docutils" />
-<p><em>Proof</em>. Let us verify that <span class="math notranslate nohighlight">\(S^{\perp}\)</span> satisfies the properties of a subspace.</p>
-<p>Clearly <span class="math notranslate nohighlight">\(\langle \boldsymbol{0} , \boldsymbol{x} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in S\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{0} \in S^{\perp}\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}_1,\boldsymbol{x}_2 \in S^{\perp}\)</span>. Then</p>
-<div class="math notranslate nohighlight">
-\[
-\langle \boldsymbol{x}_1 + \boldsymbol{x}_2) , \boldsymbol{y} \rangle = \langle \boldsymbol{x}_1 , \boldsymbol{y} \rangle + \langle \boldsymbol{x}_2 , \boldsymbol{y} \rangle = 0 + 0 = 0
-\]</div>
-<p>for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in S\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 + \boldsymbol{x}_2 \in S^{\perp}\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} \in S^{\perp}\)</span>. Then</p>
-<div class="math notranslate nohighlight">
-\[
-\langle c\boldsymbol{x} , \boldsymbol{y} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle = c(0) = 0
-\]</div>
-<p>for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in S\)</span> therefore <span class="math notranslate nohighlight">\(c \boldsymbol{x} \in S^{\perp}\)</span>.</p>
-<p>Therefore <span class="math notranslate nohighlight">\(S^{\perp}\)</span> is a subspace.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(S \subseteq \mathbb{R}^n\)</span> be a subspace. Then</p>
-<div class="math notranslate nohighlight">
-\[
-\dim(S) + \dim(S^{\perp}) = n
-\]</div>
-</div>
-</div>
-<div class="section" id="fundamental-subspaces-of-a-matrix">
-<h2>Fundamental Subspaces of a Matrix<a class="headerlink" href="#fundamental-subspaces-of-a-matrix" title="Permalink to this headline">¶</a></h2>
-<div class="bigidea docutils">
-<p>Any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> naturally decomposes <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> into <span class="math notranslate nohighlight">\(N(A)\)</span> and <span class="math notranslate nohighlight">\(R(A^T)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span> into <span class="math notranslate nohighlight">\(N(A^T)\)</span> and <span class="math notranslate nohighlight">\(R(A)\)</span>.</p>
-</div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. The four <strong>fundamental subspaces</strong> of <span class="math notranslate nohighlight">\(A\)</span> are:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-N(A) &amp;= \{ \boldsymbol{x} \in \mathbb{R}^n : A \boldsymbol{x} = \boldsymbol{0} \} \\
-R(A) &amp;= \{ \boldsymbol{y} \in \mathbb{R}^m : \text{there exists } \boldsymbol{x} \in \mathbb{R}^n \text{ such that } A \boldsymbol{x} = \boldsymbol{y} \} \\
-N(A^T) &amp;= \{ \boldsymbol{y} \in \mathbb{R}^m : A^T \boldsymbol{y} = \boldsymbol{0} \} \\
-R(A^T) &amp;= \{ \boldsymbol{x} \in \mathbb{R}^n : \text{there exists } \boldsymbol{y} \in \mathbb{R}^m \text{ such that } A^T \boldsymbol{y} = \boldsymbol{x} \}
-\end{align*}
-\end{split}\]</div>
-<p>The subspace <span class="math notranslate nohighlight">\(N(A)\)</span> is the <strong>nullspace</strong> of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(N(A^T)\)</span> is the nullspace of <span class="math notranslate nohighlight">\(A^T\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span> is the <strong>range</strong> of <span class="math notranslate nohighlight">\(A\)</span> (or the <strong>image</strong> or <strong>column space</strong> of <span class="math notranslate nohighlight">\(A\)</span>), and <span class="math notranslate nohighlight">\(R(A^T)\)</span> is the range of <span class="math notranslate nohighlight">\(A^T\)</span> (or the <strong>row space</strong> of <span class="math notranslate nohighlight">\(A\)</span>).</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. The nullspace <span class="math notranslate nohighlight">\(N(A)\)</span> is a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> and the range <span class="math notranslate nohighlight">\(R(A)\)</span> is a subspace of
-<span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Then <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A) = N(A^T)^{\perp}\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. The second equality follows from the first by replacing <span class="math notranslate nohighlight">\(A\)</span> with <span class="math notranslate nohighlight">\(A^T\)</span> therefore it is sufficient to prove <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span>. A general strategy to prove equality of sets is to show that each set contains the other therefore let us prove  <span class="math notranslate nohighlight">\(N(A) \subseteq R(A^T)^{\perp}\)</span> and then prove the reverse <span class="math notranslate nohighlight">\(R(A^T)^{\perp} \subseteq N(A)\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>. Then <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> therefore <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Using properties of the inner product we see that <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>.</p>
-<p>Now let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>. Then <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> and so <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Choose <span class="math notranslate nohighlight">\(\boldsymbol{y} = A\boldsymbol{x} \in \mathbb{R}^m\)</span> and then <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , A \boldsymbol{x} \rangle = 0\)</span>. Therefore <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = 0\)</span> and so <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> and finally <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>.</p>
-<p>Since <span class="math notranslate nohighlight">\(N(A) \subseteq R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A^T)^{\perp} \subseteq N(A)\)</span> we have <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span>.</p>
-</div>
-<div class="example docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = LU =
-\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 \\ * &amp; * &amp; 1 \end{bmatrix}
-\begin{bmatrix} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \end{bmatrix}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(*\)</span> denotes a nonzero number. Find the dimension of each subspace <span class="math notranslate nohighlight">\(N(A)\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span>, <span class="math notranslate nohighlight">\(R(A^T)\)</span> and <span class="math notranslate nohighlight">\(N(A^T)\)</span>.</p>
+<p><em>Proof</em>. The dimension of <span class="math notranslate nohighlight">\(N(A)\)</span> is equal to the number of columns of the row echelon form of <span class="math notranslate nohighlight">\(A\)</span> <em>without</em> a leading nonzero entry, and <span class="math notranslate nohighlight">\(\mathrm{rank}(A)\)</span> is equal to the number of columns of the row echelon form of <span class="math notranslate nohighlight">\(A\)</span> <em>with</em> a leading nonzero entry, and there are <span class="math notranslate nohighlight">\(n\)</span> total columns.</p>
 </div>
 </div>
 <div class="section" id="exercises">
@@ -654,10 +606,10 @@ A = LU =
 <li><p><span class="math notranslate nohighlight">\(N(A^T) = N(U^T)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R(A) = R(U)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R(A^T) = R(U^T)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{dim} (R(A)) = \mathrm{dim} (R(U))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\dim (R(A)) = \dim (R(U))\)</span></p></li>
 </ul>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n\)</span> be a basis of the nullspace <span class="math notranslate nohighlight">\(N(A)\)</span>. Determine <span class="math notranslate nohighlight">\(\mathrm{dim}(R(A^T))\)</span> and <span class="math notranslate nohighlight">\(\mathrm{dim}(N(A^T))\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n\)</span> be a basis of the nullspace <span class="math notranslate nohighlight">\(N(A)\)</span>. Determine <span class="math notranslate nohighlight">\(\dim(R(A^T))\)</span> and <span class="math notranslate nohighlight">\(\dim(N(A^T))\)</span>.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -726,10 +678,10 @@ A = LU =
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="projection.html" title="next page">
+        <a class="right-next" href="orthogonal_subspaces.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Orthogonal Projection</p>
+                <p class="prevnext-title">Orthogonal Subspaces</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
