@@ -187,6 +187,8 @@ P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3
 $$
 ```
 
+## Projection Theorem
+
 ```{div} theorem
 Let $U \subseteq \mathbb{R}^n$ be a subspace and let $\boldsymbol{x} \in \mathbb{R}^n$. Then
 
@@ -203,13 +205,13 @@ $$
 
 ## Exercises
 
-1. Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\boldsymbol{u} \cdot \boldsymbol{v} = 0$ and let
+1. Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0$ and let
 
    $$
    P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
    $$
 
-   Determine whether the statement is {\bf True} or {\bf False}.
+   Determine whether the statement is **True** or **False**.
 
    * $\mathrm{rank}(P) = 1$
    * $P^2$ is the identity matrix

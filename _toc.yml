@@ -10,6 +10,7 @@ parts:
   - caption: Orthogonality
     chapters:
     - file: orthogonality/subspaces.md
+    - file: orthogonality/orthogonal_subspaces.md
     - file: orthogonality/projection.md
     - file: orthogonality/qr.md
     - file: orthogonality/least_squares.md
