@@ -348,7 +348,7 @@ If $A$ is invertible, then $A^+ = A^{-1}$.
 ```
 
 ```{div} theorem
-Let $A$ be an $m \times n$ matrix and let $\boldsymbol{b} \in \mathbb{R}^m$. The least squares approximation of the system $A \boldsymbol{x} \cong \boldsymbol{b}$ is given by $\boldsymbol{x} = A^+ \boldsymbol{b}$.
+Let $A$ be an $m \times n$ matrix with $\mathrm{rank}(A) = n$ and let $\boldsymbol{b} \in \mathbb{R}^m$. The least squares approximation of the system $A \boldsymbol{x} \cong \boldsymbol{b}$ is given by $\boldsymbol{x} = A^+ \boldsymbol{b}$.
 
 ---
 
@@ -371,21 +371,21 @@ The matrix $\Sigma$ is of the form
 $$
 \Sigma =
 \renewcommand{\arraystretch}{1.25}
-\left[ \begin{array}{ccc|c}
-\sigma_1 & & & \\
-& \ddots & & \boldsymbol{0} \\
-& & \sigma_r & \\ \hline
-& \boldsymbol{0} & & \boldsymbol{0}
+\left[ \begin{array}{ccc}
+\sigma_1 & & \\
+& \ddots & \\
+& & \sigma_n \\ \hline
+\boldsymbol{0} & \cdots & \boldsymbol{0}
 \end{array} \right]_{m \times n}
 \renewcommand{\arraystretch}{1}
 $$
 
-and so only the first $r$ entries of $\Sigma \boldsymbol{v}$ are nonzero for any vector $\boldsymbol{v} \in \mathbb{R}^n$. Therefore the minimum value $\| A \boldsymbol{x} - \boldsymbol{b} \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|$ occurs when
+and so only the first $n$ entries of $\Sigma \boldsymbol{v}$ are nonzero for any vector $\boldsymbol{v} \in \mathbb{R}^n$. Therefore the minimum value $\| A \boldsymbol{x} - \boldsymbol{b} \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|$ occurs when
 
 $$
 \Sigma Q^T \boldsymbol{x}
 = \begin{bmatrix}
-c_1 \\ \vdots \\ c_r \\ \boldsymbol{0} \end{bmatrix}
+c_1 \\ \vdots \\ c_n \\ \boldsymbol{0} \end{bmatrix}
 $$
 
 and so $\boldsymbol{x} = Q \Sigma^+ \boldsymbol{c}$. Altogether, we have
