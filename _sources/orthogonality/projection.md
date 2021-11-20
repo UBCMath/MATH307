@@ -147,7 +147,7 @@ P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \f
 &= \frac{1}{2} \left[ \begin{array}{rrr} 1 & \phantom{+}0 & -1 \\ 0 & 0 & 0 \\ -1 & 0 & 1 \end{array} \right]
 + \frac{1}{3} \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{array} \right]
 =
-\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & 11 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & -1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
 \end{align*}
 $$
 ```
