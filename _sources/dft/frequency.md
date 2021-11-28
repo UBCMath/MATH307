@@ -63,7 +63,7 @@ and sketch the signal as a stemplot
 Now consider the signal
 
 $$
-\boldsymbol{x} = \cos(4 \pi \boldsymbol{t} ) = \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \\ 1 \\ 0 \\ -1 \end{array} \right]
+\boldsymbol{x} = \cos(4 \pi \boldsymbol{t} ) = \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \\ 1 \\ 0 \\ -1 \\ 0 \end{array} \right]
 $$
 
 and sketch the signal as a stemplot
