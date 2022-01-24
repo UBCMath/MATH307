@@ -166,7 +166,7 @@ as in the previous example. Compute
 $$
 P_{\perp} = I - P =
 \left[ \begin{array}{rrr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array} \right] -
-\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & 1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & -1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
 =
 \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
 $$
