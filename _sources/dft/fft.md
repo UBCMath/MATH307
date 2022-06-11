@@ -98,7 +98,7 @@ $$
 ````{div} note
 This form of the fast Fourier transform is called the [Cooley-Tukey algorithm](https://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm). The point is that the DFT computation for a vector of length $N$ can be compute by the DFT of two smaller vectors of length $N/2$ which is faster! And we can keep applying the formulas for smaller and smaller vectors until we are computing the DFT for vectors of size 2 only (if $N$ is a power of 2). For example, to compute $\mathrm{DFT}(\boldsymbol{x})$ for $\boldsymbol{x} \in \mathbb{C}^8$ we visualize the procedure
 
-```{image} /img/04_04_fft.png
+```{image} /img/fft.png
 :width: 600px
 :align: center
 
@@ -178,6 +178,6 @@ $$
 
 ## Exercises
 
-1. Let $\boldsymbol{x} = \begin{bmatrix} 1 & -1 & 2 & 1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform. Compute $\mathrm{DFT}(\boldsymbol{x})$ also by $F_4$ and verify it is the same result.
+**Exercise 1.** Let $\boldsymbol{x} = \begin{bmatrix} 1 & -1 & 2 & 1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform. Compute $\mathrm{DFT}(\boldsymbol{x})$ also by $F_4$ and verify it is the same result.
 
-2. Let $\boldsymbol{x} = \begin{bmatrix} 1 & 1 & 0 & 2 & 1 & 2 & 0 & -1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform.
+**Exercise 2.** Let $\boldsymbol{x} = \begin{bmatrix} 1 & 1 & 0 & 2 & 1 & 2 & 0 & -1 \end{bmatrix}^T$. Compute $\mathrm{DFT}(\boldsymbol{x})$ using the fast Fourier transform.

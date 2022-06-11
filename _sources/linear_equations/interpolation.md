@@ -4,6 +4,8 @@
 An interpolating function for a set of data provides information about values between data points and beyond the range of the data. There are infinitely many different ways to interpolate a set of data. Polynomial interpolation and cubic spline interpolation are simple methods of interpolation.
 ```
 
+## Interpolating Functions
+
 ```{div} definition
 An **interpolant** (or **interpolating function**) for data points $(t_0,y_0),\dots,(t_d,y_d)$ is a function $f(t)$ such that $f(t_k) = y_k$ for $k=0,\dots,d$.
 ```
@@ -105,7 +107,7 @@ $$
 ```{div} note
 The condition number of a Vandermonde matrix gets *very* large as the size of the matrix increases. This means that interpolation by the monomial basis is very sensitive to changes in the data for polynomials of large degree. For example, for $11$ equally spaced points $t_0=0,\dots,t_{10}=10$, the Vandermonde matrix $A$ is 11 by 11 and has condition number larger than $10^{12}$. Yikes!
 
-```{image} /img/01_05_img01.png
+```{image} /img/01_03_01.png
 :width: 500px
 :align: center
 ```
@@ -456,76 +458,77 @@ $$
 (0,0),(1,2),(2,1),(3,3),(4,2),(5,4),(6,2),(7,3),(8,1),(9,2),(10,0)
 $$
 
-```{image} /img/01_06_img01.png
+```{image} /img/01_03_02.png
 :width: 500px
 :align: center
 ```
 
 ```{div} note
-The condition number of the matrix for constructing the natural cubic spline does not increase as drastically with the number of points $N+1$ as compared with the Vandrmonde matrix. For example, for $11$ equally spaced points $t_0=0,\dots,t_{10}=10$, the Vandermonde matrix is 11 by 11 and has $\mathrm{cond}(A) \approx 10^{12}$ whereas the cubic spline matrix is 30 by 30 and the condition number is only around $33$.
+The condition number of the matrix for constructing the natural cubic spline does not increase as drastically with the number of points $N+1$ as compared with the Vandermonde matrix. For example, for $11$ equally spaced points $t_0=0,\dots,t_{10}=10$, the Vandermonde matrix is 11 by 11 and has $\mathrm{cond}(A) \approx 10^{12}$ whereas the cubic spline matrix is 30 by 30 and the condition number is only around $33$.
 
-```{image} /img/01_06_img02.png
+```{image} /img/01_03_03.png
 :width: 500px
 :align: center
 ```
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
-   * Consider $N+1$ data points $(t_0,y_0),\dots,(t_N,y_N)$. Let $A_1 \boldsymbol{c}_1 = \boldsymbol{b}_1$ be the linear system such that the solution $\boldsymbol{c}_1$ consists of the coefficients of the interpolating polynomial with respect to the monomial basis. Let $A_2 \boldsymbol{c}_2 = \boldsymbol{b}_2$ be the linear system such that the solution $\boldsymbol{c}_2$ consists of the coefficients of the interpolating natural cubic spline. Then we expect $\mathrm{cond}(A_1) < \mathrm{cond}(A_2)$ for large values of $N$.
-   * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial of degree (at most) $d-1$ which interpolates the data.
-   * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial $p(t)$ of degree (at most) $d$ which interpolates the data and also satisfies $p'(t_1)=0$ and $p''(t_1)=0$.
-   * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial $p(t)$ of degree (at most) $d$ which interpolates the data and $p'(t_1)=0$.
-   * Consider $d+1$ data points $(t_0,y_0),(t_1,y_1),\dots,(t_d,y_d)$. Let $p(t)$ be the interpolating polynomial constructed using the monomial basis. Let $q(t)$ be the interpolating polynomial constructed using the Lagrange basis. Let $r(t)$ be the interpolating polynomial constructed using the Newton basis. Then $p(t) = q(t) = r(t)$ for all $t$.
+**Exercise 1.** Determine whether the statement is **True** or **False**.
 
-2. Suppose we have 4 points $(0,y_0),(1,y_1),(2,y_2),(3,y_3)$ and we want to interpolate the data using a spline $p(t)$ constructed from $3$ degree 2 polynomials $p_1,p_2,p_3$ where
+  * Consider $N+1$ data points $(t_0,y_0),\dots,(t_N,y_N)$. Let $A_1 \boldsymbol{c}_1 = \boldsymbol{b}_1$ be the linear system such that the solution $\boldsymbol{c}_1$ consists of the coefficients of the interpolating polynomial with respect to the monomial basis. Let $A_2 \boldsymbol{c}_2 = \boldsymbol{b}_2$ be the linear system such that the solution $\boldsymbol{c}_2$ consists of the coefficients of the interpolating natural cubic spline. Then we expect $\mathrm{cond}(A_1) < \mathrm{cond}(A_2)$ for large values of $N$.
+  * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial of degree (at most) $d-1$ which interpolates the data.
+  * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial $p(t)$ of degree (at most) $d$ which interpolates the data and also satisfies $p'(t_1)=0$ and $p''(t_1)=0$.
+  * Consider $d$ data points $(t_1,y_1),\dots,(t_d,y_d)$ (such that $t_i \not= t_j$). There exists a unique polynomial $p(t)$ of degree (at most) $d$ which interpolates the data and $p'(t_1)=0$.
+  * Consider $d+1$ data points $(t_0,y_0),(t_1,y_1),\dots,(t_d,y_d)$. Let $p(t)$ be the interpolating polynomial constructed using the monomial basis. Let $q(t)$ be the interpolating polynomial constructed using the Lagrange basis. Let $r(t)$ be the interpolating polynomial constructed using the Newton basis. Then $p(t) = q(t) = r(t)$ for all $t$.
 
-   $$
-   p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_k]
-   $$
+**Exercise 2.** Suppose we have 4 points $(0,y_0),(1,y_1),(2,y_2),(3,y_3)$ and we want to interpolate the data using a spline $p(t)$ constructed from $3$ degree 2 polynomials $p_1,p_2,p_3$ where
 
-   We require that $p(t)$ and $p'(t)$ are continuous and $p''(t_0)=0$. Setup a linear system $A \boldsymbol{x} = \boldsymbol{b}$ where the solution is
+$$
+p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_k]
+$$
 
-   $$
-   \boldsymbol{x} = \begin{bmatrix} a_1 & b_1 & a_2 & b_2 & a_3 & b_3 \end{bmatrix}^T
-   $$
+We require that $p(t)$ and $p'(t)$ are continuous and $p''(t_0)=0$. Setup a linear system $A \boldsymbol{x} = \boldsymbol{b}$ where the solution is
 
-   Note: the system depends on the unspecified values $y_0,y_1,y_2,y_3$.
+$$
+\boldsymbol{x} = \begin{bmatrix} a_1 & b_1 & a_2 & b_2 & a_3 & b_3 \end{bmatrix}^T
+$$
 
-3. Suppose a cubic spline $p(t)$ interpolates the data
+Note: the system depends on the unspecified values $y_0,y_1,y_2,y_3$.
 
-   $$
-   (0.0,0.0),(1.0,2.0),(2.0,1.0),(3.0,3.0),(4.0,-1.0),(5.0,1.0)
-   $$
+**Exercise 3.** Suppose a cubic spline $p(t)$ interpolates the data
 
-   and $p(t)$ has coefficient matrix
+$$
+(0.0,0.0),(1.0,2.0),(2.0,1.0),(3.0,3.0),(4.0,-1.0),(5.0,1.0)
+$$
 
-   $$
-   \left[ \begin{array}{rrrrr}
-   1.9 & 1.9 & a_3 & 3.1 & 3.1 \\
-   -7.2 & -1.5 & b_3 & -6.3 & 3.0 \\
-   7.3 & -1.4 & c_3 & -0.8 & -4.1 \\
-   0.0 & 2.0 & 1.0 & 3.0 & -1.0
-   \end{array}\right]
-   $$
+and $p(t)$ has coefficient matrix
 
-   Determine the coefficients $a_3,b_3,c_3$.
+$$
+\left[ \begin{array}{rrrrr}
+1.9 & 1.9 & a_3 & 3.1 & 3.1 \\
+-7.2 & -1.5 & b_3 & -6.3 & 3.0 \\
+7.3 & -1.4 & c_3 & -0.8 & -4.1 \\
+0.0 & 2.0 & 1.0 & 3.0 & -1.0
+\end{array}\right]
+$$
 
-4. Suppose a cubic spline $p(t)$ interpolates the data
+Determine the coefficients $a_3,b_3,c_3$.
 
-   $$
-   (0.0,1.0),(1.0,3.0),(2.0,1.0),(3.0,1.0),(4.0,2.0),(5.0,1.0)
-   $$
+**Exercise 4.** Suppose a cubic spline $p(t)$ interpolates the data
 
-   and $p(t)$ has coefficient matrix (rounded to 2 decimal places)
+$$
+(0.0,1.0),(1.0,3.0),(2.0,1.0),(3.0,1.0),(4.0,2.0),(5.0,1.0)
+$$
 
-   $$
-   \left[\begin{array}{rrrrr}
-   -1.19 & 1.93 & a_3 & -0.75 & 0.55 \\
-   0.00 & -3.56 & b_3 & 0.60 & -1.65 \\
-   3.19 & -0.37 & c_3 & 1.15 & 0.10\\
-   1.00 & 3.00 & 1.00 & 1.00 & 2.00
-   \end{array} \right]
-   $$
+and $p(t)$ has coefficient matrix (rounded to 2 decimal places)
 
-   Determine the coefficients $a_3,b_3,c_3$.
+$$
+\left[\begin{array}{rrrrr}
+-1.19 & 1.93 & a_3 & -0.75 & 0.55 \\
+0.00 & -3.56 & b_3 & 0.60 & -1.65 \\
+3.19 & -0.37 & c_3 & 1.15 & 0.10\\
+1.00 & 3.00 & 1.00 & 1.00 & 2.00
+\end{array} \right]
+$$
+
+Determine the coefficients $a_3,b_3,c_3$.

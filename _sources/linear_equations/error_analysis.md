@@ -132,7 +132,7 @@ $$
 ```{div} example
 The image below shows the unit circle and its image under the linear transformation defined by a $2 \times 2$ matrix $A$. Determine $\| A \|$, $\| A^{-1} \|$ and $\mathrm{cond}(A)$.
 
-![img/img01.png](/img/img01.png)
+![img/01_02_01.png](/img/01_02_01.png)
 
 Observe the maximum stretch of a unit vector is $\| A \| =  3 / \sqrt{2}$, the minimum stretch is $1/\sqrt{2}$ therefore $\| A^{-1} \| = \sqrt{2}$ and the condition number is $\mathrm{cond}(A) = 3$.
 ```
@@ -180,10 +180,10 @@ implies that if $A$ has a large condition number then small changes in $\boldsym
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**: If $\| A \| = 1$ then $A = I$.
+**Exercise 1.** Determine whether the statement is **True** or **False**: If $\| A \| = 1$ then $A = I$.
 
-2. Suppose $A$ is a 2 by 2 matrix such that the image of the unit circle under the linear transformation $A$ is:
+**Exercise 2.** Suppose $A$ is a 2 by 2 matrix such that the image of the unit circle under the linear transformation $A$ is:
 
-   ![/img/img01b.png](/img/img01b.png)
+![/img/01_02_02.png](/img/01_02_02.png)
 
-   Determine $\mathrm{cond}(A)$.
+Determine $\mathrm{cond}(A)$.

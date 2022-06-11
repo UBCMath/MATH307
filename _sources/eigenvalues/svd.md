@@ -235,7 +235,7 @@ The projection coefficient $\langle \boldsymbol{x}_i , \boldsymbol{w}_k \rangle$
 ```{div} note
 Each $\langle \boldsymbol{x}_k , \boldsymbol{w}_1 \rangle^2$ is the length squared of the orthogonal projection of $\boldsymbol{x}_k$ onto $\boldsymbol{w}_1$. Therefore the first weight vector $\boldsymbol{w}_1$ points in the direction which captures the most information (ie. the maximum variance) of the data, and the second weight vector $\boldsymbol{w}_2$ is orthogonal to $\boldsymbol{w}_1$.
 
-```{image} /img/03_04_img01.png
+```{image} /img/03_02_01.png
 :width: 500px
 :align: center
 ```
@@ -257,7 +257,7 @@ since $P$ is orthogonal. Since $\Sigma$ is diagonal with diagonal entires $\sigm
 ````{div} example
 Find the first weight vector for the data given in the image below.
 
-```{image} /img/03_04_img02.png
+```{image} /img/03_02_02.png
 :width: 500px
 :align: center
 ```
@@ -293,21 +293,21 @@ $$
 ````{div} example
 The [digits dataset from sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits) is a $1797 \times 64$ data matrix $X$ such that each row represents an $8 \times 8$ pixel image of a handwritten number. The first 10 rows of X (reshaped from vectors of length 64 to $8 \times 8$ matrices to visualize) are:
 
-```{image} /img/03_04_img03.png
+```{image} /img/03_02_03.png
 :width: 500px
 :align: center
 ```
 
 Compute the first 2 weight vectors and find (again $\boldsymbol{w}_1,\boldsymbol{w}_2$ reshaped from vectors of length 64 to $8 \times 8$ matrices to visualize)
 
-```{image} /img/03_04_img04.png
+```{image} /img/03_02_04.png
 :width: 500px
 :align: center
 ```
 
 We can see $\boldsymbol{w}_1$ looks like a 3 and $\boldsymbol{w}_2$ looks like 0. Project the entire dataset onto these weight vectors and label each data point by a color according to the digit:
 
-```{image} /img/03_04_img05.png
+```{image} /img/03_02_05.png
 :width: 500px
 :align: center
 ```
@@ -455,66 +455,66 @@ since the term $A^+_k\boldsymbol{e}$ will be smaller. In other words, we avoid t
 
 ## Exercises
 
-1. Find the singular value decomposition of the matrix
+**Exercise 1.** Find the singular value decomposition of the matrix
 
-   $$
-   A = \left[ \begin{array}{rrr} 1 & \ \, 2 & -1 \\ 2 & 1 & 4 \end{array} \right]
-   $$
+$$
+A = \left[ \begin{array}{rrr} 1 & \ \, 2 & -1 \\ 2 & 1 & 4 \end{array} \right]
+$$
 
-2. Find the singular value decomposition of the matrix
+**Exercise 2.** Find the singular value decomposition of the matrix
 
-   $$
-   A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ -1 & 2 & -1 \\ 1 & 0 & -1 \end{array} \right]
-   $$
+$$
+A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ -1 & 2 & -1 \\ 1 & 0 & -1 \end{array} \right]
+$$
 
-3. Determine whether the statement is **True** or **False**. (Assume all data matrices are normalized.)
+**Exercise 3.** Determine whether the statement is **True** or **False**. (Assume all data matrices are normalized.)
 
-   * Let $X$ be a $n \times p$ data matrix and let $\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p$ be two different rows of $X$ such that $\| \boldsymbol{x}_i \| < \| \boldsymbol{x}_j \|$. If $\boldsymbol{w}_1$ is the first weight vector of $X$, then $| \langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle | < | \langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle |$.
-   * Let $X$ be a $n \times p$ data matrix and let $\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p$ be two different rows of $X$ such that $\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0$. If $\boldsymbol{w}_1$ is the first weight vector of $X$ and $\langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle = 0$ then $\langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle = 0$.
-   * Let $X$ be a $n \times 2$ data matrix and let $Y$ be the matrix with the same columns as $X$ but switched. (In other words, the first column of $Y$ is the same as the second column of $X$, and the second column of $Y$ is the first column of $X$.) If $X$ and $Y$ represent the same set of data points, then all the singular values of $X$ equal.
-   * Let $X$ be a $n \times 2$ data matrix and let $Y$ be the matrix with the same columns as $X$ but switched. (In other words, the first column of $Y$ is the same as the second column of $X$, and the second column of $Y$ is the first column of $X$.) If $X$ and $Y$ represent the same set of data points, then $\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix}^T$.
+* Let $X$ be a $n \times p$ data matrix and let $\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p$ be two different rows of $X$ such that $\| \boldsymbol{x}_i \| < \| \boldsymbol{x}_j \|$. If $\boldsymbol{w}_1$ is the first weight vector of $X$, then $| \langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle | < | \langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle |$.
+* Let $X$ be a $n \times p$ data matrix and let $\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p$ be two different rows of $X$ such that $\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0$. If $\boldsymbol{w}_1$ is the first weight vector of $X$ and $\langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle = 0$ then $\langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle = 0$.
+* Let $X$ be a $n \times 2$ data matrix and let $Y$ be the matrix with the same columns as $X$ but switched. (In other words, the first column of $Y$ is the same as the second column of $X$, and the second column of $Y$ is the first column of $X$.) If $X$ and $Y$ represent the same set of data points, then all the singular values of $X$ equal.
+* Let $X$ be a $n \times 2$ data matrix and let $Y$ be the matrix with the same columns as $X$ but switched. (In other words, the first column of $Y$ is the same as the second column of $X$, and the second column of $Y$ is the first column of $X$.) If $X$ and $Y$ represent the same set of data points, then $\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix}^T$.
 
-4. Find the weight vectors for the data matrix $X$ representing the points:
+**Exercise 4.** Find the weight vectors for the data matrix $X$ representing the points:
 
-   ```{image} /img/03_04_ex01.png
-   :width: 500px
-   :align: center
-   ```
+```{image} /img/03_02_06.png
+:width: 500px
+:align: center
+```
 
-5. Suppose $X$ is a $100 \times 4$ data matrix such that
+**Exercise 5.** Suppose $X$ is a $100 \times 4$ data matrix such that
 
-   $$
-   X^T X = \begin{bmatrix} 2 & 0 & 0 & 0 \\ 0 & 1.5 & 0 & 0 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 1 & 2 \end{bmatrix}
-   $$
+$$
+X^T X = \begin{bmatrix} 2 & 0 & 0 & 0 \\ 0 & 1.5 & 0 & 0 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 1 & 2 \end{bmatrix}
+$$
 
-   Find all the weight vectors of $X$.
+Find all the weight vectors of $X$.
 
-6. Suppose we want to solve a system $A \boldsymbol{x} = \boldsymbol{b}$. A small change $\Delta \boldsymbol{b}$ produces a change in the solution
+**Exercise 6.** Suppose we want to solve a system $A \boldsymbol{x} = \boldsymbol{b}$. A small change $\Delta \boldsymbol{b}$ produces a change in the solution
 
-   $$
-   A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{b}
-   $$
+$$
+A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{b}
+$$
 
-   Describe the unit vector $\Delta \boldsymbol{b}$ that will produce the largest change $\| \Delta \boldsymbol{x} \|$.
+Describe the unit vector $\Delta \boldsymbol{b}$ that will produce the largest change $\| \Delta \boldsymbol{x} \|$.
 
-7. Find the rank 2 pseudo inverse
+**Exercise 7.** Find the rank 2 pseudo inverse
 
-   $$
-   A_2^+ = \frac{1}{\sigma_1} \boldsymbol{q}_1 \boldsymbol{p}_1^T + \frac{1}{\sigma_2} \boldsymbol{q}_2 \boldsymbol{p}_2^T
-   $$
+$$
+A_2^+ = \frac{1}{\sigma_1} \boldsymbol{q}_1 \boldsymbol{p}_1^T + \frac{1}{\sigma_2} \boldsymbol{q}_2 \boldsymbol{p}_2^T
+$$
 
-   of the matrix
+of the matrix
 
-   $$
-   A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 0 & -2 \\ 1 & -1 & 1 \end{array} \right]
-   $$
+$$
+A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 0 & -2 \\ 1 & -1 & 1 \end{array} \right]
+$$
 
-   (Note: the columns of $A$ are orthogonal.)
+(Note: the columns of $A$ are orthogonal.)
 
-8. Let $A$ be a $m \times n$ matrix with singular value decomposition $A = P \Sigma Q^T$. Let $k < \min\{m,n\}$ and let
+**Exercise 8.** Let $A$ be a $m \times n$ matrix with singular value decomposition $A = P \Sigma Q^T$. Let $k < \min\{m,n\}$ and let
 
-   $$
-   A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
-   $$
+$$
+A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
+$$
 
-   Describe the singular value decomposition of $A - A_k$.
+Describe the singular value decomposition of $A - A_k$.

@@ -213,37 +213,37 @@ where $\lambda_1,\dots,\lambda_n$ are the eigenvalues of $A$ with corresponding 
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
+**Exercise 1.** Determine whether the statement is **True** or **False**.
 
-   * Let $ \boldsymbol{v}_1 , \boldsymbol{v}_2 \in \mathbb{R}^2 $ be linearly independent vectors. Let $ \lambda_1 , \lambda_2 $ be real numbers. Then there exists a unique 2 by 2 matrix $ A $ with eigenvalues $ \lambda_1 , \lambda_2 $ and corresponding eigenvectors $ \boldsymbol{v}_1 , \boldsymbol{v}_2$.
-   * Let $ \boldsymbol{u} \in \mathbb{R}^n $ be a nonzero vector and let $ H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T $ be the corresponding elementary reflector. Then $\lambda = -1$ is an eigenvalue of $H$ with multiplicity 1.
-   *  Let $ U \subset \mathbb{R}^n $ be a subspace with $ \mathrm{dim}(U) = m $ such that $ 0 < m < n$, and let $ P $ be the orthogonal projection matrix onto $ U $. Then $ \lambda = 0 $ is an eigenvalue for $ P $ with multiplicity $ m $.
-   * Suppose $A$ and $B$ are symmetric $n \times n$ matrices. Then the eigenvectors of $AB$ corresponding to distinct eigenvalues are orthogonal.
-   * Let $ A $ be any $ m \times n $ matrix. If $ \lambda $ is an eigenvalue of $ AA^T $ then $ \lambda $ is a real number and $ \lambda \geq 0 $.
-   * Let $ A $ be any $ m \times n $ matrix. If $ \boldsymbol{v}_1 , \boldsymbol{v}_2 $ are eigenvectors of $ AA^T $ for distinct eigenvalues then $ \boldsymbol{v}_1 \cdot \boldsymbol{v}_1 = 0 $.
-   * Let $ \boldsymbol{u} \in \mathbb{R}^n $ and let $ H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T $ be the corresponding elementary reflector. The characteristic polynomial of $ H $ is $ (x-1)^{n-1}(x+1)$.
-   * Let $ P $ be an orthogonal projection matrix. All the eigenvalues of $ P $ are either 1 or 0.
+* Let $ \boldsymbol{v}_1 , \boldsymbol{v}_2 \in \mathbb{R}^2 $ be linearly independent vectors. Let $ \lambda_1 , \lambda_2 $ be real numbers. Then there exists a unique 2 by 2 matrix $ A $ with eigenvalues $ \lambda_1 , \lambda_2 $ and corresponding eigenvectors $ \boldsymbol{v}_1 , \boldsymbol{v}_2$.
+* Let $ \boldsymbol{u} \in \mathbb{R}^n $ be a nonzero vector and let $ H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T $ be the corresponding elementary reflector. Then $\lambda = -1$ is an eigenvalue of $H$ with multiplicity 1.
+*  Let $ U \subset \mathbb{R}^n $ be a subspace with $ \mathrm{dim}(U) = m $ such that $ 0 < m < n$, and let $ P $ be the orthogonal projection matrix onto $ U $. Then $ \lambda = 0 $ is an eigenvalue for $ P $ with multiplicity $ m $.
+* Suppose $A$ and $B$ are symmetric $n \times n$ matrices. Then the eigenvectors of $AB$ corresponding to distinct eigenvalues are orthogonal.
+* Let $ A $ be any $ m \times n $ matrix. If $ \lambda $ is an eigenvalue of $ AA^T $ then $ \lambda $ is a real number and $ \lambda \geq 0 $.
+* Let $ A $ be any $ m \times n $ matrix. If $ \boldsymbol{v}_1 , \boldsymbol{v}_2 $ are eigenvectors of $ AA^T $ for distinct eigenvalues then $ \boldsymbol{v}_1 \cdot \boldsymbol{v}_1 = 0 $.
+* Let $ \boldsymbol{u} \in \mathbb{R}^n $ and let $ H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T $ be the corresponding elementary reflector. The characteristic polynomial of $ H $ is $ (x-1)^{n-1}(x+1)$.
+* Let $ P $ be an orthogonal projection matrix. All the eigenvalues of $ P $ are either 1 or 0.
 
-2. Let $ \lambda $ be a (nonzero) eigenvalue of an invertible matrix $A$. Select all **True** statements.
+**Exercise 2.** Let $ \lambda $ be a (nonzero) eigenvalue of an invertible matrix $A$. Select all **True** statements.
 
-   * $\lambda^{-1}$ is an eigenvalue of $ A^{-1} $
-   * $\lambda$ is an eigenvalue of $ A^T $
-   * $\lambda^2$ is an eigenvalue of $ AA^T $
-   * $\lambda$ is an eigenvalue of $ PAP^{-1} $ for any invertible matrix $ P $
-   * $\lambda \not= 0$
+* $\lambda^{-1}$ is an eigenvalue of $ A^{-1} $
+* $\lambda$ is an eigenvalue of $ A^T $
+* $\lambda^2$ is an eigenvalue of $ AA^T $
+* $\lambda$ is an eigenvalue of $ PAP^{-1} $ for any invertible matrix $ P $
+* $\lambda \not= 0$
 
-3. Let $ \lambda $ be an eigenvalue of an invertible matrix $ A $. Select all **True** statements.
+**Exercise 3.** Let $ \lambda $ be an eigenvalue of an invertible matrix $ A $. Select all **True** statements.
 
-   * $ \lambda^{-1} $ is an eigenvalue of $ A^{-1} $
-   * $ \lambda $ is an eigenvalue of $ A^T $
-   * $ \lambda^2 $ is an eigenvalue of $ AA^T $
-   * $ \lambda $ is an eigenvalue of $ PAP^{-1} $ for any invertible matrix $ P $
-   * $ \lambda \not= 0 $
+* $ \lambda^{-1} $ is an eigenvalue of $ A^{-1} $
+* $ \lambda $ is an eigenvalue of $ A^T $
+* $ \lambda^2 $ is an eigenvalue of $ AA^T $
+* $ \lambda $ is an eigenvalue of $ PAP^{-1} $ for any invertible matrix $ P $
+* $ \lambda \not= 0 $
 
-4. Suppose $ A $ is a symmetric $ 3 \times 3 $ matrix with distinct eigenvalues $ \lambda_1 , \lambda_2 , \lambda_3 $ and eigenvectors
+**Exercise 4.** Suppose $ A $ is a symmetric $ 3 \times 3 $ matrix with distinct eigenvalues $ \lambda_1 , \lambda_2 , \lambda_3 $ and eigenvectors
 
-   $$
-   \boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
-   $$
+$$
+\boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
+$$
 
-   Determine eigenvector $ \boldsymbol{v}_3 $ for eigenvalue $ \lambda_3 $.
+Determine eigenvector $ \boldsymbol{v}_3 $ for eigenvalue $ \lambda_3 $.

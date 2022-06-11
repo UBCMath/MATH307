@@ -359,45 +359,45 @@ Clearly, vertex 2 is the most important in the graph.
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
+**Exercise 1.** Determine whether the statement is **True** or **False**.
 
-   * The inverse iteration algorithm (without normalization) computes a recursive sequence $ A \boldsymbol{x}_{k+1} = \boldsymbol{x}_k $ where $ \boldsymbol{x}_k $ converges to:
-     * the largest (in absolute value $ | \lambda | $) eigenvalue of $ A $
-     * an eigenvector corresponding to the largest (in absolute value $ | \lambda | $) eigenvalue of $ A $
-     * the smallest (in absolute value $ | \lambda | $) eigenvalue of $ A $
-     * an eigenvector corresponding to the smallest (in absolute value $ | \lambda | $) eigenvalue of $ A $
-   * In the power iteration algorithm, we divide by $ \| A \boldsymbol{x}_k \|_{\infty} $ in each step to:
-     * make the algorithm run faster
-     * prevent the entries of the vectors $ \boldsymbol{x}_k $ from becoming too large/small
-     * produce a more accurate result
-   * It is necessary to compute all the eigenvectors of the Google matrix to find the PageRank vector of a directed graph.
+* The inverse iteration algorithm (without normalization) computes a recursive sequence $ A \boldsymbol{x}_{k+1} = \boldsymbol{x}_k $ where $ \boldsymbol{x}_k $ converges to:
+ * the largest (in absolute value $ | \lambda | $) eigenvalue of $ A $
+ * an eigenvector corresponding to the largest (in absolute value $ | \lambda | $) eigenvalue of $ A $
+ * the smallest (in absolute value $ | \lambda | $) eigenvalue of $ A $
+ * an eigenvector corresponding to the smallest (in absolute value $ | \lambda | $) eigenvalue of $ A $
+* In the power iteration algorithm, we divide by $ \| A \boldsymbol{x}_k \|_{\infty} $ in each step to:
+ * make the algorithm run faster
+ * prevent the entries of the vectors $ \boldsymbol{x}_k $ from becoming too large/small
+ * produce a more accurate result
+* It is necessary to compute all the eigenvectors of the Google matrix to find the PageRank vector of a directed graph.
 
- 2. Let $ A $ be a $ 2 \times 2 $ matrix with eigenvalues $ \lambda_1 = 1 $ and $ \lambda_2 = 1/2 $ and corresponding eigenvectors
+**Exercise 2.** Let $ A $ be a $ 2 \times 2 $ matrix with eigenvalues $ \lambda_1 = 1 $ and $ \lambda_2 = 1/2 $ and corresponding eigenvectors
 
-    $$
-    \boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}
-    $$
+$$
+\boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}
+$$
 
-    If we choose $ \boldsymbol{x}_0 = \begin{bmatrix} 1 \\ 5 \end{bmatrix} $ then the sequence $ \boldsymbol{x}_{k+1} = A \boldsymbol{x}_k $ converges to what?
+If we choose $ \boldsymbol{x}_0 = \begin{bmatrix} 1 \\ 5 \end{bmatrix} $ then the sequence $ \boldsymbol{x}_{k+1} = A \boldsymbol{x}_k $ converges to what?
 
-3. Consider the same directed graph as in the example in the section on PageRank:
+**Exercise 3.** Consider the same directed graph as in the example in the section on PageRank:
 
-   ```{image} /img/graph01.png
-   :width: 300px
-   :align: center
-   ```
+```{image} /img/graph01.png
+:width: 300px
+:align: center
+```
 
-   As $\alpha \to 1$, describe what happens to the PageRank $x_3$ of vertex 3.
+As $\alpha \to 1$, describe what happens to the PageRank $x_3$ of vertex 3.
 
-4. Let $G$ be the complete directed graph with $N$ vertices. In other words, there is an edge from each vertex to every other vertex in $G$ (excluding edges from a vertex to itself). Describe the Google matrix and the PageRank vector for the complete directed graph.
+**Exercise 4.** Let $G$ be the complete directed graph with $N$ vertices. In other words, there is an edge from each vertex to every other vertex in $G$ (excluding edges from a vertex to itself). Describe the Google matrix and the PageRank vector for the complete directed graph.
 
-5. Find the Google matrix $\alpha P + (1 - \alpha) \boldsymbol{v} \boldsymbol{e}^T$ for the directed graph
+**Exercise 5.** Find the Google matrix $\alpha P + (1 - \alpha) \boldsymbol{v} \boldsymbol{e}^T$ for the directed graph
 
-   ```{image} /img/graph02.png
-   :width: 300px
-   :align: center
-   ```
+```{image} /img/graph02.png
+:width: 300px
+:align: center
+```
 
-   using teleportation parameter $\alpha=0.5$ and uniform distribution vector $\boldsymbol{v}$. Let $\boldsymbol{x}_0 = \begin{bmatrix} 1 & 0 & 0 & 0 \end{bmatrix}^T$ and use Python to compute 50 iterations of the power method to approximate the PageRank vector.
+using teleportation parameter $\alpha=0.5$ and uniform distribution vector $\boldsymbol{v}$. Let $\boldsymbol{x}_0 = \begin{bmatrix} 1 & 0 & 0 & 0 \end{bmatrix}^T$ and use Python to compute 50 iterations of the power method to approximate the PageRank vector.
 
-6. Find the Google matrix $\alpha P + (1 - \alpha) \boldsymbol{v} \boldsymbol{e}^T$ for the directed graph in the previous exercise using teleportation parameter $\alpha=0.8$ and distribution vector $\boldsymbol{v} =  \begin{bmatrix} 0 & 1/2 & 1/2 & 0 \end{bmatrix}^T$. Let $\boldsymbol{x}_0 = \begin{bmatrix} 1 & 0 & 0 & 0 \end{bmatrix}^T$ and use Python to compute 50 iterations of the power method to approximate the PageRank vector.
+**Exercise 6.** Find the Google matrix $\alpha P + (1 - \alpha) \boldsymbol{v} \boldsymbol{e}^T$ for the directed graph in the previous exercise using teleportation parameter $\alpha=0.8$ and distribution vector $\boldsymbol{v} =  \begin{bmatrix} 0 & 1/2 & 1/2 & 0 \end{bmatrix}^T$. Let $\boldsymbol{x}_0 = \begin{bmatrix} 1 & 0 & 0 & 0 \end{bmatrix}^T$ and use Python to compute 50 iterations of the power method to approximate the PageRank vector.

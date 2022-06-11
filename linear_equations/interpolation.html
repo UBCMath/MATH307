@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Interpolation &#8212; Applied Linear Algebra</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,41 +20,40 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/main.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/main.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Differential Equations" href="differential_equations.html" />
@@ -64,7 +65,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +88,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,13 +111,13 @@
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Linear Equations
+  Linear Systems
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="lu.html">
-   LU Decomposition
+  <a class="reference internal" href="solutions.html">
+   Solutions of Linear Systems
   </a>
  </li>
  <li class="toctree-l1">
@@ -297,87 +313,153 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/linear_equations/interpolation.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/UBCMath/math307"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/UBCMath/math307"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/linear_equations/interpolation.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolating-functions">
+   Interpolating Functions
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#polynomial-interpolation">
    Polynomial Interpolation
@@ -417,28 +499,91 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interpolation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolating-functions">
+   Interpolating Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-interpolation">
+   Polynomial Interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monomial-basis">
+     Monomial Basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lagrange-basis">
+     Lagrange Basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-basis">
+     Newton Basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cubic-spline-interpolation">
+   Cubic Spline Interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="interpolation">
-<h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
+<h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
 <p>An interpolating function for a set of data provides information about values between data points and beyond the range of the data. There are infinitely many different ways to interpolate a set of data. Polynomial interpolation and cubic spline interpolation are simple methods of interpolation.</p>
 </div>
+<section id="interpolating-functions">
+<h2>Interpolating Functions<a class="headerlink" href="#interpolating-functions" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>An <strong>interpolant</strong> (or <strong>interpolating function</strong>) for data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span> is a function <span class="math notranslate nohighlight">\(f(t)\)</span> such that <span class="math notranslate nohighlight">\(f(t_k) = y_k\)</span> for <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
 </div>
 <div class="note docutils">
 <p>There are <em>infinitely</em> many different interpolating functions for any set of data. We impose different kinds of constraints on the form of the interpolant to ensure there is a unique solution which is meaningful for the data and can be computed efficiently. In the following sections we describe two kinds of interpolation: <em>polynomial interpolation</em> and <em>cubic spline interpolation</em>.</p>
 </div>
-<div class="section" id="polynomial-interpolation">
-<h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="polynomial-interpolation">
+<h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">#</a></h2>
 <div class="bigidea docutils">
 <p>Given points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span>, there exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. Monomial, Lagrange and Newton interpolation provide different ways to compute the exact same interpolating polynomial.</p>
 </div>
@@ -455,8 +600,8 @@ p(t)= c_0 + c_1 t + \cdots + c_d t^d
 \]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> is a vector space of dimension <span class="math notranslate nohighlight">\(d+1\)</span>.</p>
 </div>
-<div class="section" id="monomial-basis">
-<h3>Monomial Basis<a class="headerlink" href="#monomial-basis" title="Permalink to this headline">¶</a></h3>
+<section id="monomial-basis">
+<h3>Monomial Basis<a class="headerlink" href="#monomial-basis" title="Permalink to this headline">#</a></h3>
 <div class="definition docutils">
 <p>Fix a positive integer <span class="math notranslate nohighlight">\(d\)</span> and let <span class="math notranslate nohighlight">\(\phi_k(t) = t^k\)</span> for <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. In other words, consider the polynomials</p>
 <div class="math notranslate nohighlight">
@@ -517,7 +662,7 @@ A = \begin{bmatrix}
 </div>
 <div class="note docutils">
 <p>The condition number of a Vandermonde matrix gets <em>very</em> large as the size of the matrix increases. This means that interpolation by the monomial basis is very sensitive to changes in the data for polynomials of large degree. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix <span class="math notranslate nohighlight">\(A\)</span> is 11 by 11 and has condition number larger than <span class="math notranslate nohighlight">\(10^{12}\)</span>. Yikes!</p>
-<a class="reference internal image-reference" href="../_images/01_05_img01.png"><img alt="../_images/01_05_img01.png" class="align-center" src="../_images/01_05_img01.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/01_03_01.png"><img alt="../_images/01_03_01.png" class="align-center" src="../_images/01_03_01.png" style="width: 500px;" /></a>
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be the Vandermonde matrix for points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>. Then</p>
@@ -559,9 +704,9 @@ A = \begin{bmatrix}
 <hr class="docutils" />
 <p><em>Proof</em>. The determinant of the Vandermonde matrix is nonzero when the values <span class="math notranslate nohighlight">\(t_k\)</span> are distinct therefore it is invertible and so there is a unique solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span>.</p>
 </div>
-</div>
-<div class="section" id="lagrange-basis">
-<h3>Lagrange Basis<a class="headerlink" href="#lagrange-basis" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="lagrange-basis">
+<h3>Lagrange Basis<a class="headerlink" href="#lagrange-basis" title="Permalink to this headline">#</a></h3>
 <div class="definition docutils">
 <p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, the <strong>Lagrange basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> (with respect to <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span>) is given by <span class="math notranslate nohighlight">\(\{ \ell_0(t),\dots,\ell_d(t) \}\)</span> where</p>
 <div class="math notranslate nohighlight">
@@ -599,9 +744,9 @@ p(t) = c_0 \ell_0(t) + c_1 \ell_1(t) + \cdots + c_d \ell_d(t)
 p(t) = y_0 \ell_0(t) + y_1 \ell_1(t) + \cdots + y_d \ell_d(t)
 \]</div>
 </div>
-</div>
-<div class="section" id="newton-basis">
-<h3>Newton Basis<a class="headerlink" href="#newton-basis" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="newton-basis">
+<h3>Newton Basis<a class="headerlink" href="#newton-basis" title="Permalink to this headline">#</a></h3>
 <div class="definition docutils">
 <p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, the <strong>Newton basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> (with respect to <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span>) is <span class="math notranslate nohighlight">\(\{ \pi_0(t),\dots,\pi_d(t) \}\)</span> where</p>
 <div class="math notranslate nohighlight">
@@ -670,9 +815,9 @@ c_{d+1} = \frac{y_{d+1}-p_d(t_{d+1})}{\pi_{d+1}(t_{d+1})}.
 \]</div>
 <p>This observation also leads to an iterative algorithm to compute Newton interpolation in general: given  <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, find <span class="math notranslate nohighlight">\(p_0(t)\)</span> using only <span class="math notranslate nohighlight">\((t_0,y_0)\)</span> and then find <span class="math notranslate nohighlight">\(p_{k+1}(t)\)</span> from <span class="math notranslate nohighlight">\(p_k(t)\)</span> for each <span class="math notranslate nohighlight">\(k\)</span> using the formula above.</p>
 </div>
-</div>
-<div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
 <div class="note docutils">
 <p>Recall that there is a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span> if the values <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span> are different. Therefore the monomial, Lagrange and Newton bases all produce the <em>same</em> result but computed and represented differently.</p>
 </div>
@@ -737,10 +882,10 @@ p_2(t) &amp;= (t - (-1))(t - 0) = t^2 + t
 p(t) = c_0 p_0(t) + c_1 p_1(t) + c_2 p_2(t) = 1 - (t+1) + t^2 + t = t^2
 \]</div>
 </div>
-</div>
-</div>
-<div class="section" id="cubic-spline-interpolation">
-<h2>Cubic Spline Interpolation<a class="headerlink" href="#cubic-spline-interpolation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="cubic-spline-interpolation">
+<h2>Cubic Spline Interpolation<a class="headerlink" href="#cubic-spline-interpolation" title="Permalink to this headline">#</a></h2>
 <div class="bigidea docutils">
 <p>Given <span class="math notranslate nohighlight">\(N+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>, a cubic spline is a piecewise cubic polynomial defined by a different polynomial <span class="math notranslate nohighlight">\(p_k(t)\)</span> for each subinterval <span class="math notranslate nohighlight">\([t_{k-1},t_k]\)</span>, <span class="math notranslate nohighlight">\(k=1,\dots,N\)</span>.</p>
 </div>
@@ -829,17 +974,16 @@ V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &am
 \[
 (0,0),(1,2),(2,1),(3,3),(4,2),(5,4),(6,2),(7,3),(8,1),(9,2),(10,0)
 \]</div>
-<a class="reference internal image-reference" href="../_images/01_06_img01.png"><img alt="../_images/01_06_img01.png" class="align-center" src="../_images/01_06_img01.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/01_03_02.png"><img alt="../_images/01_03_02.png" class="align-center" src="../_images/01_03_02.png" style="width: 500px;" /></a>
 </div>
 <div class="note docutils">
-<p>The condition number of the matrix for constructing the natural cubic spline does not increase as drastically with the number of points <span class="math notranslate nohighlight">\(N+1\)</span> as compared with the Vandrmonde matrix. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix is 11 by 11 and has <span class="math notranslate nohighlight">\(\mathrm{cond}(A) \approx 10^{12}\)</span> whereas the cubic spline matrix is 30 by 30 and the condition number is only around <span class="math notranslate nohighlight">\(33\)</span>.</p>
-<a class="reference internal image-reference" href="../_images/01_06_img02.png"><img alt="../_images/01_06_img02.png" class="align-center" src="../_images/01_06_img02.png" style="width: 500px;" /></a>
+<p>The condition number of the matrix for constructing the natural cubic spline does not increase as drastically with the number of points <span class="math notranslate nohighlight">\(N+1\)</span> as compared with the Vandermonde matrix. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix is 11 by 11 and has <span class="math notranslate nohighlight">\(\mathrm{cond}(A) \approx 10^{12}\)</span> whereas the cubic spline matrix is 30 by 30 and the condition number is only around <span class="math notranslate nohighlight">\(33\)</span>.</p>
+<a class="reference internal image-reference" href="../_images/01_03_03.png"><img alt="../_images/01_03_03.png" class="align-center" src="../_images/01_03_03.png" style="width: 500px;" /></a>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
 <li><p>Consider <span class="math notranslate nohighlight">\(N+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>. Let <span class="math notranslate nohighlight">\(A_1 \boldsymbol{c}_1 = \boldsymbol{b}_1\)</span> be the linear system such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_1\)</span> consists of the coefficients of the interpolating polynomial with respect to the monomial basis. Let <span class="math notranslate nohighlight">\(A_2 \boldsymbol{c}_2 = \boldsymbol{b}_2\)</span> be the linear system such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_2\)</span> consists of the coefficients of the interpolating natural cubic spline. Then we expect <span class="math notranslate nohighlight">\(\mathrm{cond}(A_1) &lt; \mathrm{cond}(A_2)\)</span> for large values of <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
 <li><p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span>). There exists a unique polynomial of degree (at most) <span class="math notranslate nohighlight">\(d-1\)</span> which interpolates the data.</p></li>
@@ -847,56 +991,51 @@ V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &am
 <li><p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span>). There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates the data and <span class="math notranslate nohighlight">\(p'(t_1)=0\)</span>.</p></li>
 <li><p>Consider <span class="math notranslate nohighlight">\(d+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0),(t_1,y_1),\dots,(t_d,y_d)\)</span>. Let <span class="math notranslate nohighlight">\(p(t)\)</span> be the interpolating polynomial constructed using the monomial basis. Let <span class="math notranslate nohighlight">\(q(t)\)</span> be the interpolating polynomial constructed using the Lagrange basis. Let <span class="math notranslate nohighlight">\(r(t)\)</span> be the interpolating polynomial constructed using the Newton basis. Then <span class="math notranslate nohighlight">\(p(t) = q(t) = r(t)\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 </ul>
-</li>
-<li><p>Suppose we have 4 points <span class="math notranslate nohighlight">\((0,y_0),(1,y_1),(2,y_2),(3,y_3)\)</span> and we want to interpolate the data using a spline <span class="math notranslate nohighlight">\(p(t)\)</span> constructed from <span class="math notranslate nohighlight">\(3\)</span> degree 2 polynomials <span class="math notranslate nohighlight">\(p_1,p_2,p_3\)</span> where</p>
+<p><strong>Exercise 2.</strong> Suppose we have 4 points <span class="math notranslate nohighlight">\((0,y_0),(1,y_1),(2,y_2),(3,y_3)\)</span> and we want to interpolate the data using a spline <span class="math notranslate nohighlight">\(p(t)\)</span> constructed from <span class="math notranslate nohighlight">\(3\)</span> degree 2 polynomials <span class="math notranslate nohighlight">\(p_1,p_2,p_3\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
-   p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_k]
-   \]</div>
+p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_k]
+\]</div>
 <p>We require that <span class="math notranslate nohighlight">\(p(t)\)</span> and <span class="math notranslate nohighlight">\(p'(t)\)</span> are continuous and <span class="math notranslate nohighlight">\(p''(t_0)=0\)</span>. Setup a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> where the solution is</p>
 <div class="math notranslate nohighlight">
 \[
-   \boldsymbol{x} = \begin{bmatrix} a_1 &amp; b_1 &amp; a_2 &amp; b_2 &amp; a_3 &amp; b_3 \end{bmatrix}^T
-   \]</div>
+\boldsymbol{x} = \begin{bmatrix} a_1 &amp; b_1 &amp; a_2 &amp; b_2 &amp; a_3 &amp; b_3 \end{bmatrix}^T
+\]</div>
 <p>Note: the system depends on the unspecified values <span class="math notranslate nohighlight">\(y_0,y_1,y_2,y_3\)</span>.</p>
-</li>
-<li><p>Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
+<p><strong>Exercise 3.</strong> Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
 <div class="math notranslate nohighlight">
 \[
-   (0.0,0.0),(1.0,2.0),(2.0,1.0),(3.0,3.0),(4.0,-1.0),(5.0,1.0)
-   \]</div>
+(0.0,0.0),(1.0,2.0),(2.0,1.0),(3.0,3.0),(4.0,-1.0),(5.0,1.0)
+\]</div>
 <p>and <span class="math notranslate nohighlight">\(p(t)\)</span> has coefficient matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-   \left[ \begin{array}{rrrrr}
-   1.9 &amp; 1.9 &amp; a_3 &amp; 3.1 &amp; 3.1 \\
-   -7.2 &amp; -1.5 &amp; b_3 &amp; -6.3 &amp; 3.0 \\
-   7.3 &amp; -1.4 &amp; c_3 &amp; -0.8 &amp; -4.1 \\
-   0.0 &amp; 2.0 &amp; 1.0 &amp; 3.0 &amp; -1.0
-   \end{array}\right]
-   \end{split}\]</div>
+\left[ \begin{array}{rrrrr}
+1.9 &amp; 1.9 &amp; a_3 &amp; 3.1 &amp; 3.1 \\
+-7.2 &amp; -1.5 &amp; b_3 &amp; -6.3 &amp; 3.0 \\
+7.3 &amp; -1.4 &amp; c_3 &amp; -0.8 &amp; -4.1 \\
+0.0 &amp; 2.0 &amp; 1.0 &amp; 3.0 &amp; -1.0
+\end{array}\right]
+\end{split}\]</div>
 <p>Determine the coefficients <span class="math notranslate nohighlight">\(a_3,b_3,c_3\)</span>.</p>
-</li>
-<li><p>Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
+<p><strong>Exercise 4.</strong> Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
 <div class="math notranslate nohighlight">
 \[
-   (0.0,1.0),(1.0,3.0),(2.0,1.0),(3.0,1.0),(4.0,2.0),(5.0,1.0)
-   \]</div>
+(0.0,1.0),(1.0,3.0),(2.0,1.0),(3.0,1.0),(4.0,2.0),(5.0,1.0)
+\]</div>
 <p>and <span class="math notranslate nohighlight">\(p(t)\)</span> has coefficient matrix (rounded to 2 decimal places)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-   \left[\begin{array}{rrrrr}
-   -1.19 &amp; 1.93 &amp; a_3 &amp; -0.75 &amp; 0.55 \\
-   0.00 &amp; -3.56 &amp; b_3 &amp; 0.60 &amp; -1.65 \\
-   3.19 &amp; -0.37 &amp; c_3 &amp; 1.15 &amp; 0.10\\
-   1.00 &amp; 3.00 &amp; 1.00 &amp; 1.00 &amp; 2.00
-   \end{array} \right]
-   \end{split}\]</div>
+\left[\begin{array}{rrrrr}
+-1.19 &amp; 1.93 &amp; a_3 &amp; -0.75 &amp; 0.55 \\
+0.00 &amp; -3.56 &amp; b_3 &amp; 0.60 &amp; -1.65 \\
+3.19 &amp; -0.37 &amp; c_3 &amp; 1.15 &amp; 0.10\\
+1.00 &amp; 3.00 &amp; 1.00 &amp; 1.00 &amp; 2.00
+\end{array} \right]
+\end{split}\]</div>
 <p>Determine the coefficients <span class="math notranslate nohighlight">\(a_3,b_3,c_3\)</span>.</p>
-</li>
-</ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -920,9 +1059,11 @@ V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &am
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="error_analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -938,26 +1079,28 @@ V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &am
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By UBC Math<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By UBC Math<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
