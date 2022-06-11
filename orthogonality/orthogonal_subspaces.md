@@ -1,5 +1,9 @@
 # Orthogonal Subspaces
 
+```{div} bigidea
+The orthogonal complement $U^{\perp}$ of a subspace $U$ is the collection of all vectors which are orthogonal to every vector in $U$.
+```
+
 ## Orthogonal Vectors
 
 ```{div} definition
@@ -195,3 +199,40 @@ $$
 
 by the Rank-Nullity Theorem.
 ```
+
+## Exercises
+
+
+**Exercise 1.** Determine whether the statement is **True** or **False**.
+
+  * Let $S \subseteq \mathbb{R}^n$ be a subspace. If $\boldsymbol{u} \in \mathbb{R}^n$ such that $\boldsymbol{u} \not= 0$ then either $\boldsymbol{u} \in S$ or $\boldsymbol{u} \in S^{\perp}$.
+  * Let $L_1 \subset \mathbb{R}^2$ be a line through the origin. There is a unique line $L_2$ through the origin such that $L_1 \perp L_2$.
+  * Let $L_1 \subset \mathbb{R}^3$ be a line through the origin. There is a unique line $L_2$ through the origin such that $L_1 \perp L_2$.
+  * Let $U_1 \subset \mathbb{R}^4$ be a 2-dimensional subspace. There is a unique plane $U_2$ through the origin such that $U_1 \perp U_2$.
+ 
+
+**Exercise 2.** Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is **True** or **False**.
+
+  * $N(A^T) = N(U^T)$
+  * $R(A^T) = R(U^T)$
+  
+**Exercise 3.** Let $A$ be a $m \times n$ matrix and let $\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n$ be a basis of the nullspace $N(A)$. Determine $\dim(R(A^T))$ and $\dim(N(A^T))$.
+
+**Exercise 4.** Let $A$ be a $4 \times 4$ matrix such that
+
+$$
+A = LU =
+\left[ \begin{array}{rrrrrr} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 &  1 & 1 & 0 \\ 0 & 2 & 1 & 1 \end{array} \right]
+\left[ \begin{array}{rrrrrr} 1 & -1 & 2 & -1 \\ 0 & 1 & -3 & 4 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{array} \right]
+$$
+
+Find a basis of $N(A^T)$ and find a basis of $R(A^T)$.
+
+**Exercise 5.** Let $A$ be a matrix such that its LU decomposition is of the form
+
+$$
+A = LU = \begin{bmatrix} 1 & 0 & 0 \\ * & 1 & 0 \\ * & * & 1 \end{bmatrix}
+\begin{bmatrix} * & * & * & * \\ 0 & * & * & * \\ 0 & 0 & 0 & * \end{bmatrix}
+$$
+
+where $*$ denotes a nonzero number. Determine the dimension of $R(A^T)$ and the dimension of $N(A^T)$.

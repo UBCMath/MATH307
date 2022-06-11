@@ -1,9 +1,9 @@
 format: jb-book
 root: index
 parts:
-  - caption: Linear Equations
+  - caption: Linear Systems
     chapters:
-    - file: linear_equations/lu.md
+    - file: linear_equations/solutions.md
     - file: linear_equations/error_analysis.md
     - file: linear_equations/interpolation.md
     - file: linear_equations/differential_equations.md

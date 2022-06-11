@@ -276,25 +276,31 @@ $$
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
+**Exercise 1.** Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let
 
-   * Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let $\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T$ be the corresponding elementary reflector. There is a unique unit vector $\boldsymbol{v}$ such that $H \boldsymbol{v} = \boldsymbol{v}$.
-   * Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let $\displaystyle H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T$ be the corresponding elementary reflector. Then  $H \boldsymbol{v} = \boldsymbol{v}$ for all $\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}$.
+$$
+H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T
+$$
 
-2. Find the elementary reflector $H$ corresponding to the vector
+be the corresponding elementary reflector. Determine whether the statement is **True** or **False**.
 
-   $$
-   \boldsymbol{u} = \begin{bmatrix} 2 \\ 1 \\ 0 \\ 1 \end{bmatrix}
-   $$
+* There is a unique unit vector $\boldsymbol{v}$ such that $H \boldsymbol{v} = \boldsymbol{v}$.
+* $H \boldsymbol{v} = \boldsymbol{v}$ for all $\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}$.
 
-3. Find an elementary reflector $H$ such that
+**Exercise 2.** Find the elementary reflector $H$ corresponding to the vector
 
-   $$
-   HA = \displaystyle \begin{bmatrix} * & * & * \\ 0 & * & * \\ 0 & * & * \\ 0 & * & * \end{bmatrix}
-   $$
+$$
+\boldsymbol{u} = \begin{bmatrix} 2 \\ 1 \\ 0 \\ 1 \end{bmatrix}
+$$
 
-   where
+**Exercise 3.** Find an elementary reflector $H$ such that
 
-   $$
-   A = \begin{bmatrix} 1 & 2 & 1 \\ 1 & 0 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 0 \end{bmatrix}
-   $$
+$$
+HA = \displaystyle \begin{bmatrix} * & * & * \\ 0 & * & * \\ 0 & * & * \\ 0 & * & * \end{bmatrix}
+$$
+
+where
+
+$$
+A = \begin{bmatrix} 1 & 2 & 1 \\ 1 & 0 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 0 \end{bmatrix}
+$$

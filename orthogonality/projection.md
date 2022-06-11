@@ -205,56 +205,56 @@ $$
 
 ## Exercises
 
-1. Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0$ and let
+**Exercise 1.** Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0$ and let
 
-   $$
-   P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
-   $$
+$$
+P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
+$$
 
-   Determine whether the statement is **True** or **False**.
+Determine whether the statement is **True** or **False**.
 
-   * $\mathrm{rank}(P) = 1$
-   * $P^2$ is the identity matrix
-   * $P^2$ is the zero matrix
-   * $P \boldsymbol{x}$ is the projection $\boldsymbol{x}$ onto $\boldsymbol{u}$
-   * $P \boldsymbol{x}$ is the projection $\boldsymbol{x}$ onto $\boldsymbol{v}$
-   * $P \boldsymbol{u} = c \boldsymbol{v}$ for some nonzero number $c$
+* $\mathrm{rank}(P) = 1$
+* $P^2$ is the identity matrix
+* $P^2$ is the zero matrix
+* $P \boldsymbol{x}$ is the projection $\boldsymbol{x}$ onto $\boldsymbol{u}$
+* $P \boldsymbol{x}$ is the projection $\boldsymbol{x}$ onto $\boldsymbol{v}$
+* $P \boldsymbol{u} = c \boldsymbol{v}$ for some nonzero number $c$
 
-2. Determine whether the statement is **True** or **False**.
+**Exercise 2.** Determine whether the statement is **True** or **False**.
 
-   * Let $U,V \subset \mathbb{R}^n$ be subspaces such that $U$ and $V$ are orthogonal. If $\mathrm{dim}(U) = m$ then $\mathrm{dim}(V) = n - m$.
-   * If $A^TA$ is a diagonal matrix, then the columns of $A$ are orthogonal.
-   * If $AA^T$ is a diagonal matrix, then the columns of $A$ are orthogonal.
-   * If $A^TA$ is a diagonal matrix, then the rows of $A$ are orthogonal.
-   * If $AA^T$ is a diagonal matrix, then the rows of $A$ are orthogonal.
-   * Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $I = P_1 + P_2$.
-   * Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $P_1P_2 = P_2P_1 = 0$.
-   * Let $\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3$ be nonzero vectors. If $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_2$, and $\boldsymbol{u}_2$ is orthogonal to $\boldsymbol{u}_3$ then $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_3$.
+* Let $U,V \subset \mathbb{R}^n$ be subspaces such that $U$ and $V$ are orthogonal. If $\mathrm{dim}(U) = m$ then $\mathrm{dim}(V) = n - m$.
+* If $A^TA$ is a diagonal matrix, then the columns of $A$ are orthogonal.
+* If $AA^T$ is a diagonal matrix, then the columns of $A$ are orthogonal.
+* If $A^TA$ is a diagonal matrix, then the rows of $A$ are orthogonal.
+* If $AA^T$ is a diagonal matrix, then the rows of $A$ are orthogonal.
+* Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $I = P_1 + P_2$.
+* Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $P_1P_2 = P_2P_1 = 0$.
+* Let $\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3$ be nonzero vectors. If $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_2$, and $\boldsymbol{u}_2$ is orthogonal to $\boldsymbol{u}_3$ then $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_3$.
 
-3. Let $U \subset \mathbb{R}^3$ be the subspace spanned by
+**Exercise 3.** Let $U \subset \mathbb{R}^3$ be the subspace spanned by
 
-   $$
-   \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
-   \hspace{10mm}
-   \boldsymbol{u}_2 = \left[ \begin{array}{r} -1 \\ 1 \\ 1 \end{array} \right]
-   $$
+$$
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} -1 \\ 1 \\ 1 \end{array} \right]
+$$
 
-   Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
+Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
 
-   $$
-   \boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
-   $$
+$$
+\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+$$
 
-4. Let $U \subset \mathbb{R}^3$ be the subspace spanned by
+**Exercise 4.** Let $U \subset \mathbb{R}^3$ be the subspace spanned by
 
-   $$
-   \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
-   \hspace{10mm}
-   \boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
-   $$
+$$
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+$$
 
-   Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
+Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
 
-   $$
-   \boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
-   $$
+$$
+\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
+$$

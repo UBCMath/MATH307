@@ -266,39 +266,39 @@ $$
 
 ## Exercises
 
-1. Find a formula for $\boldsymbol{x}$ as a sum of sinusoids given
+**Exercise 1.** Find a formula for $\boldsymbol{x}$ as a sum of sinusoids given
 
-   $$
-   \mathrm{DFT}(\boldsymbol{x}) = \begin{bmatrix} 1 & 3-3i & 2\sqrt{3}+2i& -4i& 4i &2\sqrt{3}-2i & 3+3i \end{bmatrix}^T
-   $$
+$$
+\mathrm{DFT}(\boldsymbol{x}) = \begin{bmatrix} 1 & 3-3i & 2\sqrt{3}+2i& -4i& 4i &2\sqrt{3}-2i & 3+3i \end{bmatrix}^T
+$$
 
-2. Sketch the signal $\boldsymbol{x}$ such that the magnitude and phase plots of $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$ are
+**Exercise 2.** Sketch the signal $\boldsymbol{x}$ such that the magnitude and phase plots of $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$ are
 
-   ```{image} /img/04_ex02.png
-   :width: 500px
-   :align: center
-   ```
+```{image} /img/04_02_08.png
+:width: 500px
+:align: center
+```
 
-3. Run the following Python code for different values $N$:
+**Exercise 3.** Run the following Python code for different values $N$:
 
-   ```
-   N = 100
-   x = np.random.rand(N)
-   y = np.fft.fft(x)
-   plt.stem(np.abs(y),use_line_collection=True)
-   plt.show()
-   ```
+```
+N = 100
+x = np.random.rand(N)
+y = np.fft.fft(x)
+plt.stem(np.abs(y),use_line_collection=True)
+plt.show()
+```
 
-   Describe the magnitude plot and explain why it has the same general shape for each random sample. (Recall `np.random.rand` samples from the uniform distribution on $[0,1]$.)
+Describe the magnitude plot and explain why it has the same general shape for each random sample. (Recall `np.random.rand` samples from the uniform distribution on $[0,1]$.)
 
-4. Match the signal with the magnitude plot of its discrete Fourier transform.
+**Exercise 4.** Match the signal with the magnitude plot of its discrete Fourier transform.
 
-   ```{image} /img/04_ex01a.png
-   :width: 600px
-   :align: center
-   ```
+```{image} /img/04_02_09.png
+:width: 600px
+:align: center
+```
 
-   ```{image} /img/04_ex01b.png
-   :width: 600px
-   :align: center
-   ```
+```{image} /img/04_02_10.png
+:width: 600px
+:align: center
+```

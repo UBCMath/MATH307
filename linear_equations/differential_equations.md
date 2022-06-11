@@ -190,7 +190,7 @@ $$
 
 Notice that our finite difference approximation found the exact values $y(0.2) = 0.16$, $y(0.4) = 0.24$, $y(0.6) = 0.24$, $y(0.8) = 0.16$. This is because our equation is very simple and the solution is a polynomial of degree 2. The finite difference method does not compute exact values in general.
 
-```{image} /img/01_08_img01.png
+```{image} /img/01_04_01.png
 :width: 500px
 :align: center
 
@@ -234,13 +234,13 @@ $$
 
 Plot the exact solution together with our approximation
 
-```{image} /img/01_08_img02.png
+```{image} /img/01_04_02.png
 :width: 500px
 :align: center
 ```
 
 ```{div} note
-Increasing the number of points in the discretization (equivalently, decreasing the step size $h$) decreases the error but increases the number of computations. This is a general principle in numerical computing: {\it higher accuracy requires more computations}. For example, consider the same equation as the previous example
+Increasing the number of points in the discretization (equivalently, decreasing the step size $h$) decreases the error but increases the number of computations. This is a general principle in numerical computing: *higher accuracy requires more computations*. For example, consider the same equation as the previous example
 
 $$
 y'' = \cos(t) \ \ , \ \ y(0) = 0 \ , \ \ y(2\pi) = 1
@@ -254,7 +254,7 @@ $$
 
 and the finite difference method produces a much better solution
 
-```{image} /img/01_08_img03.png
+```{image} /img/01_04_03.png
 :width: 500px
 :align: center
 ```
@@ -337,7 +337,7 @@ $$
 
 Solving the linear system derived above with $N=19$ produces the result
 
-```{image} /img/01_08_img04.png
+```{image} /img/01_04_04.png
 :width: 500px
 :align: center
 ```
@@ -396,86 +396,86 @@ $$
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
-   * The finite difference method applied to a linear second order differential equation with boundary conditions will compute exact values of the solution $y_k = y(t_k)$ if the step size $h$ is chosen to be small enough.
-   * The finite difference method applied to a linear second order differential equation with boundary conditions  will never compute exact values of the solution $y_k = y(t_k)$ for any differential equation and step size $h$.
+**Exercise 1.** Determine whether the statement is **True** or **False**.
+* The finite difference method applied to a linear second order differential equation with boundary conditions will compute exact values of the solution $y_k = y(t_k)$ if the step size $h$ is chosen to be small enough.
+* The finite difference method applied to a linear second order differential equation with boundary conditions  will never compute exact values of the solution $y_k = y(t_k)$ for any differential equation and step size $h$.
 
-2. Suppose we discretize the domain $[0,1]$ of a differential equation with boundary conditions
+**Exercise 2.** Suppose we discretize the domain $[0,1]$ of a differential equation with boundary conditions
 
-   $$
-   y'' + p(t)y' + q(t)y = r(t) \ \ , \ \ y(0) = \alpha \ \ , \ \ y(1) = \beta
-   $$
+$$
+y'' + p(t)y' + q(t)y = r(t) \ \ , \ \ y(0) = \alpha \ \ , \ \ y(1) = \beta
+$$
 
-   with step size $h=0.1$ and derive a linear system $A \boldsymbol{y} = \boldsymbol{b}$. How many unknown values $y_k$ are we solving for in this case?
+with step size $h=0.1$ and derive a linear system $A \boldsymbol{y} = \boldsymbol{b}$. How many unknown values $y_k$ are we solving for in this case?
 
-3. Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ to approximate the solution of the equation with boundary conditions
+**Exercise 3.** Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ to approximate the solution of the equation with boundary conditions
 
-   $$
-   y'' = 2^t \ \ , \ \ y'(0) = 1 \ , \ \ y(1) = 0
-   $$
+$$
+y'' = 2^t \ \ , \ \ y'(0) = 1 \ , \ \ y(1) = 0
+$$
 
-   using step size $h=0.25$. Use the forward difference formula and the boundary condition $y'(0)=0$ to approximate the boundary value $y_0$.
+using step size $h=0.25$. Use the forward difference formula and the boundary condition $y'(0)=0$ to approximate the boundary value $y_0$.
 
-4. Derive the general form of the linear system $A \boldsymbol{y} = \boldsymbol{b}$ for an equation with boundary conditions
+**Exercise 4.** Derive the general form of the linear system $A \boldsymbol{y} = \boldsymbol{b}$ for an equation with boundary conditions
 
-   $$
-   y'' + p(t)y' = r(t) \ \ , \ \ y(t_0) = \alpha \ \ , \ \ y(t_f) = \beta
-   $$
+$$
+y'' + p(t)y' = r(t) \ \ , \ \ y(t_0) = \alpha \ \ , \ \ y(t_f) = \beta
+$$
 
-   using the forward difference formula to approximate $y'$. Use the notation as in the examples: choose $N$, let  $h = (t_f - t_0)/(N+1)$ and $t_k = t_0 + kh$, let $y_k$ denote an approximation of $y(t_k)$ and note $y_0 = \alpha$ and $y_{N+1} = \beta$.
+using the forward difference formula to approximate $y'$. Use the notation as in the examples: choose $N$, let  $h = (t_f - t_0)/(N+1)$ and $t_k = t_0 + kh$, let $y_k$ denote an approximation of $y(t_k)$ and note $y_0 = \alpha$ and $y_{N+1} = \beta$.
 
-5. Explain why it is not possible to derive a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the equation
+**Exercise 5.** Explain why it is not possible to derive a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the equation
 
-   $$
-   y'' = \cos(y) \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = \frac{\pi}{4}
-   $$
+$$
+y'' = \cos(y) \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = \frac{\pi}{4}
+$$
 
-   by applying finite difference formulas.
+by applying finite difference formulas.
 
-6. Suppose we compute the finite difference approximation of the equation
+**Exercise 6.** Suppose we compute the finite difference approximation of the equation
 
-   $$
-   y'' = \frac{5}{1 + t^4} \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = 1
-   $$
+$$
+y'' = \frac{5}{1 + t^4} \ \ , \ \ y(0) = 0 \ \ , \ \ y(1) = 1
+$$
 
-   with 5 equally spaced points from $t_0 = 0$ to $t_4 = 1$ and find $y_1 = -0.19554177$ and $y_3 = 0.35872678$. Determine $y_2$.
+with 5 equally spaced points from $t_0 = 0$ to $t_4 = 1$ and find $y_1 = -0.19554177$ and $y_3 = 0.35872678$. Determine $y_2$.
 
-7. Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the finite difference approximation of
+**Exercise 7.** Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the finite difference approximation of
 
-   $$
-   y'' + ty = 0 \ \ , \ \ y(1) = 1 \ \ , \ \ y(3) = -1
-   $$
+$$
+y'' + ty = 0 \ \ , \ \ y(1) = 1 \ \ , \ \ y(3) = -1
+$$
 
-   using 5 equally spaced points from $t_0 = 1$ to $t_4 = 3$.
+using 5 equally spaced points from $t_0 = 1$ to $t_4 = 3$.
 
-8. Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the finite difference approximation of
+**Exercise 8.** Setup a linear system $A \boldsymbol{y} = \boldsymbol{b}$ for the finite difference approximation of
 
-   $$
-   y'' + ty = 0 \ \ , \ \ y(1) = 1 \ \ , \ \ y'(3) = -1
-   $$
+$$
+y'' + ty = 0 \ \ , \ \ y(1) = 1 \ \ , \ \ y'(3) = -1
+$$
 
-   using 5 equally spaced points from $t_0 = 1$ to $t_4 = 3$. (Hint: use the backwards difference formula to approximate $y_4$.)
+using 5 equally spaced points from $t_0 = 1$ to $t_4 = 3$. (Hint: use the backwards difference formula to approximate $y_4$.)
 
-9. Setup the linear system $A \boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
+**Exercise 9.** Setup the linear system $A \boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
 
-   $$
-   y'' + y' = t^2 \ \ , \ \ y(-1) = y(1) = 0
-   $$
+$$
+y'' + y' = t^2 \ \ , \ \ y(-1) = y(1) = 0
+$$
 
-   using 9 equally spaced points on the domain $[-1,1]$.
+using 9 equally spaced points on the domain $[-1,1]$.
 
-10. Setup the linear system $A\boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
+**Exercise 10.** Setup the linear system $A\boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
 
-    $$
-    y'' + \cos(t) y = \sin(t) \ \ , \ \ y(0) = y(2\pi) = 0
-    $$
+$$
+y'' + \cos(t) y = \sin(t) \ \ , \ \ y(0) = y(2\pi) = 0
+$$
 
-    using 9 equally spaced points on the domain $[0,2\pi]$.
+using 9 equally spaced points on the domain $[0,2\pi]$.
 
-11. Setup the linear system $A\boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
+**Exercise 11.** Setup the linear system $A\boldsymbol{y} = \boldsymbol{b}$ corresponding to the finite difference method applied to the equation
 
-    $$
-    y'' + \sin(t) y = \cos^2(t) \ \ , \ \ y(0) = y(2\pi) = 0
-    $$
+$$
+y'' + \sin(t) y = \cos^2(t) \ \ , \ \ y(0) = y(2\pi) = 0
+$$
 
-    using 9 equally spaced points on the domain $[0,2\pi]$.
+using 9 equally spaced points on the domain $[0,2\pi]$.

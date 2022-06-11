@@ -1,7 +1,7 @@
 # Subspaces
 
 ```{div} bigidea
-Subspaces of $\mathbb{R}^n$ include lines, planes and hyperplanes through the origin. A basis of a subspace is a linearly independent set of spanning vectors.
+Subspaces of $\mathbb{R}^n$ include lines, planes and hyperplanes through the origin. A basis of a subspace is a linearly independent set of spanning vectors. The Rank-Nullity Theorem describes the dimensions of the nullspace and range of a matrix.
 ```
 
 ## Subspaces
@@ -12,8 +12,15 @@ A subset $U \subseteq \mathbb{R}^n$ is a **subspace** if:
 1. $U$ contains the zero vector $\boldsymbol{0}$
 2. $\boldsymbol{u}_1 + \boldsymbol{u}_2 \in U$ for all $\boldsymbol{u}_1,\boldsymbol{u}_2 \in U$
 3. $c \boldsymbol{u} \in U$ for all $c \in \mathbb{R},\boldsymbol{u} \in U$
+```
 
-Condition 2 is called **closed under addition** and condition 3 is called **closed under scalar multiplication.**
+```{div} note
+<p>
+
+* Condition 2 is called **closed under addition**
+* Condition 3 is called **closed under scalar multiplication**
+* Condition 3 with $c=0$ implies Condition 1
+</p>
 ```
 
 ```{div} example
@@ -86,7 +93,7 @@ $$
 c_1 \boldsymbol{u}_1 + \cdots + c_m \boldsymbol{u}_m = \boldsymbol{0} \hspace{5mm} \text{if and only if} \hspace{5mm} c_1 = \cdots = c_m = 0
 $$
 
-In other words, $\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}$ is a linearly independent set if no vector $\boldsymbol{u}_i$ in the set can be expressed as a linear combination of the others.
+In other words, $\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_m \}$ is a linearly independent set if no vector in the set can be expressed as a linear combination of the others.
 ```
 
 ```{div} note
@@ -183,10 +190,16 @@ where $\boldsymbol{\ell}_1 , \dots , \boldsymbol{\ell}_r$ are the first $r$ colu
 
 ---
 
-*Proof*.
+*Proof*. If $\mathrm{rank}(A) = r$ then only the first $r$ entries of the vector $U \boldsymbol{x}$ are nonzero
 
 $$
-A \boldsymbol{x} = LU \boldsymbol{x} = \begin{bmatrix} & & \\ \boldsymbol{\ell}_1 & \cdots & \boldsymbol{\ell}_n \\ & & \end{bmatrix} \begin{bmatrix} * & * & \cdots & * \\ 0 & \ddots & \ddots & \vdots \\ \vdots & \ddots & * & * \\ 0 & \cdots & 0 & 0 \end{bmatrix} \boldsymbol{x} = \begin{bmatrix} & & \\ \boldsymbol{\ell}_1 & \cdots & \boldsymbol{\ell}_n \\ & & \end{bmatrix} \begin{bmatrix} * \\ \vdots \\ * \\ 0 \end{bmatrix} = (*) \boldsymbol{\ell}_1 + \cdots + (*) \boldsymbol{\ell}_r
+U \boldsymbol{x} = \begin{bmatrix} * & * & \cdots & * \\ 0 & \ddots & \ddots & \vdots \\ \vdots & \ddots & * & * \\ 0 & \cdots & 0 & 0 \end{bmatrix} \boldsymbol{x} = \begin{bmatrix} * \\ \vdots \\ * \\ 0 \end{bmatrix}
+$$
+
+Therefore
+
+$$
+LU \boldsymbol{x} = \begin{bmatrix} & & \\ \boldsymbol{\ell}_1 & \cdots & \boldsymbol{\ell}_n \\ & & \end{bmatrix} \begin{bmatrix} * \\ \vdots \\ * \\ 0 \end{bmatrix} = (*) \boldsymbol{\ell}_1 + \cdots + (*) \boldsymbol{\ell}_r
 $$
 ```
 
@@ -205,32 +218,10 @@ $$
 ```
 
 ## Exercises
-1. Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is **True** or **False**.
-   * $N(A) = N(U)$
-   * $N(A^T) = N(U^T)$
-   * $R(A) = R(U)$
-   * $R(A^T) = R(U^T)$
-   * $\dim (R(A)) = \dim (R(U))$
-2. Let $A$ be a $m \times n$ matrix and let $\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n$ be a basis of the nullspace $N(A)$. Determine $\dim(R(A^T))$ and $\dim(N(A^T))$.
-3. Let $A$ be a $4 \times 4$ matrix such that
 
-   $$
-   A = LU =
-   \left[ \begin{array}{rrrrrr} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 &  1 & 1 & 0 \\ 0 & 2 & 1 & 1 \end{array} \right]
-   \left[ \begin{array}{rrrrrr} 1 & -1 & 2 & -1 \\ 0 & 1 & -3 & 4 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{array} \right]
-   $$
+**Exercise 1.** Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is **True** or **False**.
 
-   Find a basis of $N(A^T)$ and find a basis of $R(A^T)$.
-4. Let $A$ be a matrix such that its LU decomposition is of the form
-
-   $$
-   A = LU = \begin{bmatrix} 1 & 0 & 0 \\ * & 1 & 0 \\ * & * & 1 \end{bmatrix}
-   \begin{bmatrix} * & * & * & * \\ 0 & * & * & * \\ 0 & 0 & 0 & * \end{bmatrix}
-   $$
-
-   where $*$ denotes a nonzero number. Determine the dimension of $R(A^T)$ and the dimension of $N(A^T)$.
-5. Determine whether the statement is **True** or **False**.
-   * Let $S \subseteq \mathbb{R}^n$ be a subspace. If $\boldsymbol{u} \in \mathbb{R}^n$ such that $\boldsymbol{u} \not= 0$ then either $\boldsymbol{u} \in S$ or $\boldsymbol{u} \in S^{\perp}$.
-   * Let $L_1 \subset \mathbb{R}^2$ be a line through the origin. There is a unique line $L_2$ through the origin such that $L_1 \perp L_2$.
-   * Let $L_1 \subset \mathbb{R}^3$ be a line through the origin. There is a unique line $L_2$ through the origin such that $L_1 \perp L_2$.
-   * Let $U_1 \subset \mathbb{R}^4$ be a 2-dimensional subspace. There is a unique plane $U_2$ through the origin such that $U_1 \perp U_2$.
+  * $N(A) = N(U)$
+  * $\dim (N(A)) = \dim (N(U))$
+  * $R(A) = R(U)$
+  * $\dim (R(A)) = \dim (R(U))$

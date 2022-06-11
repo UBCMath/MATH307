@@ -151,31 +151,32 @@ We assume that $m \geq n$ and $f_1,\dots,f_n$ are linearly independenty (which i
 
 ## Exercises
 
-1. **True** or **False**. Let $A$ be a $m \times n$ matrix with $m \geq n$ and let $\boldsymbol{b} \in \mathbb{R}^m$. There is a unique vector $\boldsymbol{x} \in \mathbb{R}^n$ which minimizes the norm of the residual $\| A \boldsymbol{x} - \boldsymbol{b} \|$.
+**Exercise 1.** **True** or **False**. Let $A$ be a $m \times n$ matrix with $m \geq n$ and let $\boldsymbol{b} \in \mathbb{R}^m$. There is a unique vector $\boldsymbol{x} \in \mathbb{R}^n$ which minimizes the norm of the residual $\| A \boldsymbol{x} - \boldsymbol{b} \|$.
 
-2. Let $A = QR$ where
+**Exercise 2.** Let $A = QR$ where
 
-   $$
-   Q = \left[ \begin{array}{rrrrr} 0 & 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 \end{array} \right]
-   \ \
-   R = \left[ \begin{array}{rrrr} 1 & 1 & 1 & 1 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{array} \right]
-   $$
+$$
+Q = \left[ \begin{array}{rrrrr} 0 & 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 \end{array} \right]
+\ \
+R = \left[ \begin{array}{rrrr} 1 & 1 & 1 & 1 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{array} \right]
+$$
 
-   Find the least squares approximation of the system $A\boldsymbol{x} = \boldsymbol{b}$ for:
+Find the least squares approximation $A\boldsymbol{x} \approx \boldsymbol{b}$ for:
 
-   * $\boldsymbol{b} = \begin{bmatrix} -2 & -1 & 0 & 1 & 2 \end{bmatrix}^T$.
-   * $\boldsymbol{b} = \begin{bmatrix} 1 & -2 & 2 & 0 & 1 \end{bmatrix}^T$.
+$$
+\boldsymbol{b} = \begin{bmatrix} -2 \\ -1 \\ 0 \\ 1 \\ 2 \end{bmatrix}
+$$
 
-3. Setup (but do not solve) a linear system $B \boldsymbol{c} = \boldsymbol{y}$ where the solution is the coefficient vector
+**Exercise 3.** Setup (but do not solve) a linear system $B \boldsymbol{c} = \boldsymbol{y}$ where the solution is the coefficient vector
 
-   $$
-   \boldsymbol{c} = \begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
-   $$
+$$
+\boldsymbol{c} = \begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
+$$
 
-   such that the function
+such that the function
 
-   $$
-   f(t) = c_0  + c_1\cos(2 \pi t) + c_2 \sin(2 \pi t)
-   $$
+$$
+f(t) = c_0  + c_1\cos(2 \pi t) + c_2 \sin(2 \pi t)
+$$
 
-   bests fits the data $(0,1),(1/4,3),(1/2,2),(3/4,-1),(1,0)$.
+bests fits the data $(0,1),(1/4,3),(1/2,2),(3/4,-1),(1,0)$.

@@ -277,23 +277,23 @@ The Fourier matrix $F_N$ is *not* unitary however the matrix $\frac{1}{\sqrt{N}}
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
+**Exercise 1.** Determine whether the statement is **True** or **False**.
 
-   * If $N$ is an even integer then the vector $\boldsymbol{f}_{N/2}$ in the Fourier basis of $\mathbb{C}^N$ has real entries.
-   * Let $\boldsymbol{x} \in \mathbb{R}^N$ and let $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$. Then $\overline{\boldsymbol{x}[k]} = \boldsymbol{x}[N-k]$ for all $0<k<N$.
+* If $N$ is an even integer then the vector $\boldsymbol{f}_{N/2}$ in the Fourier basis of $\mathbb{C}^N$ has real entries.
+* Let $\boldsymbol{x} \in \mathbb{R}^N$ and let $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$. Then $\overline{\boldsymbol{x}[k]} = \boldsymbol{x}[N-k]$ for all $0<k<N$.
 
-2. Suppose a signal $\boldsymbol{x} \in \mathbb{R}^9$ of length 9 has real values and let $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$. Determine all the values of $\boldsymbol{y}$ given the values at even indices
+**Exercise 2.** Suppose a signal $\boldsymbol{x} \in \mathbb{R}^9$ of length 9 has real values and let $\boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})$. Determine all the values of $\boldsymbol{y}$ given the values at even indices
 
-   $$
-   \boldsymbol{y}[0] = 1 \hspace{5mm}
-   \boldsymbol{y}[2] = 2+i \hspace{5mm}
-   \boldsymbol{y}[4] = 1+2i \hspace{5mm}
-   \boldsymbol{y}[6] = 1-3i \hspace{5mm}
-   \boldsymbol{y}[8] = 1-i
-   $$
+$$
+\boldsymbol{y}[0] = 1 \hspace{5mm}
+\boldsymbol{y}[2] = 2+i \hspace{5mm}
+\boldsymbol{y}[4] = 1+2i \hspace{5mm}
+\boldsymbol{y}[6] = 1-3i \hspace{5mm}
+\boldsymbol{y}[8] = 1-i
+$$
 
-3. Let $N$ be an even integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[n] = 1$ if $n$ is even and $\boldsymbol{x}[n] = 0$ if $n$ is odd. Find $\mathrm{DFT}(\boldsymbol{x})$.
+**Exercise 3.** Let $N$ be an even integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[n] = 1$ if $n$ is even and $\boldsymbol{x}[n] = 0$ if $n$ is odd. Find $\mathrm{DFT}(\boldsymbol{x})$.
 
-4. Let $N$ be an even integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[n] = 1$ if $n$ is even and $\boldsymbol{x}[n] = -1$ if $n$ is odd. Find $\mathrm{DFT}(\boldsymbol{x})$.
+**Exercise 4.** Let $N$ be an even integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[n] = 1$ if $n$ is even and $\boldsymbol{x}[n] = -1$ if $n$ is odd. Find $\mathrm{DFT}(\boldsymbol{x})$.
 
-5. Let $N$ be an integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[0] = 0$ and $\boldsymbol{x}[n] = 1$ for $0<n<N$. Find $\mathrm{DFT}(\boldsymbol{x})$.
+**Exercise 5.** Let $N$ be an integer and let $\boldsymbol{x} \in \mathbb{R}^N$ such that $\boldsymbol{x}[0] = 0$ and $\boldsymbol{x}[n] = 1$ for $0<n<N$. Find $\mathrm{DFT}(\boldsymbol{x})$.

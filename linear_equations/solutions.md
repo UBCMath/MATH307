@@ -1,4 +1,8 @@
-# LU Decomposition
+# Solutions of Linear Systems
+
+```{div} bigidea
+Solve a linear system of equations $A \boldsymbol{x} = \boldsymbol{b}$ with the Gaussian elimination algorithm. Record the row operations in Gaussian elimination in the LU decomposition. Use the LU decomposition in backward/forward subsitution to solve systems efficiently.
+```
 
 ## Gaussian Elimination
 
@@ -13,7 +17,7 @@ $$
 \begin{array}{ccccccccc}
 a_{1,1} x_1 & + & a_{1,2} x_2 & + & \cdots & + & a_{1,n} x_n & = & b_1 \\
 a_{2,1} x_1 & + & a_{2,2} x_2 & + & \cdots & + & a_{2,n} x_n & = & b_2 \\
-& & & & & & & \vdots & \\
+& \vdots & & & & \vdots & & \vdots & \\
 a_{m,1} x_1 & + & a_{m,2} x_2 & + & \cdots & + & a_{m,n} x_n & = & b_m
 \end{array}
 $$
@@ -555,58 +559,59 @@ The LU decomposition is especially useful when solving many different systems wi
 
 ## Exercises
 
-1. Determine whether the statement is **True** or **False**.
-   * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. There is a unique solution of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
-   * Let $A$ be a $m$ by $n$ matrix such that $m < n$ and $\mathrm{rank}(A) = m$. There are infinitely many solutions of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
-   * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there is only one solution.
-   * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) < n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there are infinitely many solutions.
-   * If $A = LU$ is the LU decomposition of $A$ then $\det(L) \not= 0$.
-   * If $A$ is of the form
+**Exercise 1.** Determine whether the statement is **True** or **False**.
 
-      $$
-      A = \begin{bmatrix} * & * & 0 & 0 \\ * & * & * & 0 \\ 0 & * & * & * \\ 0 & 0 & * & * \end{bmatrix}
-      $$
+  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. There is a unique solution of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
+  * Let $A$ be a $m$ by $n$ matrix such that $m < n$ and $\mathrm{rank}(A) = m$. There are infinitely many solutions of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
+  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there is only one solution.
+  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) < n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there are infinitely many solutions.
+  * If $A = LU$ is the LU decomposition of $A$ then $\det(L) \not= 0$.
 
-      and the $LU$ decomposition $A = LU$ exists, then $L$ and $U$ are of the form
+**Exercise 2.**  If $A$ is of the form
 
-      $$
-      L = \begin{bmatrix} 1 & 0 & 0 & 0 \\ * & 1 & 0 & 0 \\ 0 & * & 1 & 0 \\ 0 & 0 & * & 1 \end{bmatrix}
-      \hspace{5mm}
-      U = \begin{bmatrix} * & * & 0 & 0 \\ 0 & * & * & 0 \\ 0 & 0 & * & * \\ 0 & 0 & 0 & * \end{bmatrix}
-      $$
+$$
+A = \begin{bmatrix} * & * & 0 & 0 \\ * & * & * & 0 \\ 0 & * & * & * \\ 0 & 0 & * & * \end{bmatrix}
+$$
+and the $LU$ decomposition $A = LU$ exists, show that $L$ and $U$ are of the form
 
-2. Let $I$ be the identity matrix of size $n$ and let $R$ be the $n$ by $n$ matrix with all zeros except for the nonzero scalar $c$ at index $(i,j)$ where $i \not= j$. In other words, the entry of $R$ in row $i$ and column $j$ is $c$ and all other entries of $R$ are 0. Let $E = I + R$ and let $A$ be any $n$ by $n$ matrix.
-   * Matrix multiplication $EA$ is equivalent to which elementary row/column operation on $A$?
-   * Matrix multiplication $AE$ is equivalent to which elementary row/column operation on $A$?
+$$
+L = \begin{bmatrix} 1 & 0 & 0 & 0 \\ * & 1 & 0 & 0 \\ 0 & * & 1 & 0 \\ 0 & 0 & * & 1 \end{bmatrix}
+\hspace{5mm}
+U = \begin{bmatrix} * & * & 0 & 0 \\ 0 & * & * & 0 \\ 0 & 0 & * & * \\ 0 & 0 & 0 & * \end{bmatrix}
+$$
 
-3. Find a value $c$ such that the system $A \boldsymbol{x} = \boldsymbol{b}$ has infinitely many solutions where
+**Exercise 3.** Let $I$ be the identity matrix of size $n$ and let $R$ be the $n$ by $n$ matrix with all zeros except for the nonzero scalar $c$ at index $(i,j)$ where $i \not= j$. In other words, the entry of $R$ in row $i$ and column $j$ is $c$ and all other entries of $R$ are 0. Let $E = I + R$ and let $A$ be any $n$ by $n$ matrix.
+  * Matrix multiplication $EA$ is equivalent to which elementary row/column operation on $A$?
+  * Matrix multiplication $AE$ is equivalent to which elementary row/column operation on $A$?
 
-   $$
-   A = \left[ \begin{array}{rrr} 3 & -1 & 2 \\ 1 & 1 & -1 \\ 2 & -2 & 3 \end{array} \right]
-   \hspace{5mm}
-   \boldsymbol{b} = \begin{bmatrix} 3 \\ 2 \\ c \end{bmatrix}
-   $$
+**Exercise 4.** Find a value $c$ such that the system $A \boldsymbol{x} = \boldsymbol{b}$ has infinitely many solutions where
 
-4. Compute the LU decomposition of
+$$
+A = \left[ \begin{array}{rrr} 3 & -1 & 2 \\ 1 & 1 & -1 \\ 2 & -2 & 3 \end{array} \right]
+\hspace{5mm}
+\boldsymbol{b} = \begin{bmatrix} 3 \\ 2 \\ c \end{bmatrix}
+$$
 
-   $$
-   A = \left[ \begin{array}{rrrr} 2 & 0 & 1 & 1 \\ -2 & -1 & 2 & -1 \\ 0 & 2 & -5 & -1 \\ 4 & 0 & 6 & 0 \end{array} \right]
-   $$
+**Exercise 5.** Compute the LU decomposition of
 
-5. Find the solution of the system $A \boldsymbol{x} = \boldsymbol{b}$ for
+$$
+A = \left[ \begin{array}{rrrr} 2 & 0 & 1 & 1 \\ -2 & -1 & 2 & -1 \\ 0 & 2 & -5 & -1 \\ 4 & 0 & 6 & 0 \end{array} \right]
+$$
 
-   $$
-   A = \left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ -3 & -1 & 0 \\ 3 & -1 & 3 \end{array} \right]
-   \hspace{5mm}
-   \boldsymbol{b} = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \end{array} \right]
-   $$
+**Exercise 6.** Find the solution of the system $A \boldsymbol{x} = \boldsymbol{b}$ for
 
-   given the LU decomposition
+$$
+A = \left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ -3 & -1 & 0 \\ 3 & -1 & 3 \end{array} \right]
+\hspace{5mm}
+\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \end{array} \right]
+$$
 
-   $$
-   A = LU =
-   \left[ \begin{array}{rrr} 1 & \phantom{+}0 & \phantom{+}0 \\ -1 & 1 & 0 \\ 1 & 1 & 1 \end{array} \right]
-   \left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ 0 & -1 & 1 \\ 0 & 0 & 1 \end{array} \right]
-   $$
+given the LU decomposition
 
-6. Suppose we compute a decomposition $A = L_0U_0$ such that $U_0$ is *unit* upper triangular and $L_0$ is lower triangular. Describe a method to derive a decomposition $A = LU$ such that $L$ is *unit* lower triangular and $U$ is upper triangular.
+$$
+A = LU =
+\left[ \begin{array}{rrr} 1 & \phantom{+}0 & \phantom{+}0 \\ -1 & 1 & 0 \\ 1 & 1 & 1 \end{array} \right]
+\left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ 0 & -1 & 1 \\ 0 & 0 & 1 \end{array} \right]
+$$
+
+**Exercise 6.** Suppose we compute a decomposition $A = L_0U_0$ such that $U_0$ is *unit* upper triangular and $L_0$ is lower triangular. Describe a method to derive a decomposition $A = LU$ such that $L$ is *unit* lower triangular and $U$ is upper triangular.
