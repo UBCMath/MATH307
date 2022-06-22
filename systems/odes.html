@@ -111,17 +111,17 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Linear Systems
+  Systems of Equations
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="solutions.html">
-   Solutions of Linear Systems
+  <a class="reference internal" href="lu.html">
+   LU Decomposition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="error_analysis.html">
+  <a class="reference internal" href="error.html">
    Error Analysis
   </a>
  </li>
@@ -196,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/complex.html">
+   Complex Vectors
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dft/dft.html">
    Discrete Fourier Transform
@@ -274,40 +279,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/11_pagerank.html">
-   PageRank
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../notebooks/12_fft.html">
    Discrete Fourier Transform
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/complex_numbers.html">
-   Complex Numbers, Vectors and Matrices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/matrix_multiplication.html">
-   Matrix Multiplication
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/norms.html">
-   Vector and Matrix Norms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/inner_product.html">
-   Inner Product
   </a>
  </li>
 </ul>
@@ -396,7 +369,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear_equations/differential_equations.md"
+        <a href="../_sources/systems/odes.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -935,7 +908,7 @@ y'' + \sin(t) y = \cos^2(t) \ \ , \ \ y(0) = y(2\pi) = 0
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./linear_equations"
+            path: "./systems"
         },
         predefinedOutput: true
     }

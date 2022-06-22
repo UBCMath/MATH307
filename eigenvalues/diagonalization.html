@@ -111,27 +111,27 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Linear Systems
+  Systems of Equations
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/solutions.html">
-   Solutions of Linear Systems
+  <a class="reference internal" href="../systems/lu.html">
+   LU Decomposition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/error_analysis.html">
+  <a class="reference internal" href="../systems/error.html">
    Error Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/interpolation.html">
+  <a class="reference internal" href="../systems/interpolation.html">
    Interpolation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/differential_equations.html">
+  <a class="reference internal" href="../systems/odes.html">
    Differential Equations
   </a>
  </li>
@@ -196,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/complex.html">
+   Complex Vectors
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dft/dft.html">
    Discrete Fourier Transform
@@ -274,40 +279,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/11_pagerank.html">
-   PageRank
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../notebooks/12_fft.html">
    Discrete Fourier Transform
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/complex_numbers.html">
-   Complex Numbers, Vectors and Matrices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/matrix_multiplication.html">
-   Matrix Multiplication
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/norms.html">
-   Vector and Matrix Norms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/inner_product.html">
-   Inner Product
   </a>
  </li>
 </ul>
@@ -640,7 +613,7 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 <div class="theorem docutils">
 <p>All eigenvalues of a symmetric matrix are real numbers.</p>
 <hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. Compute the <a class="reference internal" href="../appendix/complex_numbers.html#standard-inner-product"><span class="std std-ref">complex inner product</span></a> <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , A \boldsymbol{v} \rangle = \boldsymbol{v}^T \overline{A \boldsymbol{v}}\)</span> in two different ways. First, compute</p>
+<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. Compute the <a class="reference internal" href="../dft/complex.html#standard-inner-product"><span class="std std-ref">complex inner product</span></a> <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , A \boldsymbol{v} \rangle = \boldsymbol{v}^T \overline{A \boldsymbol{v}}\)</span> in two different ways. First, compute</p>
 <div class="math notranslate nohighlight">
 \[
 \langle \boldsymbol{v} , A \boldsymbol{v} \rangle

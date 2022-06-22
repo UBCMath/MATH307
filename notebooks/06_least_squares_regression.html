@@ -111,27 +111,27 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Linear Systems
+  Systems of Equations
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/solutions.html">
-   Solutions of Linear Systems
+  <a class="reference internal" href="../systems/lu.html">
+   LU Decomposition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/error_analysis.html">
+  <a class="reference internal" href="../systems/error.html">
    Error Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/interpolation.html">
+  <a class="reference internal" href="../systems/interpolation.html">
    Interpolation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../linear_equations/differential_equations.html">
+  <a class="reference internal" href="../systems/odes.html">
    Differential Equations
   </a>
  </li>
@@ -196,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/complex.html">
+   Complex Vectors
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dft/dft.html">
    Discrete Fourier Transform
@@ -274,40 +279,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_pagerank.html">
-   PageRank
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="12_fft.html">
    Discrete Fourier Transform
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/complex_numbers.html">
-   Complex Numbers, Vectors and Matrices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/matrix_multiplication.html">
-   Matrix Multiplication
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/norms.html">
-   Vector and Matrix Norms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/inner_product.html">
-   Inner Product
   </a>
  </li>
 </ul>
@@ -721,11 +694,11 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.9894801 ],
-       [1.        , 0.8219285 ],
-       [1.        , 0.02153881],
-       [1.        , 0.65533885],
-       [1.        , 0.5704638 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.20425516],
+       [1.        , 0.7885084 ],
+       [1.        , 0.26240127],
+       [1.        , 0.72563844],
+       [1.        , 0.28408564]])
 </pre></div>
 </div>
 </div>
@@ -739,7 +712,7 @@ y = c_0 + c_1 t + \epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 6.93574761 -3.94017088]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7.00466335 -4.01536668]
 </pre></div>
 </div>
 </div>

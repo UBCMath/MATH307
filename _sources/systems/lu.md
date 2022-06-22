@@ -1,14 +1,15 @@
-# Solutions of Linear Systems
+# LU Decomposition
 
 ```{div} bigidea
-Solve a linear system of equations $A \boldsymbol{x} = \boldsymbol{b}$ with the Gaussian elimination algorithm. Record the row operations in Gaussian elimination in the LU decomposition. Use the LU decomposition in backward/forward subsitution to solve systems efficiently.
+Record the row operations of the Gaussian elimination algorithm in the LU decomposition and use the decomposition $A = LU$ in backward/forward subsitution to efficiently solve a system of linear equations $A \boldsymbol{x} = \boldsymbol{b}$.
+```
+
+```{image} /img/01_01_01.png
+:width: 100%
+:align: center
 ```
 
 ## Gaussian Elimination
-
-```{div} bigidea
-Solve a linear system of equations $A \boldsymbol{x} = \boldsymbol{b}$ by transforming the augmented matrix $[ \, A \ \boldsymbol{b} \, ]$ to row echelon form through Gaussian elimination.
-```
 
 ```{div} definition
 A **linear system of equations** is a collection of equations of the form
@@ -40,7 +41,7 @@ $$
 ```
 
 ```{div} definition
-Transform a matrix using **elementary row operations**:
+There are three types of **elementary row operations** are:
 
 1. Interchange two rows.
 2. Multiply a row by a nonzero number.
@@ -68,7 +69,7 @@ Symbol $\times$ denotes a nonzero entry and $*$ is any value.
 ```
 
 ```{div} definition
-The method to find a sequence of elementary row operations which transforms a matrix to row echelon form is called the **Gaussian elimination algorithm**. See [Wikipedia:Gaussian Elimination](https://en.wikipedia.org/wiki/Gaussian_elimination) to review how the algorithm works.
+The **Gaussian elimination algorithm** applies a sequence of elementary row operations to transform a matrix to row echelon form. See [Wikipedia:Gaussian Elimination](https://en.wikipedia.org/wiki/Gaussian_elimination) to review how the algorithm works.
 ```
 
 ```{div} definition
@@ -78,17 +79,17 @@ Let $A$ be a matrix and let $U$ be a matrix in row echelon form obtained from $A
 ```{div} definition
 Let $A$ be a $m \times n$ matrix with $\mathrm{rank}(A) = r$.
 
-1. The system $A \boldsymbol{x} = \boldsymbol{b}$ is **inconsistent** (ie. no solution) if $\mathrm{rank}(A) < \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$. In other words, the row echelon form of the augmented matrix $[ \, A \ \boldsymbol{b} \, ]$ has a row of the form
+The system $A \boldsymbol{x} = \boldsymbol{b}$ is **inconsistent** (ie. no solution) if $\mathrm{rank}(A) < \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$. In other words, the row echelon form of the augmented matrix $[ \, A \ \boldsymbol{b} \, ]$ has a row of the form
 
-   $$
-   \begin{array}{rrrr|r} 0 & 0 & \cdots & 0 & 1 \end{array}
-   $$
+$$
+\begin{array}{rrrr|r} 0 & 0 & \cdots & 0 & 1 \end{array}
+$$
 
-   which implies $0 = 1$.
+which implies $0 = 1$.
 
-2. The system has a **unique solution** when $\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$ and $\mathrm{rank}(A) = n$. In other words, the system is consistent and the rank of $A$ is equal to the number of variables in the system.
+The system has a **unique solution** when $\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$ and $\mathrm{rank}(A) = n$. In other words, the system is consistent and the rank of $A$ is equal to the number of variables in the system.
 
-3. The system has **infinitely many solutions** when $\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$ and $\mathrm{rank}(A) < n$.
+The system has **infinitely many solutions** when $\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])$ and $\mathrm{rank}(A) < n$.
 ```
 
 ```{div} example
@@ -193,11 +194,6 @@ The systems is inconsistent. In other words, there is no solution.
 
 ## LU Decomposition
 
-```{div} bigidea
-The LU decomposition of a matrix $A$ (if it exists) records the elementary row operations of Gaussian elimination in a matrix factorization $A=LU$ where $L$ is a unit lower triangular matrix and $U$ is an upper triangular matrix.
-```
-
-
 ```{div} definition
 A **lower triangular matrix** is a matrix with zeros above the diagonal. For example:
 
@@ -233,20 +229,21 @@ $$
 ```
 
 ```{div} theorem
-Let $E$ be the $m \times m$ matrix with ones along the diagonal, $c$ in entry $(i,j)$ with $i > j$ and all other entries are zeros
+Let $E$ be the $m \times m$ matrix with ones along the diagonal, $c$ in the entry at row $i$ and column $j$ with $i > j$ and all other entries are zeros
 
 $$
-E = \begin{bmatrix} 1 & & & & \\ & \ddots & & & \\ & & 1 & & \\ & c & & \ddots & \\ & & & & 1 \end{bmatrix}
+E = \begin{bmatrix} 1 & & & & \\ & \ddots & & & \\ & & \ddots & & \\ & c & & \ddots & \\ & & & & 1 \end{bmatrix}
 $$
 
-1. For any $m \times n$ matrix $A$, matrix multiplication $EA$ applies to $A$ the elementary row operation: add $c$ times row $j$ to row $i$.
-2. The inverse of $E$ is given by
+Then, for any $m \times n$ matrix $A$, matrix multiplication $EA$ applies to $A$ the elementary row operation: add $c$ times row $j$ to row $i$.
 
-   $$
-   E^{-1} = \left[ \begin{array}{rrrrr} 1 & & & & \\ & \ddots & & & \\ & & 1 & & \\ & -c & & \ddots & \\ & & & & 1 \end{array} \right]
-   $$
+Furthermore, the inverse of $E$ is given by
 
-   where $-c$ is in entry $(i,j)$.
+$$
+E^{-1} = \left[ \begin{array}{rrrrr} 1 & & & & \\ & \ddots & & & \\ & & \ddots & & \\ & -c & & \ddots & \\ & & & & 1 \end{array} \right]
+$$
+
+where $-c$ is the entry at row $i$ and column $j$.
 ```
 
 ```{div} example
@@ -337,6 +334,9 @@ Applying all the corresponding rows operations in order yields the result
 
 $$
 E_{2,1}^{-1} \cdots E_{m,1}^{-1} E_{3,2}^{-1} \cdots E_{m,2}^{-1} \cdots E_{m-1,m-2}^{-1} E_{m,m-2}^{-1} E_{m,m-1}^{-1}
+$$
+
+$$
 =
 \begin{bmatrix}
 1 & & & & \\
@@ -485,10 +485,6 @@ does not have an LU decomposition (*why not?*). However, if we allow partial piv
 
 ## Forward and Backward Substitution
 
-```{div} bigidea
-The LU decomposition $A = LU$ provides a shortcut to solve the system $A \boldsymbol{x} = \boldsymbol{b}$: solve $L \boldsymbol{y} = \boldsymbol{b}$ by forward substitution then solve $U \boldsymbol{x} = \boldsymbol{y}$ by backward substitution.
-```
-
 ```{div} definition
 Let $A = LU$ be the LU decomposition of $A$, let $\ell_{i,j}$ denote the entries of $L$ and let $u_{i,j}$ denote the entries of $U$. Consider the system $A \boldsymbol{x} = \boldsymbol{b}$ and let $\boldsymbol{y} = U \boldsymbol{x}$.
 
@@ -507,10 +503,10 @@ $$
 
 $$
 \begin{align*}
-x_1 &= (y_1 - u_{1,2} x_2 - \cdots - u_{1,n} x_n) / u_{1,1} \\
- & \vdots \\
+x_n &= y_n / u_{n,n} \\
 x_{n-1} &= (y_{n-1} - u_{n-1,n} x_n) / u_{n-1,n-1} \\
-x_n &= y_n / u_{n,n}
+ & \vdots \\
+x_1 &= (y_1 - u_{1,2} x_2 - \cdots - u_{1,n} x_n) / u_{1,1}
 \end{align*}
 $$
 ```
@@ -554,25 +550,37 @@ $$
 ```
 
 ```{div} note
-The LU decomposition is especially useful when solving many different systems with the *same* coefficient matrix $A$. For example, to compute the inverse $A^{-1}$ of a square matrix of size $n$ we need to solve $n$ different systems $A \boldsymbol{x}_k = \boldsymbol{e}_k$ for $k=1,\dots,n$ where $\boldsymbol{e}_k$ is the $k$th column of the identity $I$. The result is $A^{-1} = [\boldsymbol{x}_1 \cdots \boldsymbol{x}_n]$. In other words, the columns of $A^{-1}$ are given by $\boldsymbol{x}_1, \dots, \boldsymbol{x}_n$.
+The LU decomposition is especially useful when solving many different systems with the *same* coefficient matrix $A$. For example, to compute the inverse $A^{-1}$ of a square matrix of size $n$ we need to solve $n$ different systems $A \boldsymbol{x}_k = \boldsymbol{e}_k$ for $k=1,\dots,n$ where $\boldsymbol{e}_k$ is the $k$th column of the identity matrix $I$. The result is $A^{-1} = [\boldsymbol{x}_1 \cdots \boldsymbol{x}_n]$. In other words, the columns of $A^{-1}$ are given by $\boldsymbol{x}_1, \dots, \boldsymbol{x}_n$.
 ```
 
 ## Exercises
 
-**Exercise 1.** Determine whether the statement is **True** or **False**.
+````{div} exercise
+Let $A$ be a $m$ by $n$ matrix. Determine whether the statement is **True** or **False**.
 
-  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. There is a unique solution of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
-  * Let $A$ be a $m$ by $n$ matrix such that $m < n$ and $\mathrm{rank}(A) = m$. There are infinitely many solutions of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
-  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) = n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there is only one solution.
-  * Let $A$ be a $m$ by $n$ matrix such that $m > n$ and $\mathrm{rank}(A) < n$. If the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there are infinitely many solutions.
+  * If $m > n$ and $\mathrm{rank}(A) = n$, then here is a unique solution of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
+  * If $m < n$ and $\mathrm{rank}(A) = m$, then there are infinitely many solutions of $A \boldsymbol{x} = \boldsymbol{b}$ for any $\boldsymbol{b}$.
+  * If $m > n$ and $\mathrm{rank}(A) = n$, then if the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there is only one solution.
+  * If $m > n$ and $\mathrm{rank}(A) < n$, then if the system $A \boldsymbol{x} = \boldsymbol{b}$ has one solution then there are infinitely many solutions.
   * If $A = LU$ is the LU decomposition of $A$ then $\det(L) \not= 0$.
 
-**Exercise 2.**  If $A$ is of the form
+```{dropdown} Solution
+* False
+* True
+* True
+* True
+* True
+```
+
+````
+
+````{div} exercise
+Determine whether the statement is **True** or **False**. If $A$ is of the form
 
 $$
 A = \begin{bmatrix} * & * & 0 & 0 \\ * & * & * & 0 \\ 0 & * & * & * \\ 0 & 0 & * & * \end{bmatrix}
 $$
-and the $LU$ decomposition $A = LU$ exists, show that $L$ and $U$ are of the form
+and the $LU$ decomposition $A = LU$ exists, then $L$ and $U$ are of the form
 
 $$
 L = \begin{bmatrix} 1 & 0 & 0 & 0 \\ * & 1 & 0 & 0 \\ 0 & * & 1 & 0 \\ 0 & 0 & * & 1 \end{bmatrix}
@@ -580,11 +588,26 @@ L = \begin{bmatrix} 1 & 0 & 0 & 0 \\ * & 1 & 0 & 0 \\ 0 & * & 1 & 0 \\ 0 & 0 & *
 U = \begin{bmatrix} * & * & 0 & 0 \\ 0 & * & * & 0 \\ 0 & 0 & * & * \\ 0 & 0 & 0 & * \end{bmatrix}
 $$
 
-**Exercise 3.** Let $I$ be the identity matrix of size $n$ and let $R$ be the $n$ by $n$ matrix with all zeros except for the nonzero scalar $c$ at index $(i,j)$ where $i \not= j$. In other words, the entry of $R$ in row $i$ and column $j$ is $c$ and all other entries of $R$ are 0. Let $E = I + R$ and let $A$ be any $n$ by $n$ matrix.
+```{dropdown} Solution
+True
+```
+
+````
+
+````{div} exercise
+Let $I$ be the identity matrix of size $n$ and let $R$ be the $n$ by $n$ matrix with all zeros except for the nonzero scalar $c$ at row $i$ and column $j$ where $i \not= j$. Let $E = I + R$ and let $A$ be any $n$ by $n$ matrix.
   * Matrix multiplication $EA$ is equivalent to which elementary row/column operation on $A$?
   * Matrix multiplication $AE$ is equivalent to which elementary row/column operation on $A$?
 
-**Exercise 4.** Find a value $c$ such that the system $A \boldsymbol{x} = \boldsymbol{b}$ has infinitely many solutions where
+```{dropdown} Solution
+* Add $c$ times row $j$ to row $i$.
+* Add $c$ times column $i$ to column $j$.
+```
+
+````
+
+````{div} exercise
+Find a value $c$ such that the system $A \boldsymbol{x} = \boldsymbol{b}$ has infinitely many solutions where
 
 $$
 A = \left[ \begin{array}{rrr} 3 & -1 & 2 \\ 1 & 1 & -1 \\ 2 & -2 & 3 \end{array} \right]
@@ -592,18 +615,35 @@ A = \left[ \begin{array}{rrr} 3 & -1 & 2 \\ 1 & 1 & -1 \\ 2 & -2 & 3 \end{array}
 \boldsymbol{b} = \begin{bmatrix} 3 \\ 2 \\ c \end{bmatrix}
 $$
 
-**Exercise 5.** Compute the LU decomposition of
+
+```{dropdown} Solution
+$c = 1$
+```
+
+````
+
+````{div} exercise
+Compute the LU decomposition of
 
 $$
 A = \left[ \begin{array}{rrrr} 2 & 0 & 1 & 1 \\ -2 & -1 & 2 & -1 \\ 0 & 2 & -5 & -1 \\ 4 & 0 & 6 & 0 \end{array} \right]
 $$
 
-**Exercise 6.** Find the solution of the system $A \boldsymbol{x} = \boldsymbol{b}$ for
+```{dropdown} Solution
+$$
+L = \left[ \begin{array}{rrrr} 1 & 0 & \phantom{+}0 & \phantom{+}0 \\ -1 & 1 & 0 & 0 \\ 0 & -2 & 1 & 0 \\ 2 & 0 & 4 & 1 \end{array} \right]
+\hspace{20mm}
+U = \left[ \begin{array}{rrrr} 2 & 0 & \phantom{+}1 & 1 \\ 0 & -1 & 3 & 0 \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 2 \end{array} \right]
+$$
+```
+
+````
+
+````{div} exercise
+Find the solution of the system $A \boldsymbol{x} = \boldsymbol{b}$ for
 
 $$
-A = \left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ -3 & -1 & 0 \\ 3 & -1 & 3 \end{array} \right]
-\hspace{5mm}
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \end{array} \right]
+\boldsymbol{b} = \left[ \begin{array}{r} 2 \\ -1 \\ 2 \end{array} \right]
 $$
 
 given the LU decomposition
@@ -614,4 +654,25 @@ A = LU =
 \left[ \begin{array}{rrr} 3 & 0 & \phantom{+}1 \\ 0 & -1 & 1 \\ 0 & 0 & 1 \end{array} \right]
 $$
 
-**Exercise 6.** Suppose we compute a decomposition $A = L_0U_0$ such that $U_0$ is *unit* upper triangular and $L_0$ is lower triangular. Describe a method to derive a decomposition $A = LU$ such that $L$ is *unit* lower triangular and $U$ is upper triangular.
+```{dropdown} Solution
+$$
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ -2 \\ -1 \end{array} \right]
+$$
+```
+
+````
+
+````{div} exercise
+Suppose we compute a decomposition $A = L_0U_0$ such that $U_0$ is *unit* upper triangular and $L_0$ is lower triangular. Describe a method to derive a decomposition $A = LU$ such that $L$ is *unit* lower triangular and $U$ is upper triangular.
+
+```{dropdown} Solution
+Factor of the diagonal entries of $L_0$ into a diagonal matrix $D$ such that $L_0 = LD$ where $L$ is unit lower triangular then let $U = DU_0$ to find $A = LU$. For example:
+
+$$
+A = \begin{bmatrix} 2 & 0 \\ 4 & 3 \end{bmatrix} \left[ \begin{array}{rr} 1 & -1 \\ 0 & 1 \end{array} \right]
+= \begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix} \left[ \begin{array}{rr} 1 & -1 \\ 0 & 1 \end{array} \right]
+= \begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix} \left[ \begin{array}{rr} 2 & -2 \\ 0 & 3 \end{array} \right]
+$$
+```
+
+````

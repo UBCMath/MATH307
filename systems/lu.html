@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Solutions of Linear Systems &#8212; Applied Linear Algebra</title>
+    <title>LU Decomposition &#8212; Applied Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Error Analysis" href="error_analysis.html" />
+    <link rel="next" title="Error Analysis" href="error.html" />
     <link rel="prev" title="MATH 307 Applied Linear Algebra" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,17 +111,17 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Linear Systems
+  Systems of Equations
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Solutions of Linear Systems
+   LU Decomposition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="error_analysis.html">
+  <a class="reference internal" href="error.html">
    Error Analysis
   </a>
  </li>
@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="differential_equations.html">
+  <a class="reference internal" href="odes.html">
    Differential Equations
   </a>
  </li>
@@ -196,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/complex.html">
+   Complex Vectors
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dft/dft.html">
    Discrete Fourier Transform
@@ -274,40 +279,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/11_pagerank.html">
-   PageRank
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../notebooks/12_fft.html">
    Discrete Fourier Transform
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/complex_numbers.html">
-   Complex Numbers, Vectors and Matrices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/matrix_multiplication.html">
-   Matrix Multiplication
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/norms.html">
-   Vector and Matrix Norms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/inner_product.html">
-   Inner Product
   </a>
  </li>
 </ul>
@@ -396,7 +369,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear_equations/solutions.md"
+        <a href="../_sources/systems/lu.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -461,7 +434,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lu-decomposition">
+  <a class="reference internal nav-link" href="#id1">
    LU Decomposition
   </a>
  </li>
@@ -484,7 +457,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Solutions of Linear Systems</h1>
+                <h1>LU Decomposition</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -500,7 +473,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lu-decomposition">
+  <a class="reference internal nav-link" href="#id1">
    LU Decomposition
   </a>
  </li>
@@ -524,16 +497,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="solutions-of-linear-systems">
-<h1>Solutions of Linear Systems<a class="headerlink" href="#solutions-of-linear-systems" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lu-decomposition">
+<h1>LU Decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>Solve a linear system of equations <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> with the Gaussian elimination algorithm. Record the row operations in Gaussian elimination in the LU decomposition. Use the LU decomposition in backward/forward subsitution to solve systems efficiently.</p>
+<p>Record the row operations of the Gaussian elimination algorithm in the LU decomposition and use the decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> in backward/forward subsitution to efficiently solve a system of linear equations <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/01_01_01.png"><img alt="../_images/01_01_01.png" class="align-center" src="../_images/01_01_01.png" style="width: 100%;" /></a>
 <section id="gaussian-elimination">
 <h2>Gaussian Elimination<a class="headerlink" href="#gaussian-elimination" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>Solve a linear system of equations <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> by transforming the augmented matrix <span class="math notranslate nohighlight">\([ \, A \ \boldsymbol{b} \, ]\)</span> to row echelon form through Gaussian elimination.</p>
-</div>
 <div class="definition docutils">
 <p>A <strong>linear system of equations</strong> is a collection of equations of the form</p>
 <div class="math notranslate nohighlight">
@@ -562,7 +533,7 @@ a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
 \end{split}\]</div>
 </div>
 <div class="definition docutils">
-<p>Transform a matrix using <strong>elementary row operations</strong>:</p>
+<p>There are three types of <strong>elementary row operations</strong> are:</p>
 <ol class="simple">
 <li><p>Interchange two rows.</p></li>
 <li><p>Multiply a row by a nonzero number.</p></li>
@@ -588,24 +559,21 @@ a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
 <p>Symbol <span class="math notranslate nohighlight">\(\times\)</span> denotes a nonzero entry and <span class="math notranslate nohighlight">\(*\)</span> is any value.</p>
 </div>
 <div class="definition docutils">
-<p>The method to find a sequence of elementary row operations which transforms a matrix to row echelon form is called the <strong>Gaussian elimination algorithm</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Wikipedia:Gaussian Elimination</a> to review how the algorithm works.</p>
+<p>The <strong>Gaussian elimination algorithm</strong> applies a sequence of elementary row operations to transform a matrix to row echelon form. See <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Wikipedia:Gaussian Elimination</a> to review how the algorithm works.</p>
 </div>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix and let <span class="math notranslate nohighlight">\(U\)</span> be a matrix in row echelon form obtained from <span class="math notranslate nohighlight">\(A\)</span> through a sequence of elementary row operations. The <strong>rank</strong> of <span class="math notranslate nohighlight">\(A\)</span> is the number of nonzero rows in <span class="math notranslate nohighlight">\(U\)</span>. Denote the rank of a matrix <span class="math notranslate nohighlight">\(A\)</span> by <span class="math notranslate nohighlight">\(\mathrm{rank}(A)\)</span>.</p>
 </div>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = r\)</span>.</p>
-<ol>
-<li><p>The system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> is <strong>inconsistent</strong> (ie. no solution) if <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span>. In other words, the row echelon form of the augmented matrix <span class="math notranslate nohighlight">\([ \, A \ \boldsymbol{b} \, ]\)</span> has a row of the form</p>
+<p>The system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> is <strong>inconsistent</strong> (ie. no solution) if <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span>. In other words, the row echelon form of the augmented matrix <span class="math notranslate nohighlight">\([ \, A \ \boldsymbol{b} \, ]\)</span> has a row of the form</p>
 <div class="math notranslate nohighlight">
 \[
-   \begin{array}{rrrr|r} 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 \end{array}
-   \]</div>
+\begin{array}{rrrr|r} 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 \end{array}
+\]</div>
 <p>which implies <span class="math notranslate nohighlight">\(0 = 1\)</span>.</p>
-</li>
-<li><p>The system has a <strong>unique solution</strong> when <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. In other words, the system is consistent and the rank of <span class="math notranslate nohighlight">\(A\)</span> is equal to the number of variables in the system.</p></li>
-<li><p>The system has <strong>infinitely many solutions</strong> when <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; n\)</span>.</p></li>
-</ol>
+<p>The system has a <strong>unique solution</strong> when <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. In other words, the system is consistent and the rank of <span class="math notranslate nohighlight">\(A\)</span> is equal to the number of variables in the system.</p>
+<p>The system has <strong>infinitely many solutions</strong> when <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = \mathrm{rank}([ \, A \ \boldsymbol{b} \, ])\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; n\)</span>.</p>
 </div>
 <div class="example docutils">
 <p>Find all solutions of <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> where</p>
@@ -694,11 +662,8 @@ A = \begin{bmatrix} 1 &amp; 1 &amp; 2 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 1 \\ 0 
 <p>The systems is inconsistent. In other words, there is no solution.</p>
 </div>
 </section>
-<section id="lu-decomposition">
-<h2>LU Decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>The LU decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span> (if it exists) records the elementary row operations of Gaussian elimination in a matrix factorization <span class="math notranslate nohighlight">\(A=LU\)</span> where <span class="math notranslate nohighlight">\(L\)</span> is a unit lower triangular matrix and <span class="math notranslate nohighlight">\(U\)</span> is an upper triangular matrix.</p>
-</div>
+<section id="id1">
+<h2>LU Decomposition<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>A <strong>lower triangular matrix</strong> is a matrix with zeros above the diagonal. For example:</p>
 <div class="math notranslate nohighlight">
@@ -730,21 +695,18 @@ A = \begin{bmatrix} 1 &amp; 1 &amp; 2 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 1 \\ 0 
 \end{split}\]</div>
 </div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(E\)</span> be the <span class="math notranslate nohighlight">\(m \times m\)</span> matrix with ones along the diagonal, <span class="math notranslate nohighlight">\(c\)</span> in entry <span class="math notranslate nohighlight">\((i,j)\)</span> with <span class="math notranslate nohighlight">\(i &gt; j\)</span> and all other entries are zeros</p>
+<p>Let <span class="math notranslate nohighlight">\(E\)</span> be the <span class="math notranslate nohighlight">\(m \times m\)</span> matrix with ones along the diagonal, <span class="math notranslate nohighlight">\(c\)</span> in the entry at row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> with <span class="math notranslate nohighlight">\(i &gt; j\)</span> and all other entries are zeros</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-E = \begin{bmatrix} 1 &amp; &amp; &amp; &amp; \\ &amp; \ddots &amp; &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; c &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; &amp; 1 \end{bmatrix}
+E = \begin{bmatrix} 1 &amp; &amp; &amp; &amp; \\ &amp; \ddots &amp; &amp; &amp; \\ &amp; &amp; \ddots &amp; &amp; \\ &amp; c &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; &amp; 1 \end{bmatrix}
 \end{split}\]</div>
-<ol>
-<li><p>For any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, matrix multiplication <span class="math notranslate nohighlight">\(EA\)</span> applies to <span class="math notranslate nohighlight">\(A\)</span> the elementary row operation: add <span class="math notranslate nohighlight">\(c\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
-<li><p>The inverse of <span class="math notranslate nohighlight">\(E\)</span> is given by</p>
+<p>Then, for any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, matrix multiplication <span class="math notranslate nohighlight">\(EA\)</span> applies to <span class="math notranslate nohighlight">\(A\)</span> the elementary row operation: add <span class="math notranslate nohighlight">\(c\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Furthermore, the inverse of <span class="math notranslate nohighlight">\(E\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-   E^{-1} = \left[ \begin{array}{rrrrr} 1 &amp; &amp; &amp; &amp; \\ &amp; \ddots &amp; &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; -c &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; &amp; 1 \end{array} \right]
-   \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(-c\)</span> is in entry <span class="math notranslate nohighlight">\((i,j)\)</span>.</p>
-</li>
-</ol>
+E^{-1} = \left[ \begin{array}{rrrrr} 1 &amp; &amp; &amp; &amp; \\ &amp; \ddots &amp; &amp; &amp; \\ &amp; &amp; \ddots &amp; &amp; \\ &amp; -c &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; &amp; 1 \end{array} \right]
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(-c\)</span> is the entry at row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </div>
 <div class="example docutils">
 <p>Consider the matrix</p>
@@ -821,8 +783,11 @@ E_{m,m-2}^{-1} E_{m,m-1}^{-1} =
 \end{split}\]</div>
 <p>Applying all the corresponding rows operations in order yields the result</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 E_{2,1}^{-1} \cdots E_{m,1}^{-1} E_{3,2}^{-1} \cdots E_{m,2}^{-1} \cdots E_{m-1,m-2}^{-1} E_{m,m-2}^{-1} E_{m,m-1}^{-1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 =
 \begin{bmatrix}
 1 &amp; &amp; &amp; &amp; \\
@@ -957,9 +922,6 @@ A = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
 </section>
 <section id="forward-and-backward-substitution">
 <h2>Forward and Backward Substitution<a class="headerlink" href="#forward-and-backward-substitution" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>The LU decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> provides a shortcut to solve the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>: solve <span class="math notranslate nohighlight">\(L \boldsymbol{y} = \boldsymbol{b}\)</span> by forward substitution then solve <span class="math notranslate nohighlight">\(U \boldsymbol{x} = \boldsymbol{y}\)</span> by backward substitution.</p>
-</div>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span>, let <span class="math notranslate nohighlight">\(\ell_{i,j}\)</span> denote the entries of <span class="math notranslate nohighlight">\(L\)</span> and let <span class="math notranslate nohighlight">\(u_{i,j}\)</span> denote the entries of <span class="math notranslate nohighlight">\(U\)</span>. Consider the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{y} = U \boldsymbol{x}\)</span>.</p>
 <p><strong>Forward substitution</strong> is the process of solving the lower triangular system <span class="math notranslate nohighlight">\(L \boldsymbol{y} = \boldsymbol{b}\)</span> from top to bottom:</p>
@@ -976,10 +938,10 @@ y_n &amp;= b_n - \ell_{n,1} y_1 - \cdots - \ell_{n,n-1} y_{n-1}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-x_1 &amp;= (y_1 - u_{1,2} x_2 - \cdots - u_{1,n} x_n) / u_{1,1} \\
- &amp; \vdots \\
+x_n &amp;= y_n / u_{n,n} \\
 x_{n-1} &amp;= (y_{n-1} - u_{n-1,n} x_n) / u_{n-1,n-1} \\
-x_n &amp;= y_n / u_{n,n}
+ &amp; \vdots \\
+x_1 &amp;= (y_1 - u_{1,2} x_2 - \cdots - u_{1,n} x_n) / u_{1,1}
 \end{align*}
 \end{split}\]</div>
 </div>
@@ -1018,54 +980,122 @@ x_1 &amp;= (-1 - 4(3) - 0) / 2 = -13/2
 \end{split}\]</div>
 </div>
 <div class="note docutils">
-<p>The LU decomposition is especially useful when solving many different systems with the <em>same</em> coefficient matrix <span class="math notranslate nohighlight">\(A\)</span>. For example, to compute the inverse <span class="math notranslate nohighlight">\(A^{-1}\)</span> of a square matrix of size <span class="math notranslate nohighlight">\(n\)</span> we need to solve <span class="math notranslate nohighlight">\(n\)</span> different systems <span class="math notranslate nohighlight">\(A \boldsymbol{x}_k = \boldsymbol{e}_k\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>th column of the identity <span class="math notranslate nohighlight">\(I\)</span>. The result is <span class="math notranslate nohighlight">\(A^{-1} = [\boldsymbol{x}_1 \cdots \boldsymbol{x}_n]\)</span>. In other words, the columns of <span class="math notranslate nohighlight">\(A^{-1}\)</span> are given by <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_n\)</span>.</p>
+<p>The LU decomposition is especially useful when solving many different systems with the <em>same</em> coefficient matrix <span class="math notranslate nohighlight">\(A\)</span>. For example, to compute the inverse <span class="math notranslate nohighlight">\(A^{-1}\)</span> of a square matrix of size <span class="math notranslate nohighlight">\(n\)</span> we need to solve <span class="math notranslate nohighlight">\(n\)</span> different systems <span class="math notranslate nohighlight">\(A \boldsymbol{x}_k = \boldsymbol{e}_k\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>th column of the identity matrix <span class="math notranslate nohighlight">\(I\)</span>. The result is <span class="math notranslate nohighlight">\(A^{-1} = [\boldsymbol{x}_1 \cdots \boldsymbol{x}_n]\)</span>. In other words, the columns of <span class="math notranslate nohighlight">\(A^{-1}\)</span> are given by <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_n\)</span>.</p>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix such that <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. There is a unique solution of <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix such that <span class="math notranslate nohighlight">\(m &lt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = m\)</span>. There are infinitely many solutions of <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix such that <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. If the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has one solution then there is only one solution.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix such that <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; n\)</span>. If the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has one solution then there are infinitely many solutions.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, then here is a unique solution of <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m &lt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = m\)</span>, then there are infinitely many solutions of <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, then if the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has one solution then there is only one solution.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) &lt; n\)</span>, then if the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has one solution then there are infinitely many solutions.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(A = LU\)</span> is the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span> then <span class="math notranslate nohighlight">\(\det(L) \not= 0\)</span>.</p></li>
 </ul>
-<p><strong>Exercise 2.</strong>  If <span class="math notranslate nohighlight">\(A\)</span> is of the form</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>. If <span class="math notranslate nohighlight">\(A\)</span> is of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = \begin{bmatrix} * &amp; * &amp; 0 &amp; 0 \\ * &amp; * &amp; * &amp; 0 \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \end{bmatrix}
 \end{split}\]</div>
-<p>and the <span class="math notranslate nohighlight">\(LU\)</span> decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> exists, show that <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are of the form</p>
+<p>and the <span class="math notranslate nohighlight">\(LU\)</span> decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> exists, then <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 L = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; * &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; * &amp; 1 \end{bmatrix}
 \hspace{5mm}
 U = \begin{bmatrix} * &amp; * &amp; 0 &amp; 0 \\ 0 &amp; * &amp; * &amp; 0 \\ 0 &amp; 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; * \end{bmatrix}
 \end{split}\]</div>
-<p><strong>Exercise 3.</strong> Let <span class="math notranslate nohighlight">\(I\)</span> be the identity matrix of size <span class="math notranslate nohighlight">\(n\)</span> and let <span class="math notranslate nohighlight">\(R\)</span> be the <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix with all zeros except for the nonzero scalar <span class="math notranslate nohighlight">\(c\)</span> at index <span class="math notranslate nohighlight">\((i,j)\)</span> where <span class="math notranslate nohighlight">\(i \not= j\)</span>. In other words, the entry of <span class="math notranslate nohighlight">\(R\)</span> in row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(c\)</span> and all other entries of <span class="math notranslate nohighlight">\(R\)</span> are 0. Let <span class="math notranslate nohighlight">\(E = I + R\)</span> and let <span class="math notranslate nohighlight">\(A\)</span> be any <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">True</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(I\)</span> be the identity matrix of size <span class="math notranslate nohighlight">\(n\)</span> and let <span class="math notranslate nohighlight">\(R\)</span> be the <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix with all zeros except for the nonzero scalar <span class="math notranslate nohighlight">\(c\)</span> at row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> where <span class="math notranslate nohighlight">\(i \not= j\)</span>. Let <span class="math notranslate nohighlight">\(E = I + R\)</span> and let <span class="math notranslate nohighlight">\(A\)</span> be any <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix.</p>
 <ul class="simple">
 <li><p>Matrix multiplication <span class="math notranslate nohighlight">\(EA\)</span> is equivalent to which elementary row/column operation on <span class="math notranslate nohighlight">\(A\)</span>?</p></li>
 <li><p>Matrix multiplication <span class="math notranslate nohighlight">\(AE\)</span> is equivalent to which elementary row/column operation on <span class="math notranslate nohighlight">\(A\)</span>?</p></li>
 </ul>
-<p><strong>Exercise 4.</strong> Find a value <span class="math notranslate nohighlight">\(c\)</span> such that the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has infinitely many solutions where</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Add <span class="math notranslate nohighlight">\(c\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p class="sd-card-text">Add <span class="math notranslate nohighlight">\(c\)</span> times column <span class="math notranslate nohighlight">\(i\)</span> to column <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Find a value <span class="math notranslate nohighlight">\(c\)</span> such that the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> has infinitely many solutions where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = \left[ \begin{array}{rrr} 3 &amp; -1 &amp; 2 \\ 1 &amp; 1 &amp; -1 \\ 2 &amp; -2 &amp; 3 \end{array} \right]
 \hspace{5mm}
 \boldsymbol{b} = \begin{bmatrix} 3 \\ 2 \\ c \end{bmatrix}
 \end{split}\]</div>
-<p><strong>Exercise 5.</strong> Compute the LU decomposition of</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(c = 1\)</span></p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Compute the LU decomposition of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = \left[ \begin{array}{rrrr} 2 &amp; 0 &amp; 1 &amp; 1 \\ -2 &amp; -1 &amp; 2 &amp; -1 \\ 0 &amp; 2 &amp; -5 &amp; -1 \\ 4 &amp; 0 &amp; 6 &amp; 0 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 6.</strong> Find the solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; \phantom{+}1 \\ -3 &amp; -1 &amp; 0 \\ 3 &amp; -1 &amp; 3 \end{array} \right]
-\hspace{5mm}
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \end{array} \right]
+L = \left[ \begin{array}{rrrr} 1 &amp; 0 &amp; \phantom{+}0 &amp; \phantom{+}0 \\ -1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; -2 &amp; 1 &amp; 0 \\ 2 &amp; 0 &amp; 4 &amp; 1 \end{array} \right]
+\hspace{20mm}
+U = \left[ \begin{array}{rrrr} 2 &amp; 0 &amp; \phantom{+}1 &amp; 1 \\ 0 &amp; -1 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; 0 &amp; 2 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Find the solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{b} = \left[ \begin{array}{r} 2 \\ -1 \\ 2 \end{array} \right]
 \end{split}\]</div>
 <p>given the LU decomposition</p>
 <div class="math notranslate nohighlight">
@@ -1074,7 +1104,37 @@ A = LU =
 \left[ \begin{array}{rrr} 1 &amp; \phantom{+}0 &amp; \phantom{+}0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 \end{array} \right]
 \left[ \begin{array}{rrr} 3 &amp; 0 &amp; \phantom{+}1 \\ 0 &amp; -1 &amp; 1 \\ 0 &amp; 0 &amp; 1 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 6.</strong> Suppose we compute a decomposition <span class="math notranslate nohighlight">\(A = L_0U_0\)</span> such that <span class="math notranslate nohighlight">\(U_0\)</span> is <em>unit</em> upper triangular and <span class="math notranslate nohighlight">\(L_0\)</span> is lower triangular. Describe a method to derive a decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> such that <span class="math notranslate nohighlight">\(L\)</span> is <em>unit</em> lower triangular and <span class="math notranslate nohighlight">\(U\)</span> is upper triangular.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ -2 \\ -1 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose we compute a decomposition <span class="math notranslate nohighlight">\(A = L_0U_0\)</span> such that <span class="math notranslate nohighlight">\(U_0\)</span> is <em>unit</em> upper triangular and <span class="math notranslate nohighlight">\(L_0\)</span> is lower triangular. Describe a method to derive a decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> such that <span class="math notranslate nohighlight">\(L\)</span> is <em>unit</em> lower triangular and <span class="math notranslate nohighlight">\(U\)</span> is upper triangular.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Factor of the diagonal entries of <span class="math notranslate nohighlight">\(L_0\)</span> into a diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that <span class="math notranslate nohighlight">\(L_0 = LD\)</span> where <span class="math notranslate nohighlight">\(L\)</span> is unit lower triangular then let <span class="math notranslate nohighlight">\(U = DU_0\)</span> to find <span class="math notranslate nohighlight">\(A = LU\)</span>. For example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} 2 &amp; 0 \\ 4 &amp; 3 \end{bmatrix} \left[ \begin{array}{rr} 1 &amp; -1 \\ 0 &amp; 1 \end{array} \right]
+= \begin{bmatrix} 1 &amp; 0 \\ 2 &amp; 1 \end{bmatrix} \begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{bmatrix} \left[ \begin{array}{rr} 1 &amp; -1 \\ 0 &amp; 1 \end{array} \right]
+= \begin{bmatrix} 1 &amp; 0 \\ 2 &amp; 1 \end{bmatrix} \left[ \begin{array}{rr} 2 &amp; -2 \\ 0 &amp; 3 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
 </section>
 </section>
 
@@ -1091,7 +1151,7 @@ A = LU =
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./linear_equations"
+            path: "./systems"
         },
         predefinedOutput: true
     }
@@ -1112,7 +1172,7 @@ A = LU =
             <p class="prev-next-title">MATH 307 Applied Linear Algebra</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="error_analysis.html" title="next page">
+    <a class='right-next' id="next-link" href="error.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Error Analysis</p>
