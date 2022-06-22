@@ -1,4 +1,4 @@
-# Complex Numbers, Vectors and Matrices
+# Complex Vectors
 
 ```{div} bigidea
 A complex number can be represented in the form $z = a + i b$ and also in polar form $z = r e^{i \theta}$. The set of vectors of length $n$ with complex entries is a complex vector space $\mathbb{C}^n$ with inner product $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = \boldsymbol{u}^T \overline{\boldsymbol{v}}$.

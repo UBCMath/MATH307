@@ -5,6 +5,8 @@ sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 only_build_toc_files: true
+execute:
+    execute_notebooks: cache
 html:
   home_page_in_navbar: false
   use_repository_button: true

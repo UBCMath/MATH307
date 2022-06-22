@@ -209,12 +209,12 @@ $$
 Let $A$ be an $m \times n$ matrix. Then
 
 $$
-\mathrm{rank}(A) + \dim(N(A)) = n
+\dim(R(A)) + \dim(N(A)) = n
 $$
 
 ---
 
-*Proof*. The dimension of $N(A)$ is equal to the number of columns of the row echelon form of $A$ *without* a leading nonzero entry, and $\mathrm{rank}(A)$ is equal to the number of columns of the row echelon form of $A$ *with* a leading nonzero entry, and there are $n$ total columns.
+*Proof*. The dimension of $N(A)$ is equal to the number of columns of the row echelon form of $A$ *without* a leading nonzero entry, and $\mathrm{rank}(A) = \dim(R(A))$ is equal to the number of columns of the row echelon form of $A$ *with* a leading nonzero entry, and there are $n$ total columns.
 ```
 
 ## Exercises

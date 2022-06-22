@@ -1,12 +1,12 @@
 format: jb-book
 root: index
 parts:
-  - caption: Linear Systems
+  - caption: Systems of Equations
     chapters:
-    - file: linear_equations/solutions.md
-    - file: linear_equations/error_analysis.md
-    - file: linear_equations/interpolation.md
-    - file: linear_equations/differential_equations.md
+    - file: systems/lu.md
+    - file: systems/error.md
+    - file: systems/interpolation.md
+    - file: systems/odes.md
   - caption: Orthogonality
     chapters:
     - file: orthogonality/subspaces.md
@@ -21,6 +21,7 @@ parts:
     - file: eigenvalues/computing_eigenvalues.md
   - caption: Dicrete Fourier Transform
     chapters:
+    - file: dft/complex.md
     - file: dft/dft.md
     - file: dft/frequency.md
     - file: dft/fft.md
@@ -37,11 +38,4 @@ parts:
     - file: notebooks/08_deblurring_images.ipynb
     - file: notebooks/09_computed_tomography.ipynb
     - file: notebooks/10_computing_eigenvalues.ipynb
-    - file: notebooks/11_pagerank.ipynb
     - file: notebooks/12_fft.ipynb
-  - caption: Appendix
-    chapters:
-    - file: appendix/complex_numbers.md
-    - file: appendix/matrix_multiplication.md
-    - file: appendix/norms.md
-    - file: appendix/inner_product.md
