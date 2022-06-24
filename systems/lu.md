@@ -623,7 +623,7 @@ $c = 1$
 ````
 
 ````{div} exercise
-Compute the LU decomposition of
+Compute the LU decomposition of the matrix
 
 $$
 A = \left[ \begin{array}{rrrr} 2 & 0 & 1 & 1 \\ -2 & -1 & 2 & -1 \\ 0 & 2 & -5 & -1 \\ 4 & 0 & 6 & 0 \end{array} \right]
@@ -635,6 +635,35 @@ L = \left[ \begin{array}{rrrr} 1 & 0 & \phantom{+}0 & \phantom{+}0 \\ -1 & 1 & 0
 \hspace{20mm}
 U = \left[ \begin{array}{rrrr} 2 & 0 & \phantom{+}1 & 1 \\ 0 & -1 & 3 & 0 \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 2 \end{array} \right]
 $$
+```
+
+````
+
+````{div} exercise
+Consider the matrix
+
+$$
+A = \left[ \begin{array}{rrrr}
+-3 & \phantom{+}1 & 2 & \phantom{+}0 \\
+3 & 1 & -2 & 1 \\
+-6 & 2 & 5 & 1 \\
+-9 & 3 & 4 & 2
+\end{array} \right]
+$$
+
+Find the $LU$ decomposition of $A$ and compute $\mathrm{det}(A)$.
+
+```{dropdown} Solution
+$$
+L = \left[ \begin{array}{rrrr} 1 & \phantom{+}0 & 0 & \phantom{+}0 \\ -1 & 1 & 0 & 0 \\ 2 & 0 & 1 & 0 \\ 3 & 0 & -2 & 1 \end{array} \right]
+\hspace{10mm}
+U = \left[ \begin{array}{rrrr} -3 & 1 & 2 & 0 \\ 0 & 2 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 4 \end{array} \right]
+$$
+
+$$
+\mathrm{det}(A) = -24
+$$
+
 ```
 
 ````
