@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Orthogonal Subspaces &#8212; Applied Linear Algebra</title>
+    <title>Orthogonal Complement &#8212; Applied Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -149,7 +149,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Orthogonal Subspaces
+   Orthogonal Complement
   </a>
  </li>
  <li class="toctree-l1">
@@ -369,7 +369,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/orthogonality/orthogonal_subspaces.md"
+        <a href="../_sources/orthogonality/complement.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -434,12 +434,12 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#orthogonal-subspaces">
    Orthogonal Subspaces
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#orthogonal-complement">
+  <a class="reference internal nav-link" href="#id1">
    Orthogonal Complement
   </a>
  </li>
@@ -462,7 +462,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Orthogonal Subspaces</h1>
+                <h1>Orthogonal Complement</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -478,12 +478,12 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#orthogonal-subspaces">
    Orthogonal Subspaces
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#orthogonal-complement">
+  <a class="reference internal nav-link" href="#id1">
    Orthogonal Complement
   </a>
  </li>
@@ -507,11 +507,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="orthogonal-subspaces">
-<h1>Orthogonal Subspaces<a class="headerlink" href="#orthogonal-subspaces" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="orthogonal-complement">
+<h1>Orthogonal Complement<a class="headerlink" href="#orthogonal-complement" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
 <p>The orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span> of a subspace <span class="math notranslate nohighlight">\(U\)</span> is the collection of all vectors which are orthogonal to every vector in <span class="math notranslate nohighlight">\(U\)</span>.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/02_02_01.png"><img alt="../_images/02_02_01.png" class="align-center" src="../_images/02_02_01.png" style="width: 100%;" /></a>
 <section id="orthogonal-vectors">
 <h2>Orthogonal Vectors<a class="headerlink" href="#orthogonal-vectors" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
@@ -522,43 +523,35 @@ title="Print to PDF"
 \]</div>
 </div>
 <div class="note docutils">
-<p>
-<ul>
-<li><p>The inner product is symmetric: <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \langle \boldsymbol{y} , \boldsymbol{x} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span></p></li>
-<li><p>The inner product of column vectors is the same as matrix multiplication:</p>
+<p>Let’s summarize various properties of the inner product:</p>
+<p>The inner product is symmetric: <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \langle \boldsymbol{y} , \boldsymbol{x} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span>.</p>
+<p>The inner product of column vectors is the same as matrix multiplication:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \boldsymbol{x}^T \boldsymbol{y} =
-  \begin{bmatrix} x_1 &amp; \cdots &amp; x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}
-  \end{split}\]</div>
-</li>
-<li><p>The inner product satisfies the usual distributive rules of multiplication:</p>
+\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \boldsymbol{x}^T \boldsymbol{y} =
+\begin{bmatrix} x_1 &amp; \cdots &amp; x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}
+\end{split}\]</div>
+<p>The inner product satisfies the usual distributive rules of multiplication:</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle \boldsymbol{x} ,  c \boldsymbol{y} + d \boldsymbol{z} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle + d \langle \boldsymbol{x} , \boldsymbol{z} \rangle
-  \]</div>
+\langle \boldsymbol{x} ,  c \boldsymbol{y} + d \boldsymbol{z} \rangle = c \langle \boldsymbol{x} , \boldsymbol{y} \rangle + d \langle \boldsymbol{x} , \boldsymbol{z} \rangle
+\]</div>
 <p>for all <span class="math notranslate nohighlight">\(c,d \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} , \boldsymbol{y} , \boldsymbol{z} \in \mathbb{R}^n\)</span>.</p>
-</li>
-<li><p>The square root of the inner product of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with itself is equal to the 2-norm</p>
+<p>The square root of the inner product of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with itself is equal to the 2-norm</p>
 <div class="math notranslate nohighlight">
 \[
-  \sqrt{ \langle \boldsymbol{x} , \boldsymbol{x} \rangle } = \| \boldsymbol{x} \|
-  \]</div>
-</li>
-<li><p>We can also write the inner product in terms of the angle between vectors</p>
+\sqrt{ \langle \boldsymbol{x} , \boldsymbol{x} \rangle } = \| \boldsymbol{x} \|
+\]</div>
+<p>We can also write the inner product in terms of the angle between vectors</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle \boldsymbol{x} , \boldsymbol{y} \rangle = \| \boldsymbol{x} \| \| \boldsymbol{y} \| \cos \theta \hspace{10mm} 0 \leq \theta \leq \pi
-  \]</div>
-</li>
-<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^m\)</span>. Then</p>
+\langle \boldsymbol{x} , \boldsymbol{y} \rangle = \| \boldsymbol{x} \| \| \boldsymbol{y} \| \cos \theta \hspace{10mm} 0 \leq \theta \leq \pi
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^m\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[
-  \langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A^T \boldsymbol{v} \rangle
-  \]</div>
-</li>
-</ul>
-</p>
+\langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A^T \boldsymbol{v} \rangle
+\]</div>
 </div>
 <div class="definition docutils">
 <p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span>. More generally, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span>. In other words, each <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> is orthogonal to every other vector <span class="math notranslate nohighlight">\(\boldsymbol{x}_j\)</span> in the set. Furthermore, vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_1, \dots, \boldsymbol{x}_m \in \mathbb{R}^n\)</span> are <strong>orthonormal</strong> if they are orthogonal and each is a unit vector, <span class="math notranslate nohighlight">\(\| \boldsymbol{x}_k \| = 1\)</span>, <span class="math notranslate nohighlight">\(k=1,\dots,m\)</span>.</p>
@@ -586,8 +579,8 @@ title="Print to PDF"
 \end{split}\]</div>
 </div>
 </section>
-<section id="id1">
-<h2>Orthogonal Subspaces<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="orthogonal-subspaces">
+<h2>Orthogonal Subspaces<a class="headerlink" href="#orthogonal-subspaces" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(U_1 \subseteq \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(U_2 \subseteq \mathbb{R}^n\)</span> be subspaces. Then <span class="math notranslate nohighlight">\(U_1\)</span> and <span class="math notranslate nohighlight">\(U_2\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_1 , \boldsymbol{x}_2 \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 \in U_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}_2 \in U_2\)</span>. If <span class="math notranslate nohighlight">\(U_1\)</span> and <span class="math notranslate nohighlight">\(U_2\)</span> are orthogonal subspaces, then we write <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>.</p>
 </div>
@@ -598,8 +591,8 @@ title="Print to PDF"
 <p>Let <span class="math notranslate nohighlight">\(U_1 \subset \mathbb{R}^3\)</span> and <span class="math notranslate nohighlight">\(U_2 \subset \mathbb{R}^3\)</span> be 2-dimensional subspaces (planes). Is it possible that <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>? No!</p>
 </div>
 </section>
-<section id="orthogonal-complement">
-<h2>Orthogonal Complement<a class="headerlink" href="#orthogonal-complement" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h2>Orthogonal Complement<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. The <strong>orthogonal complement of <span class="math notranslate nohighlight">\(U\)</span></strong> is</p>
 <div class="math notranslate nohighlight">
@@ -623,7 +616,7 @@ U^{\perp} = \{ \boldsymbol{x} \in \mathbb{R}^n : \langle \boldsymbol{x} , \bolds
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x}_1,\boldsymbol{x}_2 \in U^{\perp}\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \boldsymbol{x}_1 + \boldsymbol{x}_2) , \boldsymbol{y} \rangle = \langle \boldsymbol{x}_1 , \boldsymbol{y} \rangle + \langle \boldsymbol{x}_2 , \boldsymbol{y} \rangle = 0 + 0 = 0
+\langle \boldsymbol{x}_1 + \boldsymbol{x}_2 , \boldsymbol{y} \rangle = \langle \boldsymbol{x}_1 , \boldsymbol{y} \rangle + \langle \boldsymbol{x}_2 , \boldsymbol{y} \rangle = 0 + 0 = 0
 \]</div>
 <p>for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in U\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x}_1 + \boldsymbol{x}_2 \in U^{\perp}\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U^{\perp}\)</span>. Then</p>
@@ -637,6 +630,9 @@ U^{\perp} = \{ \boldsymbol{x} \in \mathbb{R}^n : \langle \boldsymbol{x} , \bolds
 </section>
 <section id="fundamental-subspaces">
 <h2>Fundamental Subspaces<a class="headerlink" href="#fundamental-subspaces" title="Permalink to this headline">#</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. The <strong>fundamental subspaces</strong> of <span class="math notranslate nohighlight">\(A\)</span> are <span class="math notranslate nohighlight">\(N(A)\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span>, <span class="math notranslate nohighlight">\(N(A^T)\)</span> and <span class="math notranslate nohighlight">\(R(A^T)\)</span>.</p>
+</div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Then <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A) = N(A^T)^{\perp}\)</span>.</p>
 <hr class="docutils" />
@@ -644,16 +640,6 @@ U^{\perp} = \{ \boldsymbol{x} \in \mathbb{R}^n : \langle \boldsymbol{x} , \bolds
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>. Then <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> therefore <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Using properties of the inner product we see that <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>.</p>
 <p>Now let <span class="math notranslate nohighlight">\(\boldsymbol{x} \in R(A^T)^{\perp}\)</span>. Then <span class="math notranslate nohighlight">\(\langle \boldsymbol{x} , A^T \boldsymbol{y} \rangle = 0\)</span> and so <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , \boldsymbol{y} \rangle = 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{y} \in \mathbb{R}^m\)</span>. Choose <span class="math notranslate nohighlight">\(\boldsymbol{y} = A\boldsymbol{x} \in \mathbb{R}^m\)</span> and then <span class="math notranslate nohighlight">\(\langle A \boldsymbol{x} , A \boldsymbol{x} \rangle = 0\)</span>. Therefore <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = 0\)</span> and so <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{0}\)</span> and finally <span class="math notranslate nohighlight">\(\boldsymbol{x} \in N(A)\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(N(A) \subseteq R(A^T)^{\perp}\)</span> and <span class="math notranslate nohighlight">\(R(A^T)^{\perp} \subseteq N(A)\)</span> we have <span class="math notranslate nohighlight">\(N(A) = R(A^T)^{\perp}\)</span>.</p>
-</div>
-<div class="example docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = LU =
-\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 \\ * &amp; * &amp; 1 \end{bmatrix}
-\begin{bmatrix} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \end{bmatrix}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(*\)</span> denotes a nonzero number. Find the dimension of each subspace <span class="math notranslate nohighlight">\(N(A)\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span>, <span class="math notranslate nohighlight">\(R(A^T)\)</span> and <span class="math notranslate nohighlight">\(N(A^T)\)</span>.</p>
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. Then</p>
@@ -674,23 +660,85 @@ A = \begin{bmatrix} &amp; \boldsymbol{u}_1^T &amp; \\ &amp; \vdots &amp; \\ &amp
 \]</div>
 <p>by the Rank-Nullity Theorem.</p>
 </div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = LU =
+\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 \\ * &amp; * &amp; 1 \end{bmatrix}
+\begin{bmatrix} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(*\)</span> denotes a nonzero number. Find the dimension of each subspace <span class="math notranslate nohighlight">\(N(A)\)</span>, <span class="math notranslate nohighlight">\(R(A)\)</span>, <span class="math notranslate nohighlight">\(N(A^T)\)</span> and <span class="math notranslate nohighlight">\(R(A^T)\)</span>.</p>
+<p>Clearly <span class="math notranslate nohighlight">\(\dim(N(A)) = 1\)</span> and <span class="math notranslate nohighlight">\(\dim(R(A)) = 3\)</span> therefore</p>
+<div class="math notranslate nohighlight">
+\[
+\dim(N(A^T)) = \dim(R(A)^{\perp}) = 3 - 3 = 0
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\dim(R(A^T)) = \dim(N(A)^{\perp}) = 4 - 1 = 3
+\]</div>
+</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<div class="exercise docutils">
+<p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(S \subseteq \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{u} \not= 0\)</span> then either <span class="math notranslate nohighlight">\(\boldsymbol{u} \in S\)</span> or <span class="math notranslate nohighlight">\(\boldsymbol{u} \in S^{\perp}\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(L_1 \subset \mathbb{R}^2\)</span> be a line through the origin. There is a unique line <span class="math notranslate nohighlight">\(L_2\)</span> through the origin such that <span class="math notranslate nohighlight">\(L_1 \perp L_2\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(L_1 \subset \mathbb{R}^3\)</span> be a line through the origin. There is a unique line <span class="math notranslate nohighlight">\(L_2\)</span> through the origin such that <span class="math notranslate nohighlight">\(L_1 \perp L_2\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(U_1 \subset \mathbb{R}^4\)</span> be a 2-dimensional subspace. There is a unique plane <span class="math notranslate nohighlight">\(U_2\)</span> through the origin such that <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{u} \not= 0\)</span> then either <span class="math notranslate nohighlight">\(\boldsymbol{u} \in U\)</span> or <span class="math notranslate nohighlight">\(\boldsymbol{u} \in U^{\perp}\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(L_1 \subset \mathbb{R}^2\)</span> be a line through the origin. There is a unique line <span class="math notranslate nohighlight">\(L_2 \subset \mathbb{R}^2\)</span> through the origin such that <span class="math notranslate nohighlight">\(L_1 \perp L_2\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(L_1 \subset \mathbb{R}^3\)</span> be a line through the origin. There is a unique line <span class="math notranslate nohighlight">\(L_2 \subset \mathbb{R}^3\)</span> through the origin such that <span class="math notranslate nohighlight">\(L_1 \perp L_2\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(U_1 \subset \mathbb{R}^4\)</span> be a 2-dimensional subspace. There is a unique 2-dimensional subspace <span class="math notranslate nohighlight">\(U_2 \subset \mathbb{R}^4\)</span> through the origin such that <span class="math notranslate nohighlight">\(U_1 \perp U_2\)</span>.</p></li>
 </ul>
-<p><strong>Exercise 2.</strong> Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N(A^T) = N(U^T)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R(A^T) = R(U^T)\)</span></p></li>
 </ul>
-<p><strong>Exercise 3.</strong> Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n\)</span> be a basis of the nullspace <span class="math notranslate nohighlight">\(N(A)\)</span>. Determine <span class="math notranslate nohighlight">\(\dim(R(A^T))\)</span> and <span class="math notranslate nohighlight">\(\dim(N(A^T))\)</span>.</p>
-<p><strong>Exercise 4.</strong> Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix such that</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n\)</span> be a basis of the nullspace <span class="math notranslate nohighlight">\(N(A)\)</span>. Determine <span class="math notranslate nohighlight">\(\dim(R(A^T))\)</span> and <span class="math notranslate nohighlight">\(\dim(N(A^T))\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\dim(R(A^T)) = n-2\)</span> and <span class="math notranslate nohighlight">\(\dim(N(A^T)) = m-n+2\)</span>.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = LU =
@@ -698,13 +746,42 @@ A = LU =
 \left[ \begin{array}{rrrrrr} 1 &amp; -1 &amp; 2 &amp; -1 \\ 0 &amp; 1 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right]
 \end{split}\]</div>
 <p>Find a basis of <span class="math notranslate nohighlight">\(N(A^T)\)</span> and find a basis of <span class="math notranslate nohighlight">\(R(A^T)\)</span>.</p>
-<p><strong>Exercise 5.</strong> Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+N(A^T) = \mathrm{span} \left\{ \left[ \begin{array}{r} 1 \\ -1 \\ -1 \\ 1 \end{array} \right] \right\}
+\hspace{10mm}
+R(A^T) = \mathrm{span} \left\{ \left[ \begin{array}{r} 1 \\ -1 \\ 2 \\ -1 \end{array} \right] ,
+\left[ \begin{array}{r} 0 \\ 1 \\ -3 \\ 4 \end{array} \right] ,
+\left[ \begin{array}{r} 0 \\ 0 \\ 0 \\ 1 \end{array} \right]
+\right\}
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a matrix such that its LU decomposition is of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = LU = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ * &amp; 1 &amp; 0 \\ * &amp; * &amp; 1 \end{bmatrix}
 \begin{bmatrix} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; * \end{bmatrix}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(*\)</span> denotes a nonzero number. Determine the dimension of <span class="math notranslate nohighlight">\(R(A^T)\)</span> and the dimension of <span class="math notranslate nohighlight">\(N(A^T)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\dim(R(A^T)) = 3\)</span> and <span class="math notranslate nohighlight">\(\dim(N(A^T)) = 0\)</span></p>
+</div>
+</details></div>
 </section>
 </section>
 

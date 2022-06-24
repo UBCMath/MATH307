@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Orthogonal Subspaces" href="orthogonal_subspaces.html" />
+    <link rel="next" title="Orthogonal Complement" href="complement.html" />
     <link rel="prev" title="Differential Equations" href="../systems/odes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -148,8 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="orthogonal_subspaces.html">
-   Orthogonal Subspaces
+  <a class="reference internal" href="complement.html">
+   Orthogonal Complement
   </a>
  </li>
  <li class="toctree-l1">
@@ -444,13 +444,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nullspace">
-   Nullspace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#range">
-   Range
+  <a class="reference internal nav-link" href="#nullspace-and-range">
+   Nullspace and Range
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -498,13 +493,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nullspace">
-   Nullspace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#range">
-   Range
+  <a class="reference internal nav-link" href="#nullspace-and-range">
+   Nullspace and Range
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -532,6 +522,7 @@ title="Print to PDF"
 <div class="bigidea docutils">
 <p>Subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> include lines, planes and hyperplanes through the origin. A basis of a subspace is a linearly independent set of spanning vectors. The Rank-Nullity Theorem describes the dimensions of the nullspace and range of a matrix.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/02_01_01.png"><img alt="../_images/02_01_01.png" class="align-center" src="../_images/02_01_01.png" style="width: 100%;" /></a>
 <section id="id1">
 <h2>Subspaces<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
@@ -553,12 +544,12 @@ title="Print to PDF"
 </div>
 <div class="example docutils">
 <p>
-<ol class="simple">
+<ul class="simple">
 <li><p>The zero subspace <span class="math notranslate nohighlight">\(\{ \boldsymbol{0} \}\)</span> and the entire space <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> are both subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
 <li><p>Subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> include any line through the origin.</p></li>
 <li><p>Subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> include any line or plane through the origin.</p></li>
 <li><p>In general, subspaces of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> are hyperplanes of any dimension through the origin.</p></li>
-</ol>
+</ul>
 </p>
 </div>
 <div class="example docutils">
@@ -633,8 +624,8 @@ A = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{u_1} &amp; \cdots &amp; \boldsymb
 <p>The <strong>dimension</strong> of <span class="math notranslate nohighlight">\(U\)</span> is the number <span class="math notranslate nohighlight">\(m\)</span> of vectors in a basis.</p>
 </div>
 </section>
-<section id="nullspace">
-<h2>Nullspace<a class="headerlink" href="#nullspace" title="Permalink to this headline">#</a></h2>
+<section id="nullspace-and-range">
+<h2>Nullspace and Range<a class="headerlink" href="#nullspace-and-range" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>The <strong>nullspace</strong> of a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -648,9 +639,6 @@ N(A) = \{ \boldsymbol{x} \in \mathbb{R}^n : A\boldsymbol{x} = \boldsymbol{0} \}
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition (if it exists). Then <span class="math notranslate nohighlight">\(N(A) = N(U)\)</span>.</p>
 </div>
-</section>
-<section id="range">
-<h2>Range<a class="headerlink" href="#range" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>The <strong>range</strong> of a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is:</p>
 <div class="math notranslate nohighlight">
@@ -682,7 +670,7 @@ R(A) = \mathrm{span} \{ \boldsymbol{a}_1 , \dots, \boldsymbol{a}_n \}
 \dim (R(A)) = \mathrm{rank}(A)
 \]</div>
 <hr class="docutils" />
-<p><em>Proof</em>. The rank of <span class="math notranslate nohighlight">\(A\)</span> is the number of nonzero rows in the row echelon form of <span class="math notranslate nohighlight">\(A\)</span>. The dimension of <span class="math notranslate nohighlight">\(A\)</span> is the number of linearly independent columns in <span class="math notranslate nohighlight">\(A\)</span> which is also equal to the number of nonzero rows in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p><em>Proof</em>. The rank of <span class="math notranslate nohighlight">\(A\)</span> is the number of nonzero rows in the row echelon form of <span class="math notranslate nohighlight">\(A\)</span>. The dimension of <span class="math notranslate nohighlight">\(R(A)\)</span> is the number of linearly independent columns in <span class="math notranslate nohighlight">\(A\)</span> which is also equal to the number of nonzero rows in <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span> (if it exists) and let <span class="math notranslate nohighlight">\(r = \mathrm{rank}(A)\)</span>. Then</p>
@@ -718,13 +706,88 @@ LU \boldsymbol{x} = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{\ell}_1 &amp; \cd
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<div class="exercise docutils">
+<p>Determine whether or not the set</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U = \left\{ \begin{bmatrix} a \\ b \\ c \end{bmatrix} : abc = 0 \right\}
+\end{split}\]</div>
+<p>is a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(U\)</span> is not a subspace because it is not closed under vector addition.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Determine whether <span class="math notranslate nohighlight">\(\mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 \} = \mathrm{span} \{ \boldsymbol{u}_3 , \boldsymbol{u}_4 \}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 2 \\ -3 \\ 1 \\ -1 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} -5 \\ 1 \\ 2 \\ -2 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_3 = \left[ \begin{array}{r} -1 \\ -5 \\ 4 \\ -4 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_4 = \left[ \begin{array}{r} 3 \\ -11 \\ 6 \\ -10 \end{array} \right]
+\end{split}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 \} \ne \mathrm{span} \{ \boldsymbol{u}_3 , \boldsymbol{u}_4 \}\)</span> since <span class="math notranslate nohighlight">\(\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_4\)</span> are linearly independent.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(U = \mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \} \subseteq \mathbb{R}^4\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 2 \\ 4 \\ 4 \\ 2 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} 3 \\ 5 \\ 3 \\ 1 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_3 = \left[ \begin{array}{r} 3 \\ 3 \\ -1 \\ -11 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_4 = \left[ \begin{array}{r} 0 \\ 3 \\ 11 \\ -2 \end{array} \right]
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Find a basis and the dimension of <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
+<li><p>Is <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \}\)</span> a basis of <span class="math notranslate nohighlight">\(U\)</span>? Explain.</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\dim(U) = 3\)</span> and <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \}\)</span> also forms a basis of <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A = LU\)</span> be the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N(A) = N(U)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\dim (N(A)) = \dim (N(U))\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R(A) = R(U)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\dim (R(A)) = \dim (R(U))\)</span></p></li>
 </ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
 </section>
 </section>
 
@@ -762,10 +825,10 @@ LU \boldsymbol{x} = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{\ell}_1 &amp; \cd
             <p class="prev-next-title">Differential Equations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="orthogonal_subspaces.html" title="next page">
+    <a class='right-next' id="next-link" href="complement.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Orthogonal Subspaces</p>
+        <p class="prev-next-title">Orthogonal Complement</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
