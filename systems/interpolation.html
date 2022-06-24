@@ -437,28 +437,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#polynomial-interpolation">
    Polynomial Interpolation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#monomial-basis">
-     Monomial Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lagrange-basis">
-     Lagrange Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-basis">
-     Newton Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cubic-spline-interpolation">
@@ -498,28 +476,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#polynomial-interpolation">
    Polynomial Interpolation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#monomial-basis">
-     Monomial Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lagrange-basis">
-     Lagrange Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-basis">
-     Newton Basis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cubic-spline-interpolation">
@@ -544,12 +500,13 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
 <h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>An interpolating function for a set of data provides information about values between data points and beyond the range of the data. There are infinitely many different ways to interpolate a set of data. Polynomial interpolation and cubic spline interpolation are simple methods of interpolation.</p>
+<p>An interpolating function provides information about values between points and beyond the range of the data. There are infinitely many different ways to interpolate a set of data! Polynomial interpolation is the simplest method whereas cubic spline interpolation provides much more flexibility.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/01_03_01.png"><img alt="../_images/01_03_01.png" class="align-center" src="../_images/01_03_01.png" style="width: 100%;" /></a>
 <section id="interpolating-functions">
 <h2>Interpolating Functions<a class="headerlink" href="#interpolating-functions" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
-<p>An <strong>interpolant</strong> (or <strong>interpolating function</strong>) for data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span> is a function <span class="math notranslate nohighlight">\(f(t)\)</span> such that <span class="math notranslate nohighlight">\(f(t_k) = y_k\)</span> for <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
+<p>An <strong>interpolating function</strong> (or <strong>interpolant</strong>) for points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span> is a function <span class="math notranslate nohighlight">\(f(t)\)</span> such that <span class="math notranslate nohighlight">\(f(t_k) = y_k\)</span> for <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
 </div>
 <div class="note docutils">
 <p>There are <em>infinitely</em> many different interpolating functions for any set of data. We impose different kinds of constraints on the form of the interpolant to ensure there is a unique solution which is meaningful for the data and can be computed efficiently. In the following sections we describe two kinds of interpolation: <em>polynomial interpolation</em> and <em>cubic spline interpolation</em>.</p>
@@ -557,9 +514,6 @@ title="Print to PDF"
 </section>
 <section id="polynomial-interpolation">
 <h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>Given points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span>, there exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. Monomial, Lagrange and Newton interpolation provide different ways to compute the exact same interpolating polynomial.</p>
-</div>
 <div class="definition docutils">
 <p>A <strong>polynomial</strong> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> is a function of the form</p>
 <div class="math notranslate nohighlight">
@@ -573,8 +527,6 @@ p(t)= c_0 + c_1 t + \cdots + c_d t^d
 \]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> is a vector space of dimension <span class="math notranslate nohighlight">\(d+1\)</span>.</p>
 </div>
-<section id="monomial-basis">
-<h3>Monomial Basis<a class="headerlink" href="#monomial-basis" title="Permalink to this headline">#</a></h3>
 <div class="definition docutils">
 <p>Fix a positive integer <span class="math notranslate nohighlight">\(d\)</span> and let <span class="math notranslate nohighlight">\(\phi_k(t) = t^k\)</span> for <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. In other words, consider the polynomials</p>
 <div class="math notranslate nohighlight">
@@ -589,12 +541,17 @@ p(t) = c_0 \phi_0(t) + c_1 \phi_1(t) + \cdots + c_d \phi_d(t)
 <p>we see that the polynomials <span class="math notranslate nohighlight">\(\phi_k(t)\)</span> form a basis of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span>. The set <span class="math notranslate nohighlight">\(\{ \phi_0(t),\dots,\phi_d(t) \}\)</span> is called the <strong>monomial basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span>.</p>
 </div>
 <div class="definition docutils">
-<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>, <strong>polynomial interpolation with respect to the monomial basis</strong> seeks a polynomial of the form</p>
+<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>, <strong>polynomial interpolation</strong> (with respect to the monomial basis) is a polynomial of the form</p>
 <div class="math notranslate nohighlight">
 \[
 p(t) = c_0 + c_1 t + \cdots + c_d t^d
 \]</div>
 <p>such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. Each point defines an equation</p>
+<div class="math notranslate nohighlight">
+\[
+p(t_k) = y_k \ \ , \ \ \ k=0,\dots,d
+\]</div>
+<p>therefore the coefficients <span class="math notranslate nohighlight">\(c_0,c_1,\dots,c_d\)</span> satisfy the system of linear equations</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -604,38 +561,22 @@ c_0 + c_1t_1 + \cdots + c_d t_1^d &amp;= y_1 \\
 c_0 + c_1t_d + \cdots + c_d t_d^d &amp;= y_d
 \end{align*}
 \end{split}\]</div>
-<p>This yields a linear system of equations <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span></p>
+<p>In matrix notation, the system is <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+A = 
 \begin{bmatrix}
 1 &amp; t_0 &amp; \cdots &amp; t_0^d \\
 1 &amp; t_1 &amp; \cdots &amp; t_1^d \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
  1 &amp; t_d &amp; \cdots &amp; t_d^d
 \end{bmatrix}
-\begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_d \end{bmatrix}
-=
-\begin{bmatrix} y_0 \\ y_1 \\ \vdots \\ y_d \end{bmatrix}
-\end{split}\]</div>
-<p>The matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = \begin{bmatrix}
-1 &amp; t_0 &amp; \cdots &amp; t_0^d \\
-1 &amp; t_1 &amp; \cdots &amp; t_1^d \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
- 1 &amp; t_d &amp; \cdots &amp; t_d^d
-\end{bmatrix}
-\end{split}\]</div>
-<p>is called a <strong>Vandermonde matrix</strong>. Solve the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span> to find the coefficients</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+\hspace{10mm}
 \boldsymbol{c} = \begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_d \end{bmatrix}
+\hspace{10mm}
+\boldsymbol{y} = \begin{bmatrix} y_0 \\ y_1 \\ \vdots \\ y_d \end{bmatrix}
 \end{split}\]</div>
-</div>
-<div class="note docutils">
-<p>The condition number of a Vandermonde matrix gets <em>very</em> large as the size of the matrix increases. This means that interpolation by the monomial basis is very sensitive to changes in the data for polynomials of large degree. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix <span class="math notranslate nohighlight">\(A\)</span> is 11 by 11 and has condition number larger than <span class="math notranslate nohighlight">\(10^{12}\)</span>. Yikes!</p>
-<a class="reference internal image-reference" href="../_images/01_03_01.png"><img alt="../_images/01_03_01.png" class="align-center" src="../_images/01_03_01.png" style="width: 500px;" /></a>
+<p>The matrix <span class="math notranslate nohighlight">\(A\)</span> is called the <strong>Vandermonde matrix</strong> for <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span>.</p>
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be the Vandermonde matrix for points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>. Then</p>
@@ -643,9 +584,8 @@ A = \begin{bmatrix}
 \[
 \mathrm{det}(A) = \prod_{0 \leq i &lt; j \leq d} (t_j - t_i)
 \]</div>
-</div>
-<div class="example docutils">
-<p>Let’s compute the formula for the determinant of the Vandermonde matrix for the cases <span class="math notranslate nohighlight">\(d = 1\)</span> and <span class="math notranslate nohighlight">\(d = 2\)</span>. Compute for <span class="math notranslate nohighlight">\(d = 1\)</span></p>
+<hr class="docutils" />
+<p><em>Proof</em>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Wikipedia:Vandermonde matrix</a> for a proof. Let’s compute the formula for the cases <span class="math notranslate nohighlight">\(d = 1\)</span> and <span class="math notranslate nohighlight">\(d = 2\)</span>. Compute for <span class="math notranslate nohighlight">\(d = 1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathrm{det} \left( \begin{bmatrix} 1 &amp; t_0 \\ 1 &amp; t_1 \end{bmatrix} \right) = t_1 - t_0
@@ -673,195 +613,67 @@ A = \begin{bmatrix}
 \end{split}\]</div>
 </div>
 <div class="theorem docutils">
-<p>Consider <span class="math notranslate nohighlight">\(d+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for <span class="math notranslate nohighlight">\(i \not= j\)</span>). There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
+<p>Consider <span class="math notranslate nohighlight">\(d+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span> such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for <span class="math notranslate nohighlight">\(i \not= j\)</span>. There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>.</p>
 <hr class="docutils" />
-<p><em>Proof</em>. The determinant of the Vandermonde matrix is nonzero when the values <span class="math notranslate nohighlight">\(t_k\)</span> are distinct therefore it is invertible and so there is a unique solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span>.</p>
-</div>
-</section>
-<section id="lagrange-basis">
-<h3>Lagrange Basis<a class="headerlink" href="#lagrange-basis" title="Permalink to this headline">#</a></h3>
-<div class="definition docutils">
-<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, the <strong>Lagrange basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> (with respect to <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span>) is given by <span class="math notranslate nohighlight">\(\{ \ell_0(t),\dots,\ell_d(t) \}\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[
-\ell_k(t) = \frac{\prod_{j=0, j\not=k}^d (t - t_j)}{\prod_{j=0, j\not=k}^d (t_k - t_j)}
-\]</div>
-<p>The essential property of these polynomials is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\ell_k(t_j) = \left\{ \begin{array}{cc} 1 &amp; \text{ if } k = j \\ 0 &amp; \text{ if } k \not= j \end{array} \right. \ , \ \ k,j=0,\dots,d
-\end{split}\]</div>
-</div>
-<div class="definition docutils">
-<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>, <strong>polynomial interpolation with respect to the Lagrange basis</strong> seeks a polynomial of the form</p>
-<div class="math notranslate nohighlight">
-\[
-p(t) = c_0 \ell_0(t) + c_1 \ell_1(t) + \cdots + c_d \ell_d(t)
-\]</div>
-<p>such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. Each point defines an equation and we get a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-\ell_0(t_0) &amp; \ell_1(t_0) &amp; \cdots &amp; \ell_d(t_0) \\
-\ell_0(t_1) &amp; \ell_1(t_1) &amp; \cdots &amp; \ell_d(t_1) \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\ell_0(t_d) &amp; \ell_1(t_d) &amp; \cdots &amp; \ell_d(t_d)
-\end{bmatrix}
-\begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_d \end{bmatrix}
-=
-\begin{bmatrix} y_0 \\ y_1 \\ \vdots \\ y_d \end{bmatrix}
-\end{split}\]</div>
-<p>The essential property of Lagrange polynomials implies that <span class="math notranslate nohighlight">\(A\)</span> is the identity matrix and so <span class="math notranslate nohighlight">\(\boldsymbol{c} = \boldsymbol{y}\)</span> therefore</p>
-<div class="math notranslate nohighlight">
-\[
-p(t) = y_0 \ell_0(t) + y_1 \ell_1(t) + \cdots + y_d \ell_d(t)
-\]</div>
-</div>
-</section>
-<section id="newton-basis">
-<h3>Newton Basis<a class="headerlink" href="#newton-basis" title="Permalink to this headline">#</a></h3>
-<div class="definition docutils">
-<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, the <strong>Newton basis</strong> of <span class="math notranslate nohighlight">\(\mathbb{P}_d\)</span> (with respect to <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span>) is <span class="math notranslate nohighlight">\(\{ \pi_0(t),\dots,\pi_d(t) \}\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\pi_0(t) &amp;= 1 \\
-\pi_1(t) &amp;= t - t_0 \\
-\pi_2(t) &amp;= (t - t_0)(t - t_1) \\
-&amp; \ \ \vdots \\
-\pi_d(t) &amp;= (t - t_0)(t - t_1)(t - t_2) \cdots (t - t_{d-1}) \\
-\end{align*}
-\end{split}\]</div>
-<p>An important property of these polynomials is</p>
-<div class="math notranslate nohighlight">
-\[
-\pi_k(t_j) = 0 \ , \ \ j=0,\dots,k-1
-\]</div>
-</div>
-<div class="definition docutils">
-<p>Given <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots,(t_d,y_d)\)</span>, <strong>polynomial interpolation with respect to the Newton basis</strong> seeks a polynomial of the form</p>
-<div class="math notranslate nohighlight">
-\[
-p(t) = c_0 \pi_0(t) + c_1 \pi_1(t) + \cdots + c_d \pi_d(t)
-\]</div>
-<p>such that <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for each <span class="math notranslate nohighlight">\(k=0,\dots,d\)</span>. Each point defines an equation and we get a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-\pi_0(t_0) &amp; \pi_1(t_0) &amp; \cdots &amp; \pi_d(t_0) \\
-\pi_0(t_1) &amp; \pi_1(t_1) &amp; \cdots &amp; \pi_d(t_1) \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\pi_0(t_d) &amp; \pi_1(t_d) &amp; \cdots &amp; \pi_d(t_d)
-\end{bmatrix}
-\begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_d \end{bmatrix}
-=
-\begin{bmatrix} y_0 \\ y_1 \\ \vdots \\ y_d \end{bmatrix}
-\end{split}\]</div>
-<p>The property of Newton polynomials implies that <span class="math notranslate nohighlight">\(A\)</span> is a lower triangular matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A =
-\begin{bmatrix}
-\pi_0(t_0) &amp; 0 &amp; \cdots &amp; 0 \\
-\pi_0(t_1) &amp; \pi_1(t_1) &amp; \ddots &amp; \vdots \\
-\vdots &amp; \vdots &amp; \ddots &amp; 0 \\
-\pi_0(t_d) &amp; \pi_1(t_d) &amp; \cdots &amp; \pi_d(t_d)
-\end{bmatrix}
-\end{split}\]</div>
-<p>Consequently, the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span> is solved by forward substitution.</p>
-</div>
-<div class="note docutils">
-<p>An advantage of the Newton basis is that updating the interpolating function with additional data is simple. In particular, suppose we have data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span> and compute the coefficients of the interpolating polynomial</p>
-<div class="math notranslate nohighlight">
-\[
-p_d(t)=c_0 + c_1 \pi_1(t)+\dots +c_d \pi_d(t)
-\]</div>
-<p>Now suppose we get another data point <span class="math notranslate nohighlight">\((t_{d+1},y_{d+1})\)</span>. We can find the interpolating polynomial <span class="math notranslate nohighlight">\(p_{d+1}(t)\)</span> for the full data set by</p>
-<div class="math notranslate nohighlight">
-\[
-p_{d+1}(t)=p_d(t)+c_{d+1} \pi_{d+1}(t)
-\]</div>
-<p>where the only new coefficient is</p>
-<div class="math notranslate nohighlight">
-\[
-c_{d+1} = \frac{y_{d+1}-p_d(t_{d+1})}{\pi_{d+1}(t_{d+1})}.
-\]</div>
-<p>This observation also leads to an iterative algorithm to compute Newton interpolation in general: given  <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_d,y_d)\)</span>, find <span class="math notranslate nohighlight">\(p_0(t)\)</span> using only <span class="math notranslate nohighlight">\((t_0,y_0)\)</span> and then find <span class="math notranslate nohighlight">\(p_{k+1}(t)\)</span> from <span class="math notranslate nohighlight">\(p_k(t)\)</span> for each <span class="math notranslate nohighlight">\(k\)</span> using the formula above.</p>
-</div>
-</section>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
-<div class="note docutils">
-<p>Recall that there is a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates <span class="math notranslate nohighlight">\(d+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0), \dots , (t_d,y_d)\)</span> if the values <span class="math notranslate nohighlight">\(t_0,\dots,t_d\)</span> are different. Therefore the monomial, Lagrange and Newton bases all produce the <em>same</em> result but computed and represented differently.</p>
+<p><em>Proof</em>. The formula for the determinant of the Vandermonde matrix shows that <span class="math notranslate nohighlight">\(\mathrm{det}(A) \ne 0\)</span> when the values <span class="math notranslate nohighlight">\(t_k\)</span> are distinct therefore it is invertible and so there is a unique solution of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span>.</p>
 </div>
 <div class="example docutils">
-<p>Find the interpolating polynomial for <span class="math notranslate nohighlight">\((-1,1),(0,0),(1,1)\)</span> using each of the monomial, Lagrange and Newton bases. We know the result is <span class="math notranslate nohighlight">\(p(t) = t^2\)</span>. Begin with monomial interpolation and setup the Vandermonde matrix and solve the linear system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\left[ \begin{array}{rrr} 1 &amp; -1 &amp; \phantom{+}1 \\ 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 1 \end{array} \right]
-\begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
-=
-\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
-\ \
-\Rightarrow
-\ \
-\boldsymbol{c} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<p>and therefore <span class="math notranslate nohighlight">\(c_0 = c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> and so <span class="math notranslate nohighlight">\(p(t) = t^2\)</span>. Now construct the Lagrange basis</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\ell_0(t) &amp;= \frac{(t - 0)(t - 1)}{(-1 - 0)(-1 - 1)} = \frac{t(t-1)}{2} \\
-\ell_1(t) &amp;= \frac{(t - (-1))(t - 1)}{(0 - (-1))(0 - 1)} = 1-t^2 \\
-\ell_2(t) &amp;= \frac{(t - (-1))(t - 0)}{(1 - (-1))(1 - 0)} = \frac{t(t+1)}{2}
-\end{align*}
-\end{split}\]</div>
-<p>and the interpolating polynomial</p>
+<p>Find the unique polynomial of degree 3 which interpolates the points</p>
 <div class="math notranslate nohighlight">
 \[
-p(t) = y_0 \ell_0(t) + y_1 \ell_1(t) + y_2 \ell_2(t) = (1)\frac{t(t-1)}{2} + (0) (1-t^2) + (1) \frac{t(t+1)}{2} = t^2
+(0,-1),(1,-1),(2,1),(3,-1)
 \]</div>
-<p>Now construct the Newton basis</p>
+<p>Solve the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
-p_0(t) &amp;= 1 \\
-p_1(t) &amp;= t - (-1) = t + 1 \\
-p_2(t) &amp;= (t - (-1))(t - 0) = t^2 + t
-\end{align*}
+A =  
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp;  0 \\
+1 &amp; 1 &amp; 1 &amp;  1 \\
+1 &amp; 2 &amp; 4 &amp;  8 \\
+1 &amp; 3 &amp; 9 &amp; 27
+\end{bmatrix}
+\hspace{20mm}
+\boldsymbol{y} = \left[ \begin{array}{r} -1 \\ -1 \\ 1 \\ -1 \end{array} \right]
 \end{split}\]</div>
-<p>Each point yields an equation <span class="math notranslate nohighlight">\(p(t_k) = y_k\)</span> for <span class="math notranslate nohighlight">\(k=0,1,2\)</span> and so we solve the linear system</p>
+<p>Let’s compute the LU decomposition of the Vandermonde matrix <span class="math notranslate nohighlight">\(A\)</span> so that we can reuse the result in other examples</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
-\left[ \begin{array}{ccc} 1 &amp; 0 &amp; 0 \\ 1 &amp; t_1 - t_0 &amp; 0 \\ 1 &amp; t_2 - t_0 &amp; (t_2-t_0)(t_2-t_1) \end{array} \right]
-\begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
-&amp;=
-\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
-\\
-\left[ \begin{array}{rrr} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 2 \end{array} \right]
-\begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
-&amp;=
-\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
-\ \
-\Rightarrow
-\ \
-\begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix} = \left[ \begin{array}{r} 1 \\ -1 \\ 1 \end{array} \right]
-\end{align*}
+L =  
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 2 &amp; 1 &amp; 0 \\
+1 &amp; 3 &amp; 3 &amp; 1
+\end{bmatrix}
+\hspace{10mm}
+U =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 2 &amp; 6 \\
+0 &amp; 0 &amp; 0 &amp; 6
+\end{bmatrix}
 \end{split}\]</div>
-<p>The interpolating polynomial is again</p>
+<p>Solve the systems <span class="math notranslate nohighlight">\(L \boldsymbol{x} = \boldsymbol{y}\)</span> and <span class="math notranslate nohighlight">\(U \boldsymbol{c} = \boldsymbol{x}\)</span> to find</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{c} = \left[ \begin{array}{r} -1 \\ -3 \\ 4 \\ -1 \end{array} \right]
+\end{split}\]</div>
+<p>Therefore the interpolating polynomial is</p>
 <div class="math notranslate nohighlight">
 \[
-p(t) = c_0 p_0(t) + c_1 p_1(t) + c_2 p_2(t) = 1 - (t+1) + t^2 + t = t^2
+p(t) = -1 - 3t + 4t^2 - t^3
 \]</div>
+<a class="reference internal image-reference" href="../_images/01_03_02.png"><img alt="../_images/01_03_02.png" class="align-center" src="../_images/01_03_02.png" style="width: 500px;" /></a>
 </div>
-</section>
+<div class="note docutils">
+<p>The condition number of a Vandermonde matrix gets <em>very</em> large as the size of the matrix increases. This means that interpolation by the monomial basis is very sensitive to changes in the data for polynomials of large degree. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix <span class="math notranslate nohighlight">\(A\)</span> is 11 by 11 and has condition number larger than <span class="math notranslate nohighlight">\(10^{12}\)</span>. Yikes!</p>
+<a class="reference internal image-reference" href="../_images/01_03_03.png"><img alt="../_images/01_03_03.png" class="align-center" src="../_images/01_03_03.png" style="width: 500px;" /></a>
+</div>
 </section>
 <section id="cubic-spline-interpolation">
 <h2>Cubic Spline Interpolation<a class="headerlink" href="#cubic-spline-interpolation" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>Given <span class="math notranslate nohighlight">\(N+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>, a cubic spline is a piecewise cubic polynomial defined by a different polynomial <span class="math notranslate nohighlight">\(p_k(t)\)</span> for each subinterval <span class="math notranslate nohighlight">\([t_{k-1},t_k]\)</span>, <span class="math notranslate nohighlight">\(k=1,\dots,N\)</span>.</p>
-</div>
 <div class="definition docutils">
 <p>Consider <span class="math notranslate nohighlight">\(N+1\)</span> points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>. A <strong>cubic spline</strong> is a function <span class="math notranslate nohighlight">\(p(t)\)</span> defined piecewise by <span class="math notranslate nohighlight">\(N\)</span> cubic polynomials <span class="math notranslate nohighlight">\(p_1(t),\dots,p_N(t)\)</span> where</p>
 <div class="math notranslate nohighlight">
@@ -871,17 +683,31 @@ p_k(t) = a_k(t - t_{k-1})^3 + b_k(t - t_{k-1})^2 + c_k(t - t_{k-1}) + d_k \ \ , 
 <p>such that <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(p'(t)\)</span> and <span class="math notranslate nohighlight">\(p''(t)\)</span> are continuous functions.</p>
 </div>
 <div class="note docutils">
-<p>Each polynomial <span class="math notranslate nohighlight">\(p_k(t)\)</span> has 4 coefficients <span class="math notranslate nohighlight">\(a_k,b_k,c_k,d_k\)</span> therefore we require <span class="math notranslate nohighlight">\(4N\)</span> equations to specify the <span class="math notranslate nohighlight">\(4N\)</span> unknowns:</p>
-<ol class="simple">
-<li><p>Interpolation at left endpoints: <span class="math notranslate nohighlight">\(p_k(t_{k-1}) = y_{k-1}\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,N\)</span> yields <span class="math notranslate nohighlight">\(N\)</span> equations.</p></li>
-<li><p>Interpolation at right endpoints: <span class="math notranslate nohighlight">\(p_k(t_k) = y_k\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,N\)</span> yields <span class="math notranslate nohighlight">\(N\)</span> equations.</p></li>
-<li><p>Continuity of <span class="math notranslate nohighlight">\(p'(t)\)</span>: <span class="math notranslate nohighlight">\(p_k'(t_k) = p_{k+1}'(t_k)\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,N-1\)</span> yields <span class="math notranslate nohighlight">\(N-1\)</span> equations.</p></li>
-<li><p>Continuity of <span class="math notranslate nohighlight">\(p''(t)\)</span>: <span class="math notranslate nohighlight">\(p_k''(t_k) = p_{k+1}''(t_k)\)</span> for <span class="math notranslate nohighlight">\(k=1,\dots,N-1\)</span> yields <span class="math notranslate nohighlight">\(N-1\)</span> equations.</p></li>
-</ol>
-<p>The conditions impose only <span class="math notranslate nohighlight">\(4N-2\)</span> equations therefore we need 2 more to determine the cubic spline uniquely. There are different choices such as the natural spline and the ``not-a-knot” condition.</p>
+<p>Each polynomial <span class="math notranslate nohighlight">\(p_k(t)\)</span> is defined by four coefficients <span class="math notranslate nohighlight">\(a_k,b_k,c_k,d_k\)</span> therefore we require <span class="math notranslate nohighlight">\(4N\)</span> equations to specify the <span class="math notranslate nohighlight">\(4N\)</span> unknowns.</p>
+<p>Interpolation at left endpoints yields <span class="math notranslate nohighlight">\(N\)</span> equations:</p>
+<div class="math notranslate nohighlight">
+\[
+p_k(t_{k-1}) = y_{k-1} \ \ , \ \ \ k=1,\dots,N
+\]</div>
+<p>Interpolation at right endpoints yields <span class="math notranslate nohighlight">\(N\)</span> equations:</p>
+<div class="math notranslate nohighlight">
+\[
+p_k(t_k) = y_k \ \ , \ \ \ k=1,\dots,N
+\]</div>
+<p>Continuity of <span class="math notranslate nohighlight">\(p'(t)\)</span> yields <span class="math notranslate nohighlight">\(N-1\)</span> equations:</p>
+<div class="math notranslate nohighlight">
+\[
+p_k'(t_k) = p_{k+1}'(t_k) \ \ , \ \ \ k=1,\dots,N-1
+\]</div>
+<p>Continuity of <span class="math notranslate nohighlight">\(p''(t)\)</span> yields <span class="math notranslate nohighlight">\(N-1\)</span> equations:</p>
+<div class="math notranslate nohighlight">
+\[
+p_k''(t_k) = p_{k+1}''(t_k) \ \ , \ \ \ k=1,\dots,N-1
+\]</div>
+<p>The conditions impose only <span class="math notranslate nohighlight">\(4N-2\)</span> equations therefore we need 2 more to determine the cubic spline uniquely. There are different choices such as the natural spline and the “not-a-knot” condition.</p>
 </div>
 <div class="definition docutils">
-<p>The <strong>natural cubic spline</strong> requires <span class="math notranslate nohighlight">\(p''_1(t_0) = p''_N(t_N) = 0\)</span>.</p>
+<p>A <strong>natural cubic spline</strong> satisfies <span class="math notranslate nohighlight">\(p''_1(t_0) = p''_N(t_N) = 0\)</span>.</p>
 </div>
 <div class="definition docutils">
 <p>Represent a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> by the <strong>coefficient matrix</strong></p>
@@ -935,7 +761,9 @@ T &amp; &amp; &amp; &amp; V
 A(L) = \begin{bmatrix} L^3 &amp; L^2 &amp; L \\ 3L^2 &amp; 2L &amp; 1 \\ 6L &amp; 2 &amp; 0 \end{bmatrix}
 \ \
 B = \left[ \begin{array}{rrr} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; -2 &amp; 0 \end{array} \right]
-\ \
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 T = \begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
 \ \
 V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &amp; 2 &amp; 0 \end{bmatrix}
@@ -947,24 +775,88 @@ V = \begin{bmatrix} L_N^3 &amp; L_N^2 &amp; L_N \\ 0 &amp; 0 &amp; 0 \\ 6L_N &am
 \[
 (0,0),(1,2),(2,1),(3,3),(4,2),(5,4),(6,2),(7,3),(8,1),(9,2),(10,0)
 \]</div>
-<a class="reference internal image-reference" href="../_images/01_03_02.png"><img alt="../_images/01_03_02.png" class="align-center" src="../_images/01_03_02.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/01_03_04.png"><img alt="../_images/01_03_04.png" class="align-center" src="../_images/01_03_04.png" style="width: 500px;" /></a>
+</div>
+<div class="example docutils">
+<p>Let <span class="math notranslate nohighlight">\(p(t)\)</span> be the natural cubic spline which interpolates the data</p>
+<div class="math notranslate nohighlight">
+\[
+(0, 1) \ , \ (1, 3) \ , \ (2, 8) \ , \ (3, 10) \ , \ (4, 9) \ , \ (5,-1) \ , \ (6,-17)
+\]</div>
+<p>Suppose the coefficient matrix of <span class="math notranslate nohighlight">\(p(t)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \left[ \begin{array}{rrrrrr}
+1 &amp; -2 &amp; 1 &amp; \phantom{+}a_4 &amp; 1 &amp; 1 \\
+0 &amp; 3 &amp; -3 &amp; b_4 &amp; -6 &amp; -3 \\
+1 &amp; 4 &amp; 4 &amp; c_4 &amp; -5 &amp; -14 \\
+1 &amp; 3 &amp; 8 &amp; 10 &amp; 9 &amp; -1
+\end{array} \right]
+\end{split}\]</div>
+<p>Determine the coefficients <span class="math notranslate nohighlight">\(a_4, b_4, c_4\)</span>, then compute the value <span class="math notranslate nohighlight">\(p''(2.5)\)</span>.</p>
+<p>First note that the <span class="math notranslate nohighlight">\(t\)</span> values are equally spaced thefore <span class="math notranslate nohighlight">\(L_k = t_k - t_{k-1} = 1\)</span> for each <span class="math notranslate nohighlight">\(k\)</span>. Continuity of <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(p'(t)\)</span> and <span class="math notranslate nohighlight">\(p''(t)\)</span> yields equations</p>
+<div class="math notranslate nohighlight">
+\[
+p_k(t_k) = p_{k+1}(t_k) \ \ \Rightarrow \ \ a_k + b_k + c_k + d_k = d_{k+1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p'_k(t_k) = p'_{k+1}(t_k) \ \ \Rightarrow \ \ 3a_k + 2b_k + c_k = c_{k+1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p''_k(t_k) = p''_{k+1}(t_k) \ \ \Rightarrow \ \ 6a_k + 2b_k = 2b_{k+1}
+\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(6a_3 + 2b_3 = 2b_4\)</span> implies <span class="math notranslate nohighlight">\(b_4 = 0\)</span>, the equation <span class="math notranslate nohighlight">\(3a_3 + 2b_3 + c_3 = c_4\)</span> implies <span class="math notranslate nohighlight">\(c_4 = 1\)</span> and finally <span class="math notranslate nohighlight">\(6a_4 + 2b_4 = 2b_5\)</span> implies <span class="math notranslate nohighlight">\(a_4 = -2\)</span>.</p>
+<p>The value <span class="math notranslate nohighlight">\(t=2.5\)</span> lies in the interval <span class="math notranslate nohighlight">\([t_2,t_3]\)</span> therefore we compute</p>
+<div class="math notranslate nohighlight">
+\[
+p''(2.5) = p_3''(2.5) = 6a_3(2.5 - 2) - 2b_3 = -3
+\]</div>
+<a class="reference internal image-reference" href="../_images/01_03_05.png"><img alt="../_images/01_03_05.png" class="align-center" src="../_images/01_03_05.png" style="width: 500px;" /></a>
 </div>
 <div class="note docutils">
 <p>The condition number of the matrix for constructing the natural cubic spline does not increase as drastically with the number of points <span class="math notranslate nohighlight">\(N+1\)</span> as compared with the Vandermonde matrix. For example, for <span class="math notranslate nohighlight">\(11\)</span> equally spaced points <span class="math notranslate nohighlight">\(t_0=0,\dots,t_{10}=10\)</span>, the Vandermonde matrix is 11 by 11 and has <span class="math notranslate nohighlight">\(\mathrm{cond}(A) \approx 10^{12}\)</span> whereas the cubic spline matrix is 30 by 30 and the condition number is only around <span class="math notranslate nohighlight">\(33\)</span>.</p>
-<a class="reference internal image-reference" href="../_images/01_03_03.png"><img alt="../_images/01_03_03.png" class="align-center" src="../_images/01_03_03.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/01_03_06.png"><img alt="../_images/01_03_06.png" class="align-center" src="../_images/01_03_06.png" style="width: 500px;" /></a>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<div class="exercise docutils">
+<p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for <span class="math notranslate nohighlight">\(i \ne j\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p>Consider <span class="math notranslate nohighlight">\(N+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>. Let <span class="math notranslate nohighlight">\(A_1 \boldsymbol{c}_1 = \boldsymbol{b}_1\)</span> be the linear system such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_1\)</span> consists of the coefficients of the interpolating polynomial with respect to the monomial basis. Let <span class="math notranslate nohighlight">\(A_2 \boldsymbol{c}_2 = \boldsymbol{b}_2\)</span> be the linear system such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_2\)</span> consists of the coefficients of the interpolating natural cubic spline. Then we expect <span class="math notranslate nohighlight">\(\mathrm{cond}(A_1) &lt; \mathrm{cond}(A_2)\)</span> for large values of <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
-<li><p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span>). There exists a unique polynomial of degree (at most) <span class="math notranslate nohighlight">\(d-1\)</span> which interpolates the data.</p></li>
-<li><p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span>). There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates the data and also satisfies <span class="math notranslate nohighlight">\(p'(t_1)=0\)</span> and <span class="math notranslate nohighlight">\(p''(t_1)=0\)</span>.</p></li>
-<li><p>Consider <span class="math notranslate nohighlight">\(d\)</span> data points <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_d,y_d)\)</span> (such that <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span>). There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates the data and <span class="math notranslate nohighlight">\(p'(t_1)=0\)</span>.</p></li>
-<li><p>Consider <span class="math notranslate nohighlight">\(d+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0),(t_1,y_1),\dots,(t_d,y_d)\)</span>. Let <span class="math notranslate nohighlight">\(p(t)\)</span> be the interpolating polynomial constructed using the monomial basis. Let <span class="math notranslate nohighlight">\(q(t)\)</span> be the interpolating polynomial constructed using the Lagrange basis. Let <span class="math notranslate nohighlight">\(r(t)\)</span> be the interpolating polynomial constructed using the Newton basis. Then <span class="math notranslate nohighlight">\(p(t) = q(t) = r(t)\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>There exists a unique polynomial of degree (at most) <span class="math notranslate nohighlight">\(d-1\)</span> which interpolates the data.</p></li>
+<li><p>There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates the data and also satisfies <span class="math notranslate nohighlight">\(p'(t_1)=0\)</span> and <span class="math notranslate nohighlight">\(p''(t_1)=0\)</span>.</p></li>
+<li><p>There exists a unique polynomial <span class="math notranslate nohighlight">\(p(t)\)</span> of degree (at most) <span class="math notranslate nohighlight">\(d\)</span> which interpolates the data and <span class="math notranslate nohighlight">\(p'(t_1)=0\)</span>.</p></li>
 </ul>
-<p><strong>Exercise 2.</strong> Suppose we have 4 points <span class="math notranslate nohighlight">\((0,y_0),(1,y_1),(2,y_2),(3,y_3)\)</span> and we want to interpolate the data using a spline <span class="math notranslate nohighlight">\(p(t)\)</span> constructed from <span class="math notranslate nohighlight">\(3\)</span> degree 2 polynomials <span class="math notranslate nohighlight">\(p_1,p_2,p_3\)</span> where</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Consider <span class="math notranslate nohighlight">\(N+1\)</span> data points <span class="math notranslate nohighlight">\((t_0,y_0),\dots,(t_N,y_N)\)</span>. Let <span class="math notranslate nohighlight">\(A_1 \boldsymbol{c}_1 = \boldsymbol{b}_1\)</span> such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_1\)</span> consists of the coefficients of the interpolating polynomial with respect to the monomial basis. Let <span class="math notranslate nohighlight">\(A_2 \boldsymbol{c}_2 = \boldsymbol{b}_2\)</span> such that the solution <span class="math notranslate nohighlight">\(\boldsymbol{c}_2\)</span> consists of the coefficients of the interpolating natural cubic spline. Do we expect <span class="math notranslate nohighlight">\(\mathrm{cond}(A_1) &lt; \mathrm{cond}(A_2)\)</span> or <span class="math notranslate nohighlight">\(\mathrm{cond}(A_1) &gt; \mathrm{cond}(A_2)\)</span> for large values of <span class="math notranslate nohighlight">\(N\)</span>? Explain.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We expect <span class="math notranslate nohighlight">\(\mathrm{cond}(A_1) &gt; \mathrm{cond}(A_2)\)</span>.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose we have 4 points <span class="math notranslate nohighlight">\((0,y_0),(1,y_1),(2,y_2),(3,y_3)\)</span> and we want to interpolate the data using a spline <span class="math notranslate nohighlight">\(p(t)\)</span> constructed from <span class="math notranslate nohighlight">\(3\)</span> degree 2 polynomials <span class="math notranslate nohighlight">\(p_1,p_2,p_3\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
 p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_k]
@@ -975,23 +867,30 @@ p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_
 \boldsymbol{x} = \begin{bmatrix} a_1 &amp; b_1 &amp; a_2 &amp; b_2 &amp; a_3 &amp; b_3 \end{bmatrix}^T
 \]</div>
 <p>Note: the system depends on the unspecified values <span class="math notranslate nohighlight">\(y_0,y_1,y_2,y_3\)</span>.</p>
-<p><strong>Exercise 3.</strong> Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
-<div class="math notranslate nohighlight">
-\[
-(0.0,0.0),(1.0,2.0),(2.0,1.0),(3.0,3.0),(4.0,-1.0),(5.0,1.0)
-\]</div>
-<p>and <span class="math notranslate nohighlight">\(p(t)\)</span> has coefficient matrix</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\left[ \begin{array}{rrrrr}
-1.9 &amp; 1.9 &amp; a_3 &amp; 3.1 &amp; 3.1 \\
--7.2 &amp; -1.5 &amp; b_3 &amp; -6.3 &amp; 3.0 \\
-7.3 &amp; -1.4 &amp; c_3 &amp; -0.8 &amp; -4.1 \\
-0.0 &amp; 2.0 &amp; 1.0 &amp; 3.0 &amp; -1.0
-\end{array}\right]
+A = \left[ \begin{array}{rrrrrr}
+1 &amp; \phantom{+}1 &amp; \phantom{+}0 &amp;  0 &amp; \phantom{+}0 &amp;  0 \\
+0 &amp; 0 &amp; 1 &amp;  1 &amp; 0 &amp;  0 \\
+0 &amp; 0 &amp; 0 &amp;  0 &amp; 1 &amp;  1 \\
+2 &amp; 1 &amp; 0 &amp; -1 &amp; 0 &amp;  0 \\
+0 &amp; 0 &amp; 2 &amp;  1 &amp; 0 &amp; -1 \\
+1 &amp; 0 &amp; 0 &amp;  0 &amp; 0 &amp;  0
+\end{array} \right]
+\hspace{10mm}
+\boldsymbol{b} = \begin{bmatrix} y_1 - y_0 \\ y_2 - y_1 \\ y_3 - y_2 \\ 0 \\ 0 \\ 0 \end{bmatrix}
 \end{split}\]</div>
-<p>Determine the coefficients <span class="math notranslate nohighlight">\(a_3,b_3,c_3\)</span>.</p>
-<p><strong>Exercise 4.</strong> Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose a cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> interpolates the data</p>
 <div class="math notranslate nohighlight">
 \[
 (0.0,1.0),(1.0,3.0),(2.0,1.0),(3.0,1.0),(4.0,2.0),(5.0,1.0)
@@ -1007,6 +906,38 @@ p_k(t) = a_k(t - t_{k-1})^2 + b_k(t - t_{k-1}) + c_k \ \ , \ \ t \in [t_{k-1},t_
 \end{array} \right]
 \end{split}\]</div>
 <p>Determine the coefficients <span class="math notranslate nohighlight">\(a_3,b_3,c_3\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(a_3 = -0.55\)</span>, <span class="math notranslate nohighlight">\(b_3 = 2.24\)</span>, <span class="math notranslate nohighlight">\(c_3 = -1.69\)</span></p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Consider the natural cubic spline <span class="math notranslate nohighlight">\(p(t)\)</span> represented by the coefficient matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \left[ \begin{array}{rrrrrrr}
+3 &amp; a_2 &amp; 2 &amp; -4 &amp; -2 &amp; -2 &amp; 8 \\
+0 &amp; 9 &amp; b_3 &amp; b_4 &amp; b_5 &amp; -18 &amp; -24 \\
+0 &amp; 9 &amp; 12 &amp; 6 &amp; c_5 &amp; -36 &amp; -78 \\
+0 &amp; 3 &amp; 16 &amp; 24 &amp; d_5 &amp; 6 &amp; -50
+\end{array} \right]
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t_0 = 0,t_1 = 1,t_2 = 2,t_3 = 3,t_4 = 4,t_5 = 5,t_6 = 6,t_7 = 7\)</span>. Find the value <span class="math notranslate nohighlight">\(b_4\)</span> and compute <span class="math notranslate nohighlight">\(p''(5.5)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(b_4 = 0\)</span>, <span class="math notranslate nohighlight">\(p''(5.5) = -42\)</span></p>
+</div>
+</details></div>
 </section>
 </section>
 
