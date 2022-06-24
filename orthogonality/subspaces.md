@@ -4,6 +4,11 @@
 Subspaces of $\mathbb{R}^n$ include lines, planes and hyperplanes through the origin. A basis of a subspace is a linearly independent set of spanning vectors. The Rank-Nullity Theorem describes the dimensions of the nullspace and range of a matrix.
 ```
 
+```{image} /img/02_01_01.png
+:width: 100%
+:align: center
+```
+
 ## Subspaces
 
 ```{div} definition
@@ -26,10 +31,10 @@ A subset $U \subseteq \mathbb{R}^n$ is a **subspace** if:
 ```{div} example
 <p>
 
-1. The zero subspace $\{ \boldsymbol{0} \}$ and the entire space $\mathbb{R}^n$ are both subspaces of $\mathbb{R}^n$.
-2. Subspaces of $\mathbb{R}^2$ include any line through the origin.
-3. Subspaces of $\mathbb{R}^3$ include any line or plane through the origin.
-4. In general, subspaces of $\mathbb{R}^n$ are hyperplanes of any dimension through the origin.
+* The zero subspace $\{ \boldsymbol{0} \}$ and the entire space $\mathbb{R}^n$ are both subspaces of $\mathbb{R}^n$.
+* Subspaces of $\mathbb{R}^2$ include any line through the origin.
+* Subspaces of $\mathbb{R}^3$ include any line or plane through the origin.
+* In general, subspaces of $\mathbb{R}^n$ are hyperplanes of any dimension through the origin.
 
 </p>
 ```
@@ -117,7 +122,7 @@ Let $U \subseteq \mathbb{R}^n$ be a subspace. A set of vectors $\{ \boldsymbol{u
 The **dimension** of $U$ is the number $m$ of vectors in a basis.
 ```
 
-## Nullspace
+## Nullspace and Range
 
 ```{div} definition
 The **nullspace** of a $m \times n$ matrix $A$ is
@@ -134,8 +139,6 @@ Let $A$ be a $m \times n$ matrix. The nullspace $N(A)$ is a subspace of $\mathbb
 ```{div} theorem
 Let $A$ be a $m \times n$ matrix and let $A = LU$ be the LU decomposition (if it exists). Then $N(A) = N(U)$.
 ```
-
-## Range
 
 ```{div} definition
 The **range** of a $m \times n$ matrix $A$ is:
@@ -176,7 +179,7 @@ $$
 
 ---
 
-*Proof*. The rank of $A$ is the number of nonzero rows in the row echelon form of $A$. The dimension of $A$ is the number of linearly independent columns in $A$ which is also equal to the number of nonzero rows in $A$.
+*Proof*. The rank of $A$ is the number of nonzero rows in the row echelon form of $A$. The dimension of $R(A)$ is the number of linearly independent columns in $A$ which is also equal to the number of nonzero rows in $A$.
 ```
 
 ```{div} theorem
@@ -219,9 +222,69 @@ $$
 
 ## Exercises
 
-**Exercise 1.** Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is **True** or **False**.
+````{div} exercise
+Determine whether or not the set
 
-  * $N(A) = N(U)$
-  * $\dim (N(A)) = \dim (N(U))$
-  * $R(A) = R(U)$
-  * $\dim (R(A)) = \dim (R(U))$
+$$
+U = \left\{ \begin{bmatrix} a \\ b \\ c \end{bmatrix} : abc = 0 \right\}
+$$
+
+is a subspace of $\mathbb{R}^3$.
+
+```{dropdown} Solution
+$U$ is not a subspace because it is not closed under vector addition.
+```
+
+````
+
+````{div} exercise
+Determine whether $\mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 \} = \mathrm{span} \{ \boldsymbol{u}_3 , \boldsymbol{u}_4 \}$ where
+
+$$
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 2 \\ -3 \\ 1 \\ -1 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} -5 \\ 1 \\ 2 \\ -2 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_3 = \left[ \begin{array}{r} -1 \\ -5 \\ 4 \\ -4 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_4 = \left[ \begin{array}{r} 3 \\ -11 \\ 6 \\ -10 \end{array} \right]
+$$
+
+```{dropdown} Solution
+$\mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 \} \ne \mathrm{span} \{ \boldsymbol{u}_3 , \boldsymbol{u}_4 \}$ since $\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_4$ are linearly independent.
+```
+
+````
+
+````{div} exercise
+Let $U = \mathrm{span} \{ \boldsymbol{u}_1 , \boldsymbol{u}_2 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \} \subseteq \mathbb{R}^4$ where
+
+$$
+\boldsymbol{u}_1 = \left[ \begin{array}{r} 2 \\ 4 \\ 4 \\ 2 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_2 = \left[ \begin{array}{r} 3 \\ 5 \\ 3 \\ 1 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_3 = \left[ \begin{array}{r} 3 \\ 3 \\ -1 \\ -11 \end{array} \right] \hspace{10mm}
+\boldsymbol{u}_4 = \left[ \begin{array}{r} 0 \\ 3 \\ 11 \\ -2 \end{array} \right]
+$$       
+
+* Find a basis and the dimension of $U$.
+* Is $\{ \boldsymbol{u}_1 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \}$ a basis of $U$? Explain.
+
+```{dropdown} Solution
+$\dim(U) = 3$ and $\{ \boldsymbol{u}_1 , \boldsymbol{u}_3 , \boldsymbol{u}_4 \}$ also forms a basis of $U$.
+```
+
+````
+
+````{div} exercise
+Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is **True** or **False**.
+
+* $N(A) = N(U)$
+* $\dim (N(A)) = \dim (N(U))$
+* $R(A) = R(U)$
+* $\dim (R(A)) = \dim (R(U))$
+
+```{dropdown} Solution
+* True
+* True
+* False
+* True
+```
+
+````
