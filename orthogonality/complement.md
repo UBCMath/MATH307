@@ -254,6 +254,32 @@ Let $A = LU$ be the LU decomposition of $A$. Determine whether the statement is 
 ````
 
 ````{div} exercise
+Determine whether the statement is **True** or **False**.
+
+* If $A^TA$ is a diagonal matrix, then the columns of $A$ are orthogonal.
+* If $AA^T$ is a diagonal matrix, then the columns of $A$ are orthogonal.
+* If $A^TA$ is a diagonal matrix, then the rows of $A$ are orthogonal.
+* If $AA^T$ is a diagonal matrix, then the rows of $A$ are orthogonal.
+
+```{dropdown} Solution
+* True
+* False
+* False
+* True
+```
+````
+
+````{div} exercise
+Determine whether the statement is **True** or **False**.
+
+Let $\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3$ be nonzero vectors. If $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_2$, and $\boldsymbol{u}_2$ is orthogonal to $\boldsymbol{u}_3$ then $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_3$.
+
+```{dropdown} Solution
+False
+```
+````
+
+````{div} exercise
 Let $A$ be a $m \times n$ matrix and let $\{ \boldsymbol{u}_1,\boldsymbol{u}_2 \} \subset \mathbb{R}^n$ be a basis of the nullspace $N(A)$. Determine $\dim(R(A^T))$ and $\dim(N(A^T))$.
 
 ```{dropdown} Solution
