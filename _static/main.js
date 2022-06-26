@@ -1,5 +1,5 @@
 $(function() {
-  $("div.bigidea > p:first-child").prepend("<strong>Big Ideas. </strong>");
+  $("div.bigidea > p:first-child").prepend("<strong>Big Idea. </strong>");
   $("div.definition > p:first-child").prepend("<strong>Definition. </strong>");
   $("div.example > p:first-child").prepend("<strong>Example. </strong>");
   $("div.exercise > p:first-child").prepend("<strong>Exercise. </strong>");

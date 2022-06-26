@@ -17,15 +17,8 @@ A subset $U \subseteq \mathbb{R}^n$ is a **subspace** if:
 1. $U$ contains the zero vector $\boldsymbol{0}$
 2. $\boldsymbol{u}_1 + \boldsymbol{u}_2 \in U$ for all $\boldsymbol{u}_1,\boldsymbol{u}_2 \in U$
 3. $c \boldsymbol{u} \in U$ for all $c \in \mathbb{R},\boldsymbol{u} \in U$
-```
 
-```{div} note
-<p>
-
-* Condition 2 is called **closed under addition**
-* Condition 3 is called **closed under scalar multiplication**
-* Condition 3 with $c=0$ implies Condition 1
-</p>
+Condition 2 is called **closed under addition**. Condition 3 is called **closed under scalar multiplication**. Condition 3 with $c=0$ implies Condition 1.
 ```
 
 ```{div} example

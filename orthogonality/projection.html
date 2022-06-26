@@ -510,8 +510,9 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="orthogonal-projection">
 <h1>Orthogonal Projection<a class="headerlink" href="#orthogonal-projection" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>The point in a subspace <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is the orthogonal projection <span class="math notranslate nohighlight">\(\mathrm{proj}_U (\boldsymbol{x})\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span>.</p>
+<p>The point in a subspace <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is the projection <span class="math notranslate nohighlight">\(\mathrm{proj}_U (\boldsymbol{x})\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span>.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/02_03_01.png"><img alt="../_images/02_03_01.png" class="align-center" src="../_images/02_03_01.png" style="width: 100%;" /></a>
 <section id="projection-onto-a-vector">
 <h2>Projection onto a Vector<a class="headerlink" href="#projection-onto-a-vector" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
@@ -598,7 +599,7 @@ P = \frac{1}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T
 <section id="projection-onto-a-subpsace">
 <h2>Projection onto a Subpsace<a class="headerlink" href="#projection-onto-a-subpsace" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1, \dots, \boldsymbol{u}_m \}\)</span> be an orthogonal basis of <span class="math notranslate nohighlight">\(U\)</span>. The <strong>orthogonal projection</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span> is</p>
+<p>Let <span class="math notranslate nohighlight">\(U \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1, \dots, \boldsymbol{u}_m \}\)</span> be an orthogonal basis of <span class="math notranslate nohighlight">\(U\)</span>. The <strong>projection</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(U\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{proj}_U(\boldsymbol{x}) = \frac{\langle \boldsymbol{x} , \boldsymbol{u}_1 \rangle}{ \langle \boldsymbol{u}_1 , \boldsymbol{u}_1 \rangle } \boldsymbol{u}_1 + \cdots + \frac{\langle \boldsymbol{x} , \boldsymbol{u}_m \rangle}{ \langle \boldsymbol{u}_m , \boldsymbol{u}_m \rangle } \boldsymbol{u}_m
@@ -632,7 +633,7 @@ P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T + \cd
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \frac{1}{\| \boldsymbol{u}_2 \|^2} \boldsymbol{u}_2 \boldsymbol{u}_2^T
+P &amp;= \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \frac{1}{\| \boldsymbol{u}_2 \|^2} \boldsymbol{u}_2 \boldsymbol{u}_2^T \\
 &amp;= \frac{1}{2} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
 \left[ \begin{array}{rrr} 1 &amp; 0 &amp; -1 \end{array} \right]
 + \frac{1}{3} \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
@@ -640,7 +641,7 @@ P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \f
 &amp;= \frac{1}{2} \left[ \begin{array}{rrr} 1 &amp; \phantom{+}0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{array} \right]
 + \frac{1}{3} \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 \end{array} \right]
 =
-\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; 2 &amp; -1 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; \phantom{+}2 &amp; -1 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right]
 \end{align*}
 \end{split}\]</div>
 </div>
@@ -655,11 +656,12 @@ P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \f
 <p>as in the previous example. Compute</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-P_{\perp} = I - P =
+\begin{align*}
+P_{\perp} = I - P &amp;=
 \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{array} \right] -
-\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; 2 &amp; 1 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right]
-=
-\frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 &amp; 2 &amp; 1 \\ 2 &amp; 2 &amp; 2 \\ -1 &amp; 2 &amp; 5 \end{array} \right] \\
+&amp;= \frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\end{align*}
 \end{split}\]</div>
 <p>Note that</p>
 <div class="math notranslate nohighlight">
@@ -669,10 +671,12 @@ P_{\perp} = I - P =
 <p>is orthogonal to both <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span> and is a basis of the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>. Therefore we could also compute</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T =
-\frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
-\left[ \begin{array}{ccc} 1 &amp; -2 &amp; 1 \end{array} \right]
-= \frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\begin{align*}
+P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T
+&amp;= \frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
+\left[ \begin{array}{ccc} 1 &amp; -2 &amp; 1 \end{array} \right] \\
+&amp;= \frac{1}{6} \left[ \begin{array}{rrr} 1 &amp; -2 &amp; -1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 1 \end{array} \right]
+\end{align*}
 \end{split}\]</div>
 </div>
 </section>
@@ -693,7 +697,8 @@ P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Let <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> be nonzero column vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0\)</span> and let</p>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> be nonzero column vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> such that <span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0\)</span> and let</p>
 <div class="math notranslate nohighlight">
 \[
 P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
@@ -707,41 +712,94 @@ P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymb
 <li><p><span class="math notranslate nohighlight">\(P \boldsymbol{x}\)</span> is the projection <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P \boldsymbol{u} = c \boldsymbol{v}\)</span> for some nonzero number <span class="math notranslate nohighlight">\(c\)</span></p></li>
 </ul>
-<p><strong>Exercise 2.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(U,V \subset \mathbb{R}^n\)</span> be subspaces such that <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal. If <span class="math notranslate nohighlight">\(\mathrm{dim}(U) = m\)</span> then <span class="math notranslate nohighlight">\(\mathrm{dim}(V) = n - m\)</span>.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(A^TA\)</span> is a diagonal matrix, then the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(AA^T\)</span> is a diagonal matrix, then the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(A^TA\)</span> is a diagonal matrix, then the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(AA^T\)</span> is a diagonal matrix, then the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(P_1\)</span> is the orthogonal projector onto <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> is the orthogonal projector onto the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>, then <span class="math notranslate nohighlight">\(I = P_1 + P_2\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace. If <span class="math notranslate nohighlight">\(P_1\)</span> is the orthogonal projector onto <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> is the orthogonal projector onto the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>, then <span class="math notranslate nohighlight">\(P_1P_2 = P_2P_1 = 0\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3\)</span> be nonzero vectors. If <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{u}_2\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_3\)</span> then <span class="math notranslate nohighlight">\(\boldsymbol{u}_1\)</span> is orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}_3\)</span>.</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
 </ul>
-<p><strong>Exercise 3.</strong> Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace. Let <span class="math notranslate nohighlight">\(P_1\)</span> be the orthogonal projector onto <span class="math notranslate nohighlight">\(U\)</span> and let <span class="math notranslate nohighlight">\(P_2\)</span> be the orthogonal projector onto the orthogonal complement <span class="math notranslate nohighlight">\(U^{\perp}\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I = P_1 + P_2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_1P_2 = P_2P_1 = 0\)</span></p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
 \hspace{10mm}
 \boldsymbol{u}_2 = \left[ \begin{array}{r} -1 \\ 1 \\ 1 \end{array} \right]
 \end{split}\]</div>
-<p>Find the vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U\)</span> which is closest to the vector</p>
+<p>Find the vector in <span class="math notranslate nohighlight">\(U\)</span> which is closest to the vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 4.</strong> Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{proj}_U(\boldsymbol{x}) = \begin{bmatrix} 1 \\ 3/2 \\ 3/2 \end{bmatrix}
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^3\)</span> be the subspace spanned by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
 \hspace{10mm}
 \boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
 \end{split}\]</div>
-<p>Find the vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in U\)</span> which is closest to the vector</p>
+<p>Find the shortest distance from <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> to <span class="math notranslate nohighlight">\(U\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
 \end{split}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} - \mathrm{proj}_U(\boldsymbol{x}) \| = \frac{1}{\sqrt{2}}
+\]</div>
+</div>
+</details></div>
 </section>
 </section>
 

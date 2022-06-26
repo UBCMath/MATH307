@@ -1,7 +1,12 @@
 # Orthogonal Projection
 
 ```{div} bigidea
-The point in a subspace $U \subset \mathbb{R}^n$ nearest to $\boldsymbol{x} \in \mathbb{R}^n$ is the orthogonal projection $\mathrm{proj}_U (\boldsymbol{x})$ of $\boldsymbol{x}$ onto $U$.
+The point in a subspace $U \subset \mathbb{R}^n$ nearest to $\boldsymbol{x} \in \mathbb{R}^n$ is the projection $\mathrm{proj}_U (\boldsymbol{x})$ of $\boldsymbol{x}$ onto $U$.
+```
+
+```{image} /img/02_03_01.png
+:width: 100%
+:align: center
 ```
 
 ## Projection onto a Vector
@@ -99,7 +104,7 @@ $$
 ## Projection onto a Subpsace
 
 ```{div} definition
-Let $U \subseteq \mathbb{R}^n$ be a subspace and let $\{ \boldsymbol{u}_1, \dots, \boldsymbol{u}_m \}$ be an orthogonal basis of $U$. The **orthogonal projection** of a vector $\boldsymbol{x}$ onto $U$ is
+Let $U \subseteq \mathbb{R}^n$ be a subspace and let $\{ \boldsymbol{u}_1, \dots, \boldsymbol{u}_m \}$ be an orthogonal basis of $U$. The **projection** of a vector $\boldsymbol{x}$ onto $U$ is
 
 $$
 \mathrm{proj}_U(\boldsymbol{x}) = \frac{\langle \boldsymbol{x} , \boldsymbol{u}_1 \rangle}{ \langle \boldsymbol{u}_1 , \boldsymbol{u}_1 \rangle } \boldsymbol{u}_1 + \cdots + \frac{\langle \boldsymbol{x} , \boldsymbol{u}_m \rangle}{ \langle \boldsymbol{u}_m , \boldsymbol{u}_m \rangle } \boldsymbol{u}_m
@@ -139,7 +144,7 @@ Compute $\langle \boldsymbol{u}_1 , \boldsymbol{u}_2 \rangle = 0$ therefore the 
 
 $$
 \begin{align*}
-P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \frac{1}{\| \boldsymbol{u}_2 \|^2} \boldsymbol{u}_2 \boldsymbol{u}_2^T
+P &= \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \frac{1}{\| \boldsymbol{u}_2 \|^2} \boldsymbol{u}_2 \boldsymbol{u}_2^T \\
 &= \frac{1}{2} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
 \left[ \begin{array}{rrr} 1 & 0 & -1 \end{array} \right]
 + \frac{1}{3} \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
@@ -147,7 +152,7 @@ P = \frac{1}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T +  \f
 &= \frac{1}{2} \left[ \begin{array}{rrr} 1 & \phantom{+}0 & -1 \\ 0 & 0 & 0 \\ -1 & 0 & 1 \end{array} \right]
 + \frac{1}{3} \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{array} \right]
 =
-\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & -1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 & \phantom{+}2 & -1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
 \end{align*}
 $$
 ```
@@ -164,11 +169,12 @@ $$
 as in the previous example. Compute
 
 $$
-P_{\perp} = I - P =
+\begin{align*}
+P_{\perp} = I - P &=
 \left[ \begin{array}{rrr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array} \right] -
-\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & 1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right]
-=
-\frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & 1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right] \\
+&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+\end{align*}
 $$
 
 Note that
@@ -180,10 +186,12 @@ $$
 is orthogonal to both $\boldsymbol{u}_1$ and $\boldsymbol{u}_2$ and is a basis of the orthogonal complement $U^{\perp}$. Therefore we could also compute
 
 $$
-P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T =
-\frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
-\left[ \begin{array}{ccc} 1 & -2 & 1 \end{array} \right]
-= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+\begin{align*}
+P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T
+&= \frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
+\left[ \begin{array}{ccc} 1 & -2 & 1 \end{array} \right] \\
+&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+\end{align*}
 $$
 ```
 
@@ -205,7 +213,8 @@ $$
 
 ## Exercises
 
-**Exercise 1.** Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0$ and let
+````{div} exercise
+Let $\boldsymbol{u}$ and $\boldsymbol{v}$ be nonzero column vectors in $\mathbb{R}^n$ such that $\langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0$ and let
 
 $$
 P = \frac{1}{\| \boldsymbol{u} \| \| \boldsymbol{v} \|} \boldsymbol{v} \boldsymbol{u}^T
@@ -220,18 +229,31 @@ Determine whether the statement is **True** or **False**.
 * $P \boldsymbol{x}$ is the projection $\boldsymbol{x}$ onto $\boldsymbol{v}$
 * $P \boldsymbol{u} = c \boldsymbol{v}$ for some nonzero number $c$
 
-**Exercise 2.** Determine whether the statement is **True** or **False**.
+```{dropdown} Solution
+* True
+* False
+* True
+* False
+* False
+* True
+```
 
-* Let $U,V \subset \mathbb{R}^n$ be subspaces such that $U$ and $V$ are orthogonal. If $\mathrm{dim}(U) = m$ then $\mathrm{dim}(V) = n - m$.
-* If $A^TA$ is a diagonal matrix, then the columns of $A$ are orthogonal.
-* If $AA^T$ is a diagonal matrix, then the columns of $A$ are orthogonal.
-* If $A^TA$ is a diagonal matrix, then the rows of $A$ are orthogonal.
-* If $AA^T$ is a diagonal matrix, then the rows of $A$ are orthogonal.
-* Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $I = P_1 + P_2$.
-* Let $U \subset \mathbb{R}^n$ be a subspace. If $P_1$ is the orthogonal projector onto $U$ and $P_2$ is the orthogonal projector onto the orthogonal complement $U^{\perp}$, then $P_1P_2 = P_2P_1 = 0$.
-* Let $\boldsymbol{u}_1,\boldsymbol{u}_2,\boldsymbol{u}_3 \in \mathbb{R}^3$ be nonzero vectors. If $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_2$, and $\boldsymbol{u}_2$ is orthogonal to $\boldsymbol{u}_3$ then $\boldsymbol{u}_1$ is orthogonal to $\boldsymbol{u}_3$.
+````
 
-**Exercise 3.** Let $U \subset \mathbb{R}^3$ be the subspace spanned by
+````{div} exercise
+Let $U \subset \mathbb{R}^n$ be a subspace. Let $P_1$ be the orthogonal projector onto $U$ and let $P_2$ be the orthogonal projector onto the orthogonal complement $U^{\perp}$. Determine whether the statement is **True** or **False**.
+
+* $I = P_1 + P_2$
+* $P_1P_2 = P_2P_1 = 0$
+
+```{dropdown} Solution
+* True
+* True
+```
+````
+
+````{div} exercise
+Let $U \subset \mathbb{R}^3$ be the subspace spanned by
 
 $$
 \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
@@ -239,13 +261,21 @@ $$
 \boldsymbol{u}_2 = \left[ \begin{array}{r} -1 \\ 1 \\ 1 \end{array} \right]
 $$
 
-Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
+Find the vector in $U$ which is closest to the vector
 
 $$
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
 $$
 
-**Exercise 4.** Let $U \subset \mathbb{R}^3$ be the subspace spanned by
+```{dropdown} Solution
+$$
+\mathrm{proj}_U(\boldsymbol{x}) = \begin{bmatrix} 1 \\ 3/2 \\ 3/2 \end{bmatrix}
+$$
+```
+````
+
+````{div} exercise
+Let $U \subset \mathbb{R}^3$ be the subspace spanned by
 
 $$
 \boldsymbol{u}_1 = \left[ \begin{array}{r} 1 \\ 1 \\ 1 \end{array} \right]
@@ -253,8 +283,16 @@ $$
 \boldsymbol{u}_2 = \left[ \begin{array}{r} 1 \\ 2 \\ 1 \end{array} \right]
 $$
 
-Find the vector $\boldsymbol{x} \in U$ which is closest to the vector
+Find the shortest distance from $\boldsymbol{x}$ to $U$ where
 
 $$
-\boldsymbol{b} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
+\boldsymbol{x} = \left[ \begin{array}{r} 1 \\ 1 \\ 2 \end{array} \right]
 $$
+
+```{dropdown} Solution
+$$
+\| \boldsymbol{x} - \mathrm{proj}_U(\boldsymbol{x}) \| = \frac{1}{\sqrt{2}}
+$$
+```
+
+````
