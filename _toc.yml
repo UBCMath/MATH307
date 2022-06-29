@@ -39,3 +39,6 @@ parts:
     - file: notebooks/09_computed_tomography.ipynb
     - file: notebooks/10_computing_eigenvalues.ipynb
     - file: notebooks/12_fft.ipynb
+  - caption: Appendix
+    chapters:
+    - file: appendix/multiplication.md

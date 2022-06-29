@@ -228,7 +228,7 @@ What frequencies occur in this signal? Compute the DFT
 
 $$
 \boldsymbol{y} = \mathrm{DFT}(\boldsymbol{x})
-= \begin{bmatrix} 0 \\ 2 - 2(\sqrt{2} + 1)i \\ 0 \\ 2 - 2(\sqrt{2} - 1)i \\ 0 \\ 2 + 2(\sqrt{2} - 1)i \\ 2 + 2(\sqrt{2} + 1)i  \end{bmatrix}
+= \begin{bmatrix} 0 \\ 2 - 2(\sqrt{2} + 1)i \\ 0 \\ 2 - 2(\sqrt{2} - 1)i \\ 0 \\ 2 + 2(\sqrt{2} - 1)i \\ 0 \\ 2 + 2(\sqrt{2} + 1)i  \end{bmatrix}
 $$
 
 The magnitude stemplot of $\boldsymbol{y}$ is given by
@@ -254,11 +254,11 @@ $$
 where
 
 $$
-A_1 = 2 \sqrt{4 + 2\sqrt{2}}
+A_1 = \frac{\sqrt{4 + 2\sqrt{2}}}{2}
 \hspace{5mm}
 \phi_1 = -\frac{3 \pi}{8}
 \hspace{5mm}
-A_3 = 2 \sqrt{4 - 2\sqrt{2}}
+A_3 = \frac{\sqrt{4 - 2\sqrt{2}}}{2}
 \hspace{5mm}
 \phi_3 = -\frac{\pi}{8}
 $$

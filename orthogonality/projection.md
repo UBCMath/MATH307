@@ -296,3 +296,21 @@ $$
 ```
 
 ````
+
+````{div} exercise
+Let $\boldsymbol{u} \in \mathbb{R}^n$ be a nonzero vector and let
+
+$$
+H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T
+$$
+
+The matrix $H$ is called an elementary reflector. Determine whether the statement is **True** or **False**.
+
+* There is a unique unit vector $\boldsymbol{v}$ such that $H \boldsymbol{v} = \boldsymbol{v}$.
+* $H \boldsymbol{v} = \boldsymbol{v}$ for all $\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}$.
+
+```{dropdown} Solution
+* False
+* True
+```
+````
