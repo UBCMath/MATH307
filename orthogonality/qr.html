@@ -284,6 +284,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/multiplication.html">
+   Matrix Multiplication
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -439,11 +451,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qr-by-reflectors">
-   QR by Reflectors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonal-projection-by-qr">
    Orthogonal Projection by QR
   </a>
@@ -483,11 +490,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qr-by-reflectors">
-   QR by Reflectors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonal-projection-by-qr">
    Orthogonal Projection by QR
   </a>
@@ -510,20 +512,25 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="qr-decomposition">
 <h1>QR Decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>The QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(A = QR\)</span> where <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix. There are several ways to compute the QR decomposition including Gram-Schmidt orthogonalization and elementary reflectors.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, then the decomposition <span class="math notranslate nohighlight">\(A = QR\)</span> provides orthonormal bases of both <span class="math notranslate nohighlight">\(R(A)\)</span> and <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span>. In particular, write <span class="math notranslate nohighlight">\(Q = [Q_1 \ Q_2]\)</span> where <span class="math notranslate nohighlight">\(Q_1\)</span> is the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span>, then the columns of <span class="math notranslate nohighlight">\(Q_1\)</span> provide an orthonormal basis of <span class="math notranslate nohighlight">\(R(A)\)</span> and the columns of <span class="math notranslate nohighlight">\(Q_2\)</span> provide an orthonormal basis of <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span>.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/02_04_01.png"><img alt="../_images/02_04_01.png" class="align-center" src="../_images/02_04_01.png" style="width: 100%;" /></a>
 <section id="orthogonal-matrices">
 <h2>Orthogonal Matrices<a class="headerlink" href="#orthogonal-matrices" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
 <p>A matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(A^TA = AA^T = I\)</span>.</p>
 </div>
 <div class="note docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix, then:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = \| \boldsymbol{x} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> since <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \|^2 = (A \boldsymbol{x})^T A \boldsymbol{x} = \boldsymbol{x}^T A^T A \boldsymbol{x} = \boldsymbol{x}^T \boldsymbol{x} = \| \boldsymbol{x} \|^2\)</span></p></li>
-<li><p>the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal</p></li>
-<li><p>the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal</p></li>
-</ul>
+<p>The condition <span class="math notranslate nohighlight">\(A^TA = I\)</span> implies that the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal, and <span class="math notranslate nohighlight">\(AA^T = I\)</span> implies the rows of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal.</p>
+</div>
+<div class="theorem docutils">
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix, then <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| = \| \boldsymbol{x} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>.</p>
+<hr class="docutils" />
+<p><em>Proof.</em> Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \boldsymbol{x} \|^2 = (A \boldsymbol{x})^T A \boldsymbol{x} = \boldsymbol{x}^T A^T A \boldsymbol{x} = \boldsymbol{x}^T \boldsymbol{x} = \| \boldsymbol{x} \|^2
+\]</div>
 </div>
 <div class="example docutils">
 <p>Rotations and reflections are examples of orthogonal matrices.</p>
@@ -535,14 +542,14 @@ title="Print to PDF"
 <section id="qr-by-gram-schmidt">
 <h2>QR by Gram-Schmidt<a class="headerlink" href="#qr-by-gram-schmidt" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = m\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{a}_1,\dots,\boldsymbol{a}_m\)</span> be the columns of <span class="math notranslate nohighlight">\(A\)</span>. Apply the Gram-Schmidt algorithm to the columns and construct an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1,\dots,\boldsymbol{w}_m \}\)</span> of the column space <span class="math notranslate nohighlight">\(R(A)\)</span>. Project the columns onto the basis</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{a}_1,\dots,\boldsymbol{a}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(A\)</span>. Apply the Gram-Schmidt algorithm to the columns and construct an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1,\dots,\boldsymbol{w}_n \}\)</span> of <span class="math notranslate nohighlight">\(R(A)\)</span>. Project the columns onto the basis</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 \boldsymbol{a}_1 &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle \boldsymbol{w}_1 \\
 \boldsymbol{a}_2 &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle \boldsymbol{w}_1 + \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle \boldsymbol{w}_2 \\
 &amp; \ \ \vdots \\
-\boldsymbol{a}_m &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_m \rangle \boldsymbol{w}_1 + \langle \boldsymbol{w}_2 , \boldsymbol{a}_m \rangle \boldsymbol{w}_2 + \cdots + \langle \boldsymbol{w}_m , \boldsymbol{a}_m \rangle \boldsymbol{w}_m
+\boldsymbol{a}_n &amp;= \langle \boldsymbol{w}_1 , \boldsymbol{a}_n \rangle \boldsymbol{w}_1 + \langle \boldsymbol{w}_2 , \boldsymbol{a}_n \rangle \boldsymbol{w}_2 + \cdots + \langle \boldsymbol{w}_n , \boldsymbol{a}_n \rangle \boldsymbol{w}_n
 \end{align*}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{a}_k \in \mathrm{span} \{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_k \}\)</span> by construction. Write as matrix multiplication</p>
@@ -553,58 +560,52 @@ A = Q_1R_1
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-Q_1 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_1 &amp; \cdots &amp; \boldsymbol{w}_m \\ &amp; &amp; \end{bmatrix}
+Q_1 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_1 &amp; \cdots &amp; \boldsymbol{w}_n \\ &amp; &amp; \end{bmatrix}
 \hspace{5mm}
 R_1 = \begin{bmatrix}
-\langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_m \rangle \\
-&amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_m \rangle \\
+\langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_n \rangle \\
+&amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle &amp; \cdots &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_n \rangle \\
 &amp; &amp; \ddots &amp; \vdots \\
-&amp; &amp; &amp; \langle \boldsymbol{w}_m , \boldsymbol{a}_m \rangle
+&amp; &amp; &amp; \langle \boldsymbol{w}_n , \boldsymbol{a}_n \rangle
 \end{bmatrix}
 \end{split}\]</div>
-<p>Extend the basis to an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_m , \boldsymbol{w}_{m+1} , \dots , \boldsymbol{w}_n \}\)</span> of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> where <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_{m+1} , \dots , \boldsymbol{w}_n \}\)</span> is <em>any</em> orthonormal basis of the orthogonal complement <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and let</p>
+<p>Extend the basis to an orthonormal basis <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_1 , \dots , \boldsymbol{w}_n , \boldsymbol{w}_{n+1} , \dots , \boldsymbol{w}_m \}\)</span> of <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span> where <span class="math notranslate nohighlight">\(\{ \boldsymbol{w}_{n+1} , \dots , \boldsymbol{w}_m \}\)</span> is <em>any</em> orthonormal basis of the orthogonal complement <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and let</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-Q_2 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_{m+1} &amp; \cdots &amp; \boldsymbol{w}_n \\ &amp; &amp; \end{bmatrix}
+Q_2 = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{w}_{n+1} &amp; \cdots &amp; \boldsymbol{w}_m \\ &amp; &amp; \end{bmatrix}
 \end{split}\]</div>
 <p>Finally, the <strong>QR decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = QR =
 \begin{bmatrix} Q_1 &amp; Q_2 \end{bmatrix}
-\begin{bmatrix} R_1 \\ 0 \end{bmatrix}
+\begin{bmatrix} R_1 \\ \mathbf{0} \end{bmatrix}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(Q\)</span> is a <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\(n \times m\)</span> upper triangular matrix. The decomposition <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> is called the <strong>thin QR decomposition</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/QR_decomposition">Wikipedia:QR decomposition</a>.</p>
+<p>where <span class="math notranslate nohighlight">\(Q\)</span> is a <span class="math notranslate nohighlight">\(m \times m\)</span> orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is a <span class="math notranslate nohighlight">\(m \times n\)</span> upper triangular matrix. The decomposition <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> is called the <strong>thin QR decomposition</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/QR_decomposition">Wikipedia:QR decomposition</a>.</p>
 </div>
 <div class="example docutils">
 <p>Compute the QR decomposition for the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\  1 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 0 \\ \end{bmatrix}
+A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix}
 \end{split}\]</div>
-<p>In a previous example, we found an orthonormal basis of the column space</p>
+<p>Apply Gram-Schmidt to find an orthonormal basis of the column space</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{w}_1 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+\boldsymbol{w}_1 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
 \hspace{5mm}
-\boldsymbol{w}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}
+\boldsymbol{w}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
 \hspace{5mm}
-\boldsymbol{w}_3 = \frac{1}{\sqrt{2}} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \\ 0 \end{array} \right]
+\boldsymbol{w}_3 = \frac{1}{\sqrt{2}} \left[ \begin{array}{r} 1 \\ 0 \\ -1 \end{array} \right]
 \end{split}\]</div>
-<p>Extend to an orthonormal basis of <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span> by</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{w}_4 = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<p>Therefore we have</p>
+<p>Therefore</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Q =
 \begin{bmatrix}
-1/\sqrt{2} &amp; 0 &amp; 1/\sqrt{2} &amp; 0 \\
-0 &amp; 1 &amp; 0 &amp; 0 \\
-1/\sqrt{2} &amp; 0 &amp; -1/\sqrt{2} &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 1
+1/\sqrt{2} &amp; 0 &amp; 1/\sqrt{2} \\
+0 &amp; 1 &amp; 0 \\
+1/\sqrt{2} &amp; 0 &amp; -1/\sqrt{2}
 \end{bmatrix}
 \end{split}\]</div>
 <p>and</p>
@@ -614,15 +615,13 @@ R =
 \begin{bmatrix}
 \langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_3 \rangle \\
 0 &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_3 \rangle \\
-0 &amp; 0 &amp; \langle \boldsymbol{w}_3 , \boldsymbol{a}_3 \rangle \\
-0 &amp; 0 &amp; 0
+0 &amp; 0 &amp; \langle \boldsymbol{w}_3 , \boldsymbol{a}_3 \rangle
 \end{bmatrix}
 =
 \begin{bmatrix}
 \sqrt{2} &amp; \sqrt{2} &amp; 1/\sqrt{2} \\
 0 &amp; 1 &amp; 1 \\
-0 &amp; 0 &amp; 1/\sqrt{2} \\
-0 &amp; 0 &amp; 0
+0 &amp; 0 &amp; 1/\sqrt{2}
 \end{bmatrix}
 \end{split}\]</div>
 </div>
@@ -630,155 +629,64 @@ R =
 <p>The Gram-Schmidt algorithm shows that the QR decomposition exists but it is not the most efficient way to compute the QR decomposition. Software such as the MATLAB function <code class="docutils literal notranslate"><span class="pre">qr</span></code> (see <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/qr.html">documentation</a>) and the SciPy function <code class="docutils literal notranslate"><span class="pre">scipy.linalg.qr</span></code> (see <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.qr.html">documentation</a>), and LAPACK (see <a class="reference external" href="https://www.netlib.org/lapack/lug/node128.html#secorthog">documentation</a>) use elementary reflectors to construct the matrices <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p>
 </div>
 </section>
-<section id="qr-by-reflectors">
-<h2>QR by Reflectors<a class="headerlink" href="#qr-by-reflectors" title="Permalink to this headline">#</a></h2>
-<div class="definition docutils">
-<p>An <strong>elementary reflector</strong> (or <strong>Householder transformation</strong>) is matrix of the form</p>
-<div class="math notranslate nohighlight">
-\[
-H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T
-\]</div>
-<p>for some nonzero vector <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span>. Note that a reflector is an orthogonal matrix since <span class="math notranslate nohighlight">\(H^T = H\)</span> and <span class="math notranslate nohighlight">\(H^2 = I\)</span>. Note also that if <span class="math notranslate nohighlight">\(P\)</span> is the orthogonal projection onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> then <span class="math notranslate nohighlight">\(H = I - 2P\)</span> and <span class="math notranslate nohighlight">\(H\)</span> is the reflection through the hyperplane orthogonal to <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>.</p>
-</div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(\{ \boldsymbol{e}_1, \dots, \boldsymbol{e}_n \}\)</span> be the standard orthonormal basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\hspace{5mm}
-\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-\hspace{5mm}
-\cdots
-\hspace{5mm}
-\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
-\end{split}\]</div>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{a} \in \mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(\alpha = -\mathrm{sign}(a_1) \| \boldsymbol{a} \|\)</span>. Let  <span class="math notranslate nohighlight">\(\boldsymbol{u} = \boldsymbol{a} - \alpha \boldsymbol{e}_1\)</span>, let <span class="math notranslate nohighlight">\(P\)</span> be the orthogonal projector onto <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and let <span class="math notranslate nohighlight">\(H = I - 2P\)</span> be the corresponding elementary reflector. Then</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-H \boldsymbol{a} = \alpha \boldsymbol{e}_1 = \begin{bmatrix} \alpha \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\end{split}\]</div>
-<p>More generally, let <span class="math notranslate nohighlight">\(\boldsymbol{a} \in \mathbb{R}^n\)</span> and partition the vector</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{a} = \begin{bmatrix} \boldsymbol{a}_1 \\ \boldsymbol{a}_2 \end{bmatrix}
-\ \ \text{where} \ \
-\boldsymbol{a}_1 = \begin{bmatrix} a_1 \\ \vdots \\ a_{k-1} \end{bmatrix} \in \mathbb{R}^{k-1}
- \ \ \text{and} \ \ \boldsymbol{a}_2 = \begin{bmatrix} a_k \\ \vdots \\ a_n \end{bmatrix} \in \mathbb{R}^{n-k+1}
-\end{split}\]</div>
-<p>Let <span class="math notranslate nohighlight">\(\alpha = -\mathrm{sign}(a_k) \| \boldsymbol{a}_2 \|\)</span> and let</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{u} = \begin{bmatrix} \boldsymbol{0} \\ \boldsymbol{a}_2 \end{bmatrix} - \alpha \boldsymbol{e}_k = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ a_k - \alpha \\ a_{k+1} \\ \vdots \\ a_n \end{bmatrix}
-\end{split}\]</div>
-<p>and let <span class="math notranslate nohighlight">\(H\)</span> be the corresponding elementary reflector. Then</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-H \boldsymbol{a} = \begin{bmatrix} a_1 \\ \vdots \\ a_{k-1} \\ \alpha \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\end{split}\]</div>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix with <span class="math notranslate nohighlight">\(n &gt; m\)</span>. There exists a sequence of elementary reflectors <span class="math notranslate nohighlight">\(H_1,\dots,H_m\)</span> such that <span class="math notranslate nohighlight">\(H_m\cdots H_1A = R\)</span> is upper triangular and therefore</p>
-<div class="math notranslate nohighlight">
-\[
-A = QR
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(Q = H_1 \cdots H_m\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. For each column, construct an elementary reflector to annihilate the entries below the diagonal. For example, if <span class="math notranslate nohighlight">\(A\)</span> has 3 columns and 4 rows then</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = \begin{bmatrix} * &amp; * &amp; * \\ * &amp; * &amp; * \\ * &amp; * &amp; * \\ * &amp; * &amp; * \end{bmatrix}
-\ \
-H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \end{bmatrix}
-\ \
-H_2H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; * \\ 0 &amp; 0 &amp; * \end{bmatrix}
-\ \
-H_3H_2H_1A = \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
-\end{split}\]</div>
-<p>Since each <span class="math notranslate nohighlight">\(H\)</span> is an elementary reflector, we have <span class="math notranslate nohighlight">\(A=H_1^{-1}H_2^{-1}H_3^{-1}R=H_1H_2H_3R\)</span>.</p>
-</div>
-<div class="example docutils">
-<p>Find the QR decomposition of <span class="math notranslate nohighlight">\(A = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix}\)</span> by elementary reflectors.</p>
-<p>Construct the vector</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{u}_1 =  \boldsymbol{a}_1 - \alpha \boldsymbol{e}_1
-= \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix} + \sqrt{2} \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
-= \begin{bmatrix} 1 + \sqrt{2} \\ 0 \\ 1 \end{bmatrix} \\
-\end{split}\]</div>
-<p>Compute the norm squared</p>
-<div class="math notranslate nohighlight">
-\[
-\| \boldsymbol{u}_1 \|^2 = (1 + \sqrt{2})^2 + 1 = 4 + 2\sqrt{2}
-\]</div>
-<p>and construct the elementary reflector</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-H_1 &amp;= I - \frac{2}{\| \boldsymbol{u}_1 \|^2} \boldsymbol{u}_1 \boldsymbol{u}_1^T
-= I - \frac{2}{4 + 2\sqrt{2}} \begin{bmatrix} 1 + \sqrt{2} \\ 0 \\ 1 \end{bmatrix} \begin{bmatrix} 1 + \sqrt{2} &amp; 0 &amp; 1 \end{bmatrix} \\
-&amp;= I - \frac{1}{2 + \sqrt{2}} \begin{bmatrix} 3 + 2\sqrt{2} &amp; 0 &amp; 1 + \sqrt{2} \\ 0 &amp; 0 &amp; 0 \\ 1 + \sqrt{2} &amp; 0 &amp; 1 \end{bmatrix}
-= \frac{1}{2 + \sqrt{2}} \begin{bmatrix} - 1 - \sqrt{2} &amp; 0 &amp; - 1 - \sqrt{2} \\ 0 &amp; 2 + \sqrt{2} &amp; 0 \\ - 1 - \sqrt{2} &amp; 0 &amp; 1 + \sqrt{2} \end{bmatrix} \\
-&amp;= \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
-\end{align*}
-\end{split}\]</div>
-<p>Compute</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-H_1A
-=
-\frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
-\begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix} \\
-= \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 2 &amp; -2 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; \sqrt{2} \\ 0 &amp; 0 &amp; -1 \end{array} \right]
-\end{split}\]</div>
-<p>Since the result is already upper triangular we have <span class="math notranslate nohighlight">\(A = QR\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-Q = \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 1 &amp; 0 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; 0 \\ - 1 &amp; 0 &amp; 1 \end{array} \right]
-\hspace{10mm}
-R = \frac{1}{\sqrt{2}} \left[ \begin{array}{rrr} - 2 &amp; -2 &amp; - 1 \\ 0 &amp; \sqrt{2} &amp; \sqrt{2} \\ 0 &amp; 0 &amp; -1 \end{array} \right]
-\end{split}\]</div>
-</div>
-</section>
 <section id="orthogonal-projection-by-qr">
 <h2>Orthogonal Projection by QR<a class="headerlink" href="#orthogonal-projection-by-qr" title="Permalink to this headline">#</a></h2>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> be the thin QR decomposition of <span class="math notranslate nohighlight">\(A\)</span>. The orthogonal projection of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span> is given by</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix such that <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, and let <span class="math notranslate nohighlight">\(A = Q R\)</span> be the QR decomposition. The projection of <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^m\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{proj}_{R(A)}(\boldsymbol{x}) = Q_1 Q_1^T \boldsymbol{x}
+\]</div>
+<p>and the projection onto <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{proj}_{R(A)^{\perp}}(\boldsymbol{x}) = Q_2 Q_2^T \boldsymbol{x}
 \]</div>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> be a nonzero vector and let</p>
-<div class="math notranslate nohighlight">
-\[
-H = I - \frac{2}{\| \boldsymbol{u} \|^2}\boldsymbol{u} \boldsymbol{u}^T
-\]</div>
-<p>be the corresponding elementary reflector. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
-<ul class="simple">
-<li><p>There is a unique unit vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> such that <span class="math notranslate nohighlight">\(H \boldsymbol{v} = \boldsymbol{v}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(H \boldsymbol{v} = \boldsymbol{v}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathrm{span} \{ \boldsymbol{u} \}^{\perp}\)</span>.</p></li>
-</ul>
-<p><strong>Exercise 2.</strong> Find the elementary reflector <span class="math notranslate nohighlight">\(H\)</span> corresponding to the vector</p>
+<div class="exercise docutils">
+<p>Compute the thin QR decomposition of the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{u} = \begin{bmatrix} 2 \\ 1 \\ 0 \\ 1 \end{bmatrix}
+A = \left[ \begin{array}{rr} 1 &amp; 1 \\ 1 &amp; -1 \\ 1 &amp; 1 \\ 1 &amp; 1 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 3.</strong> Find an elementary reflector <span class="math notranslate nohighlight">\(H\)</span> such that</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Apply Gram-Schmidt to the columns of <span class="math notranslate nohighlight">\(A\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-HA = \displaystyle \begin{bmatrix} * &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \\ 0 &amp; * &amp; * \end{bmatrix}
+\boldsymbol{v}_1 = \boldsymbol{a}_1
+\hspace{10mm}
+\boldsymbol{v}_2 = \boldsymbol{a}_2 - \frac{\langle \boldsymbol{v}_1 , \boldsymbol{a}_2 \rangle}{\langle \boldsymbol{v}_1 , \boldsymbol{v}_1 \rangle} \boldsymbol{v}_1 = \frac{1}{2} \left[ \begin{array}{r} 1 \\ -3 \\ 1 \\ 1 \end{array} \right]
 \end{split}\]</div>
-<p>where</p>
+<p class="sd-card-text">Therefore</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \begin{bmatrix} 1 &amp; 2 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 2 &amp; 1 \\ 1 &amp; 1 &amp; 0 \end{bmatrix}
+Q_1 = \begin{bmatrix} &amp; \\ \boldsymbol{w}_1 &amp; \boldsymbol{w}_2 \\ &amp; \end{bmatrix} = \left[ \begin{array}{rr} 1/2 &amp; 1/\sqrt{12} \\ 1/2 &amp; -3/\sqrt{12} \\ 1/2 &amp; 1/\sqrt{12} \\ 1/2 &amp; 1/\sqrt{12} \end{array} \right]
 \end{split}\]</div>
+<p class="sd-card-text">and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_1 =
+\begin{bmatrix}
+\langle \boldsymbol{w}_1 , \boldsymbol{a}_1 \rangle &amp; \langle \boldsymbol{w}_1 , \boldsymbol{a}_2 \rangle \\
+0 &amp; \langle \boldsymbol{w}_2 , \boldsymbol{a}_2 \rangle
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; \sqrt{3}
+\end{bmatrix}
+\end{split}\]</div>
+</div>
+</details></div>
 </section>
 </section>
 

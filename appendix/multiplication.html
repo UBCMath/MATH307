@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Complex Vectors &#8212; Applied Linear Algebra</title>
+    <title>Matrix Multiplication &#8212; Applied Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,8 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Fourier Transform" href="dft.html" />
-    <link rel="prev" title="Computing Eigenvalues" href="../eigenvalues/computing_eigenvalues.html" />
+    <link rel="prev" title="Discrete Fourier Transform" href="../notebooks/12_fft.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -195,29 +194,29 @@ const thebe_selector_output = ".output, .cell_output"
   Dicrete Fourier Transform
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dft/complex.html">
    Complex Vectors
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dft.html">
+  <a class="reference internal" href="../dft/dft.html">
    Discrete Fourier Transform
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="frequency.html">
+  <a class="reference internal" href="../dft/frequency.html">
    Frequency, Amplitude and Phase
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="fft.html">
+  <a class="reference internal" href="../dft/fft.html">
    Fast Fourier Transform
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="convolution.html">
+  <a class="reference internal" href="../dft/convolution.html">
    Convolution and Filtering
   </a>
  </li>
@@ -289,9 +288,9 @@ const thebe_selector_output = ".output, .cell_output"
   Appendix
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/multiplication.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Matrix Multiplication
   </a>
  </li>
@@ -381,7 +380,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/dft/complex.md"
+        <a href="../_sources/appendix/multiplication.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -430,7 +429,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Complex Vectors</h1>
+                <h1>Matrix Multiplication</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -442,110 +441,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="complex-vectors">
-<h1>Complex Vectors<a class="headerlink" href="#complex-vectors" title="Permalink to this headline">#</a></h1>
-<div class="bigidea docutils">
-<p>A complex number can be represented in the form <span class="math notranslate nohighlight">\(z = a + i b\)</span> and also in polar form <span class="math notranslate nohighlight">\(z = r e^{i \theta}\)</span>. The set of vectors of length <span class="math notranslate nohighlight">\(n\)</span> with complex entries is a complex vector space <span class="math notranslate nohighlight">\(\mathbb{C}^n\)</span> with inner product <span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , \boldsymbol{v} \rangle = \boldsymbol{u}^T \overline{\boldsymbol{v}}\)</span>.</p>
-</div>
-<div class="definition docutils">
-<p>A <strong>complex number</strong> is of the form</p>
-<div class="math notranslate nohighlight">
-\[
-z = a + i b
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span> and <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}\)</span>. The complex number <span class="math notranslate nohighlight">\(i\)</span> satisfies <span class="math notranslate nohighlight">\(i^2 = -1\)</span>, the real number <span class="math notranslate nohighlight">\(a\)</span> is called the <strong>real part</strong> of <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is the <strong>imaginary part</strong>, and we write <span class="math notranslate nohighlight">\(\mathrm{Re}(z) = a\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Im}(z) = b\)</span>. The <strong>polar form</strong> of a complex number <span class="math notranslate nohighlight">\(z = a + i b\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-z = r e^{i \theta}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(r = \sqrt{a^2 + b^2}\)</span> and <span class="math notranslate nohighlight">\(\theta = \arctan(b/a)\)</span>. We visualize the <strong>set of complex numbers</strong> <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> as a 2-dimensional real vector space:</p>
-<a class="reference internal image-reference" href="../_images/complex01.png"><img alt="../_images/complex01.png" class="align-center" src="../_images/complex01.png" style="width: 300px;" /></a>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="matrix-multiplication">
+<h1>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">#</a></h1>
 <div class="theorem docutils">
-<p><strong>Euler’s formula</strong> is</p>
-<div class="math notranslate nohighlight">
-\[
-e^{i \theta} = \cos \theta + i \sin \theta
-\]</div>
-</div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(z = a + ib\)</span> and <span class="math notranslate nohighlight">\(z = re^{i \theta}\)</span> in polar form.</p>
-<ol class="simple">
-<li><p>The <strong>modulus</strong> of <span class="math notranslate nohighlight">\(z\)</span> is <span class="math notranslate nohighlight">\(|z| = r = \sqrt{a^2 + b^2}\)</span>.</p></li>
-<li><p>The <strong>angle</strong> (or <strong>argument</strong>) of <span class="math notranslate nohighlight">\(z\)</span> is <span class="math notranslate nohighlight">\(\angle z = \theta = \arctan(b/a)\)</span> (or <span class="math notranslate nohighlight">\(\mathrm{arg}(z) = \theta\)</span>).</p></li>
-<li><p>The <strong>conjugate</strong> of <span class="math notranslate nohighlight">\(z\)</span> is <span class="math notranslate nohighlight">\(\overline{z} = a - ib = re^{- i \theta}\)</span>.</p></li>
-</ol>
-</div>
-<div class="proposition docutils">
-<p>The inverse of <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[
-z^{-1} = \frac{\overline{z} \ \, }{|z|^2}
-\]</div>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices. If <span class="math notranslate nohighlight">\(A \boldsymbol{x} = B \boldsymbol{x}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
 <hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(z = a + ib\)</span>. Then</p>
-<div class="math notranslate nohighlight">
-\[
-z^{-1} = \frac{1}{z} = \frac{\overline{z}}{z \overline{z}}
-\]</div>
-<p>and we see</p>
-<div class="math notranslate nohighlight">
-\[
-z \overline{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2
-\]</div>
-</div>
-<div class="definition docutils">
-<p>The <strong>complex vector space</strong> <span class="math notranslate nohighlight">\(\mathbb{C}^n\)</span> is the set of vectors of length <span class="math notranslate nohighlight">\(n\)</span></p>
+<p><em>Proof.</em> The standard basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{v} = \begin{bmatrix} v_1 \\ \vdots \\ v_n \end{bmatrix}
+\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\ \ , \ \
+\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+\ \ , \ \ \dots \ \ , \ \
+\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
 \end{split}\]</div>
-<p>with complex entries <span class="math notranslate nohighlight">\(v_1, \dots, v_n \in \mathbb{C}\)</span>. The <strong>conjugate</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{C}^n\)</span> is given by the conjugate of each entry</p>
+<p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with 1 at index <span class="math notranslate nohighlight">\(k\)</span> and 0 everywhere else. Then <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k\)</span> is equal to the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k = B \boldsymbol{e}_k\)</span> for each <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> we see that the columns of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are equal therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
+</div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\overline{\boldsymbol{v}} = \begin{bmatrix} \overline{v}_1 \\ \vdots \\ \overline{v}_n \end{bmatrix}
+A = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{a}_1 &amp; \cdots &amp; \boldsymbol{a}_n \\ &amp; &amp; \end{bmatrix}
 \end{split}\]</div>
-</div>
-<div class="definition docutils" id="standard-inner-product">
-<p>The <strong>standard inner product</strong> of vectors <span class="math notranslate nohighlight">\(\boldsymbol{u},\boldsymbol{v} \in \mathbb{C}^n\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-\langle \boldsymbol{u} , \boldsymbol{v} \rangle = \boldsymbol{u}^T \overline{ \boldsymbol{v} } = u_1 \overline{v}_1 + \cdots + u_n \overline{v}_n
-\]</div>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u} , \boldsymbol{v} \in \mathbb{C}^n\)</span> and let <span class="math notranslate nohighlight">\(c \in \mathbb{C}\)</span>.</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(\langle c \, \boldsymbol{u} , \boldsymbol{v} \rangle = c \, \langle \boldsymbol{u} , \boldsymbol{v} \rangle\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , c \, \boldsymbol{v} \rangle = \overline{c} \, \langle \boldsymbol{u} , \boldsymbol{v} \rangle\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\langle \boldsymbol{u} , \boldsymbol{v} \rangle = \overline{\langle \boldsymbol{v} , \boldsymbol{u} \rangle}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , \boldsymbol{v} \rangle \geq 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>, and <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , \boldsymbol{v} \rangle = 0\)</span> if and only if <span class="math notranslate nohighlight">\(\boldsymbol{v} = \boldsymbol{0}\)</span> is the zero vector.</p></li>
-</ol>
-</div>
-<div class="definition docutils">
-<p>The <strong>norm</strong> <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{C}^n\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-\| \boldsymbol{v} \| = \sqrt{ \langle \boldsymbol{v} , \boldsymbol{v} \rangle } = \sqrt{ |v_1|^2 + \cdots + |v_n|^2 }
-\]</div>
-</div>
-<div class="definition docutils">
-<p>Complex vectors <span class="math notranslate nohighlight">\(\boldsymbol{u} , \boldsymbol{v} \in \mathbb{C}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\( \langle \boldsymbol{u} , \boldsymbol{v} \rangle = 0\)</span>.</p>
-</div>
-<div class="definition docutils">
-<p>The <strong>conjugate transpose</strong> of a complex matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(A^* = \overline{A}^T\)</span>. Note that <span class="math notranslate nohighlight">\(\langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A^* \boldsymbol{v} \rangle\)</span></p>
-</div>
-<div class="definition docutils">
-<p>A complex matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>hermitian</strong> if <span class="math notranslate nohighlight">\(A = A*\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is hermitian then <span class="math notranslate nohighlight">\(\langle A \boldsymbol{u} , \boldsymbol{v} \rangle = \langle \boldsymbol{u} , A \boldsymbol{v} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{u} , \boldsymbol{v} \in \mathbb{C}^n\)</span>.</p>
-</div>
-<div class="definition docutils">
-<p>A complex matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>unitary</strong> if <span class="math notranslate nohighlight">\(A^{-1} = A^*\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is unitary then <span class="math notranslate nohighlight">\(\langle A \boldsymbol{u} , A \boldsymbol{v} \rangle = \langle \boldsymbol{u} , \boldsymbol{v} \rangle\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{u} , \boldsymbol{v} \in \mathbb{C}^n\)</span>.</p>
 </div>
 </section>
 
@@ -562,7 +479,7 @@ z \overline{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./dft"
+            path: "./appendix"
         },
         predefinedOutput: true
     }
@@ -576,19 +493,12 @@ z \overline{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../eigenvalues/computing_eigenvalues.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../notebooks/12_fft.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Computing Eigenvalues</p>
+            <p class="prev-next-title">Discrete Fourier Transform</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="dft.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discrete Fourier Transform</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
