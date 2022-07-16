@@ -512,17 +512,9 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="diagonalization">
 <h1>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>
-<ul class="simple">
-<li><p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable if and only if <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> linearly independent eigenvectors.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable with <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> then the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span> are eigenvalues and the columns of <span class="math notranslate nohighlight">\(P\)</span> are corresponding eigenvectors of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(A\)</span> is a real symmetric matrix then the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are real numbers, the eigenvectors (for distinct eigenvalues) are orthogonal, and <span class="math notranslate nohighlight">\(A\)</span> is orthogonally diagonalizable, <span class="math notranslate nohighlight">\(A = PDP^T\)</span>.</p></li>
-</ul>
-</p>
+<p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable if and only if <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> linearly independent eigenvectors. If a matrix <span class="math notranslate nohighlight">\(A\)</span> is real and symmetric then it is diagonalizable, the eigenvalues are real numbers and the eigenvectors (for distinct eigenvalues) are orthogonal.</p>
 </div>
-<div class="note docutils">
-<p>All matrices in this chapter are <em>real</em> unless explicitly stated otherwise.</p>
-</div>
+<a class="reference internal image-reference" href="../_images/03_01_01.png"><img alt="../_images/03_01_01.png" class="align-center" src="../_images/03_01_01.png" style="width: 100%;" /></a>
 <section id="eigenvalues-and-eigenvectors">
 <h2>Eigenvalues and Eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
@@ -531,10 +523,7 @@ title="Print to PDF"
 \[
 A \boldsymbol{v} = \lambda \boldsymbol{v}
 \]</div>
-<p>for some nonzero vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. The vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> is called an <strong>eigenvector</strong> for the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-</div>
-<div class="note docutils">
-<p>Eigenvalues of a real matrix may be real <em>or</em> complex numbers.</p>
+<p>for some nonzero vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. The vector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> is called an <strong>eigenvector</strong> for the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>. Eigenvalues of a real matrix may be real <em>or</em> complex numbers.</p>
 </div>
 <div class="note docutils">
 <p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> then <span class="math notranslate nohighlight">\((A - \lambda I)\boldsymbol{v} = \boldsymbol{0}\)</span> which implies that <span class="math notranslate nohighlight">\(A - \lambda I\)</span> is not invertible and therefore <span class="math notranslate nohighlight">\(\det(A - \lambda I) = 0\)</span>. This suggests that to find eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(A\)</span> we should:</p>
@@ -550,7 +539,7 @@ A \boldsymbol{v} = \lambda \boldsymbol{v}
 \[
 c_A(x) = \det(A - xI)
 \]</div>
-<p>Then <span class="math notranslate nohighlight">\(c_A(x)\)</span> has degree <span class="math notranslate nohighlight">\(n\)</span> and the roots of <span class="math notranslate nohighlight">\(c_A(x)\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix. The polynomial <span class="math notranslate nohighlight">\(c_A(x)\)</span> has degree <span class="math notranslate nohighlight">\(n\)</span> and the roots of <span class="math notranslate nohighlight">\(c_A(x)\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
 </section>
 <section id="id1">
@@ -559,16 +548,22 @@ c_A(x) = \det(A - xI)
 <p>A matrix <span class="math notranslate nohighlight">\(A\)</span> is <strong>diagonalizable</strong> if there exists an invertible matrix <span class="math notranslate nohighlight">\(P\)</span> and a diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that <span class="math notranslate nohighlight">\(A = PD P^{-1}\)</span>.</p>
 </div>
 <div class="theorem docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable with <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> then the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span> are eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> and the columns of <span class="math notranslate nohighlight">\(P\)</span> are corresponding eigenvectors.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_1,\dots, \boldsymbol{v}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(P\)</span> and let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span></p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable with <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> then the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span> are eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> and the columns of <span class="math notranslate nohighlight">\(P\)</span> are the corresponding eigenvectors.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_1,\dots, \boldsymbol{v}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(P\)</span> and let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the diagonal entries of <span class="math notranslate nohighlight">\(D\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
-\hspace{5mm}
+\hspace{10mm}
 D = \begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}
 \end{split}\]</div>
-<p>Matrix multiplication <span class="math notranslate nohighlight">\(AP = PD\)</span> yields the equation</p>
+<p class="sd-card-text">Matrix multiplication <span class="math notranslate nohighlight">\(AP = PD\)</span> yields the equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -581,26 +576,44 @@ A \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol
 \begin{bmatrix} &amp; &amp; \\ \lambda_1 \boldsymbol{v}_1 &amp; \cdots &amp; \lambda_n \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
 \end{align*}
 \end{split}\]</div>
-<p>Therefore <span class="math notranslate nohighlight">\(A \boldsymbol{v}_i = \lambda_i \boldsymbol{v}_i\)</span> for each <span class="math notranslate nohighlight">\(i=1,\dots,n\)</span>.</p>
+<p class="sd-card-text">Therefore <span class="math notranslate nohighlight">\(A \boldsymbol{v}_i = \lambda_i \boldsymbol{v}_i\)</span> for each <span class="math notranslate nohighlight">\(i=1,\dots,n\)</span>.</p>
 </div>
+</details></div>
 <div class="theorem docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> has distinct eigenvalues, then <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the distinct eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. That is, <span class="math notranslate nohighlight">\(\lambda_i \not= \lambda_j\)</span> for <span class="math notranslate nohighlight">\(i \not= j\)</span>. Each <span class="math notranslate nohighlight">\(\lambda_i\)</span> has a corresponding eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}_i\)</span>. Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_i\)</span> be the <span class="math notranslate nohighlight">\(i\)</span>th column of <span class="math notranslate nohighlight">\(P\)</span> and let <span class="math notranslate nohighlight">\(\lambda_i\)</span> be the <span class="math notranslate nohighlight">\(i\)</span>th diagonal entry of <span class="math notranslate nohighlight">\(D\)</span>. Then <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> has distinct eigenvalues then <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> be the distinct eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. That is, <span class="math notranslate nohighlight">\(\lambda_i \not= \lambda_j\)</span> for <span class="math notranslate nohighlight">\(i \ne j\)</span>. Each <span class="math notranslate nohighlight">\(\lambda_i\)</span> has a corresponding eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}_i\)</span>. Construct <span class="math notranslate nohighlight">\(P\)</span> with eigenvectors in the columns</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">and construct <span class="math notranslate nohighlight">\(D\)</span> with the eigenvalues in the diagonal entries</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">Then <span class="math notranslate nohighlight">\(A = PDP^{-1}\)</span> by construction.</p>
 </div>
+</details></div>
 <div class="definition docutils">
 <p>By the <a class="reference external" href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra">Fundamental Theorem of Algebra</a>, the characteristic polynomial of a matrix <span class="math notranslate nohighlight">\(A\)</span> factors as a product</p>
 <div class="math notranslate nohighlight">
 \[
-c_A(x) = C \prod_{i=1}^k (x - \lambda_i)^{m_i}
+c_A(x) = \pm \prod_{i=1}^k (x - \lambda_i)^{m_i}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda_1, \dots, \lambda_k\)</span> are the <em>distinct</em> eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> (and <span class="math notranslate nohighlight">\(C\)</span> is a constant). The <strong>algebraic multiplicity</strong> of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the power <span class="math notranslate nohighlight">\(m_i\)</span> in the factored charactersitic polynomial. In other words, the algebraic multiplicity of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the number of times <span class="math notranslate nohighlight">\(\lambda_i\)</span> occurs as a root of the characteristic polynomial <span class="math notranslate nohighlight">\(c_A(x)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\lambda_1, \dots, \lambda_k\)</span> are the <em>distinct</em> eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. The <strong>algebraic multiplicity</strong> of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the power <span class="math notranslate nohighlight">\(m_i\)</span> in the factored charactersitic polynomial. In other words, the algebraic multiplicity of <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the number of times <span class="math notranslate nohighlight">\(\lambda_i\)</span> occurs as a root of the characteristic polynomial <span class="math notranslate nohighlight">\(c_A(x)\)</span>.</p>
 </div>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>. The <strong>geometric multiplicity</strong> of <span class="math notranslate nohighlight">\(\lambda\)</span> is the number of linearly independent eigenvectors corresponding to <span class="math notranslate nohighlight">\(\lambda\)</span>. In other words, the geometric multiplicity is the dimension of the <strong>eigenspace</strong> for <span class="math notranslate nohighlight">\(\lambda\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-E_{\lambda} = \{ \boldsymbol{v} \in \mathbb{R}^n : (A - \lambda I) \boldsymbol{v} = \boldsymbol{0} \}
+E_{\lambda} =  N(A - \lambda I) = \{ \boldsymbol{v} \in \mathbb{R}^n : (A - \lambda I) \boldsymbol{v} = \boldsymbol{0} \}
 \]</div>
 </div>
 <div class="note docutils">
@@ -624,8 +637,14 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 <h2>Spectral Theorem<a class="headerlink" href="#spectral-theorem" title="Permalink to this headline">#</a></h2>
 <div class="theorem docutils">
 <p>All eigenvalues of a symmetric matrix are real numbers.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. Compute the <a class="reference internal" href="../dft/complex.html#standard-inner-product"><span class="std std-ref">complex inner product</span></a> <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , A \boldsymbol{v} \rangle = \boldsymbol{v}^T \overline{A \boldsymbol{v}}\)</span> in two different ways. First, compute</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>. Compute the complex inner product <span class="math notranslate nohighlight">\(\langle \boldsymbol{v} , A \boldsymbol{v} \rangle = \boldsymbol{v}^T \, \overline{A \boldsymbol{v}}\)</span> in two different ways. First, compute</p>
 <div class="math notranslate nohighlight">
 \[
 \langle \boldsymbol{v} , A \boldsymbol{v} \rangle
@@ -633,7 +652,7 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 = \overline{\lambda} \langle \boldsymbol{v} , \boldsymbol{v} \rangle
 = \overline{\lambda} \, \| \boldsymbol{v} \|^2
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(A\)</span> is real and symmetric, we have <span class="math notranslate nohighlight">\(\overline{A}^T = A\)</span> and we compute</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(A\)</span> is real and symmetric, we have <span class="math notranslate nohighlight">\(\overline{A}^T = A\)</span> and we compute</p>
 <div class="math notranslate nohighlight">
 \[
 \langle \boldsymbol{v} , A \boldsymbol{v} \rangle
@@ -642,19 +661,26 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 = \lambda \langle \boldsymbol{v} , \boldsymbol{v} \rangle
 = \lambda \| \boldsymbol{v} \|^2
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(\| \boldsymbol{v} \| \not= 0\)</span> we have <span class="math notranslate nohighlight">\(\lambda = \overline{\lambda}\)</span> and therefore <span class="math notranslate nohighlight">\(\lambda\)</span> is a real number.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\| \boldsymbol{v} \| \not= 0\)</span> we have <span class="math notranslate nohighlight">\(\lambda = \overline{\lambda}\)</span> and therefore <span class="math notranslate nohighlight">\(\lambda\)</span> is a real number.</p>
 </div>
+</details></div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a symmetric matrix and let <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> be distinct real eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> with eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> respectively. Then <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> are orthogonal.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Since <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> are real eigenvalues we may assume <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> are real vectors. Compute <span class="math notranslate nohighlight">\(\langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle\)</span> in two different ways. First, compute</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> are real eigenvalues we may assume <span class="math notranslate nohighlight">\(\boldsymbol{v}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_2\)</span> are real vectors. Compute <span class="math notranslate nohighlight">\(\langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle\)</span> in two different ways. First, compute</p>
 <div class="math notranslate nohighlight">
 \[
 \langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
 = \langle \lambda_1 \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
 = \lambda_1 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
 \]</div>
-<p>Now compute</p>
+<p class="sd-card-text">Now compute</p>
 <div class="math notranslate nohighlight">
 \[
 \langle A \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
@@ -662,7 +688,7 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 = \langle \boldsymbol{v}_1 , A \boldsymbol{v}_2 \rangle
 = \lambda_2 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
 \]</div>
-<p>Therefore</p>
+<p class="sd-card-text">Therefore</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_1 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle = \lambda_2 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle
@@ -671,57 +697,133 @@ A = \begin{bmatrix} 3 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}
 \ \ \Rightarrow \ \
 \langle \boldsymbol{v}_1 , \boldsymbol{v}_2 \rangle = 0
 \]</div>
-<p>since <span class="math notranslate nohighlight">\(\lambda_1 - \lambda_2 \not = 0\)</span> because the eigenvalues are distinct.</p>
+<p class="sd-card-text">since <span class="math notranslate nohighlight">\(\lambda_1 - \lambda_2 \not = 0\)</span> because the eigenvalues are distinct.</p>
 </div>
+</details></div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a symmetric matrix. Then there exists an orthogonal matrix <span class="math notranslate nohighlight">\(P\)</span> and diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that <span class="math notranslate nohighlight">\(A = PDP^T\)</span>. In other words, <span class="math notranslate nohighlight">\(A\)</span> is orthogonally diagonalizable.</p>
-</div>
-<div class="note docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is symmetric with <span class="math notranslate nohighlight">\(A = PDP^T\)</span> then</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{v}_1 &amp; \cdots &amp; \boldsymbol{v}_n \\ &amp; &amp; \end{bmatrix}
-\hspace{5mm}
-D = \begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda_1,\dots,\lambda_n\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> with corresponding orthonormal eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{v}_1,\dots,\boldsymbol{v}_n\)</span>.</p>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<div class="exercise docutils">
+<p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2 \in \mathbb{R}^2 \)</span> be linearly independent vectors. Let <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 \)</span> be real numbers. Then there exists a unique 2 by 2 matrix <span class="math notranslate nohighlight">\( A \)</span> with eigenvalues <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 \)</span> and corresponding eigenvectors <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{u} \in \mathbb{R}^n \)</span> be a nonzero vector and let <span class="math notranslate nohighlight">\( H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T \)</span> be the corresponding elementary reflector. Then <span class="math notranslate nohighlight">\(\lambda = -1\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(H\)</span> with multiplicity 1.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( U \subset \mathbb{R}^n \)</span> be a subspace with <span class="math notranslate nohighlight">\( \mathrm{dim}(U) = m \)</span> such that <span class="math notranslate nohighlight">\( 0 &lt; m &lt; n\)</span>, and let <span class="math notranslate nohighlight">\( P \)</span> be the orthogonal projection matrix onto <span class="math notranslate nohighlight">\( U \)</span>. Then <span class="math notranslate nohighlight">\( \lambda = 0 \)</span> is an eigenvalue for <span class="math notranslate nohighlight">\( P \)</span> with multiplicity <span class="math notranslate nohighlight">\( m \)</span>.</p></li>
-<li><p>Suppose <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are symmetric <span class="math notranslate nohighlight">\(n \times n\)</span> matrices. Then the eigenvectors of <span class="math notranslate nohighlight">\(AB\)</span> corresponding to distinct eigenvalues are orthogonal.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( A \)</span> be any <span class="math notranslate nohighlight">\( m \times n \)</span> matrix. If <span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span> then <span class="math notranslate nohighlight">\( \lambda \)</span> is a real number and <span class="math notranslate nohighlight">\( \lambda \geq 0 \)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( A \)</span> be any <span class="math notranslate nohighlight">\( m \times n \)</span> matrix. If <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 , \boldsymbol{v}_2 \)</span> are eigenvectors of <span class="math notranslate nohighlight">\( AA^T \)</span> for distinct eigenvalues then <span class="math notranslate nohighlight">\( \boldsymbol{v}_1 \cdot \boldsymbol{v}_1 = 0 \)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( \boldsymbol{u} \in \mathbb{R}^n \)</span> and let <span class="math notranslate nohighlight">\( H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T \)</span> be the corresponding elementary reflector. The characteristic polynomial of <span class="math notranslate nohighlight">\( H \)</span> is <span class="math notranslate nohighlight">\( (x-1)^{n-1}(x+1)\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\( P \)</span> be an orthogonal projection matrix. All the eigenvalues of <span class="math notranslate nohighlight">\( P \)</span> are either 1 or 0.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol{v}_1 , \boldsymbol{v}_2 \in \mathbb{R}^2\)</span> be linearly independent vectors. Let <span class="math notranslate nohighlight">\(\lambda_1 , \lambda_2\)</span> be real numbers. There exists a unique <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\lambda_1 , \lambda_2\)</span> and corresponding eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{v}_1 , \boldsymbol{v}_2\)</span>.</p></li>
+<li><p>Suppose <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are symmetric <span class="math notranslate nohighlight">\(n \times n\)</span> matrices. The eigenvectors of <span class="math notranslate nohighlight">\(AB\)</span> corresponding to distinct eigenvalues are orthogonal.</p></li>
 </ul>
-<p><strong>Exercise 2.</strong> Let <span class="math notranslate nohighlight">\( \lambda \)</span> be a (nonzero) eigenvalue of an invertible matrix <span class="math notranslate nohighlight">\(A\)</span>. Select all <strong>True</strong> statements.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\lambda^{-1}\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^{-1} \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^T \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda^2\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( PAP^{-1} \)</span> for any invertible matrix <span class="math notranslate nohighlight">\( P \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda \not= 0\)</span></p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
 </ul>
-<p><strong>Exercise 3.</strong> Let <span class="math notranslate nohighlight">\( \lambda \)</span> be an eigenvalue of an invertible matrix <span class="math notranslate nohighlight">\( A \)</span>. Select all <strong>True</strong> statements.</p>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \lambda^{-1} \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^{-1} \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( A^T \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \lambda^2 \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( AA^T \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \lambda \)</span> is an eigenvalue of <span class="math notranslate nohighlight">\( PAP^{-1} \)</span> for any invertible matrix <span class="math notranslate nohighlight">\( P \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \lambda \not= 0 \)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span> then <span class="math notranslate nohighlight">\(\lambda\)</span> is a real number.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\boldsymbol{v}_1 , \boldsymbol{v}_2\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(AA^T\)</span> for distinct eigenvalues <span class="math notranslate nohighlight">\(\lambda_1 , \lambda_2\)</span> then <span class="math notranslate nohighlight">\(\langle \boldsymbol{v}_1 , \boldsymbol{v}_1 \rangle = 0\)</span>.</p></li>
 </ul>
-<p><strong>Exercise 4.</strong> Suppose <span class="math notranslate nohighlight">\( A \)</span> is a symmetric <span class="math notranslate nohighlight">\( 3 \times 3 \)</span> matrix with distinct eigenvalues <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 , \lambda_3 \)</span> and eigenvectors</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(U \subset \mathbb{R}^n\)</span> be a subspace with <span class="math notranslate nohighlight">\(\mathrm{dim}(U) = m\)</span> such that <span class="math notranslate nohighlight">\(0 &lt; m &lt; n\)</span>, and let <span class="math notranslate nohighlight">\(P\)</span> be the orthogonal projection matrix onto <span class="math notranslate nohighlight">\(U\)</span>. Determine the characteristic polynomial of <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+c_P(x) = \pm (x-1)^m x^{n-m}
+\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{u} \in \mathbb{R}^n\)</span> be a nonzero vector and let</p>
+<div class="math notranslate nohighlight">
+\[
+H = I - \frac{2}{\| \boldsymbol{u} \|^2} \boldsymbol{u} \boldsymbol{u}^T
+\]</div>
+<p>be the corresponding elementary reflector. Determine the characteristic polynomial of <span class="math notranslate nohighlight">\(H\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+c_H(x) = \pm (x-1)^{n-1} (x+1)
+\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> be a eigenvalue of an invertible matrix <span class="math notranslate nohighlight">\(A\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda^{-1}\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda^2\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(BAB^{-1}\)</span> for any invertible matrix <span class="math notranslate nohighlight">\(B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda \ne 0\)</span></p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">True</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose <span class="math notranslate nohighlight">\( A \)</span> is a symmetric <span class="math notranslate nohighlight">\( 3 \times 3 \)</span> matrix with distinct eigenvalues <span class="math notranslate nohighlight">\( \lambda_1 , \lambda_2 , \lambda_3 \)</span> and eigenvectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{v}_1 = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \hspace{10mm} \boldsymbol{v}_2 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
 \end{split}\]</div>
-<p>Determine eigenvector <span class="math notranslate nohighlight">\( \boldsymbol{v}_3 \)</span> for eigenvalue <span class="math notranslate nohighlight">\( \lambda_3 \)</span>.</p>
+<p>Find an eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{v}_3\)</span> for eigenvalue <span class="math notranslate nohighlight">\(\lambda_3\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{v}_3 = \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
 </section>
 </section>
 
