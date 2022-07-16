@@ -270,7 +270,7 @@ EA =
 $$
 ```
 
-```{div} theorem
+````{div} theorem
 If $A$ can be reduced by Gaussian elimination to row echelon form *only* with operations "add $c$ times row $j$ to row $i$" (in other words, without scaling rows and without interchanging rows), then $A$ has an **LU decomposition** of the form
 
 $$A = LU$$
@@ -290,9 +290,8 @@ $$
 
 where each entry corresponds to the elementary row operation "add $c_{i,j}$ times row $j$ to row $i$" performed during Gaussian elimination.
 
----
-
-*Proof*. Gaussian elimination (without scaling rows and without interchanging rows) yields a sequence of elementary row operations of the form "add $c_{i,j}$ times row $j$ to row $i$" for each pair $(i,j)$ with $i > j$. Let $E_{i,j}$ be the corresponding elementary matrix for each $(i,j)$. Then
+```{dropdown} Proof
+Gaussian elimination (without scaling rows and without interchanging rows) yields a sequence of elementary row operations of the form "add $c_{i,j}$ times row $j$ to row $i$" for each pair $(i,j)$ with $i > j$. Let $E_{i,j}$ be the corresponding elementary matrix for each $(i,j)$. Then
 
 $$
 E_{m,m-1} E_{m,m-2} E_{m-1,m-2} \cdots E_{m,2} \cdots E_{3,2} E_{m,1} \cdots E_{2,1} A = U
@@ -347,6 +346,7 @@ $$
 \end{bmatrix}
 $$
 ```
+````
 
 ```{div} example
 Compute the LU decomposition of
