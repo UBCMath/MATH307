@@ -758,18 +758,24 @@ L =
 \end{bmatrix}
 \end{split}\]</div>
 <p>where each entry corresponds to the elementary row operation “add <span class="math notranslate nohighlight">\(c_{i,j}\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>” performed during Gaussian elimination.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Gaussian elimination (without scaling rows and without interchanging rows) yields a sequence of elementary row operations of the form “add <span class="math notranslate nohighlight">\(c_{i,j}\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>” for each pair <span class="math notranslate nohighlight">\((i,j)\)</span> with <span class="math notranslate nohighlight">\(i &gt; j\)</span>. Let <span class="math notranslate nohighlight">\(E_{i,j}\)</span> be the corresponding elementary matrix for each <span class="math notranslate nohighlight">\((i,j)\)</span>. Then</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Gaussian elimination (without scaling rows and without interchanging rows) yields a sequence of elementary row operations of the form “add <span class="math notranslate nohighlight">\(c_{i,j}\)</span> times row <span class="math notranslate nohighlight">\(j\)</span> to row <span class="math notranslate nohighlight">\(i\)</span>” for each pair <span class="math notranslate nohighlight">\((i,j)\)</span> with <span class="math notranslate nohighlight">\(i &gt; j\)</span>. Let <span class="math notranslate nohighlight">\(E_{i,j}\)</span> be the corresponding elementary matrix for each <span class="math notranslate nohighlight">\((i,j)\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[
 E_{m,m-1} E_{m,m-2} E_{m-1,m-2} \cdots E_{m,2} \cdots E_{3,2} E_{m,1} \cdots E_{2,1} A = U
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(U\)</span> is in row echelon form. Rearrange the equation to get</p>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(U\)</span> is in row echelon form. Rearrange the equation to get</p>
 <div class="math notranslate nohighlight">
 \[
 A = E_{2,1}^{-1} \cdots E_{m,1}^{-1} E_{3,2}^{-1} \cdots E_{m,2}^{-1} \cdots E_{m-1,m-2}^{-1} E_{m,m-2}^{-1} E_{m,m-1}^{-1} U
 \]</div>
-<p>Each matrix <span class="math notranslate nohighlight">\(E_{i,j}^{-1}\)</span> is the unit lower triangular matrix with entry <span class="math notranslate nohighlight">\(-c_{i,j}\)</span> at index <span class="math notranslate nohighlight">\((i,j)\)</span>. In particular, we have</p>
+<p class="sd-card-text">Each matrix <span class="math notranslate nohighlight">\(E_{i,j}^{-1}\)</span> is the unit lower triangular matrix with entry <span class="math notranslate nohighlight">\(-c_{i,j}\)</span> at index <span class="math notranslate nohighlight">\((i,j)\)</span>. In particular, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 E_{m,m-1}^{-1} =
@@ -781,7 +787,7 @@ E_{m,m-1}^{-1} =
  &amp; &amp; &amp; -c_{m,m-1} &amp; 1
 \end{bmatrix}
 \end{split}\]</div>
-<p>Then <span class="math notranslate nohighlight">\(E_{m,m-2}^{-1}E_{m,m-1}^{-1}\)</span> results in add <span class="math notranslate nohighlight">\(-c_{m,m-2}\)</span> times row <span class="math notranslate nohighlight">\(m-2\)</span> to row <span class="math notranslate nohighlight">\(m\)</span> and so</p>
+<p class="sd-card-text">Then <span class="math notranslate nohighlight">\(E_{m,m-2}^{-1}E_{m,m-1}^{-1}\)</span> results in add <span class="math notranslate nohighlight">\(-c_{m,m-2}\)</span> times row <span class="math notranslate nohighlight">\(m-2\)</span> to row <span class="math notranslate nohighlight">\(m\)</span> and so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 E_{m,m-2}^{-1} E_{m,m-1}^{-1} =
@@ -793,7 +799,7 @@ E_{m,m-2}^{-1} E_{m,m-1}^{-1} =
  &amp; &amp; -c_{m,m-2} &amp; -c_{m,m-1} &amp; 1
 \end{bmatrix}
 \end{split}\]</div>
-<p>Applying all the corresponding rows operations in order yields the result</p>
+<p class="sd-card-text">Applying all the corresponding rows operations in order yields the result</p>
 <div class="math notranslate nohighlight">
 \[
 E_{2,1}^{-1} \cdots E_{m,1}^{-1} E_{3,2}^{-1} \cdots E_{m,2}^{-1} \cdots E_{m-1,m-2}^{-1} E_{m,m-2}^{-1} E_{m,m-1}^{-1}
@@ -810,6 +816,7 @@ E_{2,1}^{-1} \cdots E_{m,1}^{-1} E_{3,2}^{-1} \cdots E_{m,2}^{-1} \cdots E_{m-1,
 \end{bmatrix}
 \end{split}\]</div>
 </div>
+</details></div>
 <div class="example docutils">
 <p>Compute the LU decomposition of</p>
 <div class="math notranslate nohighlight">

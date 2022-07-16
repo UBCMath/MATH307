@@ -441,6 +441,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#normal-equations">
    Normal Equations
   </a>
@@ -480,6 +485,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#normal-equations">
    Normal Equations
   </a>
@@ -512,57 +522,80 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="least-squares-approximation">
 <h1>Least Squares Approximation<a class="headerlink" href="#least-squares-approximation" title="Permalink to this headline">#</a></h1>
 <div class="bigidea docutils">
-<p>Find the best approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> by minimizing the distance <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b}\|\)</span>. There are several methods to find the approximation including the normal equations and the QR decomposition.</p>
+<p>Find the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \approx \boldsymbol{b}\)</span> by minimizing the distance <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b}\|\)</span>. There are several methods to find the approximation including the normal equations and the QR equations.</p>
 </div>
+<a class="reference internal image-reference" href="../_images/02_05_01.png"><img alt="../_images/02_05_01.png" class="align-center" src="../_images/02_05_01.png" style="width: 100%;" /></a>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="definition docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The <strong>least squares approximation</strong> of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \approx \boldsymbol{b}\)</span> is the vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> which minimizes the distance <span class="math notranslate nohighlight">\(\| A\boldsymbol{x} - \boldsymbol{b} \|\)</span>.</p>
+</div>
+</section>
 <section id="normal-equations">
 <h2>Normal Equations<a class="headerlink" href="#normal-equations" title="Permalink to this headline">#</a></h2>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The best approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> which minimizes the distance <span class="math notranslate nohighlight">\(\| A\boldsymbol{x} - \boldsymbol{b} \|\)</span>. Since <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> is the 2-norm, the best approximation is called the <strong>least squares approximation</strong>.</p>
-</div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the solution of the <strong>normal equations</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \approx \boldsymbol{b}\)</span> is the solution of the system</p>
 <div class="math notranslate nohighlight">
 \[
 A^TA\boldsymbol{x} = A^T\boldsymbol{b}
 \]</div>
-<hr class="docutils" />
-<p><em>Proof</em>. If <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A \boldsymbol{x} \in R(A)\)</span>. The projection theorem states that the point in <span class="math notranslate nohighlight">\(R(A)\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span> is the orthogonal projection of <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span>. If <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is the vector such that <span class="math notranslate nohighlight">\(A\boldsymbol{x} = \mathrm{proj}_{R(A)}(\boldsymbol{b})\)</span>, then <span class="math notranslate nohighlight">\(A\boldsymbol{x} - \boldsymbol{b}\)</span> is in <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and therefore</p>
+<p>The system is called the <strong>normal equations</strong>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">If <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A \boldsymbol{x} \in R(A)\)</span>. The projection theorem states that the point in <span class="math notranslate nohighlight">\(R(A)\)</span> nearest to <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span> is the orthogonal projection of <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> onto <span class="math notranslate nohighlight">\(R(A)\)</span>. If <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is the vector such that <span class="math notranslate nohighlight">\(A\boldsymbol{x} = \mathrm{proj}_{R(A)}(\boldsymbol{b})\)</span>, then <span class="math notranslate nohighlight">\(A\boldsymbol{x} - \boldsymbol{b}\)</span> is in <span class="math notranslate nohighlight">\(R(A)^{\perp}\)</span> and therefore</p>
 <div class="math notranslate nohighlight">
 \[
 A^T(A\boldsymbol{x} - \boldsymbol{b}) = 0 \ \ \Rightarrow \ \ A^TA\boldsymbol{x} = A^T\boldsymbol{b}
 \]</div>
-<p>We assume <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, therefore <span class="math notranslate nohighlight">\(A^TA\)</span> is nonsingular and the solution exists and is unique.</p>
+<p class="sd-card-text">We assume <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>, therefore <span class="math notranslate nohighlight">\(A^TA\)</span> is nonsingular and the solution exists and is unique.</p>
 </div>
+</details></div>
 </section>
 <section id="qr-equations">
 <h2>QR Equations<a class="headerlink" href="#qr-equations" title="Permalink to this headline">#</a></h2>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is the solution of the system of equations</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \approx \boldsymbol{b}\)</span> is the solution of the system of equations</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-R_1\boldsymbol{x} = \boldsymbol{c}_1 \hspace{5mm} \text{where} \hspace{2mm} A = QR = [ Q_1 \ \ Q_2 ] \begin{bmatrix} R_1 \\ 0 \end{bmatrix} \ \ \text{and} \ \ Q^T\boldsymbol{b} = \begin{bmatrix} \boldsymbol{c}_1 \\ \boldsymbol{c}_2 \end{bmatrix}
-\end{split}\]</div>
-<hr class="docutils" />
-<p><em>Proof</em>. The matrix <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal therefore</p>
+\[
+R_1\boldsymbol{x} = Q_1^T \boldsymbol{b}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A = Q_1 R_1\)</span> is the thin QR decomopsition. The system is called the <strong>QR equations</strong>. Futhermore, the residual is given by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
+\| A \boldsymbol{x} - \boldsymbol{b} \| = \| Q_2^T \boldsymbol{b} \|
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A = QR\)</span> is the QR deomposition with <span class="math notranslate nohighlight">\(Q = [ Q_1 \ \ Q_2 ]\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The matrix <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal therefore</p>
+<div class="math notranslate nohighlight">
+\[
 \| A \boldsymbol{x} - \boldsymbol{b} \|^2 = \| Q(R \boldsymbol{x} - Q^T\boldsymbol{b}) \|^2 = \| R \boldsymbol{x} - Q^T\boldsymbol{b} \|^2
-= \left\| \begin{bmatrix} R_1\boldsymbol{x} \\ 0 \end{bmatrix} - \begin{bmatrix} \boldsymbol{c}_1 \\ \boldsymbol{c}_2 \end{bmatrix} \right\|^2
-= \| R_1 \boldsymbol{x} - \boldsymbol{c}_1 \|^2 + \| \boldsymbol{c}_2 \|^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+= \left\| \begin{bmatrix} R_1 \\ \boldsymbol{0} \end{bmatrix} \boldsymbol{x} - \begin{bmatrix} Q_1^T \\ Q_2^T \end{bmatrix} \boldsymbol{b} \right\|^2 = \left\| \begin{bmatrix} R_1 \boldsymbol{x} \\ \boldsymbol{0} \end{bmatrix} - \begin{bmatrix} Q_1^T \boldsymbol{b} \\ Q_2^T \boldsymbol{b} \end{bmatrix}  \right\|^2
 \end{split}\]</div>
-<p>where we use the Pythagoras theorem in the last equality. The vector <span class="math notranslate nohighlight">\(\boldsymbol{c}_2\)</span> does not depend on <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> therefore the minimum value of <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \|\)</span> occurs when <span class="math notranslate nohighlight">\(R_1 \boldsymbol{x} = \boldsymbol{c}_1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+= \left\| \begin{bmatrix} R_1 \boldsymbol{x} - Q_1^T \boldsymbol{b} \\ -Q_2^T \boldsymbol{b} \end{bmatrix} \right\|^2 = \| R_1 \boldsymbol{x} - Q_1^T \boldsymbol{b} \|^2 + \| Q_2^T \boldsymbol{b} \|^2
+\end{split}\]</div>
+<p class="sd-card-text">where we use the Pythagoras theorem in the last equality. The vector <span class="math notranslate nohighlight">\(Q_2^T \boldsymbol{b}\)</span> does not depend on <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> therefore the minimum value of <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \|\)</span> occurs when <span class="math notranslate nohighlight">\(R_1 \boldsymbol{x} = Q_1^T \boldsymbol{b}\)</span> and the residual is <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \| = \| Q_2^T \boldsymbol{b} \|\)</span>.</p>
 </div>
+</details></div>
 </section>
 <section id="fitting-models-to-data">
 <h2>Fitting Models to Data<a class="headerlink" href="#fitting-models-to-data" title="Permalink to this headline">#</a></h2>
-<div class="bigidea docutils">
-<p>Least squares data fitting computes coefficients <span class="math notranslate nohighlight">\(c_1,\dots,c_n\)</span> such that the model function</p>
-<div class="math notranslate nohighlight">
-\[
-f(t,\boldsymbol{c}) = c_1 f_1(t) + \cdots + c_n f_n(t)
-\]</div>
-<p>best fits the data <span class="math notranslate nohighlight">\((t_1,y_1),\dots,(t_m,y_m)\)</span>.</p>
-</div>
 <div class="definition docutils">
 <p>Suppose we have <span class="math notranslate nohighlight">\(m\)</span> points</p>
 <div class="math notranslate nohighlight">
@@ -574,7 +607,7 @@ f(t,\boldsymbol{c}) = c_1 f_1(t) + \cdots + c_n f_n(t)
 \[
 y=c_1 + c_2t
 \]</div>
-<p>that “best fits” the data. There are different ways to quantify what “best fit” means but the most common method is called <strong>least squares linear regression</strong>. In least squares linear regression, we want to minimize the sum of squared errors</p>
+<p>that “best fits” the data. There are different ways to quantify what “best fits” means but the most common method is called <strong>least squares linear regression</strong>. In least squares linear regression, we want to minimize the sum of squared errors</p>
 <div class="math notranslate nohighlight">
 \[
 SSE = \sum_i (y_i - (c_1 + c_2 t_i))^2
@@ -588,17 +621,17 @@ SSE = \Vert \boldsymbol{y} - A \boldsymbol{c} \Vert^2
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
-\ \ \
+\hspace{10mm}
 A = \begin{bmatrix} 1 &amp; t_1 \\ 1 &amp; t_2 \\ \vdots &amp; \vdots \\ 1 &amp; t_m \end{bmatrix}
-\ \ \
+\hspace{10mm}
 \boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
 \end{split}\]</div>
-<p>We assume that <span class="math notranslate nohighlight">\(m \geq 2\)</span> and <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span> (which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = 2\)</span>). Therefore the vector of coefficients</p>
+<p>We assume that <span class="math notranslate nohighlight">\(m \geq 2\)</span> and <span class="math notranslate nohighlight">\(t_i \not= t_j\)</span> for all <span class="math notranslate nohighlight">\(i \not= j\)</span> which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = 2\)</span>. Therefore the vector of coefficients</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}
 \end{split}\]</div>
-<p>is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \cong \boldsymbol{y}\)</span>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression">Wikipedia:Simple linear regression</a>.</p>
+<p>is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \approx \boldsymbol{y}\)</span>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression">Wikipedia:Simple linear regression</a>.</p>
 </div>
 <div class="definition docutils">
 <p>More generally, given <span class="math notranslate nohighlight">\(m\)</span> data points</p>
@@ -629,31 +662,45 @@ SSE = \Vert \boldsymbol{y} - A \boldsymbol{c} \Vert^2
 A = \begin{bmatrix}
 f_1(t_1) &amp; f_2(t_1) &amp; \cdots &amp; f_n(t_1) \\
 f_1(t_2) &amp; f_2(t_2) &amp; \cdots &amp; f_n(t_2) \\
-\vdots &amp; &amp; &amp; \vdots \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 f_1(t_m) &amp; f_2(t_m) &amp; \cdots &amp; f_n(t_m)
 \end{bmatrix}
 \hspace{10mm}
 \boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix}
 \end{split}\]</div>
-<p>We assume that <span class="math notranslate nohighlight">\(m \geq n\)</span> and <span class="math notranslate nohighlight">\(f_1,\dots,f_n\)</span> are linearly independenty (which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>). Therefore the vector of coefficients <span class="math notranslate nohighlight">\(\boldsymbol{c}\)</span> is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \cong \boldsymbol{y}\)</span>.</p>
+<p>We assume that <span class="math notranslate nohighlight">\(m \geq n\)</span> and <span class="math notranslate nohighlight">\(f_1,\dots,f_n\)</span> are linearly independenty (which implies <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span>). Therefore the vector of coefficients <span class="math notranslate nohighlight">\(\boldsymbol{c}\)</span> is the least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{c} \approx \boldsymbol{y}\)</span>.</p>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> <strong>True</strong> or <strong>False</strong>. Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(m \geq n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span>. There is a unique vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> which minimizes the norm of the residual <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \|\)</span>.</p>
-<p><strong>Exercise 2.</strong> Let <span class="math notranslate nohighlight">\(A = QR\)</span> where</p>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A = QR\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Q = \left[ \begin{array}{rrrrr} 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]
 \ \
 R = \left[ \begin{array}{rrrr} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{array} \right]
 \end{split}\]</div>
-<p>Find the least squares approximation <span class="math notranslate nohighlight">\(A\boldsymbol{x} \approx \boldsymbol{b}\)</span> for:</p>
+<p>Find the least squares approximation <span class="math notranslate nohighlight">\(A\boldsymbol{x} \approx \boldsymbol{b}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{b} = \begin{bmatrix} -2 \\ -1 \\ 0 \\ 1 \\ 2 \end{bmatrix}
+\boldsymbol{b} = \left[ \begin{array}{r} -2 \\ -1 \\ 0 \\ 1 \\ 2 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 3.</strong> Setup (but do not solve) a linear system <span class="math notranslate nohighlight">\(B \boldsymbol{c} = \boldsymbol{y}\)</span> where the solution is the coefficient vector</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = \left[ \begin{array}{r} 2 \\ -1 \\ 2 \\ -2 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Setup (but do not solve) a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{c} = \boldsymbol{y}\)</span> where the solution is the coefficient vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{c} = \begin{bmatrix} c_0 \\ c_1 \\ c_2 \end{bmatrix}
@@ -664,6 +711,21 @@ R = \left[ \begin{array}{rrrr} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 &a
 f(t) = c_0  + c_1\cos(2 \pi t) + c_2 \sin(2 \pi t)
 \]</div>
 <p>bests fits the data <span class="math notranslate nohighlight">\((0,1),(1/4,3),(1/2,2),(3/4,-1),(1,0)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; -1 &amp; 0 \\ 1 &amp; 0 &amp; -1 \\ 1 &amp; 1 &amp; 0 \end{array} \right]
+\hspace{10mm}
+\boldsymbol{y} = \left[ \begin{array}{r} 1 \\ 3 \\ 2 \\ -1 \\ 0 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
 </section>
 </section>
 
