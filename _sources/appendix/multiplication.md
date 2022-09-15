@@ -19,10 +19,16 @@ In other words, $\boldsymbol{e}_k$ is the vector with 1 at index $k$ and 0 every
 ```
 
 ```{div} theorem
-Let $A$ and $B$ be $m \times n$ matrices
+Let $A$ be a $p \times m$ matrix, let $B$ be a $m \times n$ matrices and let $\boldsymbol{b}_1,\dots,\boldsymbol{b}_n$ be the columns of $B$
 
 $$
-A = \begin{bmatrix} & & \\ \boldsymbol{a}_1 & \cdots & \boldsymbol{a}_n \\ & & \end{bmatrix}
+B = \begin{bmatrix} & & \\ \boldsymbol{b}_1 & \cdots & \boldsymbol{b}_n \\ & & \end{bmatrix}
+$$
+
+Then the $k$th column of $AB$ is $A \boldsymbol{b}_k$. In other words, matrix multiplication $AB$ can be written as
+
+$$
+AB = \begin{bmatrix} & & \\ A \boldsymbol{b}_1 & \cdots & A \boldsymbol{b}_n \\ & & \end{bmatrix}
 $$
 
 ```

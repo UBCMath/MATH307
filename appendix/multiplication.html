@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -38,7 +38,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -458,10 +458,15 @@ title="Print to PDF"
 <p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with 1 at index <span class="math notranslate nohighlight">\(k\)</span> and 0 everywhere else. Then <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k\)</span> is equal to the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k = B \boldsymbol{e}_k\)</span> for each <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> we see that the columns of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are equal therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
 </div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(p \times m\)</span> matrix, let <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrices and let <span class="math notranslate nohighlight">\(\boldsymbol{b}_1,\dots,\boldsymbol{b}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(B\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{a}_1 &amp; \cdots &amp; \boldsymbol{a}_n \\ &amp; &amp; \end{bmatrix}
+B = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{b}_1 &amp; \cdots &amp; \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p>Then the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(AB\)</span> is <span class="math notranslate nohighlight">\(A \boldsymbol{b}_k\)</span>. In other words, matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
 \end{split}\]</div>
 </div>
 </section>

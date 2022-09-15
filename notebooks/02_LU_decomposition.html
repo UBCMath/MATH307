@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -38,7 +38,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -372,7 +372,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https://github.com/UBCMath/math307&urlpath=tree/math307/notebooks/02_LU_decomposition.ipynb&branch=master"
+        <a href="https://ubc.syzygy.ca/jupyter/hub/user-redirect/git-pull?repo=https%3A//github.com/UBCMath/math307&urlpath=tree/math307/notebooks/02_LU_decomposition.ipynb&branch=master"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -559,9 +559,15 @@ title="Print to PDF"
     <span class="n">U</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+            <span class="c1"># Check if the pivot entry is 0</span>
             <span class="k">if</span> <span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LU decomposition for A does not exist.&quot;</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span><span class="n">A</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:]):</span>
+                    <span class="c1"># LU decomposition does not exist if entries below 0 pivot are nonzero</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LU decomposition for A does not exist.&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span><span class="n">A</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># All entries below 0 pivot are 0 therfore continue to next column</span>
+                    <span class="k">continue</span>
             <span class="n">cij</span> <span class="o">=</span> <span class="o">-</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
             <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">cij</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>
             <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cij</span>
@@ -675,6 +681,61 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>Now let’s try an example with some zeros along the diagonal of the <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">L</span><span class="p">,</span><span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1. ,  0. ,  0. ,  0. ],
+       [ 0.5,  1. ,  0. ,  0. ],
+       [ 1.5,  1. ,  1. ,  0. ],
+       [ 0.5, -1. ,  0. ,  1. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2,  2, -2,  4,  2],
+       [ 0, -2,  1,  0,  0],
+       [ 0,  0,  0,  0,  0],
+       [ 0,  0,  0,  0,  0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="nd">@U</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.,  2., -2.,  4.,  2.],
+       [ 1., -1.,  0.,  2.,  1.],
+       [ 3.,  1., -2.,  6.,  3.],
+       [ 1.,  3., -2.,  2.,  1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Success!</p>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
@@ -717,7 +778,7 @@ A =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_LU_decomposition_16_0.png" src="../_images/02_LU_decomposition_16_0.png" />
+<img alt="../_images/02_LU_decomposition_22_0.png" src="../_images/02_LU_decomposition_22_0.png" />
 </div>
 </div>
 <p>Compute the LU decomposition <span class="math notranslate nohighlight">\(A=LU\)</span> and visualize the matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span>:</p>
@@ -736,7 +797,7 @@ A =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_LU_decomposition_19_0.png" src="../_images/02_LU_decomposition_19_0.png" />
+<img alt="../_images/02_LU_decomposition_25_0.png" src="../_images/02_LU_decomposition_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -747,7 +808,7 @@ A =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_LU_decomposition_20_0.png" src="../_images/02_LU_decomposition_20_0.png" />
+<img alt="../_images/02_LU_decomposition_26_0.png" src="../_images/02_LU_decomposition_26_0.png" />
 </div>
 </div>
 <p>Solve the systems <span class="math notranslate nohighlight">\(L \boldsymbol{y} = \boldsymbol{b}\)</span> and <span class="math notranslate nohighlight">\(U \boldsymbol{x} = \boldsymbol{y}\)</span>, then plot the solution <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>:</p>
@@ -762,7 +823,7 @@ A =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_LU_decomposition_22_0.png" src="../_images/02_LU_decomposition_22_0.png" />
+<img alt="../_images/02_LU_decomposition_28_0.png" src="../_images/02_LU_decomposition_28_0.png" />
 </div>
 </div>
 </section>
