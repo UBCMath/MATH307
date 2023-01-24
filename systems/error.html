@@ -441,8 +441,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-norm">
-   Matrix Norm
+  <a class="reference internal nav-link" href="#vector-norms">
+   Vector Norms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-norms">
+   Matrix Norms
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -480,8 +485,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-norm">
-   Matrix Norm
+  <a class="reference internal nav-link" href="#vector-norms">
+   Vector Norms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-norms">
+   Matrix Norms
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -514,17 +524,20 @@ title="Print to PDF"
 <div class="bigidea docutils">
 <p>The condition number of a nonsingular matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = \| A \| \| A^{-1} \|\)</span>. Given a linear system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>, the condition number of <span class="math notranslate nohighlight">\(A\)</span> quantifies how sensitive the solution <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> is relative to changes in <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span>.</p>
 </div>
-<section id="matrix-norm">
-<h2>Matrix Norm<a class="headerlink" href="#matrix-norm" title="Permalink to this headline">#</a></h2>
+<section id="vector-norms">
+<h2>Vector Norms<a class="headerlink" href="#vector-norms" title="Permalink to this headline">#</a></h2>
 <div class="definition docutils">
-<p>The <strong>norm</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is given by</p>
+<p>The <strong>Euclidean norm</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 \| \boldsymbol{x} \| = \sqrt{ | x_1|^2 + \cdots + | x_n |^2 } = \sqrt{ \sum_{k=1}^n | x_k |^2 }
 \]</div>
 </div>
+<div class="note docutils">
+<p>The Euclidean norm assigns a magnitude (or length) to a vector but it turns out that there are many different ways to define the “magnitude” of a vector!</p>
+</div>
 <div class="definition docutils">
-<p>The vector norm <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> satisfies the following properties.</p>
+<p>A <strong>norm</strong> on <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> such that:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\| \boldsymbol{x} \| \geq 0\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\| \boldsymbol{x} \| = 0\)</span> if and only if <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span></p></li>
@@ -534,12 +547,82 @@ title="Print to PDF"
 <p>Condition 4 is called the <strong>triangle inequality</strong>. See <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">Wikipedia:Norm</a>.</p>
 </div>
 <div class="definition docutils">
-<p>The <strong>norm</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<p>Let <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span>. The <strong><span class="math notranslate nohighlight">\(p\)</span>-norm</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \|_p = \left( \sum_{k=1}^n | x_k |^p  \right)^{1/p}
+\]</div>
+<p>In particular, the 1-norm is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \|_1 = | x_1 | + \cdots + | x_n |
+\]</div>
+<p>and the 2-norm is the familiar Euclidean norm</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \|_2 = \sqrt{ | x_1|^2 + \cdots + | x_n |^2 }
+\]</div>
+</div>
+<div class="definition docutils">
+<p>The <strong><span class="math notranslate nohighlight">\(\infty\)</span>-norm</strong> of a vector <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \|_{\infty} = \max \{ | x_1| , \dots , | x_n | \}
+\]</div>
+</div>
+<div class="example docutils">
+<p>The unit ball in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> relative to a norm <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> is the set of unit vectors</p>
+<div class="math notranslate nohighlight">
+\[
+B = \{ \boldsymbol{x} \in \mathbb{R}^n : \| \boldsymbol{x} \| = 1 \}
+\]</div>
+<p>Compare the unit balls in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> for the 1-norm, 2-norm and <span class="math notranslate nohighlight">\(\infty\)</span>-norm:</p>
+<p><img alt="/img/01_02_02.png" src="../_images/01_02_01.png" /></p>
+</div>
+<div class="note docutils">
+<p>The most commonly used vector norm is the 2-norm. If we use the notation <span class="math notranslate nohighlight">\(\| \boldsymbol{x} \|\)</span> then we assume it is the 2-norm unless explicitly stately otherwise.</p>
+</div>
+</section>
+<section id="matrix-norms">
+<h2>Matrix Norms<a class="headerlink" href="#matrix-norms" title="Permalink to this headline">#</a></h2>
+<div class="definition docutils">
+<p>A <strong>matrix norm</strong> is a function on matrices that satisfies the properties:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| A \| &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(A \not= 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A \| = 0\)</span> if and only <span class="math notranslate nohighlight">\(A = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| c A \| = |c| \| A \|\)</span> for any <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A + B \| \leq \| A \| + \| B \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| A B \| \leq \| A \| \| B \|\)</span></p></li>
+</ol>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_norm">Wikipedia: Matrix norm</a>.</p>
+</div>
+<div class="definition docutils">
+<p>The <strong>Frobenius norm</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \|_F = \sqrt{ \sum_{i=1}^{m} \sum_{j=1}^{n} |a_{i,j}|^2 }
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_{i,j}\)</span> are the entries of <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="definition docutils">
+<p>The <strong>operator norm</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \| A \| = \max_{\boldsymbol{x} \not= \boldsymbol{0} } \frac{ \| A \boldsymbol{x} \| }{ \| \boldsymbol{x}  \|}
 \]</div>
-<p>The matrix norm is also called the <strong>operator norm</strong>.</p>
+<p>where <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> is the 2-norm.</p>
+</div>
+<div class="note docutils">
+<p>The operator norm satisies the property <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| \leq \| A \| \| \boldsymbol{x} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>.</p>
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a nonsingular matrix. Then</p>
@@ -550,13 +633,19 @@ title="Print to PDF"
 \| A^{-1} \| = \frac{1}{ \displaystyle \min_{ \| \boldsymbol{x} \| = 1 } \| A \boldsymbol{x} \|}
 \]</div>
 <p>In other words, <span class="math notranslate nohighlight">\(\| A \|\)</span> is the <em>maximum stretch of a unit vector</em> by the linear transformation <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> is the <em>reciprocal</em> of the <em>minimum stretch of a unit vector</em> by the linear transformation <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Note that <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| / \| \boldsymbol{x} \|= \| A ( \boldsymbol{x} / \| \boldsymbol{x} \| ) \|\)</span> therefore</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Note that <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| / \| \boldsymbol{x} \|= \| A ( \boldsymbol{x} / \| \boldsymbol{x} \| ) \|\)</span> therefore</p>
 <div class="math notranslate nohighlight">
 \[
 \| A \| = \max_{ \| \boldsymbol{x} \| = 1 } \| A \boldsymbol{x} \|
 \]</div>
-<p>Similarly, we can rearrange the definition of <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> to find:</p>
+<p class="sd-card-text">Similarly, we can rearrange the definition of <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> to find:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -568,6 +657,7 @@ title="Print to PDF"
 \end{align*}
 \end{split}\]</div>
 </div>
+</details></div>
 <div class="proposition docutils">
 <p>Let <span class="math notranslate nohighlight">\(D\)</span> be a diagonal matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{d}\)</span> be the vector of diagonal entries of <span class="math notranslate nohighlight">\(D\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -576,9 +666,15 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 \hspace{10mm}
 \boldsymbol{d} = \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{bmatrix}
 \end{split}\]</div>
-<p>Then <span class="math notranslate nohighlight">\(\| D \| = \max \{ |d_1| , \dots, |d_n| \}\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Compute</p>
+<p>Then <span class="math notranslate nohighlight">\(\| D \| = \| \boldsymbol{d} \|_{\infty} = \max \{ |d_1| , \dots, |d_n| \}\)</span>, and <span class="math notranslate nohighlight">\(\| D \|_F = \| \boldsymbol{d} \|_2\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Compute</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -588,21 +684,11 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 &amp;= \max_i \{ | d_i | \}
 \end{align*}
 \end{split}\]</div>
+<p class="sd-card-text">The equality <span class="math notranslate nohighlight">\(\| D \|_F = \| \boldsymbol{d} \|_2\)</span> is clear.</p>
 </div>
+</details></div>
 <div class="note docutils">
 <p>How do we compute the matrix norm <span class="math notranslate nohighlight">\(\| A \|\)</span> for a general matrix? This is a nontrivial problem and we will see later how to use the singular values of <span class="math notranslate nohighlight">\(A\)</span> to determine the matrix norm.</p>
-</div>
-<div class="theorem docutils">
-<p>The matrix norm satisfies the properties:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(\| A \| &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(A \not= 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A \| = 0\)</span> if and only <span class="math notranslate nohighlight">\(A = 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| c A \| = |c| \| A \|\)</span> for any <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A + B \| \leq \| A \| + \| B \|\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A B \| \leq \| A \| \| B \|\)</span> (if <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are square matrices)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A \boldsymbol{x} \| \leq \| A \| \| \boldsymbol{x} \|\)</span> for any <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span></p></li>
-</ol>
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_norm">Wikipedia: Matrix norm</a>.</p>
 </div>
 </section>
 <section id="condition-number">
@@ -624,7 +710,7 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 </div>
 <div class="example docutils">
 <p>The image below shows the unit circle and its image under the linear transformation defined by a <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>. Determine <span class="math notranslate nohighlight">\(\| A \|\)</span>, <span class="math notranslate nohighlight">\(\| A^{-1} \|\)</span> and <span class="math notranslate nohighlight">\(\mathrm{cond}(A)\)</span>.</p>
-<p><img alt="img/01_02_01.png" src="../_images/01_02_01.png" /></p>
+<p><img alt="img/01_02_01.png" src="../_images/01_02_02.png" /></p>
 <p>Observe the maximum stretch of a unit vector is <span class="math notranslate nohighlight">\(\| A \| =  3 / \sqrt{2}\)</span>, the minimum stretch is <span class="math notranslate nohighlight">\(1/\sqrt{2}\)</span> therefore <span class="math notranslate nohighlight">\(\| A^{-1} \| = \sqrt{2}\)</span> and the condition number is <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = 3\)</span>.</p>
 </div>
 </section>
@@ -636,8 +722,14 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 \[
 \frac{\| \Delta \boldsymbol{x} \|}{\| \boldsymbol{x} \|} \leq \mathrm{cond}(A) \frac{\| \Delta \boldsymbol{b} \|}{\| \boldsymbol{b} \|}
 \]</div>
-<hr class="docutils" />
-<p><em>Proof</em>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>, we have <span class="math notranslate nohighlight">\(\Delta x = A^{-1} \Delta \boldsymbol{b}\)</span>. Computing norms we find</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>, we have <span class="math notranslate nohighlight">\(\Delta x = A^{-1} \Delta \boldsymbol{b}\)</span>. Computing norms we find</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -648,6 +740,7 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 \end{align*}
 \end{split}\]</div>
 </div>
+</details></div>
 <div class="definition docutils">
 <p>Given a vector <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> and small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span>, the <strong>relative change</strong> (or <strong>relative error</strong>) is</p>
 <div class="math notranslate nohighlight">
@@ -666,10 +759,38 @@ D = \begin{bmatrix} d_1 &amp; &amp; &amp; \\ &amp; d_2 &amp; &amp; \\ &amp; &amp
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>: If <span class="math notranslate nohighlight">\(\| A \| = 1\)</span> then <span class="math notranslate nohighlight">\(A = I\)</span>.</p>
-<p><strong>Exercise 2.</strong> Suppose <span class="math notranslate nohighlight">\(A\)</span> is a 2 by 2 matrix such that the image of the unit circle under the linear transformation <span class="math notranslate nohighlight">\(A\)</span> is:</p>
-<p><img alt="/img/01_02_02.png" src="../_images/01_02_02.png" /></p>
+<div class="exercise docutils">
+<p>Show that the 1-norm satisfies the properties of a norm.</p>
+</div>
+<div class="exercise docutils">
+<p>Show that the <span class="math notranslate nohighlight">\(\infty\)</span>-norm satisfies the properties of a norm.</p>
+</div>
+<div class="exercise docutils">
+<p>Is the function <span class="math notranslate nohighlight">\(\| \boldsymbol{x} \| = x_1 + \cdots + x_n\)</span> a vecgtor norm? Explain.</p>
+</div>
+<div class="exercise docutils">
+<p>The function</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} \|_p = \left( \sum_{k=1}^n | x_k |^p  \right)^{1/p}
+\]</div>
+<p>does not satisfy the triangle inequality if <span class="math notranslate nohighlight">\(0 &lt; p &lt; 1\)</span>. Prove this for <span class="math notranslate nohighlight">\(n=2\)</span> and <span class="math notranslate nohighlight">\(p=0.5\)</span>. In other words, find vectors <span class="math notranslate nohighlight">\(\boldsymbol{x},\boldsymbol{y} \in \mathbb{R}^2\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{x} + \boldsymbol{y} \|_{0.5} &gt; \| \boldsymbol{x} \|_{0.5} + \| \boldsymbol{y} \|_{0.5}
+\]</div>
+</div>
+<div class="exercise docutils">
+<p>Is it true that <span class="math notranslate nohighlight">\(\| \boldsymbol{x} \|_1 \leq \| \boldsymbol{x} \|_2 \leq \| \boldsymbol{x} \|_{\infty}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>? Explain.</p>
+</div>
+<div class="exercise docutils">
+<p>Determine whether the statement is <strong>True</strong> or <strong>False</strong>: If <span class="math notranslate nohighlight">\(\| A \| = 1\)</span> then <span class="math notranslate nohighlight">\(A = I\)</span>.</p>
+</div>
+<div class="exercise docutils">
+<p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is a 2 by 2 matrix such that the image of the unit circle under the linear transformation <span class="math notranslate nohighlight">\(A\)</span> is:</p>
+<p><img alt="/img/01_02_02.png" src="../_images/01_02_03.png" /></p>
 <p>Determine <span class="math notranslate nohighlight">\(\mathrm{cond}(A)\)</span>.</p>
+</div>
 </section>
 </section>
 
