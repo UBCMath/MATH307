@@ -160,7 +160,7 @@ f_1(t_m) & f_2(t_m) & \cdots & f_n(t_m)
 \boldsymbol{c} = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix}
 $$
 
-We assume that $m \geq n$ and $f_1,\dots,f_n$ are linearly independenty (which implies $\mathrm{rank}(A) = n$). Therefore the vector of coefficients $\boldsymbol{c}$ is the least squares approximation of the system $A \boldsymbol{c} \approx \boldsymbol{y}$.
+We assume that $m \geq n$ and $f_1,\dots,f_n$ are linearly independently (which implies $\mathrm{rank}(A) = n$). Therefore the vector of coefficients $\boldsymbol{c}$ is the least squares approximation of the system $A \boldsymbol{c} \approx \boldsymbol{y}$.
 ```
 
 ## Exercises
