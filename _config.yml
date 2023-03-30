@@ -10,6 +10,7 @@ execute:
 html:
   home_page_in_navbar: false
   use_repository_button: true
+  google_analytics_id: G-VXJGYXTXDR
 launch_buttons:
   jupyterhub_url: https://ubc.syzygy.ca/jupyter
 repository:
