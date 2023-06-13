@@ -263,7 +263,7 @@ Show that the $\infty$-norm satisfies the properties of a norm.
 ```
 
 ```{div} exercise
-Is the function $\| \boldsymbol{x} \| = x_1 + \cdots + x_n$ a vecgtor norm? Explain.
+Is the function $\| \boldsymbol{x} \| = x_1 + \cdots + x_n$ a vector norm? Explain.
 ```
 
 ```{div} exercise
