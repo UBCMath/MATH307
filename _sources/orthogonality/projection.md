@@ -172,8 +172,8 @@ $$
 \begin{align*}
 P_{\perp} = I - P &=
 \left[ \begin{array}{rrr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array} \right] -
-\frac{1}{6} \left[ \begin{array}{rrr} 5 & 2 & 1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right] \\
-&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+\frac{1}{6} \left[ \begin{array}{rrr} 5 & \phantom{+}2 & -1 \\ 2 & 2 & 2 \\ -1 & 2 & 5 \end{array} \right] \\
+&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & 1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
 \end{align*}
 $$
 
@@ -190,7 +190,7 @@ $$
 P_{\perp} = \frac{1}{\| \boldsymbol{u}_3 \|^2} \boldsymbol{u}_3 \boldsymbol{u}_3^T
 &= \frac{1}{6} \left[ \begin{array}{r} 1 \\ -2 \\ 1 \end{array} \right]
 \left[ \begin{array}{ccc} 1 & -2 & 1 \end{array} \right] \\
-&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & -1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
+&= \frac{1}{6} \left[ \begin{array}{rrr} 1 & -2 & 1 \\ -2 & 4 & -2 \\ 1 & -2 & 1 \end{array} \right]
 \end{align*}
 $$
 ```

@@ -367,8 +367,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-construction">SVD Construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corollaries-of-svd">Corollaries of SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse-least-squares-and-the-svd-expansion">Pseudoinverse, Least Squares and the SVD Expansion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse-and-least-squares">Pseudoinverse and Least Squares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-expansion">SVD Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
@@ -384,31 +386,69 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="singular-value-decomposition">
 <h1>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this heading">#</a></h1>
 <div class="bigidea docutils">
-<p>
-<ul class="simple">
-<li><p>Any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> has a singular value decomposition <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> where <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are orthogonal matrices and <span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal <span class="math notranslate nohighlight">\(m \times n\)</span> matrix.</p></li>
-<li><p>An <span class="math notranslate nohighlight">\(n \times p\)</span> data matrix <span class="math notranslate nohighlight">\(X\)</span> represents a set of <span class="math notranslate nohighlight">\(n\)</span> samples in <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> and projecting the data onto the first <span class="math notranslate nohighlight">\(k\)</span> principal components allows us to view the data in <span class="math notranslate nohighlight">\(\mathbb{R}^k\)</span>. Usually <span class="math notranslate nohighlight">\(k=2\)</span> such that we can visualize the data in 2D.</p></li>
-</ul>
-</p>
-</div>
-<div class="note docutils">
-<p>All matrices in this chapter are <em>real</em> unless explicitly stated otherwise.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, then <span class="math notranslate nohighlight">\(AA^T\)</span> and <span class="math notranslate nohighlight">\(A^TA\)</span> are symmetric matrices therefore both are orthogonally diagonalizable, <span class="math notranslate nohighlight">\(AA^T = PD_1P^T\)</span> and <span class="math notranslate nohighlight">\(A^TA = QD_2Q^T\)</span>, and these decompositions lead to the singular value decomposition <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> where <span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal <span class="math notranslate nohighlight">\(m \times n\)</span> matrix containing the singular values (the square roots of the eigenvalues in <span class="math notranslate nohighlight">\(D_1\)</span> and <span class="math notranslate nohighlight">\(D_2\)</span>).</p>
 </div>
 <section id="svd-construction">
 <h2>SVD Construction<a class="headerlink" href="#svd-construction" title="Permalink to this heading">#</a></h2>
 <div class="note docutils">
-<p>If <span class="math notranslate nohighlight">\(A\)</span> is any <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, then <span class="math notranslate nohighlight">\(AA^T\)</span> and <span class="math notranslate nohighlight">\(A^TA\)</span> are both symmetric therefore both are orthogonally diagonalizable</p>
-<div class="math notranslate nohighlight">
-\[
-AA^T = PD_1P^T \hspace{5mm} A^TA = QD_2Q^T
-\]</div>
+<p>Throughout this section <span class="math notranslate nohighlight">\(A\)</span> is a <em>real</em> <span class="math notranslate nohighlight">\(m \times n\)</span> matrix.</p>
 </div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix.</p>
-<ol class="arabic simple">
-<li><p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is a nonzero eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span> then <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A^TA\)</span>, and vice versa.</p></li>
-<li><p>All eigenvalues of <span class="math notranslate nohighlight">\(AA^T\)</span> (and <span class="math notranslate nohighlight">\(A^TA\)</span>) are non-negative (that is, <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span>).</p></li>
-</ol>
+<p>All eigenvalues of <span class="math notranslate nohighlight">\(AA^T\)</span> and <span class="math notranslate nohighlight">\(A^TA\)</span> are non-negative (that is, <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span>).</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\lambda\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span> with eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span>. Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\| A^T \boldsymbol{p} \|^2 = \langle A^T \boldsymbol{p} , A^T \boldsymbol{p} \rangle = \langle \boldsymbol{p}, AA^T \boldsymbol{p} \rangle = \lambda \langle \boldsymbol{p} , \boldsymbol{p} \rangle = \lambda \| \boldsymbol{p} \|^2
+\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> is a nonzero vector, we can write</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \frac{\| A^T \boldsymbol{p} \|^2}{\| \boldsymbol{p} \|^2}
+\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(\lambda\)</span> is a real number squared and must be non-negative. The same calculation works for <span class="math notranslate nohighlight">\(A^TA\)</span>.</p>
+</div>
+</details></div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> be a positive eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span> with unit eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span>. Then <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A^TA\)</span> with unit eigenvector</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{q} = \frac{1}{\sigma} A^T \boldsymbol{p} \ , \ \ \sigma = \sqrt{\lambda}
+\]</div>
+<p>Conversely, let <span class="math notranslate nohighlight">\(\lambda\)</span> be a positive eigenvalue of <span class="math notranslate nohighlight">\(A^TA\)</span> with (unit) eigenvector <span class="math notranslate nohighlight">\(\boldsymbol{q}\)</span>. Then <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(AA^T\)</span> with eigenvector</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{p} = \frac{1}{\sigma} A \boldsymbol{q} \ , \ \ \sigma = \sqrt{\lambda}
+\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Compute</p>
+<div class="math notranslate nohighlight">
+\[
+A^TA \boldsymbol{q} = \frac{1}{\sqrt{\lambda}} A^T A A^T \boldsymbol{p} = \frac{1}{\sqrt{\lambda}} A^T A A^T \boldsymbol{p}
+= \sqrt{\lambda} A^T \boldsymbol{p} = \lambda \boldsymbol{q}
+\]</div>
+<p class="sd-card-text">Therefore <span class="math notranslate nohighlight">\(\boldsymbol{q}\)</span> is an eigenvector for <span class="math notranslate nohighlight">\(A^TA\)</span> with eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>. Now let’s verify it is a unit vector. Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\| \boldsymbol{q} \|^2 = \langle \boldsymbol{q} , \boldsymbol{q} \rangle = \frac{1}{\sigma^2} \langle A^T \boldsymbol{p} , A^T \boldsymbol{p} \rangle = \frac{1}{\lambda} \langle \boldsymbol{p} , AA^T \boldsymbol{p} \rangle = \langle \boldsymbol{p} , \boldsymbol{p} \rangle = 1
+\]</div>
+<p class="sd-card-text">Similar computations prove the second statement regarding <span class="math notranslate nohighlight">\(\boldsymbol{p} = \displaystyle \frac{1}{\sigma} A \boldsymbol{q}\)</span>.</p>
+</div>
+</details></div>
+<div class="note docutils">
+<p>The formulas relating <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{q}\)</span> above for <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> imply that the multiplicity of the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> for <span class="math notranslate nohighlight">\(AA^T\)</span> is equal to the multiplicity of the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> for <span class="math notranslate nohighlight">\(A^TA\)</span>.</p>
 </div>
 <div class="definition docutils">
 <p>The matrices <span class="math notranslate nohighlight">\(AA^T\)</span> and <span class="math notranslate nohighlight">\(A^TA\)</span> have the same set of positive eigenvalues. Label the eigenvalues in decreasing order <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_r &gt; 0\)</span>. The <strong>singular values</strong> of <span class="math notranslate nohighlight">\(A\)</span> are</p>
@@ -418,7 +458,26 @@ AA^T = PD_1P^T \hspace{5mm} A^TA = QD_2Q^T
 \]</div>
 </div>
 <div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r &gt; 0\)</span> be the singular values of <span class="math notranslate nohighlight">\(A\)</span>. Then there are orthogonal matrices <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> such that</p>
+<p><span class="math notranslate nohighlight">\(N(AA^T) = N(A^T)\)</span> and <span class="math notranslate nohighlight">\(N(A^TA) = N(A)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">If <span class="math notranslate nohighlight">\(\boldsymbol{v} \in N(A^T)\)</span> then <span class="math notranslate nohighlight">\(AA^T \boldsymbol{v} = 0\)</span> and so <span class="math notranslate nohighlight">\(\boldsymbol{v} \in N(AA^T)\)</span> and so <span class="math notranslate nohighlight">\(N(A^T) \subset N(AA^T)\)</span>.</p>
+<p class="sd-card-text">Now let <span class="math notranslate nohighlight">\(\boldsymbol{v} \in N(AA^T)\)</span>. Compute</p>
+<div class="math notranslate nohighlight">
+\[
+\| A^T \boldsymbol{v} \|^2 = \langle A^T \boldsymbol{v} , A^T \boldsymbol{v} \rangle = \langle \boldsymbol{v} , AA^T \boldsymbol{v} \rangle = 0
+\]</div>
+<p class="sd-card-text">Therefore <span class="math notranslate nohighlight">\(A^T \boldsymbol{v} = 0\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v} \in N(A^T)\)</span> and so <span class="math notranslate nohighlight">\(N(AA^T) \subset N(A^T)\)</span>. Finally, we conclude <span class="math notranslate nohighlight">\(N(AA^T) = N(A^T)\)</span>.</p>
+<p class="sd-card-text">Similar computations prove the statement <span class="math notranslate nohighlight">\(N(A^TA) = N(A)\)</span>.</p>
+</div>
+</details></div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r &gt; 0\)</span> be the singular values of <span class="math notranslate nohighlight">\(A\)</span>. There exist orthogonal matrices <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = P \Sigma Q^T
@@ -434,70 +493,62 @@ A = P \Sigma Q^T
 &amp; \boldsymbol{0} &amp; &amp; \boldsymbol{0}
 \end{array} \right]_{m \times n}
 \end{split}\]</div>
-<p>This is called the <strong>singular value decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(\boldsymbol{q}_1,\dots,\boldsymbol{q}_n\)</span> be orthonormal eigenvectors of <span class="math notranslate nohighlight">\(A^TA\)</span> chosen in order such that</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The matrix <span class="math notranslate nohighlight">\(A^TA\)</span> is a <span class="math notranslate nohighlight">\(n \times n\)</span> symmetric matrix and is therefore orthogonally diagonalizable. Let <span class="math notranslate nohighlight">\(\boldsymbol{q}_1,\dots,\boldsymbol{q}_n\)</span> be orthonormal eigenvectors of <span class="math notranslate nohighlight">\(A^TA\)</span> chosen in order such that</p>
 <div class="math notranslate nohighlight">
 \[
 A^TA \boldsymbol{q}_i = \sigma_i^2 \boldsymbol{q}_i \ \ , \ \ i =1,\dots,r
 \hspace{15mm}
 A^TA \boldsymbol{q}_i = \boldsymbol{0} \ \ , \ \ i =r+1,\dots,n
 \]</div>
-<p>Note that in fact <span class="math notranslate nohighlight">\(A\boldsymbol{q}_i = \boldsymbol{0}\)</span> for <span class="math notranslate nohighlight">\(i=r+1,\dots,n\)</span> since</p>
-<div class="math notranslate nohighlight">
-\[
-\| A\boldsymbol{q}_i \|^2 = \boldsymbol{q}_i^T A^T A\boldsymbol{q}_i = 0 \ \ , \ \ i=r+1,\dots,n
-\]</div>
-<p>Let <span class="math notranslate nohighlight">\(Q\)</span> be the orthogonal matrix</p>
+<p class="sd-card-text">Note that <span class="math notranslate nohighlight">\(\boldsymbol{q}_{r+1},\dots,\boldsymbol{q}_r \in N(A)\)</span>. Let <span class="math notranslate nohighlight">\(Q\)</span> be the orthogonal matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Q = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{q}_1 &amp; \cdots &amp; \boldsymbol{q}_n \\ &amp; &amp; \end{bmatrix}
 \end{split}\]</div>
-<p>Now construct the matrix <span class="math notranslate nohighlight">\(P\)</span>. Let</p>
+<p class="sd-card-text">The matrix <span class="math notranslate nohighlight">\(AA^T\)</span> is a <span class="math notranslate nohighlight">\(m \times m\)</span> symmetric matrix and is therefore orthogonally diagonalizable. Let</p>
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{p}_i = \frac{1}{\sigma_i} A \boldsymbol{q}_i \ \ , \ \ i = 1,\dots,r
 \]</div>
-<p>Note that</p>
-<div class="math notranslate nohighlight">
-\[
-AA^T \boldsymbol{p}_i =  AA^T \left( \frac{1}{\sigma_i} A \boldsymbol{q}_i \right)
-= \frac{1}{\sigma_i} A \left( A^TA \boldsymbol{q}_i \right)
-= \sigma_i A \boldsymbol{q}_i
-= \sigma_i^2 \boldsymbol{p}_i
-\]</div>
-<p>therefore each <span class="math notranslate nohighlight">\(\boldsymbol{p}_i\)</span> is an eigenvector for <span class="math notranslate nohighlight">\(AA^T\)</span> with eigenvalue <span class="math notranslate nohighlight">\(\sigma_i^2\)</span>. Note also that</p>
-<div class="math notranslate nohighlight">
-\[
-\| \boldsymbol{p}_i \|^2 = \boldsymbol{p}_i^T \boldsymbol{p}_i
-= \frac{1}{\sigma_i^2}  \boldsymbol{q}_i^T A^T A \boldsymbol{q}_i
-= \boldsymbol{q}_i^T \boldsymbol{q}_i = 1
-\]</div>
-<p>therefore each <span class="math notranslate nohighlight">\(\boldsymbol{p}_i\)</span> is a unit vector. Extend (by Gram-Schmidt algorithm) to an orthonormal basis <span class="math notranslate nohighlight">\(
-\boldsymbol{p}_1,\dots,\boldsymbol{p}_r,\boldsymbol{p}_{r+1},\dots,\boldsymbol{p}_m\)</span> of <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span>. Define the orthogonal matrix</p>
+<p class="sd-card-text">Each <span class="math notranslate nohighlight">\(\boldsymbol{p}_1,\dots,\boldsymbol{p}_r\)</span> is a unit eigenvector for <span class="math notranslate nohighlight">\(AA^T\)</span> with eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span>. Find an orthonormal basis <span class="math notranslate nohighlight">\(\boldsymbol{p}_{r+1},\dots,\boldsymbol{p}_m\)</span> of the nullspace <span class="math notranslate nohighlight">\(N(A^T)\)</span>. Then <span class="math notranslate nohighlight">\(\boldsymbol{p}_1,\dots,\boldsymbol{p}_m\)</span> are orthonormal eigenvectors for <span class="math notranslate nohighlight">\(AA^T\)</span>. Define the orthogonal matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 P = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_m \\ &amp; &amp; \end{bmatrix}
 \end{split}\]</div>
-<p>Compute</p>
+<p class="sd-card-text">Compute</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-AQ = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ A \boldsymbol{q}_1 &amp; \cdots &amp; A\boldsymbol{q}_r &amp; A\boldsymbol{q}_{r+1} &amp; \cdots &amp; A\boldsymbol{q}_n \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix} = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \sigma_1 \boldsymbol{p}_1 &amp; \cdots &amp; \sigma_r \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\begin{align*}
+AQ &amp;= \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ A \boldsymbol{q}_1 &amp; \cdots &amp; A\boldsymbol{q}_r &amp; A\boldsymbol{q}_{r+1} &amp; \cdots &amp; A\boldsymbol{q}_n \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix} \\
+&amp;= \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \sigma_1 \boldsymbol{p}_1 &amp; \cdots &amp; \sigma_r \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{align*}
 \end{split}\]</div>
-<p>Finally, compute</p>
+<p class="sd-card-text">Finally, compute</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-P \Sigma = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_r &amp; \boldsymbol{p}_{r+1} &amp; \cdots &amp; \boldsymbol{p}_n \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix} \left[
+\begin{align*}
+P \Sigma &amp;= \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_r &amp; \boldsymbol{p}_{r+1} &amp; \cdots &amp; \boldsymbol{p}_n \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix} \left[
 \begin{array}{ccc|c}
 \sigma_1 &amp; &amp; &amp; \\
 &amp; \ddots &amp; &amp; \boldsymbol{0} \\
 &amp; &amp; \sigma_r &amp; \\ \hline
 &amp; \boldsymbol{0} &amp; &amp; \boldsymbol{0}
-\end{array} \right]
-=
-\begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \sigma_1 \boldsymbol{p}_1 &amp; \cdots &amp; \sigma_r \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{array} \right] \\
+&amp;= \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \sigma_1 \boldsymbol{p}_1 &amp; \cdots &amp; \sigma_r \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{align*}
 \end{split}\]</div>
-<p>Therefore <span class="math notranslate nohighlight">\(AQ = P \Sigma\)</span> and so <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>.</p>
+<p class="sd-card-text">Therefore <span class="math notranslate nohighlight">\(AQ = P \Sigma\)</span> and so <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>.</p>
+</div>
+</details></div>
+<div class="definition docutils">
+<p>The equation <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> is called the <strong>singular value decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span>, the diagonal entries of <span class="math notranslate nohighlight">\(\Sigma\)</span> are the <strong>singular values</strong>, the columns of <span class="math notranslate nohighlight">\(P\)</span> are called the <strong>left singular vectors</strong> and the columns of <span class="math notranslate nohighlight">\(Q\)</span> are called the <strong>right singular vectors</strong>.</p>
 </div>
 <div class="note docutils">
 <p>In the construction of the SVD, we may chose to first construct either <span class="math notranslate nohighlight">\(P\)</span> or <span class="math notranslate nohighlight">\(Q\)</span>. The connection between the columns for <span class="math notranslate nohighlight">\(i = 1,\dots,r\)</span> are given by the equations:</p>
@@ -556,17 +607,57 @@ A = P \Sigma Q^T
 \left[ \begin{array}{rr} \sqrt{3} &amp; 0 \\ 0 &amp; \sqrt{2} \\ 0 &amp; 0 \end{array} \right]  \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}^T
 \end{split}\]</div>
 </div>
+</section>
+<section id="corollaries-of-svd">
+<h2>Corollaries of SVD<a class="headerlink" href="#corollaries-of-svd" title="Permalink to this heading">#</a></h2>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>.</p>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N(A) = \mathrm{span} \{ \boldsymbol{q}_{r+1},\dots,\boldsymbol{q}_n \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R(A) = \mathrm{span} \{ \boldsymbol{p}_1,\dots,\boldsymbol{p}_r \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(N(A^T) = \mathrm{span} \{ \boldsymbol{p}_{r+1},\dots,\boldsymbol{p}_m \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R(A^T) = \mathrm{span} \{ \boldsymbol{q}_1,\dots,\boldsymbol{q}_r \}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathrm{rank}(A) = r\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A \| = \sigma_1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\| A^{-1} \| = 1/\sigma_r\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{cond}(A) = \sigma_1 / \sigma_r\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{null}(A) = \mathrm{span} \{ \boldsymbol{q}_{r+1},\dots,\boldsymbol{q}_n \}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{range}(A) = \mathrm{span} \{ \boldsymbol{p}_1,\dots,\boldsymbol{p}_r \}\)</span></p></li>
 </ul>
 </div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\sigma_1\)</span> be the largest singular value of <span class="math notranslate nohighlight">\(A\)</span>. Then <span class="math notranslate nohighlight">\(\| A \| = \sigma_1\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(P\)</span> is an orthogonal matrix <span class="math notranslate nohighlight">\(\| P \Sigma Q^T \boldsymbol{x} \| = \| \Sigma Q^T \boldsymbol{x} \|\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>. Compute from the definition</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \| = \max_{\boldsymbol{x} \not= 0} \| A \boldsymbol{x} \| = \max_{\boldsymbol{x} \not= 0} \| P \Sigma Q^T \boldsymbol{x} \| = \max_{\boldsymbol{x} \not= 0} \| \Sigma Q^T \boldsymbol{x} \|
+\]</div>
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\boldsymbol{y} = Q^T \boldsymbol{x}\)</span> and write the equation</p>
+<div class="math notranslate nohighlight">
+\[
+\| A \| = \max_{\boldsymbol{y} \not= 0} \| \Sigma \boldsymbol{y} \| = \| \Sigma \|
+\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal matrix we know that <span class="math notranslate nohighlight">\(\| \Sigma \|\)</span> is equal to the absolute value of the maximum of the diagonal entries and so <span class="math notranslate nohighlight">\(\| A \| = \sigma_1\)</span>.</p>
+</div>
+</details></div>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(n \times n\)</span> invertible matrix. Let <span class="math notranslate nohighlight">\(\sigma_1\)</span> be the largest singular value of <span class="math notranslate nohighlight">\(A\)</span> and let <span class="math notranslate nohighlight">\(\sigma_n\)</span> be the smallest. Then <span class="math notranslate nohighlight">\(\| A^{-1} \| = 1/\sigma_n\)</span> and <span class="math notranslate nohighlight">\(\mathrm{cond}(A) = \frac{\sigma_1}{\sigma_n}\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\sigma_1 \geq \cdots \geq \sigma_n\)</span> be the singular values of <span class="math notranslate nohighlight">\(A\)</span>. The singular values of <span class="math notranslate nohighlight">\(A^{-1}\)</span> in decreasing order are <span class="math notranslate nohighlight">\(1/\sigma_n \geq \cdots \geq 1/\sigma_1\)</span> therefore <span class="math notranslate nohighlight">\(\| A^{-1} \| = 1/\sigma_n\)</span> and finally</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{cond}(A) = \| A \| \| A^{-1} \| = \frac{\sigma_1}{\sigma_n}
+\]</div>
+</div>
+</details></div>
 </section>
 <section id="principal-component-analysis">
 <h2>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this heading">#</a></h2>
@@ -594,18 +685,35 @@ X_k = X - \sum_{j=1}^{k-1} X \boldsymbol{w}_j \boldsymbol{w}_j^T
 </div>
 <div class="theorem docutils">
 <p>The weight vectors <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 , \dots , \boldsymbol{w}_p\)</span> are the right singular vectors of the matrix <span class="math notranslate nohighlight">\(X\)</span>. In other words, let <span class="math notranslate nohighlight">\(X = P \Sigma Q^T\)</span> be a singular value decomposition of <span class="math notranslate nohighlight">\(X\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{q}_1, \dots, \boldsymbol{q}_p\)</span> be the columns of <span class="math notranslate nohighlight">\(Q\)</span> corresponding to singular values <span class="math notranslate nohighlight">\(\sigma_1 &gt; \cdots &gt; \sigma_p &gt; 0\)</span>. Then <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \boldsymbol{q}_1 , \dots , \boldsymbol{w}_p = \boldsymbol{q}_p\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(X = P \Sigma Q^T\)</span> be a singular value decomposition of <span class="math notranslate nohighlight">\(X\)</span> and note</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(X = P \Sigma Q^T\)</span> be a singular value decomposition of <span class="math notranslate nohighlight">\(X\)</span>. We know that <span class="math notranslate nohighlight">\(\| X \| = \sigma_1\)</span> where <span class="math notranslate nohighlight">\(\sigma_1\)</span> is the largest singular value of <span class="math notranslate nohighlight">\(X\)</span> and therefore the first weight vector will satisfy <span class="math notranslate nohighlight">\(\| X \boldsymbol{w}_1 \| = \sigma_1\)</span>. Note that</p>
 <div class="math notranslate nohighlight">
 \[
-\| X \boldsymbol{w} \|^2 = \| P \Sigma Q^T \boldsymbol{w} \|^2 = \| \Sigma Q^T \boldsymbol{w} \|^2
+\| X \boldsymbol{w} \| = \| P \Sigma Q^T \boldsymbol{w} \| = \| \Sigma Q^T \boldsymbol{w} \|
 \]</div>
-<p>since <span class="math notranslate nohighlight">\(P\)</span> is orthogonal. Since <span class="math notranslate nohighlight">\(\Sigma\)</span> is diagonal with diagonal entires <span class="math notranslate nohighlight">\(\sigma_1 &gt; \cdots &gt; \sigma_p\)</span>, the maximum value of <span class="math notranslate nohighlight">\(\| X \boldsymbol{w} \|^2\)</span> occurs when <span class="math notranslate nohighlight">\(Q^T \boldsymbol{w} = \begin{bmatrix} 1 &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix}^T\)</span> therefore <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \boldsymbol{q}_1\)</span>. For general <span class="math notranslate nohighlight">\(k\)</span>, note that the singular value decomposition <span class="math notranslate nohighlight">\(X_k = P_k \Sigma_k Q^T_k\)</span> is obtained from <span class="math notranslate nohighlight">\(X\)</span> by removing the singular values <span class="math notranslate nohighlight">\(\sigma_1,\dots,\sigma_{k-1}\)</span>. Therefore the largest singular value of <span class="math notranslate nohighlight">\(X_k\)</span> is <span class="math notranslate nohighlight">\(\sigma_k\)</span> with corresponding right singular vector <span class="math notranslate nohighlight">\(\boldsymbol{q}_k\)</span> and therefore <span class="math notranslate nohighlight">\(\boldsymbol{w}_k = \boldsymbol{q}_k\)</span>.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\Sigma\)</span> is diagonal with diagonal entires <span class="math notranslate nohighlight">\(\sigma_1 \geq \cdots \geq \sigma_p\)</span>, the maximum value of <span class="math notranslate nohighlight">\(\| X \boldsymbol{w} \|\)</span> occurs when</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q^T \boldsymbol{w} = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \boldsymbol{q}_1\)</span>. For general <span class="math notranslate nohighlight">\(k\)</span>, note that the singular value decomposition <span class="math notranslate nohighlight">\(X_k = P_k \Sigma_k Q^T_k\)</span> is obtained from <span class="math notranslate nohighlight">\(X\)</span> by removing the singular values <span class="math notranslate nohighlight">\(\sigma_1,\dots,\sigma_{k-1}\)</span>. Therefore the largest singular value of <span class="math notranslate nohighlight">\(X_k\)</span> is <span class="math notranslate nohighlight">\(\sigma_k\)</span> with corresponding right singular vector <span class="math notranslate nohighlight">\(\boldsymbol{q}_k\)</span> and therefore <span class="math notranslate nohighlight">\(\boldsymbol{w}_k = \boldsymbol{q}_k\)</span>.</p>
 </div>
+</details></div>
 <div class="example docutils">
 <p>Find the first weight vector for the data given in the image below.</p>
 <a class="reference internal image-reference" href="../_images/03_02_02.png"><img alt="../_images/03_02_02.png" class="align-center" src="../_images/03_02_02.png" style="width: 500px;" /></a>
-<p>We expect <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix}^T\)</span> since that direction clearly captures the most information. Form the data matrix</p>
+<p>We expect</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}
+\end{split}\]</div>
+<p>since that direction clearly captures the most information. Form the data matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 X^T = \left[ \begin{array}{rrrrrrr} -2 &amp; -1 &amp; -1 &amp; \phantom{+}0 &amp; 1 &amp; \phantom{+}1 &amp; 2 \\ -2 &amp; -1 &amp; 1 &amp; 0 &amp; -1 &amp; 1 &amp; 2 \end{array} \right]
@@ -639,29 +747,19 @@ X^T X = \begin{bmatrix} 12 &amp; 8 \\ 8 &amp; 12 \end{bmatrix}
 <p>We can see that the 3s are to the right in the horizontal direction since these points most similar to <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span>, and the 0s are at the top in the vertical direction since these points most similar to <span class="math notranslate nohighlight">\(\boldsymbol{w}_2\)</span>. We can make other interesting observations such as the 4s are opposite to the 3s and orthogonal to 0s, and 7s and 1s are opposite to 0s and orthogonal to 3s.</p>
 </div>
 </section>
-<section id="pseudoinverse-least-squares-and-the-svd-expansion">
-<h2>Pseudoinverse, Least Squares and the SVD Expansion<a class="headerlink" href="#pseudoinverse-least-squares-and-the-svd-expansion" title="Permalink to this heading">#</a></h2>
-<div class="bigidea docutils">
-<p>The pseudoinverse <span class="math notranslate nohighlight">\(A^+\)</span> solves the least squares problem <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> by <span class="math notranslate nohighlight">\(\boldsymbol{x} = A^+ \boldsymbol{b}\)</span>.</p>
-</div>
+<section id="pseudoinverse-and-least-squares">
+<h2>Pseudoinverse and Least Squares<a class="headerlink" href="#pseudoinverse-and-least-squares" title="Permalink to this heading">#</a></h2>
 <div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix of rank <span class="math notranslate nohighlight">\(r\)</span> and let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> be a SVD of <span class="math notranslate nohighlight">\(A\)</span>. The <strong>pseudoinverse</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-A^+ = Q \Sigma^+ P^T
-\]</div>
-<p>where</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix such that <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = r\)</span> and let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. The <strong>pseudoinverse</strong> of <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(A^+ = Q \Sigma^+ P^T\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \Sigma^+ =
-\renewcommand{\arraystretch}{1.25}
 \left[ \begin{array}{ccc|c}
 \sigma_1^{-1} &amp; &amp; &amp; \\
 &amp; \ddots &amp; &amp; \boldsymbol{0} \\
 &amp; &amp; \sigma_r^{-1} &amp; \\ \hline
 &amp; \boldsymbol{0} &amp; &amp; \boldsymbol{0}
 \end{array} \right]_{n \times m}
-\renewcommand{\arraystretch}{1}
 \end{split}\]</div>
 </div>
 <div class="note docutils">
@@ -669,62 +767,161 @@ A^+ = Q \Sigma^+ P^T
 </div>
 <div class="theorem docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = n\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{b} \in \mathbb{R}^m\)</span>. The least squares approximation of the system <span class="math notranslate nohighlight">\(A \boldsymbol{x} \cong \boldsymbol{b}\)</span> is given by <span class="math notranslate nohighlight">\(\boldsymbol{x} = A^+ \boldsymbol{b}\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof</em>. Let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> be a SVD of <span class="math notranslate nohighlight">\(A\)</span>. Let <span class="math notranslate nohighlight">\(P^T \boldsymbol{b} = \boldsymbol{c}\)</span> and write</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(P^T \boldsymbol{b} = \boldsymbol{c}\)</span> and write</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{c} = \begin{bmatrix}
 c_1 \\ \vdots \\ c_m \end{bmatrix}
 \in \mathbb{R}^m
 \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(P\)</span> is an orthogonal matrix we have</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(P\)</span> is an orthogonal matrix we have</p>
 <div class="math notranslate nohighlight">
 \[
-\| A \boldsymbol{x} - \boldsymbol{b} \| = \| P \Sigma Q^T \boldsymbol{x} - P \boldsymbol{c} \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|
+\| A \boldsymbol{x} - \boldsymbol{b} \| = \| P (\Sigma Q^T \boldsymbol{x} - P^T \boldsymbol{b} ) \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|
 \]</div>
-<p>The matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> is of the form</p>
+<p class="sd-card-text">The matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> is of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \Sigma =
-\renewcommand{\arraystretch}{1.25}
 \left[ \begin{array}{ccc}
 \sigma_1 &amp; &amp; \\
 &amp; \ddots &amp; \\
 &amp; &amp; \sigma_n \\ \hline
 \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0}
 \end{array} \right]_{m \times n}
-\renewcommand{\arraystretch}{1}
 \end{split}\]</div>
-<p>and so only the first <span class="math notranslate nohighlight">\(n\)</span> entries of <span class="math notranslate nohighlight">\(\Sigma \boldsymbol{v}\)</span> are nonzero for any vector <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^n\)</span>. Therefore the minimum value <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|\)</span> occurs when</p>
+<p class="sd-card-text">and so only the first <span class="math notranslate nohighlight">\(n\)</span> entries of <span class="math notranslate nohighlight">\(\Sigma \boldsymbol{v}\)</span> are nonzero for any vector <span class="math notranslate nohighlight">\(\boldsymbol{v} \in \mathbb{R}^n\)</span>. Therefore the minimum value <span class="math notranslate nohighlight">\(\| A \boldsymbol{x} - \boldsymbol{b} \| = \| \Sigma Q^T \boldsymbol{x} - \boldsymbol{c} \|\)</span> occurs when</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \Sigma Q^T \boldsymbol{x}
 = \begin{bmatrix}
 c_1 \\ \vdots \\ c_n \\ \boldsymbol{0} \end{bmatrix}
 \end{split}\]</div>
-<p>and so <span class="math notranslate nohighlight">\(\boldsymbol{x} = Q \Sigma^+ \boldsymbol{c}\)</span>. Altogether, we have</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{x} = Q \Sigma^+ P^T \boldsymbol{b} = A^+ \boldsymbol{b}
-\]</div>
+<p class="sd-card-text">and so <span class="math notranslate nohighlight">\(\boldsymbol{x} = Q \Sigma^+ \boldsymbol{c}\)</span>. Altogether, we have <span class="math notranslate nohighlight">\(\boldsymbol{x} = Q \Sigma^+ P^T \boldsymbol{b} = A^+ \boldsymbol{b}\)</span>.</p>
 </div>
-<div class="definition docutils">
-<p>Let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. The <strong>SVD expansion</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+</details></div>
+<div class="theorem docutils">
+<p><span class="math notranslate nohighlight">\(AA^+\)</span> is the projection matrix onto <span class="math notranslate nohighlight">\(R(A)\)</span> and <span class="math notranslate nohighlight">\(A^+A\)</span> is the projection onto <span class="math notranslate nohighlight">\(R(A^T)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Compute <span class="math notranslate nohighlight">\(AA^+ = P \Sigma Q^T Q \Sigma^+ P^T = P \Sigma \Sigma^+ P^T\)</span> and note</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Sigma \Sigma^+ = \left[ \begin{array}{c|c} I_r &amp; \boldsymbol{0} \\ \hline \boldsymbol{0} &amp; \boldsymbol{0} \end{array} \right]_{m \times m}
+\end{split}\]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(I_r\)</span> is the identity of matrix of size <span class="math notranslate nohighlight">\(r\)</span>. Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_r = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_r \\ &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(\boldsymbol{p}_1,\dots,\boldsymbol{p}_r\)</span> are the first <span class="math notranslate nohighlight">\(r\)</span> columns of <span class="math notranslate nohighlight">\(P\)</span>. By definition, the projection matrix onto <span class="math notranslate nohighlight">\(R(A)\)</span> is <span class="math notranslate nohighlight">\(P_r P_r^T\)</span> and we want to show that <span class="math notranslate nohighlight">\(P \Sigma \Sigma^+ P^T = P_r P_r^T\)</span>. Equivalently, we can show that <span class="math notranslate nohighlight">\(P \Sigma \Sigma^+ = P_r P_r^T P\)</span>. Multiplying everything out shows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P \Sigma \Sigma^+ = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">and also</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_r P_r^T P = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{p}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(AA^+ = P_rP_r^T\)</span> is the projection matrix onto <span class="math notranslate nohighlight">\(R(A)\)</span>. Similar computations show that <span class="math notranslate nohighlight">\(A^+A\)</span> is the projection onto <span class="math notranslate nohighlight">\(R(A^T)\)</span>.</p>
+</div>
+</details></div>
+<div class="theorem docutils">
+<p><span class="math notranslate nohighlight">\(AA^+A = A\)</span> and <span class="math notranslate nohighlight">\(A^+AA^+=A^+\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+AA^+A &amp;= P \Sigma Q^T Q \Sigma^+ P^T P \Sigma Q^T \\
+&amp;= P \Sigma \Sigma^+ \Sigma Q^T \\
+&amp;= P \Sigma \left[ \begin{array}{c|c} I_r &amp; \boldsymbol{0} \\ \hline \boldsymbol{0} &amp; \boldsymbol{0} \end{array} \right] Q^T \\
+&amp;= P \Sigma Q^T = A
+\end{align*}
+\end{split}\]</div>
+<p class="sd-card-text">Similar computations show <span class="math notranslate nohighlight">\(A^+AA^+=A^+\)</span>.</p>
+</div>
+</details></div>
+</section>
+<section id="svd-expansion">
+<h2>SVD Expansion<a class="headerlink" href="#svd-expansion" title="Permalink to this heading">#</a></h2>
+<div class="theorem docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix such that <span class="math notranslate nohighlight">\(\mathrm{rank}(A) = r\)</span> and <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span> be the singular value decomposition. Then</p>
 <div class="math notranslate nohighlight">
 \[
 A = \sum_{i=1}^r \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T = \sigma_1 \boldsymbol{p}_1 \boldsymbol{q}_1^T + \cdots + \sigma_r \boldsymbol{p}_r \boldsymbol{q}_r^T
 \]</div>
-<p>Note that each product <span class="math notranslate nohighlight">\(\boldsymbol{p}_i \boldsymbol{q}_i^T\)</span> is a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix of rank 1.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and let <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(n \times \ell\)</span> matrix with SVD expansions</p>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{p}_1,\dots,\boldsymbol{p}_r\)</span> are the first <span class="math notranslate nohighlight">\(r\)</span> columns of <span class="math notranslate nohighlight">\(P\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{q}_1,\dots,\boldsymbol{q}_r\)</span> are the first <span class="math notranslate nohighlight">\(r\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(B = \sum_{i=1}^r \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T\)</span> and we will show that <span class="math notranslate nohighlight">\(AQ = BQ\)</span> and therefore <span class="math notranslate nohighlight">\(A=B\)</span>. By the construction of the SVD we know that</p>
 <div class="math notranslate nohighlight">
 \[
-A = \sum_{i=1}^r \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
-\hspace{5mm} \text{and} \hspace{5mm}
-B = \sum_{j=1}^s \mu_j \boldsymbol{u}_j \boldsymbol{v}_j^T
+A \boldsymbol{q}_k = \sigma_k \boldsymbol{p}_k \ , \ \ k=1,\dots,r
 \]</div>
-<p>If <span class="math notranslate nohighlight">\(\{ \boldsymbol{q}_1,\dots,\boldsymbol{q}_r \}\)</span> and <span class="math notranslate nohighlight">\(\{ \boldsymbol{u}_1,\dots,\boldsymbol{u}_s \}\)</span> are orthogonal sets of vectors, then <span class="math notranslate nohighlight">\(AB = 0\)</span>.</p>
+<p class="sd-card-text">and</p>
+<div class="math notranslate nohighlight">
+\[
+A \boldsymbol{q}_k = 0 \boldsymbol{p}_k \ , \ \ k=r+1,\dots,n
+\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+AQ &amp;= A \begin{bmatrix} &amp; &amp; \\ \boldsymbol{q}_1 &amp; \cdots &amp; \boldsymbol{q}_n \\ &amp; &amp; \end{bmatrix}
+&amp;= \begin{bmatrix} &amp; &amp; \\ A\boldsymbol{q}_1 &amp; \cdots &amp; A\boldsymbol{q}_n \\ &amp; &amp; \end{bmatrix}
+&amp;= \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{q}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{align*}
+\end{split}\]</div>
+<p class="sd-card-text">The vectors <span class="math notranslate nohighlight">\(\boldsymbol{q}_1,\dots,\boldsymbol{q}_n\)</span> are orthonormal therefore</p>
+<div class="math notranslate nohighlight">
+\[
+B \boldsymbol{q}_k =  \sum_{i=1}^r \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T \boldsymbol{q}_k = \sigma_k \boldsymbol{p}_k \ , \ \ k=1,\dots,r
+\]</div>
+<p class="sd-card-text">and</p>
+<div class="math notranslate nohighlight">
+\[
+B \boldsymbol{q}_k = 0 \boldsymbol{p}_k \ , \ \ k=r+1,\dots,n
+\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+BQ = \begin{bmatrix} &amp; &amp; &amp; &amp; &amp; \\ \boldsymbol{p}_1 &amp; \cdots &amp; \boldsymbol{q}_r &amp; \boldsymbol{0} &amp; \cdots &amp; \boldsymbol{0} \\ &amp; &amp; &amp; &amp; &amp; \end{bmatrix}
+\end{split}\]</div>
+<p class="sd-card-text">Finally, <span class="math notranslate nohighlight">\(AQ=BQ\)</span> therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
+</div>
+</details></div>
+<div class="definition docutils">
+<p>The <strong>SVD expansion</strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+A = \sum_{i=1}^r \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T = \sigma_1 \boldsymbol{p}_1 \boldsymbol{q}_1^T + \cdots + \sigma_r \boldsymbol{p}_r \boldsymbol{q}_r^T
+\]</div>
+<p>Note that each outer product <span class="math notranslate nohighlight">\(\boldsymbol{p}_i \boldsymbol{q}_i^T\)</span> is a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix of rank 1.</p>
 </div>
 <div class="definition docutils">
 <p>Let <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. The <strong>truncated SVD expansion of rank <span class="math notranslate nohighlight">\(k\)</span></strong> of <span class="math notranslate nohighlight">\(A\)</span> is</p>
@@ -759,38 +956,140 @@ A_k^+ = \sum_{i=1}^k \frac{1}{\sigma_i} \boldsymbol{q}_i \boldsymbol{p}_i^T
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<p><strong>Exercise 1.</strong> Find the singular value decomposition of the matrix</p>
+<div class="exercise docutils">
+<p>Find the singular value decomposition of the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A = \left[ \begin{array}{rrr} 1 &amp; \ \, 2 &amp; -1 \\ 2 &amp; 1 &amp; 4 \end{array} \right]
 \end{split}\]</div>
-<p><strong>Exercise 2.</strong> Find the singular value decomposition of the matrix</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ -1 &amp; 2 &amp; -1 \\ 1 &amp; 0 &amp; -1 \end{array} \right]
+P = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\hspace{10mm}
+\Sigma = \begin{bmatrix} \sqrt{21} &amp; 0 &amp; 0 \\ 0 &amp; \sqrt{6} &amp; 0 \end{bmatrix}
 \end{split}\]</div>
-<p><strong>Exercise 3.</strong> Determine whether the statement is <strong>True</strong> or <strong>False</strong>. (Assume all data matrices are normalized.)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q = \left[ \begin{array}{rrr} 2/\sqrt{21} &amp; 1/\sqrt{6} &amp; -3/\sqrt{14} \\ 1/\sqrt{21} &amp; 2/\sqrt{6} &amp; 2/\sqrt{14} \\ 4/\sqrt{21} &amp; -1/\sqrt{6} &amp; 1/\sqrt{14} \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Find the singular value decomposition of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \left[ \begin{array}{rrr} 1 &amp; \phantom{+}1 &amp; 1 \\ -1 &amp; 2 &amp; -1 \\ 1 &amp; 0 &amp; -1 \end{array} \right]
+\end{split}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \left[ \begin{array}{rrr} 0 &amp; \phantom{+}1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 \end{array} \right]
+\hspace{10mm}
+\Sigma = \begin{bmatrix} \sqrt{6} &amp; 0 &amp; 0 \\ 0 &amp; \sqrt{3} &amp; 0 \\ 0 &amp; 0 &amp; \sqrt{2} \end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q = \left[ \begin{array}{rrr} 1 &amp; \phantom{+}1 &amp; 1 \\ -2 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; -1 \end{array} \right]
+\end{split}\]</div>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times p\)</span> (normalized) data matrix, let <span class="math notranslate nohighlight">\(\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p\)</span> be two different rows of <span class="math notranslate nohighlight">\(X\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span> be the first weight vector of <span class="math notranslate nohighlight">\(X\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times p\)</span> data matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p\)</span> be two different rows of <span class="math notranslate nohighlight">\(X\)</span> such that <span class="math notranslate nohighlight">\(\| \boldsymbol{x}_i \| &lt; \| \boldsymbol{x}_j \|\)</span>. If <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span> is the first weight vector of <span class="math notranslate nohighlight">\(X\)</span>, then <span class="math notranslate nohighlight">\(| \langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle | &lt; | \langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle |\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times p\)</span> data matrix and let <span class="math notranslate nohighlight">\(\boldsymbol{x}_i , \boldsymbol{x}_j \in \mathbb{R}^p\)</span> be two different rows of <span class="math notranslate nohighlight">\(X\)</span> such that <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0\)</span>. If <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span> is the first weight vector of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle = 0\)</span> then <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle = 0\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times 2\)</span> data matrix and let <span class="math notranslate nohighlight">\(Y\)</span> be the matrix with the same columns as <span class="math notranslate nohighlight">\(X\)</span> but switched. (In other words, the first column of <span class="math notranslate nohighlight">\(Y\)</span> is the same as the second column of <span class="math notranslate nohighlight">\(X\)</span>, and the second column of <span class="math notranslate nohighlight">\(Y\)</span> is the first column of <span class="math notranslate nohighlight">\(X\)</span>.) If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> represent the same set of data points, then all the singular values of <span class="math notranslate nohighlight">\(X\)</span> equal.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times 2\)</span> data matrix and let <span class="math notranslate nohighlight">\(Y\)</span> be the matrix with the same columns as <span class="math notranslate nohighlight">\(X\)</span> but switched. (In other words, the first column of <span class="math notranslate nohighlight">\(Y\)</span> is the same as the second column of <span class="math notranslate nohighlight">\(X\)</span>, and the second column of <span class="math notranslate nohighlight">\(Y\)</span> is the first column of <span class="math notranslate nohighlight">\(X\)</span>.) If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> represent the same set of data points, then <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix}^T\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\| \boldsymbol{x}_i \| &lt; \| \boldsymbol{x}_j \|\)</span> then <span class="math notranslate nohighlight">\(| \langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle | &lt; | \langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle |\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{x}_j \rangle = 0\)</span> and <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_i , \boldsymbol{w}_1 \rangle = 0\)</span> then <span class="math notranslate nohighlight">\(\langle \boldsymbol{x}_j , \boldsymbol{w}_1 \rangle = 0\)</span>.</p></li>
 </ul>
-<p><strong>Exercise 4.</strong> Find the weight vectors for the data matrix <span class="math notranslate nohighlight">\(X\)</span> representing the points:</p>
-<a class="reference internal image-reference" href="../_images/03_02_06.png"><img alt="../_images/03_02_06.png" class="align-center" src="../_images/03_02_06.png" style="width: 500px;" /></a>
-<p><strong>Exercise 5.</strong> Suppose <span class="math notranslate nohighlight">\(X\)</span> is a <span class="math notranslate nohighlight">\(100 \times 4\)</span> data matrix such that</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">False</p></li>
+<li><p class="sd-card-text">False</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <span class="math notranslate nohighlight">\(n \times 2\)</span> data matrix and let <span class="math notranslate nohighlight">\(Y\)</span> be the matrix with the same columns as <span class="math notranslate nohighlight">\(X\)</span> but switched. In other words, the first column of <span class="math notranslate nohighlight">\(Y\)</span> is the same as the second column of <span class="math notranslate nohighlight">\(X\)</span>, and the second column of <span class="math notranslate nohighlight">\(Y\)</span> is the first column of <span class="math notranslate nohighlight">\(X\)</span>. Determine whether the statement is <strong>True</strong> or <strong>False</strong>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> represent the same set of data points, then all the singular values of <span class="math notranslate nohighlight">\(X\)</span> equal.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> represent the same set of data points, then <span class="math notranslate nohighlight">\(\boldsymbol{w}_1 = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix}^T\)</span>.</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">True</p></li>
+<li><p class="sd-card-text">False</p></li>
+</ul>
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Find the weight vectors for the data matrix <span class="math notranslate nohighlight">\(X\)</span> representing the points:</p>
+<a class="reference internal image-reference" href="../_images/03_02_06.png"><img alt="../_images/03_02_06.png" class="align-center" src="../_images/03_02_06.png" style="width: 400px;" /></a>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose <span class="math notranslate nohighlight">\(X\)</span> is a <span class="math notranslate nohighlight">\(100 \times 4\)</span> data matrix such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 X^T X = \begin{bmatrix} 2 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1.5 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 2 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 2 \end{bmatrix}
 \end{split}\]</div>
 <p>Find all the weight vectors of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p><strong>Exercise 6.</strong> Suppose we want to solve a system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>. A small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> produces a change in the solution</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Suppose we want to solve a system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>. A small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> produces a change in the solution</p>
 <div class="math notranslate nohighlight">
 \[
 A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{b}
 \]</div>
 <p>Describe the unit vector <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> that will produce the largest change <span class="math notranslate nohighlight">\(\| \Delta \boldsymbol{x} \|\)</span>.</p>
-<p><strong>Exercise 7.</strong> Find the rank 2 pseudo inverse</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Find the rank 2 pseudo inverse</p>
 <div class="math notranslate nohighlight">
 \[
 A_2^+ = \frac{1}{\sigma_1} \boldsymbol{q}_1 \boldsymbol{p}_1^T + \frac{1}{\sigma_2} \boldsymbol{q}_2 \boldsymbol{p}_2^T
@@ -801,12 +1100,31 @@ A_2^+ = \frac{1}{\sigma_1} \boldsymbol{q}_1 \boldsymbol{p}_1^T + \frac{1}{\sigma
 A = \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; -2 \\ 1 &amp; -1 &amp; 1 \end{array} \right]
 \end{split}\]</div>
 <p>(Note: the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.)</p>
-<p><strong>Exercise 8.</strong> Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with singular value decomposition <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. Let <span class="math notranslate nohighlight">\(k &lt; \min\{m,n\}\)</span> and let</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with singular value decomposition <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. Let <span class="math notranslate nohighlight">\(k &lt; \min\{m,n\}\)</span> and let</p>
 <div class="math notranslate nohighlight">
 \[
 A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
 \]</div>
 <p>Describe the singular value decomposition of <span class="math notranslate nohighlight">\(A - A_k\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></div>
 </section>
 </section>
 
@@ -878,8 +1196,10 @@ A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-construction">SVD Construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corollaries-of-svd">Corollaries of SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse-least-squares-and-the-svd-expansion">Pseudoinverse, Least Squares and the SVD Expansion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoinverse-and-least-squares">Pseudoinverse and Least Squares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-expansion">SVD Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
