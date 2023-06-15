@@ -646,7 +646,7 @@ P = \left[ \begin{array}{rrr} 0 & \phantom{+}1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & -1 \e
 $$
 
 $$
-Q = \left[ \begin{array}{rrr} 1 & \phantom{+}1 & 1 \\ -2 & 1 & 0 \\ 1 & 1 & -1 \end{array} \right]
+Q = \left[ \begin{array}{rrr} -1/\sqrt{6} & \phantom{+}1/\sqrt{3} & -1/\sqrt{2} \\ 2/\sqrt{6} & 1/\sqrt{3} & 0\phantom{--} \\ -1/\sqrt{6} & 1/\sqrt{3} & 1/\sqrt{2} \end{array} \right]
 $$
 ```
 ````
@@ -683,7 +683,13 @@ Find the weight vectors for the data matrix $X$ representing the points:
 ```
 
 ```{dropdown} Solution
+$$
+\boldsymbol{w}_1 = \frac{1}{2 \sqrt{20 - 2 \sqrt{10}}} \begin{bmatrix} 6 \\ 2(\sqrt{10} - 1) \end{bmatrix}
+$$
 
+$$
+\boldsymbol{w}_2 = \frac{1}{2 \sqrt{20 - 2 \sqrt{10}}} \begin{bmatrix} 2(\sqrt{10} - 1) \\ -6 \end{bmatrix}
+$$
 ```
 ````
 
@@ -695,10 +701,6 @@ X^T X = \begin{bmatrix} 2 & 0 & 0 & 0 \\ 0 & 1.5 & 0 & 0 \\ 0 & 0 & 2 & 1 \\ 0 &
 $$
 
 Find all the weight vectors of $X$.
-
-```{dropdown} Solution
-
-```
 ````
 
 ````{div} exercise
@@ -709,10 +711,6 @@ A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{
 $$
 
 Describe the unit vector $\Delta \boldsymbol{b}$ that will produce the largest change $\| \Delta \boldsymbol{x} \|$.
-
-```{dropdown} Solution
-
-```
 ````
 
 ````{div} exercise
@@ -729,10 +727,6 @@ A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 0 & -2 \\ 1 & -1 & 1 \end{array} 
 $$
 
 (Note: the columns of $A$ are orthogonal.)
-
-```{dropdown} Solution
-
-```
 ````
 
 ````{div} exercise
@@ -743,8 +737,4 @@ A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
 $$
 
 Describe the singular value decomposition of $A - A_k$.
-
-```{dropdown} Solution
-
-```
 ````

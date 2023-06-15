@@ -103,7 +103,7 @@ $$
 c_A(x) = \pm \prod_{i=1}^k (x - \lambda_i)^{m_i}
 $$
 
-where $\lambda_1, \dots, \lambda_k$ are the *distinct* eigenvalues of $A$. The **algebraic multiplicity** of $\lambda_i$ is the power $m_i$ in the factored charactersitic polynomial. In other words, the algebraic multiplicity of $\lambda_i$ is the number of times $\lambda_i$ occurs as a root of the characteristic polynomial $c_A(x)$.
+where $\lambda_1, \dots, \lambda_k$ are the *distinct* eigenvalues of $A$. The **algebraic multiplicity** of $\lambda_i$ is the power $m_i$ in the factored characteristic polynomial. In other words, the algebraic multiplicity of $\lambda_i$ is the number of times $\lambda_i$ occurs as a root of the characteristic polynomial $c_A(x)$.
 ```
 
 ```{div} definition
