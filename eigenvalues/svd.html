@@ -1002,7 +1002,7 @@ P = \left[ \begin{array}{rrr} 0 &amp; \phantom{+}1 &amp; 0 \\ 1 &amp; 0 &amp; 0 
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-Q = \left[ \begin{array}{rrr} 1 &amp; \phantom{+}1 &amp; 1 \\ -2 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; -1 \end{array} \right]
+Q = \left[ \begin{array}{rrr} -1/\sqrt{6} &amp; \phantom{+}1/\sqrt{3} &amp; -1/\sqrt{2} \\ 2/\sqrt{6} &amp; 1/\sqrt{3} &amp; 0\phantom{--} \\ -1/\sqrt{6} &amp; 1/\sqrt{3} &amp; 1/\sqrt{2} \end{array} \right]
 \end{split}\]</div>
 </div>
 </details></div>
@@ -1054,6 +1054,14 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_1 = \frac{1}{2 \sqrt{20 - 2 \sqrt{10}}} \begin{bmatrix} 6 \\ 2(\sqrt{10} - 1) \end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{w}_2 = \frac{1}{2 \sqrt{20 - 2 \sqrt{10}}} \begin{bmatrix} 2(\sqrt{10} - 1) \\ -6 \end{bmatrix}
+\end{split}\]</div>
 </div>
 </details></div>
 <div class="exercise docutils">
@@ -1063,15 +1071,7 @@ Solution<div class="sd-summary-down docutils">
 X^T X = \begin{bmatrix} 2 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1.5 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 2 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 2 \end{bmatrix}
 \end{split}\]</div>
 <p>Find all the weight vectors of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></div>
 <div class="exercise docutils">
 <p>Suppose we want to solve a system <span class="math notranslate nohighlight">\(A \boldsymbol{x} = \boldsymbol{b}\)</span>. A small change <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> produces a change in the solution</p>
 <div class="math notranslate nohighlight">
@@ -1079,15 +1079,7 @@ Solution<div class="sd-summary-down docutils">
 A(\boldsymbol{x} + \Delta \boldsymbol{x}) = \boldsymbol{b} + \Delta \boldsymbol{b}
 \]</div>
 <p>Describe the unit vector <span class="math notranslate nohighlight">\(\Delta \boldsymbol{b}\)</span> that will produce the largest change <span class="math notranslate nohighlight">\(\| \Delta \boldsymbol{x} \|\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></div>
 <div class="exercise docutils">
 <p>Find the rank 2 pseudo inverse</p>
 <div class="math notranslate nohighlight">
@@ -1100,15 +1092,7 @@ A_2^+ = \frac{1}{\sigma_1} \boldsymbol{q}_1 \boldsymbol{p}_1^T + \frac{1}{\sigma
 A = \left[ \begin{array}{rrr} 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; -2 \\ 1 &amp; -1 &amp; 1 \end{array} \right]
 \end{split}\]</div>
 <p>(Note: the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthogonal.)</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></div>
 <div class="exercise docutils">
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with singular value decomposition <span class="math notranslate nohighlight">\(A = P \Sigma Q^T\)</span>. Let <span class="math notranslate nohighlight">\(k &lt; \min\{m,n\}\)</span> and let</p>
 <div class="math notranslate nohighlight">
@@ -1116,15 +1100,7 @@ Solution<div class="sd-summary-down docutils">
 A_k = \sum_{i=1}^k \sigma_i \boldsymbol{p}_i \boldsymbol{q}_i^T
 \]</div>
 <p>Describe the singular value decomposition of <span class="math notranslate nohighlight">\(A - A_k\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></div>
 </section>
 </section>
 
