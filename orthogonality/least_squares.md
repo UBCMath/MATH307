@@ -204,7 +204,7 @@ bests fits the data $(0,1),(1/4,3),(1/2,2),(3/4,-1),(1,0)$.
 
 ```{dropdown} Solution
 $$
-A = \left[ \begin{array}{rrr} 1 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & -1 & 0 \\ 1 & 0 & -1 \\ 1 & 1 & 0 \end{array} \right]
+A = \left[ \begin{array}{rrr} 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & -1 & 0 \\ 1 & 0 & -1 \\ 1 & 1 & 0 \end{array} \right]
 \hspace{10mm}
 \boldsymbol{y} = \left[ \begin{array}{r} 1 \\ 3 \\ 2 \\ -1 \\ 0 \end{array} \right]
 $$
