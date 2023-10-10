@@ -414,7 +414,7 @@ $$
 y'' = 2^t \ \ , \ \ y'(0) = 1 \ , \ \ y(1) = 0
 $$
 
-using step size $h=0.25$. Use the forward difference formula and the boundary condition $y'(0)=0$ to approximate the boundary value $y_0$.
+using step size $h=0.25$. Use the forward difference formula and the boundary condition $y'(0)=1$ to approximate the boundary value $y_0$.
 
 **Exercise 4.** Derive the general form of the linear system $A \boldsymbol{y} = \boldsymbol{b}$ for an equation with boundary conditions
 

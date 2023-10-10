@@ -377,7 +377,7 @@ Therefore $6a_3 + 2b_3 = 2b_4$ implies $b_4 = 0$, the equation $3a_3 + 2b_3 + c_
 The value $t=2.5$ lies in the interval $[t_2,t_3]$ therefore we compute
 
 $$
-p''(2.5) = p_3''(2.5) = 6a_3(2.5 - 2) - 2b_3 = -3
+p''(2.5) = p_3''(2.5) = 6a_3(2.5 - 2) + 2b_3 = -3
 $$
 
 ```{image} /img/01_03_05.png
