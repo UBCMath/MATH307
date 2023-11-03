@@ -223,7 +223,7 @@ $$
 \end{array} \right]
 \begin{bmatrix} y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \end{bmatrix}
 =
-\begin{bmatrix} \pi^2/18 \\ -\pi^2/18 \\ -1 \\ -\pi^2/18 \\ \pi^2/18 - 1 \end{bmatrix}
+\begin{bmatrix} \pi^2/18 \\ -\pi^2/18 \\ -\pi^2/9 \\ -\pi^2/18 \\ \pi^2/18 - 1 \end{bmatrix}
 $$
 
 Use `scipy.linalg.solve` to compute the solution. The equation is elementary and we can solve exactly by integrating twice
